@@ -49,7 +49,7 @@ const Packages = () => {
           >
             {pkg.popular && (
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-1 bg-indigo-500 rounded-full shadow-[0_0_20px_rgba(99,102,241,0.5)] z-20">
-                <span className="text-[10px] font-black text-white uppercase tracking-tighter">
+                <span className="text-[12px] font-black text-white uppercase tracking-tighter">
                   Più Richiesto
                 </span>
               </div>
