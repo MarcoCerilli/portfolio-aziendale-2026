@@ -8,7 +8,7 @@ const packageList = [
     name: "Starter Landing",
     price: "120",
     description: "Presenza online veloce, moderna e d'impatto.",
-    features: ["Next.js 15 Speed", "Mobile-First", "WhatsApp Direct", "Hosting Incluso"],
+    features: ["Next.Js/Wordpress", "Mobile-First", "WhatsApp Direct", "SEO Base"],
     color: "from-emerald-400 to-teal-500",
     // Testo aggiornato con marca da bollo
     taxInfo: "Compenso netto + ritenuta (20%) + marca da bollo (2€)"
@@ -17,7 +17,7 @@ const packageList = [
     name: "Business Suite",
     price: "350",
     description: "Sito aziendale completo con tecnologia AI Gemini.",
-    features: ["5 Pagine Custom", "AI Gemini Integrata", "SEO Gold", "Premium Dark UI"],
+    features: ["4 Pagine Custom", "AI Gemini Integrata", "SEO Base", "Premium Dark UI"],
     color: "from-indigo-500 to-purple-500",
     popular: true,
     taxInfo: "Compenso netto + ritenuta (20%) + marca da bollo (2€)"
