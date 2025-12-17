@@ -16,6 +16,7 @@ body {
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Altezza del tuo header */
 }
 
 /* Rimuovi eventuali riferimenti a .dark o @media prefer-color-scheme */
