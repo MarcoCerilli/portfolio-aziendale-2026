@@ -10,7 +10,8 @@ const packageList = [
     description: "Presenza online veloce, moderna e d'impatto.",
     features: ["Next.js 15 Speed", "Mobile-First", "WhatsApp Direct", "Hosting Incluso"],
     color: "from-emerald-400 to-teal-500",
-    taxInfo: "Prezzo netto + ritenuta d'acconto."
+    // Testo aggiornato con marca da bollo
+    taxInfo: "Compenso netto + ritenuta (20%) + marca da bollo (2€)"
   },
   {
     name: "Business Suite",
@@ -19,7 +20,7 @@ const packageList = [
     features: ["5 Pagine Custom", "AI Gemini Integrata", "SEO Gold", "Premium Dark UI"],
     color: "from-indigo-500 to-purple-500",
     popular: true,
-    taxInfo: "Regime prestazione occasionale."
+    taxInfo: "Compenso netto + ritenuta (20%) + marca da bollo (2€)"
   },
   {
     name: "Shopify Store",
@@ -27,7 +28,7 @@ const packageList = [
     description: "E-commerce pronto alla vendita, sicuro e veloce.",
     features: ["Setup Shopify/Woo", "Stripe & PayPal", "Gestione Ordini", "Post-lancio 30gg"],
     color: "from-rose-500 to-red-600",
-    taxInfo: "Supporto apertura P.IVA se richiesto."
+    taxInfo: "Compenso netto + ritenuta (20%) + marca da bollo (2€)"
   },
 ];
 
@@ -47,8 +48,10 @@ const Packages = () => {
             } backdrop-blur-2xl`}
           >
             {pkg.popular && (
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-1 bg-indigo-500 rounded-full shadow-[0_0_20px_rgba(99,102,241,0.5)]">
-                <span className="text-[10px] font-black text-white uppercase tracking-tighter">Iper Richiesto</span>
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-1 bg-indigo-500 rounded-full shadow-[0_0_20px_rgba(99,102,241,0.5)] z-20">
+                <span className="text-[10px] font-black text-white uppercase tracking-tighter">
+                  Più Richiesto
+                </span>
               </div>
             )}
 
@@ -71,18 +74,17 @@ const Packages = () => {
               ))}
             </ul>
 
-            <div className="pt-6 border-t border-white/5 mb-8 text-[10px] text-gray-500 italic">
+            {/* NOTA FISCALE COMPLETA E BEN VISIBILE */}
+            <div className="pt-6 border-t border-white/5 mb-8 text-[13px] font-semibold text-gray-300 italic leading-snug">
               {pkg.taxInfo}
             </div>
 
-            {/* BOTTONE AGGIORNATO */}
             <motion.a
               href="#contactforhome"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className={`relative overflow-hidden group w-full py-5 rounded-2xl font-black uppercase tracking-widest text-[11px] text-white text-center transition-all bg-gradient-to-r ${pkg.color}`}
             >
-              {/* Effetto Luce che passa sopra */}
               <div className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-700 skew-x-12" />
               <span className="relative z-10">Richiedi Informazioni</span>
             </motion.a>

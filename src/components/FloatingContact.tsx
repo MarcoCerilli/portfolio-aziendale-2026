@@ -32,7 +32,7 @@ const FloatingContact = () => {
     }
   }, [messages, showChat]);
 
- const handleSendMessage = async (e: React.FormEvent) => {
+  const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim()) return;
 
@@ -41,19 +41,22 @@ const FloatingContact = () => {
     setInput("");
 
     try {
-      const res = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userMsg }),
       });
 
       const data = await res.json();
       setMessages((prev) => [...prev, { text: data.text, sender: "bot" }]);
     } catch (err) {
-      setMessages((prev) => [...prev, { 
-        text: "Ops, qualcosa è andato storto con Gemini. Scrivimi su Whatsapp!", 
-        sender: "bot" 
-      }]);
+      setMessages((prev) => [
+        ...prev,
+        {
+          text: "Ops, qualcosa è andato storto con Gemini. Scrivimi su Whatsapp!",
+          sender: "bot",
+        },
+      ]);
     }
   };
 
@@ -83,21 +86,48 @@ const FloatingContact = () => {
             {!showChat ? (
               /* Menu Scelte Rapide */
               <div className="p-6 flex flex-col justify-center h-full space-y-4">
-                <p className="text-sm text-gray-300 text-center mb-2">
+                <p className="text-sm text-gray-300 text-center mb-2 font-medium">
                   Come preferisci procedere?
                 </p>
+
+                {/* Bottone WhatsApp - AGGIORNATO CON EFFETTI */}
                 <a
                   href="https://wa.me/393804291043"
                   target="_blank"
-                  className="flex items-center justify-center gap-3 w-full bg-[#25D366] text-white py-3 rounded-xl font-bold uppercase tracking-widest text-[10px] hover:scale-105 transition"
+                  className="relative group flex items-center justify-center gap-3 w-full bg-[#25D366] text-white py-4 rounded-xl font-bold uppercase tracking-widest text-[10px] hover:scale-105 transition-all duration-300 overflow-hidden shadow-lg shadow-green-500/20"
                 >
-                  <SiWhatsapp className="w-5 h-5" /> WhatsApp Rapido
+                  {/* Effetto luce che attraversa il bottone */}
+                  <div className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-700 skew-x-12" />
+
+                  <SiWhatsapp className="w-5 h-5 relative z-10" />
+                  <span className="relative z-10">WhatsApp Rapido</span>
                 </a>
+
+                {/* Bottone IA - AGGIORNATO CON EFFETTI */}
                 <button
                   onClick={() => setShowChat(true)}
-                  className="w-full bg-indigo-500 text-white py-3 rounded-xl font-bold uppercase tracking-widest text-[10px] hover:bg-indigo-400 transition"
+                  className="relative group flex items-center justify-center gap-3 w-full bg-indigo-500 text-white py-4 rounded-xl font-bold uppercase tracking-widest text-[10px] hover:bg-indigo-400 transition-all duration-300 overflow-hidden shadow-lg shadow-indigo-500/20"
                 >
-                  Parla con l'IA ora
+                  {/* Effetto luce che attraversa il bottone */}
+                  <div className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-700 skew-x-12" />
+
+                  {/* Icona IA Sparkles */}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={2}
+                    stroke="currentColor"
+                    className="w-5 h-5 animate-pulse relative z-10"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"
+                    />
+                  </svg>
+
+                  <span className="relative z-10">Parla con l'IA ora</span>
                 </button>
               </div>
             ) : (
