@@ -14,21 +14,20 @@ export default function Home() {
     <main className="min-h-screen bg-black text-white selection:bg-indigo-500/30">
       <Hero />
 
-      {/* Ridotto a py-8 per stare più vicino alla Hero */}
-      <AnimatedSection delay={0.2} className="py-8">
+      {/* Rimosso quasi tutto il padding per TechStack */}
+      <AnimatedSection delay={0.2} className="py-4">
         <TechStack />
       </AnimatedSection>
 
-      {/* Ridotto a py-8 */}
-      <AnimatedSection delay={0.3} className="py-8">
+      {/* TrustSection super compatta */}
+      <AnimatedSection delay={0.3} className="py-2">
         <TrustSection />
       </AnimatedSection>
 
-      {/* Sezione Progetti: py-12 invece di py-24 */}
-      <section id="progetti" className="py-12 bg-black">
+      {/* Progetti con padding ridotto */}
+      <section id="progetti" className="py-8 bg-black">
         <AnimatedSection className="container mx-auto px-6" delay={0.4}>
-          <div className="mb-10 text-center">
-            {/* Ridotto margine titolo */}
+          <div className="mb-6 text-center">
             <h2 className="text-[10px] font-black text-gray-500 uppercase tracking-[0.4em] mb-2">
               Portfolio
             </h2>
@@ -40,21 +39,21 @@ export default function Home() {
         </AnimatedSection>
       </section>
 
-      {/* Sezione Pacchetti: py-12 */}
-      <section id="pacchetti" className="py-12 bg-black">
+      {/* Pacchetti con padding ridotto */}
+      <section id="pacchetti" className="py-8 bg-black">
         <AnimatedSection className="container mx-auto px-6" delay={0.5}>
-          <div className="mb-10 text-center">
+          <div className="mb-6 text-center">
             <h2 className="text-[10px] font-black text-gray-500 uppercase tracking-[0.4em] mb-2">
               Pacchetti
             </h2>
             <h3 className="text-3xl md:text-4xl font-black text-white tracking-tighter">
-              Scegli il piano
-              <span className="text-indigo-500"> che fa per te</span>
+              Scegli il piano <span className="text-indigo-500">per te</span>
             </h3>
           </div>
           <Packages />
         </AnimatedSection>
       </section>
+      
       <Footer />
     </main>
   );

@@ -10,7 +10,6 @@ const packageList = [
     description: "Presenza online veloce, moderna e d'impatto.",
     features: ["Next.Js/Wordpress", "Mobile-First", "WhatsApp Direct", "SEO Base"],
     color: "from-emerald-400 to-teal-500",
-    // Testo aggiornato con marca da bollo
     taxInfo: "Compenso netto + ritenuta (20%) + marca da bollo (2€)"
   },
   {
@@ -34,8 +33,9 @@ const packageList = [
 
 const Packages = () => {
   return (
-    <section id="pacchetti" className="py-20 bg-black">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto px-6">
+    // RIDOTTO: py-20 -> py-4 (lo spazio ora è gestito dal genitore in page.tsx)
+    <section id="pacchetti" className="py-4 bg-black">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto px-6">
         {packageList.map((pkg, index) => (
           <motion.div
             key={index}
@@ -43,39 +43,39 @@ const Packages = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             whileHover={{ scale: 1.02 }}
-            className={`relative flex flex-col p-8 rounded-[2.5rem] border ${
+            // RIDOTTO: p-8 -> p-6 (più compatto su mobile)
+            className={`relative flex flex-col p-6 rounded-[2rem] border ${
               pkg.popular ? "border-indigo-500/50 bg-indigo-500/5" : "border-white/10 bg-gray-900/50"
             } backdrop-blur-2xl`}
           >
             {pkg.popular && (
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-1 bg-indigo-500 rounded-full shadow-[0_0_20px_rgba(99,102,241,0.5)] z-20">
-                <span className="text-[12px] font-black text-white uppercase tracking-tighter">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-indigo-500 rounded-full shadow-[0_0_15px_rgba(99,102,241,0.4)] z-20">
+                <span className="text-[10px] font-black text-white uppercase tracking-tighter">
                   Più Richiesto
                 </span>
               </div>
             )}
 
-            <div className="mb-8">
-              <h3 className="text-2xl font-bold text-white mb-4">{pkg.name}</h3>
+            <div className="mb-6">
+              <h3 className="text-xl font-bold text-white mb-2">{pkg.name}</h3>
               <div className="flex items-end gap-1">
-                <span className={`text-6xl font-black bg-gradient-to-br ${pkg.color} bg-clip-text text-transparent`}>
+                <span className={`text-5xl font-black bg-gradient-to-br ${pkg.color} bg-clip-text text-transparent`}>
                   €{pkg.price}
                 </span>
-                <span className="text-gray-500 font-bold mb-2">/netto</span>
+                <span className="text-gray-500 font-bold mb-1 text-xs">/netto</span>
               </div>
             </div>
 
-            <ul className="space-y-4 mb-10 flex-grow">
+            <ul className="space-y-3 mb-6 flex-grow">
               {pkg.features.map((feat) => (
-                <li key={feat} className="flex items-center text-gray-300 text-sm">
-                  <CheckCircleIcon className="w-5 h-5 mr-3 text-white/20" />
+                <li key={feat} className="flex items-center text-gray-300 text-[13px]">
+                  <CheckCircleIcon className="w-4 h-4 mr-2 text-white/20" />
                   {feat}
                 </li>
               ))}
             </ul>
 
-            {/* NOTA FISCALE COMPLETA E BEN VISIBILE */}
-            <div className="pt-6 border-t border-white/5 mb-8 text-[13px] font-semibold text-gray-300 italic leading-snug">
+            <div className="pt-4 border-t border-white/5 mb-6 text-[11px] font-semibold text-gray-400 italic leading-snug">
               {pkg.taxInfo}
             </div>
 
@@ -83,7 +83,7 @@ const Packages = () => {
               href="#contactforhome"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className={`relative overflow-hidden group w-full py-5 rounded-2xl font-black uppercase tracking-widest text-[11px] text-white text-center transition-all bg-gradient-to-r ${pkg.color}`}
+              className={`relative overflow-hidden group w-full py-4 rounded-xl font-black uppercase tracking-widest text-[10px] text-white text-center transition-all bg-gradient-to-r ${pkg.color}`}
             >
               <div className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-700 skew-x-12" />
               <span className="relative z-10">Richiedi Informazioni</span>

@@ -26,28 +26,29 @@ const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.1 }
+    transition: { staggerChildren: 0.05 }
   }
 };
 
 const itemVariants: Variants = {
-  hidden: { y: 30, opacity: 0 },
+  hidden: { y: 20, opacity: 0 },
   visible: { 
     y: 0, 
     opacity: 1, 
-    transition: { type: "spring", stiffness: 80, damping: 15 } 
+    transition: { type: "spring", stiffness: 100, damping: 20 } 
   }
 };
 
 const TechStack = () => {
   return (
-    <section id="tecnologie" className="py-24 bg-black relative">
-      <div className="max-w-6xl mx-auto px-6 mb-16">
+    // RIDOTTO: py-24 -> py-8
+    <section id="tecnologie" className="py-8 bg-black relative">
+      <div className="max-w-6xl mx-auto px-6 mb-8 md:mb-16">
         <motion.h3 
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center text-[11px] font-black text-gray-500 uppercase tracking-[0.5em]"
+          className="text-center text-[10px] font-black text-gray-500 uppercase tracking-[0.4em]"
         >
           Tech-Stack Expertise
         </motion.h3>
@@ -58,7 +59,8 @@ const TechStack = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="max-w-7xl mx-auto px-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6"
+        // GRID: gap ridotto su mobile
+        className="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6"
       >
         {technologies.map((tech, index) => (
           <motion.div 
@@ -67,36 +69,34 @@ const TechStack = () => {
             className="group relative"
           >
             <motion.div
-              // Animazione continua di ondeggiamento più complessa
+              // Animazione continua disabilitata su mobile per performance e pulizia
               animate={{
-                y: [0, -15, 0],
-                rotate: [0, 2, -2, 0],
-                scale: [1, 1.02, 1]
+                y: typeof window !== 'undefined' && window.innerWidth > 768 ? [0, -10, 0] : 0,
+                rotate: typeof window !== 'undefined' && window.innerWidth > 768 ? [0, 1, -1, 0] : 0,
               }}
               transition={{
-                duration: 5 + (index % 4), // Asincronia tra le icone
+                duration: 4,
                 repeat: Infinity,
                 ease: "easeInOut",
-                delay: index * 0.2 // Ognuna parte in un momento diverso
+                delay: index * 0.1
               }}
               whileHover={{ 
-                scale: 1.1,
-                y: -10,
+                scale: 1.05,
                 transition: { type: "spring", stiffness: 400, damping: 10 }
               }}
-              className={`relative flex flex-col items-center justify-center p-10 bg-gray-900/40 backdrop-blur-3xl rounded-[2.5rem] border border-white/5 transition-all duration-500 cursor-default overflow-hidden ${tech.glow}`}
+              // COMPATTATO: p-10 -> p-6 (mobile) / p-8 (desktop)
+              className={`relative flex flex-col items-center justify-center p-6 md:p-8 bg-gray-900/40 backdrop-blur-3xl rounded-[1.5rem] md:rounded-[2.5rem] border border-white/5 transition-all duration-500 cursor-default overflow-hidden ${tech.glow}`}
             >
-              {/* Background Glow al passaggio del mouse */}
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/0 to-purple-500/0 group-hover:from-indigo-500/10 group-hover:to-purple-500/10 transition-all duration-700" />
               
-              <tech.icon className={`w-12 h-12 mb-5 transition-all duration-500 group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.4)] z-10 ${tech.color}`} />
+              {/* ICONA: w-12 -> w-10 su mobile */}
+              <tech.icon className={`w-10 h-10 md:w-12 md:h-12 mb-4 md:mb-5 transition-all duration-500 group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.4)] z-10 ${tech.color}`} />
               
-              <p className="text-[10px] font-black uppercase tracking-widest text-gray-500 group-hover:text-white transition-colors duration-300 z-10 text-center">
+              <p className="text-[9px] md:text-[10px] font-black uppercase tracking-widest text-gray-500 group-hover:text-white transition-colors duration-300 z-10 text-center">
                 {tech.name}
               </p>
 
-              {/* Decorazione orbitale che appare al hover */}
-              <div className="absolute inset-0 border border-indigo-500/0 group-hover:border-indigo-500/20 rounded-[2.5rem] transition-all duration-700 scale-90 group-hover:scale-100" />
+              <div className="absolute inset-0 border border-indigo-500/0 group-hover:border-indigo-500/20 rounded-[1.5rem] md:rounded-[2.5rem] transition-all duration-700 scale-90 group-hover:scale-100" />
             </motion.div>
           </motion.div>
         ))}

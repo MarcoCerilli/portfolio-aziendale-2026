@@ -8,6 +8,12 @@ import {
 } from "@heroicons/react/24/solid";
 import { SiWhatsapp } from "react-icons/si";
 
+// Interfaccia per la cronologia compatibile con Gemini SDK
+interface GeminiHistoryItem {
+  role: "user" | "model";
+  parts: { text: string }[];
+}
+
 interface Message {
   text: string;
   sender: "user" | "bot";
@@ -17,6 +23,11 @@ const FloatingContact = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showChat, setShowChat] = useState(false);
   const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  
+  // Stato per la memoria della conversazione
+  const [geminiHistory, setGeminiHistory] = useState<GeminiHistoryItem[]>([]);
+  
   const [messages, setMessages] = useState<Message[]>([
     {
       text: "Ciao! Sono l'assistente IA di M Solutions IT. Come posso aiutarti?",
@@ -26,37 +37,58 @@ const FloatingContact = () => {
 
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  // Auto-scroll all'ultimo messaggio
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
-  }, [messages, showChat]);
+  }, [messages, showChat, loading]);
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!input.trim()) return;
+    if (!input.trim() || loading) return;
 
     const userMsg = input;
     setMessages((prev) => [...prev, { text: userMsg, sender: "user" }]);
     setInput("");
+    setLoading(true);
 
     try {
-      const res = await fetch("/api/chat", {
+      // Chiamata all'API del bot passando la storia
+      const res = await fetch("/api/bot", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: userMsg }),
+        body: JSON.stringify({ 
+          message: userMsg,
+          history: geminiHistory 
+        }),
       });
 
       const data = await res.json();
+      
+      // Aggiungiamo la risposta del bot alla vista
       setMessages((prev) => [...prev, { text: data.text, sender: "bot" }]);
+
+      // Aggiorniamo la memoria tecnica (limitandola agli ultimi 10 scambi per performance)
+      setGeminiHistory((prev) => {
+        const updated = [
+          ...prev,
+          { role: "user" as const, parts: [{ text: userMsg }] },
+          { role: "model" as const, parts: [{ text: data.text }] }
+        ];
+        return updated.slice(-10); 
+      });
+
     } catch (err) {
       setMessages((prev) => [
         ...prev,
         {
-          text: "Ops, qualcosa è andato storto con Gemini. Scrivimi su Whatsapp!",
+          text: "Ops, qualcosa è andato storto. Scrivimi su Whatsapp!",
           sender: "bot",
         },
       ]);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -71,14 +103,17 @@ const FloatingContact = () => {
             className="mb-4 bg-gray-900/95 backdrop-blur-xl p-0 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-indigo-500/30 w-80 md:w-96 overflow-hidden flex flex-col h-[450px]"
           >
             {/* Header Chat */}
-            <div className="bg-indigo-600 p-4 text-white flex justify-between items-center">
+            <div className="bg-indigo-600 p-4 text-white flex justify-between items-center shadow-lg">
               <div>
-                <p className="font-black uppercase tracking-widest text-xs">
+                <p className="font-black uppercase tracking-widest text-[10px]">
                   M Solutions AI
                 </p>
-                <p className="text-[10px] opacity-80">Sempre online</p>
+                <p className="text-[9px] opacity-80 flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span>
+                  Disponibile ora (v2.5)
+                </p>
               </div>
-              <button onClick={() => setIsOpen(false)}>
+              <button onClick={() => setIsOpen(false)} className="hover:rotate-90 transition-transform">
                 <XMarkIcon className="w-5 h-5" />
               </button>
             </div>
@@ -86,47 +121,25 @@ const FloatingContact = () => {
             {!showChat ? (
               /* Menu Scelte Rapide */
               <div className="p-6 flex flex-col justify-center h-full space-y-4">
-                <p className="text-sm text-gray-300 text-center mb-2 font-medium">
+                <p className="text-xs text-gray-300 text-center mb-2 font-medium">
                   Come preferisci procedere?
                 </p>
 
-                {/* Bottone WhatsApp - AGGIORNATO CON EFFETTI */}
                 <a
                   href="https://wa.me/393804291043"
                   target="_blank"
                   className="relative group flex items-center justify-center gap-3 w-full bg-[#25D366] text-white py-4 rounded-xl font-bold uppercase tracking-widest text-[10px] hover:scale-105 transition-all duration-300 overflow-hidden shadow-lg shadow-green-500/20"
                 >
-                  {/* Effetto luce che attraversa il bottone */}
                   <div className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-700 skew-x-12" />
-
                   <SiWhatsapp className="w-5 h-5 relative z-10" />
                   <span className="relative z-10">WhatsApp Rapido</span>
                 </a>
 
-                {/* Bottone IA - AGGIORNATO CON EFFETTI */}
                 <button
                   onClick={() => setShowChat(true)}
                   className="relative group flex items-center justify-center gap-3 w-full bg-indigo-500 text-white py-4 rounded-xl font-bold uppercase tracking-widest text-[10px] hover:bg-indigo-400 transition-all duration-300 overflow-hidden shadow-lg shadow-indigo-500/20"
                 >
-                  {/* Effetto luce che attraversa il bottone */}
                   <div className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-700 skew-x-12" />
-
-                  {/* Icona IA Sparkles */}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2}
-                    stroke="currentColor"
-                    className="w-5 h-5 animate-pulse relative z-10"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"
-                    />
-                  </svg>
-
                   <span className="relative z-10">Parla con l'IA ora</span>
                 </button>
               </div>
@@ -135,17 +148,15 @@ const FloatingContact = () => {
               <>
                 <div
                   ref={scrollRef}
-                  className="flex-grow p-4 overflow-y-auto space-y-4 custom-scrollbar"
+                  className="flex-grow p-4 overflow-y-auto space-y-4 custom-scrollbar bg-gray-900/50"
                 >
                   {messages.map((m, i) => (
                     <div
                       key={i}
-                      className={`flex ${
-                        m.sender === "user" ? "justify-end" : "justify-start"
-                      }`}
+                      className={`flex ${m.sender === "user" ? "justify-end" : "justify-start"}`}
                     >
                       <div
-                        className={`max-w-[80%] p-3 rounded-2xl text-xs leading-relaxed ${
+                        className={`max-w-[85%] p-3 rounded-2xl text-[11px] leading-relaxed shadow-sm ${
                           m.sender === "user"
                             ? "bg-indigo-600 text-white rounded-tr-none"
                             : "bg-gray-800 text-gray-200 rounded-tl-none border border-gray-700"
@@ -155,22 +166,29 @@ const FloatingContact = () => {
                       </div>
                     </div>
                   ))}
+                  {loading && (
+                    <div className="flex justify-start">
+                      <div className="bg-gray-800 text-gray-400 px-3 py-2 rounded-2xl text-[10px] animate-pulse border border-gray-700">
+                        M Solutions sta scrivendo...
+                      </div>
+                    </div>
+                  )}
                 </div>
 
-                {/* Input Field */}
                 <form
                   onSubmit={handleSendMessage}
-                  className="p-4 bg-gray-950 border-t border-gray-800 flex gap-2"
+                  className="p-3 bg-gray-950 border-t border-gray-800 flex gap-2"
                 >
                   <input
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
-                    placeholder="Scrivi qui..."
-                    className="flex-grow bg-gray-900 border border-gray-700 rounded-xl px-4 py-2 text-xs text-white focus:outline-none focus:border-indigo-500"
+                    placeholder="Chiedimi dei servizi o prezzi..."
+                    className="flex-grow bg-gray-900 border border-gray-700 rounded-xl px-4 py-2 text-[11px] text-white focus:outline-none focus:border-indigo-500 transition-colors"
                   />
                   <button
                     type="submit"
-                    className="bg-indigo-600 p-2 rounded-xl text-white hover:bg-indigo-500"
+                    disabled={loading}
+                    className="bg-indigo-600 p-2.5 rounded-xl text-white hover:bg-indigo-500 disabled:opacity-50 transition-all shadow-lg shadow-indigo-500/20"
                   >
                     <PaperAirplaneIcon className="w-4 h-4" />
                   </button>
@@ -199,4 +217,5 @@ const FloatingContact = () => {
     </div>
   );
 };
+
 export default FloatingContact;

@@ -1,44 +1,56 @@
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    const { message } = await req.json();
+    // Riceviamo message e history dal frontend
+    const { message, history } = await req.json();
     const apiKey = process.env.GOOGLE_GENAI_API_KEY;
 
-    // Usiamo il modello "Lite": è il più leggero e quello con le quote più generose nel piano free
-    const model = "gemini-2.0-flash-lite"; 
-    const API_URL = `https://generativelanguage.googleapis.com/v1/models/${model}:generateContent?key=${apiKey}`;
+    if (!apiKey) {
+      return NextResponse.json({ text: "Servizio non disponibile. WhatsApp: +39 380 429 1043" });
+    }
 
-    const response = await fetch(API_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        contents: [{
-          parts: [{
-            // Prompt ridotto all'osso: meno token = meno probabilità di errore 429
-            text: `Supporto M Solutions (Next.js/Shopify). Rispondi breve in italiano. WhatsApp: +393804291043. Utente: ${message}`,
-          }],
-        }],
-      }),
+    const genAI = new GoogleGenerativeAI(apiKey);
+    
+    // Usiamo il modello 2.5 Flash che abbiamo testato con successo
+    const model = genAI.getGenerativeModel({ 
+      model: "gemini-2.5-flash",
+      generationConfig: {
+        maxOutputTokens: 200,
+        temperature: 0.7,
+      }
     });
 
-    const data = await response.json();
+    // Istruzioni di sistema per mantenere l'identità del bot
+    const systemInstruction = `Sei l'assistente IA ufficiale di M Solutions (specialisti in Next.js e Shopify). 
+    Il tuo obiettivo è aiutare i potenziali clienti. 
+    Rispondi in italiano, in modo professionale, amichevole e molto breve. 
+    Se ti chiedono prezzi, di' che variano in base al progetto e invita a contattare WhatsApp: +39 380 429 1043.`;
 
-    // Gestione specifica per il limite di quota (429)
-    if (response.status === 429) {
+    // Avviamo la sessione di chat con la memoria
+    const chat = model.startChat({
+      history: history || [],
+      systemInstruction: systemInstruction,
+    });
+
+    const result = await chat.sendMessage(message);
+    const response = await result.response;
+    const text = response.text();
+
+    return NextResponse.json({ text: text });
+
+  } catch (error: any) {
+    console.error("Errore API Chat:", error.message);
+
+    if (error.message?.includes("429")) {
       return NextResponse.json({
-        text: "Riceviamo molte richieste! Mandami un messaggio rapido su WhatsApp (+39 380 429 1043) e ti rispondo subito da lì.",
+        text: "Riceviamo molte richieste! Per favore, scrivimi direttamente su WhatsApp (+39 380 429 1043).",
       });
     }
 
-    if (!response.ok || data.error) {
-      console.error("DEBUG:", data.error?.message);
-      return NextResponse.json({ text: "Scrivimi su WhatsApp: +39 380 429 1043" });
-    }
-
-    return NextResponse.json({ text: data.candidates[0].content.parts[0].text });
-
-  } catch (error) {
-    return NextResponse.json({ text: "WhatsApp: +39 380 429 1043" });
+    return NextResponse.json({ 
+      text: "C'è un problema tecnico momentaneo. Contattami su WhatsApp: +39 380 429 1043" 
+    });
   }
 }
