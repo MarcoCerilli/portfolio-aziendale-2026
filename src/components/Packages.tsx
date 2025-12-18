@@ -6,34 +6,48 @@ import { CheckCircleIcon } from "@heroicons/react/24/solid";
 const packageList = [
   {
     name: "Starter Landing",
-    price: "120",
+    price: "150",
     description: "Presenza online veloce, moderna e d'impatto.",
-    features: ["Next.Js/Wordpress", "Mobile-First", "WhatsApp Direct", "SEO Base"],
+    features: [
+      "Pagina Singola (Next.js)",
+      "Mobile-First",
+      "WhatsApp Direct",
+      "SEO Base",
+    ],
     color: "from-emerald-400 to-teal-500",
-    taxInfo: "Compenso netto + ritenuta (20%) + marca da bollo (2€)"
+    taxInfo: "Compenso netto + ritenuta (20%) + marca da bollo (2€)",
   },
   {
     name: "Business Suite",
-    price: "350",
-    description: "Sito aziendale completo con tecnologia AI Gemini.",
-    features: ["4 Pagine Custom", "AI Gemini Integrata", "SEO Base", "Premium Dark UI"],
+    price: "450",
+    description: "Sito aziendale completo con tecnologia AI Groq.",
+    features: [
+      "Fino a 5 Pagine Custom",
+      "Chatbot AI Integrato",
+      "SEO Avanzata",
+      "Premium Dark UI",
+    ],
     color: "from-indigo-500 to-purple-500",
     popular: true,
-    taxInfo: "Compenso netto + ritenuta (20%) + marca da bollo (2€)"
+    taxInfo: "Compenso netto + ritenuta (20%) + marca da bollo (2€)",
   },
   {
-    name: "Shopify Store",
-    price: "450",
-    description: "E-commerce pronto alla vendita, sicuro e veloce.",
-    features: ["Setup Shopify/Woo", "Stripe & PayPal", "Gestione Ordini", "Post-lancio 30gg"],
+    name: "E-commerce Pro",
+    price: "750",
+    description: "Store pronto alla vendita con inventario ottimizzato.",
+    features: [
+      "Setup Shopify/Woo",
+      "Caricamento fino a 10 Prodotti",
+      "Gateway Pagamenti (Stripe/PayPal)",
+      "Formazione gestione ordini",
+    ],
     color: "from-rose-500 to-red-600",
-    taxInfo: "Compenso netto + ritenuta (20%) + marca da bollo (2€)"
+    taxInfo: "Compenso netto + ritenuta (20%) + marca da bollo (2€)",
   },
 ];
 
 const Packages = () => {
   return (
-    // RIDOTTO: py-20 -> py-4 (lo spazio ora è gestito dal genitore in page.tsx)
     <section id="pacchetti" className="py-4 bg-black">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto px-6">
         {packageList.map((pkg, index) => (
@@ -43,9 +57,10 @@ const Packages = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             whileHover={{ scale: 1.02 }}
-            // RIDOTTO: p-8 -> p-6 (più compatto su mobile)
-            className={`relative flex flex-col p-6 rounded-[2rem] border ${
-              pkg.popular ? "border-indigo-500/50 bg-indigo-500/5" : "border-white/10 bg-gray-900/50"
+            className={`relative flex flex-col p-6 rounded-[2rem] border transition-all duration-500 ${
+              pkg.popular
+                ? "border-indigo-500 shadow-[0_0_40px_rgba(99,102,241,0.1)] bg-indigo-500/10"
+                : "border-white/10 bg-gray-900/50"
             } backdrop-blur-2xl`}
           >
             {pkg.popular && (
@@ -59,16 +74,23 @@ const Packages = () => {
             <div className="mb-6">
               <h3 className="text-xl font-bold text-white mb-2">{pkg.name}</h3>
               <div className="flex items-end gap-1">
-                <span className={`text-5xl font-black bg-gradient-to-br ${pkg.color} bg-clip-text text-transparent`}>
+                <span
+                  className={`text-5xl font-black bg-gradient-to-br ${pkg.color} bg-clip-text text-transparent`}
+                >
                   €{pkg.price}
                 </span>
-                <span className="text-gray-500 font-bold mb-1 text-xs">/netto</span>
+                <span className="text-gray-500 font-bold mb-1 text-xs">
+                  /netto
+                </span>
               </div>
             </div>
 
             <ul className="space-y-3 mb-6 flex-grow">
               {pkg.features.map((feat) => (
-                <li key={feat} className="flex items-center text-gray-300 text-[13px]">
+                <li
+                  key={feat}
+                  className="flex items-center text-gray-300 text-[13px]"
+                >
                   <CheckCircleIcon className="w-4 h-4 mr-2 text-white/20" />
                   {feat}
                 </li>

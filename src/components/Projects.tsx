@@ -7,17 +7,19 @@ import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 const projectsList = [
   {
     title: "E-commerce Headless B2B",
-    description: "Piattaforma Next.js 15 + Sanity CMS. Architettura orientata alle performance con tempi sub-secondo.",
+    description:
+      "Piattaforma Next.js 15 + Sanity CMS. Architettura orientata alle performance con tempi sub-secondo.",
     tags: ["Next.js 15", "Sanity", "Tailwind"],
     link: "https://tuolink.com",
-    image: "/projects/project1.jpg", 
+    image: "/projects/project1.jpg",
     status: "Live Project",
     isDemo: false,
     color: "from-blue-500 to-cyan-400",
   },
   {
     title: "Sito Vetrina Finanziario",
-    description: "Frontend ad alte prestazioni con integrazione API legacy. Design focalizzato sulla conversione lead.",
+    description:
+      "Frontend ad alte prestazioni con integrazione API legacy. Design focalizzato sulla conversione lead.",
     tags: ["React", "Laravel", "Figma"],
     link: "https://tuolink.com",
     image: "/projects/project2.jpg",
@@ -27,7 +29,8 @@ const projectsList = [
   },
   {
     title: "Next.js E-commerce Demo",
-    description: "Demo tecnica: gestione carrello lato client, TypeScript strict-mode e integrazione Stripe.",
+    description:
+      "Demo tecnica: gestione carrello lato client, TypeScript strict-mode e integrazione Stripe.",
     tags: ["Next.js", "TypeScript", "Stripe"],
     link: "https://tuo-demo.vercel.app",
     image: "/projects/project3.jpg",
@@ -37,7 +40,8 @@ const projectsList = [
   },
   {
     title: "Custom CRM Web App",
-    description: "Applicazione gestionale complessa per flussi di lavoro aziendali. Ottimizzazione database e reportistica.",
+    description:
+      "Applicazione gestionale complessa per flussi di lavoro aziendali. Ottimizzazione database e reportistica.",
     tags: ["Symfony", "PHP 8.3", "AWS"],
     link: "https://tuolink.com",
     image: "/projects/project4.jpg",
@@ -51,7 +55,6 @@ const Projects = () => {
   return (
     // RIDOTTO: mt-16 -> mt-8 e px-6 -> px-4 su mobile
     <div className="mt-8 md:mt-16 max-w-7xl mx-auto px-4 md:px-6">
-      
       {/* GRID: ridotto il gap da 12 a 6 su mobile per compattare */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
         {projectsList.map((project, index) => (
@@ -64,15 +67,17 @@ const Projects = () => {
           >
             {/* Immagine: Altezza ridotta su mobile h-48 vs md:h-80 */}
             <div className="relative h-48 md:h-80 w-full overflow-hidden">
-              <div className={`absolute inset-0 bg-gradient-to-t ${project.color} opacity-0 group-hover:opacity-40 transition-opacity duration-500 z-10`} />
-              
+              <div
+                className={`absolute inset-0 bg-gradient-to-t ${project.color} opacity-0 group-hover:opacity-40 transition-opacity duration-500 z-10`}
+              />
+
               <Image
                 src={project.image}
                 alt={project.title}
                 fill
                 className="object-cover transition-transform duration-1000 group-hover:scale-110"
               />
-              
+
               <div className="absolute top-4 left-4 md:top-6 md:left-6 z-20">
                 <span className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.2em] px-3 py-1.5 md:px-4 md:py-2 bg-black/60 backdrop-blur-md text-white rounded-full border border-white/10">
                   {project.status}
@@ -116,9 +121,9 @@ const Projects = () => {
           </motion.div>
         ))}
       </div>
-      
+
       {/* CTA Finale ridotto mt-20 -> mt-12 */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         className="mt-12 md:mt-20 text-center pb-8"
