@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import ContactForm from '@/components/ContactForm';
+import { EnvelopeIcon, MapPinIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
 
 export default function ContattiPage() {
   return (
@@ -25,33 +26,52 @@ export default function ContattiPage() {
         {/* Contenitore Form con effetto Glow */}
         <div className="relative z-10">
           <div className="absolute -top-20 left-1/2 -translate-x-1/2 -z-10 blur-[120px] opacity-30 bg-indigo-500 rounded-full w-80 h-80"></div>
-          
           <ContactForm />
         </div>
 
-        {/* Info Box */}
+        {/* Info Box - Ottimizzato per Mobile */}
         <motion.div 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
           viewport={{ once: true }}
-          className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-gray-200 dark:border-gray-800 pt-12 text-center"
+          className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-gray-200 dark:border-gray-800 pt-12"
         >
-          <div className="p-4">
-            <h3 className="text-sm uppercase tracking-widest font-bold text-gray-400 mb-2">Email</h3>
-            <p className="text-xl font-medium text-gray-900 dark:text-white">cerillimarco15@gmail.com</p>
-          </div>
-          <div className="p-4">
-            <h3 className="text-sm uppercase tracking-widest font-bold text-gray-400 mb-2">Location</h3>
-            <p className="text-xl font-medium text-gray-900 dark:text-white">Remoto / Italia</p>
-          </div>
-          <div className="p-4">
-            <h3 className="text-sm uppercase tracking-widest font-bold text-gray-400 mb-2">Social</h3>
-            <div className="flex justify-center gap-4 text-indigo-600 font-bold">
-              <a href="#" className="hover:underline">LinkedIn</a>
-              <a href="#" className="hover:underline">GitHub</a>
+          {/* Email */}
+          <motion.div 
+            whileHover={{ y: -5 }}
+            whileTap={{ scale: 0.95 }}
+            className="p-6 rounded-2xl bg-white dark:bg-gray-800/50 shadow-sm border border-transparent hover:border-indigo-500/30 transition-colors text-center"
+          >
+            <EnvelopeIcon className="w-6 h-6 mx-auto mb-3 text-indigo-600" />
+            <h3 className="text-xs uppercase tracking-[0.2em] font-bold text-gray-400 mb-2">Email</h3>
+            <p className="text-lg font-semibold text-gray-900 dark:text-white break-all">cerillimarco15@gmail.com</p>
+          </motion.div>
+
+          {/* Location */}
+          <motion.div 
+            whileHover={{ y: -5 }}
+            whileTap={{ scale: 0.95 }}
+            className="p-6 rounded-2xl bg-white dark:bg-gray-800/50 shadow-sm border border-transparent hover:border-indigo-500/30 transition-colors text-center"
+          >
+            <MapPinIcon className="w-6 h-6 mx-auto mb-3 text-indigo-600" />
+            <h3 className="text-xs uppercase tracking-[0.2em] font-bold text-gray-400 mb-2">Location</h3>
+            <p className="text-lg font-semibold text-gray-900 dark:text-white">Remoto / Italia</p>
+          </motion.div>
+
+          {/* Social */}
+          <motion.div 
+            whileHover={{ y: -5 }}
+            whileTap={{ scale: 0.95 }}
+            className="p-6 rounded-2xl bg-white dark:bg-gray-800/50 shadow-sm border border-transparent hover:border-indigo-500/30 transition-colors text-center"
+          >
+            <GlobeAltIcon className="w-6 h-6 mx-auto mb-3 text-indigo-600" />
+            <h3 className="text-xs uppercase tracking-[0.2em] font-bold text-gray-400 mb-2">Social</h3>
+            <div className="flex justify-center gap-6">
+              <a href="#" className="text-sm font-bold text-indigo-600 hover:text-indigo-400 transition-colors underline decoration-2 underline-offset-4">LinkedIn</a>
+              <a href="#" className="text-sm font-bold text-indigo-600 hover:text-indigo-400 transition-colors underline decoration-2 underline-offset-4">GitHub</a>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </main>
