@@ -24,10 +24,10 @@ const FloatingContact = () => {
   const [showChat, setShowChat] = useState(false);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  
+
   // Stato per la memoria della conversazione
   const [geminiHistory, setGeminiHistory] = useState<GeminiHistoryItem[]>([]);
-  
+
   const [messages, setMessages] = useState<Message[]>([
     {
       text: "Ciao! Sono l'assistente IA di M Solutions IT. Come posso aiutarti?",
@@ -36,6 +36,20 @@ const FloatingContact = () => {
   ]);
 
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  //1.Apertura Automatica Chat
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsOpen(true);
+      //riproduce un leggero suono di notifica
+      const audio = new Audio(
+        "https://assets.mixkit.co/active_storage/sfx/2354/2354-preview.mp3"
+      );
+      audio.volume = 0.2; //volume basso
+      audio.play().catch((e) => console.log("Errore riproduzione audio:", e));
+    }, 4000); //4 secondi
+    return () => clearTimeout(timer);
+  }, []);
 
   // Auto-scroll all'ultimo messaggio
   useEffect(() => {
@@ -51,21 +65,21 @@ const FloatingContact = () => {
     const userMsg = input;
     setMessages((prev) => [...prev, { text: userMsg, sender: "user" }]);
     setInput("");
-    setLoading(true);
+    setTimeout(() => setLoading(true), 400); // Ritardo di 300ms prima di mostrare il caricamento
 
     try {
       // Chiamata all'API del bot passando la storia
-      const res = await fetch("/api/bot", {
+      const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ 
+        body: JSON.stringify({
           message: userMsg,
-          history: geminiHistory 
+          history: geminiHistory,
         }),
       });
 
       const data = await res.json();
-      
+
       // Aggiungiamo la risposta del bot alla vista
       setMessages((prev) => [...prev, { text: data.text, sender: "bot" }]);
 
@@ -74,11 +88,10 @@ const FloatingContact = () => {
         const updated = [
           ...prev,
           { role: "user" as const, parts: [{ text: userMsg }] },
-          { role: "model" as const, parts: [{ text: data.text }] }
+          { role: "model" as const, parts: [{ text: data.text }] },
         ];
-        return updated.slice(-10); 
+        return updated.slice(-10);
       });
-
     } catch (err) {
       setMessages((prev) => [
         ...prev,
@@ -113,7 +126,10 @@ const FloatingContact = () => {
                   Disponibile ora (v2.5)
                 </p>
               </div>
-              <button onClick={() => setIsOpen(false)} className="hover:rotate-90 transition-transform">
+              <button
+                onClick={() => setIsOpen(false)}
+                className="hover:rotate-90 transition-transform"
+              >
                 <XMarkIcon className="w-5 h-5" />
               </button>
             </div>
@@ -153,7 +169,9 @@ const FloatingContact = () => {
                   {messages.map((m, i) => (
                     <div
                       key={i}
-                      className={`flex ${m.sender === "user" ? "justify-end" : "justify-start"}`}
+                      className={`flex ${
+                        m.sender === "user" ? "justify-end" : "justify-start"
+                      }`}
                     >
                       <div
                         className={`max-w-[85%] p-3 rounded-2xl text-[11px] leading-relaxed shadow-sm ${
@@ -202,6 +220,19 @@ const FloatingContact = () => {
       <motion.button
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
+        // Animazione pulsante quando la chat è chiusa
+        animate={
+          !isOpen
+            ? {
+                boxShadow: [
+                  "0px 0px 0px 0px rgba(79, 70, 229, 0)",
+                  "0px 0px 0px 10px rgba(79, 70, 229, 0.2)",
+                  "0px 0px 0px 0px rgba(79, 70, 229, 0)",
+                ],
+              }
+            : {}
+        }
+        transition={{ repeat: Infinity, duration: 2 }}
         onClick={() => {
           setIsOpen(!isOpen);
           if (isOpen) setShowChat(false);

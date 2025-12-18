@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "src/components/ContactForm.tsx"  ],
+, "src/components/ContactForm.tsx", "src/components/ContactFormHome.bkp"  ],
   "exclude": ["node_modules"]
 }
