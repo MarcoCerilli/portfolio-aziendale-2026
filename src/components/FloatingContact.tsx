@@ -106,146 +106,78 @@ const FloatingContact = () => {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-[9999]">
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            className="mb-4 bg-gray-900/95 backdrop-blur-xl p-0 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-indigo-500/30 w-80 md:w-96 overflow-hidden flex flex-col h-[450px]"
-          >
-            {/* Header Chat */}
-            <div className="bg-indigo-600 p-4 text-white flex justify-between items-center shadow-lg">
-              <div>
-                <p className="font-black uppercase tracking-widest text-[10px]">
-                  M Solutions AI
-                </p>
-                <p className="text-[9px] opacity-80 flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span>
-                  Disponibile ora (v2.5)
-                </p>
-              </div>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="hover:rotate-90 transition-transform"
-              >
-                <XMarkIcon className="w-5 h-5" />
-              </button>
-            </div>
-
-            {!showChat ? (
-              /* Menu Scelte Rapide */
-              <div className="p-6 flex flex-col justify-center h-full space-y-4">
-                <p className="text-xs text-gray-300 text-center mb-2 font-medium">
-                  Come preferisci procedere?
-                </p>
-
-                <a
-                  href="https://wa.me/393804291043"
-                  target="_blank"
-                  className="relative group flex items-center justify-center gap-3 w-full bg-[#25D366] text-white py-4 rounded-xl font-bold uppercase tracking-widest text-[10px] hover:scale-105 transition-all duration-300 overflow-hidden shadow-lg shadow-green-500/20"
-                >
-                  <div className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-700 skew-x-12" />
-                  <SiWhatsapp className="w-5 h-5 relative z-10" />
-                  <span className="relative z-10">WhatsApp Rapido</span>
-                </a>
-
-                <button
-                  onClick={() => setShowChat(true)}
-                  className="relative group flex items-center justify-center gap-3 w-full bg-indigo-500 text-white py-4 rounded-xl font-bold uppercase tracking-widest text-[10px] hover:bg-indigo-400 transition-all duration-300 overflow-hidden shadow-lg shadow-indigo-500/20"
-                >
-                  <div className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-700 skew-x-12" />
-                  <span className="relative z-10">Parla con l'IA ora</span>
-                </button>
-              </div>
-            ) : (
-              /* Interfaccia Chat Funzionante */
-              <>
-                <div
-                  ref={scrollRef}
-                  className="flex-grow p-4 overflow-y-auto space-y-4 custom-scrollbar bg-gray-900/50"
-                >
-                  {messages.map((m, i) => (
-                    <div
-                      key={i}
-                      className={`flex ${
-                        m.sender === "user" ? "justify-end" : "justify-start"
-                      }`}
-                    >
-                      <div
-                        className={`max-w-[85%] p-3 rounded-2xl text-[11px] leading-relaxed shadow-sm ${
-                          m.sender === "user"
-                            ? "bg-indigo-600 text-white rounded-tr-none"
-                            : "bg-gray-800 text-gray-200 rounded-tl-none border border-gray-700"
-                        }`}
-                      >
-                        {m.text}
-                      </div>
-                    </div>
-                  ))}
-                  {loading && (
-                    <div className="flex justify-start">
-                      <div className="bg-gray-800 text-gray-400 px-3 py-2 rounded-2xl text-[10px] animate-pulse border border-gray-700">
-                        M Solutions sta scrivendo...
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                <form
-                  onSubmit={handleSendMessage}
-                  className="p-3 bg-gray-950 border-t border-gray-800 flex gap-2"
-                >
-                  <input
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    placeholder="Chiedimi dei servizi o prezzi..."
-                    className="flex-grow bg-gray-900 border border-gray-700 rounded-xl px-4 py-2 text-[11px] text-white focus:outline-none focus:border-indigo-500 transition-colors"
-                  />
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="bg-indigo-600 p-2.5 rounded-xl text-white hover:bg-indigo-500 disabled:opacity-50 transition-all shadow-lg shadow-indigo-500/20"
-                  >
-                    <PaperAirplaneIcon className="w-4 h-4" />
-                  </button>
-                </form>
-              </>
-            )}
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        // Animazione pulsante quando la chat è chiusa
-        animate={
-          !isOpen
-            ? {
-                boxShadow: [
-                  "0px 0px 0px 0px rgba(79, 70, 229, 0)",
-                  "0px 0px 0px 10px rgba(79, 70, 229, 0.2)",
-                  "0px 0px 0px 0px rgba(79, 70, 229, 0)",
-                ],
-              }
-            : {}
-        }
-        transition={{ repeat: Infinity, duration: 2 }}
-        onClick={() => {
-          setIsOpen(!isOpen);
-          if (isOpen) setShowChat(false);
-        }}
-        className="bg-indigo-600 p-4 rounded-full shadow-2xl text-white flex items-center justify-center ring-4 ring-indigo-500/20"
+  <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[9999]">
+  <AnimatePresence>
+    {isOpen && (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95, y: 10 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: 10 }}
+        // PARAMETRI COMPATTEZZA: w-72 (mobile) e w-80 (desktop), h-[380px]
+        className="mb-3 bg-gray-900/98 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 w-72 md:w-80 overflow-hidden flex flex-col h-[380px]"
       >
-        {isOpen ? (
-          <XMarkIcon className="w-8 h-8" />
+        {/* Header ridotto */}
+        <div className="bg-indigo-600 px-4 py-2.5 text-white flex justify-between items-center">
+          <div className="leading-tight">
+            <p className="font-bold uppercase tracking-tighter text-[9px]">M Solutions AI</p>
+            <p className="text-[8px] opacity-80 flex items-center gap-1">
+              <span className="w-1 h-1 bg-green-400 rounded-full animate-pulse"></span>
+              Online
+            </p>
+          </div>
+          <button onClick={() => setIsOpen(false)} className="p-1 hover:bg-white/10 rounded-md">
+            <XMarkIcon className="w-4 h-4" />
+          </button>
+        </div>
+
+        {!showChat ? (
+          /* Menu Rapido compattato */
+          <div className="p-4 flex flex-col justify-center h-full space-y-2.5">
+            <p className="text-[10px] text-gray-400 text-center mb-1">Come posso aiutarti?</p>
+            <a href="https://wa.me/393804291043" target="_blank"
+               className="flex items-center justify-center gap-2 bg-[#25D366] text-white py-2.5 rounded-lg font-bold text-[9px] uppercase tracking-widest hover:scale-[1.02] transition-transform">
+              <SiWhatsapp className="w-3.5 h-3.5" /> WhatsApp
+            </a>
+            <button onClick={() => setShowChat(true)}
+              className="bg-white/5 border border-white/10 text-white py-2.5 rounded-lg font-bold text-[9px] uppercase tracking-widest hover:bg-white/10 transition-colors">
+              Chat IA
+            </button>
+          </div>
         ) : (
-          <ChatBubbleLeftRightIcon className="w-8 h-8" />
+          /* Chat Area */
+          <>
+            <div ref={scrollRef} className="flex-grow p-3 overflow-y-auto space-y-3 bg-transparent text-[10.5px]">
+              {messages.map((m, i) => (
+                <div key={i} className={`flex ${m.sender === "user" ? "justify-end" : "justify-start"}`}>
+                  <div className={`max-w-[85%] px-3 py-2 rounded-xl ${m.sender === "user" ? "bg-indigo-600 text-white" : "bg-gray-800 text-gray-200 border border-gray-700"}`}>
+                    {m.text}
+                  </div>
+                </div>
+              ))}
+            </div>
+            {/* Input compatto */}
+            <form onSubmit={handleSendMessage} className="p-2 bg-gray-950/50 border-t border-white/5 flex gap-2">
+              <input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Scrivi..."
+                className="flex-grow bg-gray-900 border border-white/10 rounded-lg px-3 py-1.5 text-[10px] text-white focus:outline-none focus:border-indigo-500" />
+              <button type="submit" disabled={loading} className="bg-indigo-600 p-1.5 rounded-lg text-white disabled:opacity-50">
+                <PaperAirplaneIcon className="w-3.5 h-3.5" />
+              </button>
+            </form>
+          </>
         )}
-      </motion.button>
-    </div>
+      </motion.div>
+    )}
+  </AnimatePresence>
+
+  {/* Pulsante Floating ridotto */}
+  <motion.button
+    whileTap={{ scale: 0.9 }}
+    onClick={() => { setIsOpen(!isOpen); if (isOpen) setShowChat(false); }}
+    className="bg-indigo-600 p-3 rounded-full shadow-xl text-white flex items-center justify-center border border-white/20"
+  >
+    {isOpen ? <XMarkIcon className="w-5 h-5" /> : <ChatBubbleLeftRightIcon className="w-5 h-5" />}
+  </motion.button>
+</div>
   );
 };
 
