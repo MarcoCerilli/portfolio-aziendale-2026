@@ -11,7 +11,8 @@ import "swiper/swiper-bundle.css"; // Carica tutto il pacchetto
 const projectsList = [
   {
     title: "ModernStore E-commerce Full-Stack",
-    description: "Shop high-end con pagamenti Stripe/PayPal integrati, gestione database con Prisma/Neon e validazione dati Zod. Performance estreme e UX moderna.",
+    description:
+      "Shop high-end con pagamenti Stripe/PayPal integrati, gestione database con Prisma/Neon e validazione dati Zod. Performance estreme e UX moderna.",
     tags: ["Next.js", "TypeScript", "Stripe", "Prisma", "Shadcn UI"],
     link: "https://modern-store-nine.vercel.app/",
     image: "/projects/ecommerce-clothing.jpg",
@@ -21,9 +22,10 @@ const projectsList = [
   },
   {
     title: "Gym Management SaaS",
-    description: "Sistema gestionale cloud per centri sportivi con gestione ruoli, prenotazioni corsi e automazione admin. Sviluppato in Laravel con ambiente Docker.",
+    description:
+      "Sistema gestionale cloud per centri sportivi con gestione ruoli, prenotazioni corsi e automazione admin. Sviluppato in Laravel con ambiente Docker.",
     tags: ["Laravel", "PHP", "Docker", "MySQL", "Breeze"],
-    link: "#", 
+    link: "#",
     image: "/projects/gym-saas.jpg",
     isNextJs: false,
     category: "Software SaaS",
@@ -31,19 +33,21 @@ const projectsList = [
   },
   {
     title: "Real-time Shift Planner",
-    description: "Applicazione web per la gestione turni aziendali con sincronizzazione istantanea dei dati e architettura serverless su Firebase.",
+    description:
+      "Applicazione web per la gestione turni aziendali con sincronizzazione istantanea dei dati e architettura serverless su Firebase.",
     tags: ["Firebase", "React", "Real-time DB", "Serverless"],
     link: "https://gestioneturni-b1b21.web.app/",
     image: "/projects/turni.jpg",
-    isNextJs: false, 
+    isNextJs: false,
     category: "Cloud Web App",
     color: "from-orange-500/20",
   },
   {
     title: "Windsurf Technical Blog",
-    description: "Piattaforma editoriale avanzata con struttura dati personalizzata (CPT & ACF) per recensioni tecniche, attrezzature e spot.",
+    description:
+      "Piattaforma editoriale avanzata con struttura dati personalizzata (CPT & ACF) per recensioni tecniche, attrezzature e spot.",
     tags: ["WordPress", "PHP", "ACF", "Custom Data"],
-    link: "#", 
+    link: "#",
     image: "/projects/windsurf-blog.jpg",
     isNextJs: false,
     category: "Backend WordPress",
@@ -51,7 +55,8 @@ const projectsList = [
   },
   {
     title: "Social Core Engine (Symfony 7)",
-    description: "Architettura backend scalabile per piattaforme social. Containerizzazione Docker completa e gestione avanzata delle relazioni database.",
+    description:
+      "Architettura backend scalabile per piattaforme social. Containerizzazione Docker completa e gestione avanzata delle relazioni database.",
     tags: ["Symfony 7", "Docker", "PostgreSQL", "Tailwind"],
     link: "#",
     image: "/projects/social-core.jpg",
@@ -61,7 +66,8 @@ const projectsList = [
   },
   {
     title: "Financial Dashboard",
-    description: "Dashboard finanziaria per l'analisi dei dati in tempo reale. Visualizzazione metrica complessa e interfaccia Next.js ottimizzata.",
+    description:
+      "Dashboard finanziaria per l'analisi dei dati in tempo reale. Visualizzazione metrica complessa e interfaccia Next.js ottimizzata.",
     tags: ["Next.js", "Tailwind", "Charts", "Fintech"],
     link: "https://nextjs-dashboard-zeta-sooty-93.vercel.app/",
     image: "/projects/dashboard.jpg",
@@ -71,7 +77,8 @@ const projectsList = [
   },
   {
     title: "La Casetta nelle Mura",
-    description: "Sito web per hospitality a Terracina. Ottimizzazione SEO locale e sistema di gestione prenotazioni semplificato per il cliente.",
+    description:
+      "Sito web per hospitality a Terracina. Ottimizzazione SEO locale e sistema di gestione prenotazioni semplificato per il cliente.",
     tags: ["WordPress", "SEO", "Hospitality"],
     link: "https://lacasettanellemura.it",
     image: "/projects/casetta.jpg",
@@ -81,7 +88,8 @@ const projectsList = [
   },
   {
     title: "Studio Legale Anna Fusco",
-    description: "Sito istituzionale professionale focalizzato sulla lead generation e sull'autorevolezza del brand legale.",
+    description:
+      "Sito istituzionale professionale focalizzato sulla lead generation e sull'autorevolezza del brand legale.",
     tags: ["WordPress", "Legal", "UI/UX"],
     link: "https://avvocatoannafusco.it",
     image: "/projects/legal.jpg",
@@ -91,13 +99,25 @@ const projectsList = [
   },
   {
     title: "Idraulico Iona Bros",
-    description: "Landing page ad alta conversione per servizi di emergenza rapida. Ottimizzata per campagne Google Ads e mobile-first.",
-    tags: ["WordPress", "Marketing Ads", "Performance"],
-    link: "https://ionabros-demo.vercel.app",
+    description:
+      "Web App ultra-performante sviluppata in Next.js con integrazione AI per la gestione intelligente delle richieste di pronto intervento.",
+    tags: ["Next.js", "Tailwind CSS", "Google Studio AI", "Vercel"],
+    link: "https://ionabros-demo.vercel.app", // Assicurati che questo sia il nuovo link se è cambiato
     image: "/projects/idraulico.jpg",
-    isNextJs: false,
-    category: "Landing Page",
-    color: "from-red-500/20",
+    isNextJs: true,
+    category: "AI Web App",
+    color: "from-blue-500/20", // Blu trasmette più fiducia per servizi tecnici
+  },
+  {
+    title: "Studio Contabile Cittarelli",
+    description:
+      "Piattaforma digitale per consulenza fiscale. Utilizza l'AI per l'analisi preliminare dei documenti e un'interfaccia Tailwind ottimizzata per la conversione.",
+    tags: ["Next.js", "AI Integration", "Tailwind CSS", "Vercel"],
+    link: "https://tuo-nuovo-link.it", // Aggiungi il dominio separato che hai preso
+    image: "/projects/contabile.jpg",
+    isNextJs: true,
+    category: "FinTech Solution",
+    color: "from-emerald-500/20", // Verde smeraldo richiama il settore finanziario/contabile
   },
 ];
 
