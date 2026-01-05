@@ -26,7 +26,7 @@ const projectsList = [
       "Sistema gestionale cloud per centri sportivi con gestione ruoli, prenotazioni corsi e automazione admin. Sviluppato in Laravel con ambiente Docker.",
     tags: ["Laravel", "PHP", "Docker", "MySQL", "Breeze"],
     link: "#",
-    image: "/projects/gym-saas.jpg",
+    image: "/projects/gym.jpg",
     isNextJs: false,
     category: "Software SaaS",
     color: "from-purple-500/20",
@@ -47,7 +47,7 @@ const projectsList = [
     description:
       "Piattaforma editoriale avanzata con struttura dati personalizzata (CPT & ACF) per recensioni tecniche, attrezzature e spot.",
     tags: ["WordPress", "PHP", "ACF", "Custom Data"],
-    link: "#",
+    link: "https://windsurf.wuaze.com/",
     image: "/projects/windsurf-blog.jpg",
     isNextJs: false,
     category: "Backend WordPress",
@@ -102,7 +102,7 @@ const projectsList = [
     description:
       "Web App ultra-performante sviluppata in Next.js con integrazione AI per la gestione intelligente delle richieste di pronto intervento.",
     tags: ["Next.js", "Tailwind CSS", "Google Studio AI", "Vercel"],
-    link: "https://ionabros-demo.vercel.app", // Assicurati che questo sia il nuovo link se è cambiato
+    link: "https://iona-bros-idraulica.vercel.app/", // Assicurati che questo sia il nuovo link se è cambiato
     image: "/projects/idraulico.jpg",
     isNextJs: true,
     category: "AI Web App",
@@ -113,7 +113,7 @@ const projectsList = [
     description:
       "Piattaforma digitale per consulenza fiscale. Utilizza l'AI per l'analisi preliminare dei documenti e un'interfaccia Tailwind ottimizzata per la conversione.",
     tags: ["Next.js", "AI Integration", "Tailwind CSS", "Vercel"],
-    link: "https://tuo-nuovo-link.it", // Aggiungi il dominio separato che hai preso
+    link: "https://studio-contabile.vercel.app/", // Aggiungi il dominio separato che hai preso
     image: "/projects/contabile.jpg",
     isNextJs: true,
     category: "FinTech Solution",

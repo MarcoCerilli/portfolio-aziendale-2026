@@ -8,14 +8,16 @@ const Hero = () => {
       {/* Griglia futuristica */}
       <div className="absolute inset-0 z-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#374151 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
       
-      <div className="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12 md:gap-16 relative z-10">
+      {/* MODIFICA 1: Aggiunto max-w-6xl per stringere il contenitore generale e justify-center */}
+      <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 lg:gap-20 max-w-6xl relative z-10">
         
         {/* Colonna Testo */}
         <motion.div 
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="w-full md:w-3/5 text-center md:text-left order-2 md:order-1"
+          /* MODIFICA 2: md:w-1/2 (50%) invece di 3/5 (60%) per dare più equilibrio */
+          className="w-full md:w-1/2 text-center md:text-left order-2 md:order-1"
         >
           <motion.p 
             className="text-[10px] font-black text-indigo-500 uppercase mb-4 tracking-[0.4em]"
@@ -23,15 +25,16 @@ const Hero = () => {
             Digital Architect & Developer
           </motion.p>
           
-          <h1 className="text-4xl sm:text-5xl md:text-8xl font-black mb-6 md:mb-8 leading-[1.1] md:leading-[0.9] tracking-tighter">
+          {/* MODIFICA 3: text-7xl invece di 8xl per evitare che il testo "scacci" via l'immagine */}
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-black mb-6 md:mb-8 leading-[1.1] md:leading-[0.9] tracking-tighter">
             Sviluppo Web <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-cyan-400 to-blue-500">
               Premium
             </span>
           </h1>
           
-          <p className="text-base md:text-lg text-gray-400 mb-10 md:mb-12 leading-relaxed max-w-xl mx-auto md:mx-0">
-            Trasformo le tue idee in esperienze digitali, combinando design moderno e tecnologie robuste per creare siti web efficienti e personalizzati.
+          <p className="text-base md:text-lg text-gray-400 mb-10 md:mb-12 leading-relaxed max-w-md mx-auto md:mx-0">
+            Trasformo le tue idee in esperienze digitali, combinando design moderno e tecnologie robuste.
           </p>
           
           <motion.a
@@ -44,12 +47,13 @@ const Hero = () => {
           </motion.a>
         </motion.div>
 
-        {/* Colonna Immagine - RIDIMENSIONATA */}
+        {/* Colonna Immagine */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
-          className="w-full md:w-2/5 flex justify-center order-1 md:order-2"
+          /* MODIFICA 4: md:w-1/2 e justify-start (su desktop) per "andare incontro" al testo */
+          className="w-full md:w-1/2 flex justify-center md:justify-start order-1 md:order-2"
         >
           <motion.div 
             animate={{
@@ -61,13 +65,11 @@ const Hero = () => {
               repeat: Infinity,
               ease: "easeInOut"
             }}
-            // Ridotto: da w-72 a w-60 su mobile, da 450px a 380px su desktop
-            className="relative w-60 h-60 md:w-[380px] md:h-[380px]"
+            /* MODIFICA 5: md:w-[350px] Leggermente più piccola per stare vicina al testo */
+            className="relative w-60 h-60 md:w-[350px] md:h-[350px]"
           >
-            {/* Effetto Glow proporzionato */}
             <div className="absolute inset-0 bg-indigo-600/20 blur-[80px] md:blur-[100px] rounded-[3rem]"></div>
             
-            {/* Contenitore Immagine */}
             <div className="relative w-full h-full overflow-hidden rounded-[3rem] border border-white/10 shadow-2xl">
               <Image
                 src="/profile.jpg"
@@ -79,7 +81,6 @@ const Hero = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
             </div>
 
-            {/* Badge flottante riposizionato */}
             <motion.div 
               animate={{ y: [0, 5, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
