@@ -29,9 +29,6 @@ export default function Home() {
             <h2 className="text-[10px] font-black text-gray-500 uppercase tracking-[0.4em] mb-2">
               Portfolio
             </h2>
-            <h3 className="text-3xl md:text-5xl font-black text-white tracking-tighter">
-              Soluzioni <span className="text-indigo-500">concrete</span>.
-            </h3>
           </div>
           <Projects />
         </AnimatedSection>

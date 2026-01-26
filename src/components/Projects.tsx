@@ -1,248 +1,194 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules";
 
-import "swiper/swiper-bundle.css"; // Carica tutto il pacchetto
+interface Project {
+  title: string;
+  description: string;
+  tags: string[];
+  link: string;
+  image: string;
+  category: "Siti Aziendali & SEO" | "Sistemi & App Su Misura";
+  color: string;
+}
 
-const projectsList = [
+const categories = ["Tutti", "Siti Aziendali & SEO", "Sistemi & App Su Misura"];
+
+const getTagStyle = (tag: string) => {
+  const t = tag.toLowerCase();
+  if (t.includes("next.js")) return "bg-blue-500/10 text-blue-400 border-blue-500/20";
+  if (t.includes("ai") || t.includes("google")) return "bg-purple-500/10 text-purple-400 border-purple-500/20";
+  if (t.includes("wordpress") || t.includes("seo")) return "bg-cyan-500/10 text-cyan-400 border-cyan-500/20";
+  if (t.includes("stripe") || t.includes("fintech")) return "bg-indigo-500/10 text-indigo-400 border-indigo-500/20";
+  if (t.includes("laravel") || t.includes("php")) return "bg-red-500/10 text-red-400 border-red-500/20";
+  if (t.includes("firebase") || t.includes("saas")) return "bg-orange-500/10 text-orange-400 border-orange-500/20";
+  return "bg-white/5 text-gray-400 border-white/10";
+};
+
+const projectsList: Project[] = [
   {
-    title: "ModernStore E-commerce Full-Stack",
-    description:
-      "Shop high-end con pagamenti Stripe/PayPal integrati, gestione database con Prisma/Neon e validazione dati Zod. Performance estreme e UX moderna.",
-    tags: ["Next.js", "TypeScript", "Stripe", "Prisma", "Shadcn UI"],
+    title: "Idraulico Iona Bros",
+    description: "Web App Next.js ottimizzata per il pronto intervento. Integra l'AI per gestire le richieste dei clienti in tempo reale.",
+    tags: ["Next.js", "AI Integration", "Local SEO"],
+    link: "https://iona-bros-idraulica.vercel.app/",
+    image: "/projects/idraulico.jpg",
+    category: "Siti Aziendali & SEO",
+    color: "from-blue-500/20",
+  },
+  {
+    title: "Studio Contabile Cittarelli",
+    description: "Piattaforma per consulenza fiscale. Design moderno focalizzato sulla conversione e l'analisi smart dei documenti.",
+    tags: ["Next.js", "Tailwind", "FinTech"],
+    link: "https://studio-contabile.vercel.app/",
+    image: "/projects/contabile.jpg",
+    category: "Siti Aziendali & SEO",
+    color: "from-emerald-500/20",
+  },
+  {
+    title: "ModernStore E-commerce",
+    description: "Piattaforma e-commerce full-stack con Stripe. Gestione totale dello stock e pagamenti sicuri.",
+    tags: ["Next.js", "Stripe", "Prisma"],
     link: "https://modern-store-nine.vercel.app/",
     image: "/projects/ecommerce-clothing.jpg",
-    isNextJs: true,
-    category: "Full Stack / Fintech",
+    category: "Sistemi & App Su Misura",
     color: "from-blue-600/20",
   },
   {
+    title: "La Casetta nelle Mura",
+    description: "Sito hospitality a Terracina. Ottimizzazione SEO per il posizionamento turistico e sistema di contatto diretto.",
+    tags: ["WordPress", "SEO", "Hospitality"],
+    link: "https://lacasettanellemura.it",
+    image: "/projects/casetta.jpg",
+    category: "Siti Aziendali & SEO",
+    color: "from-amber-500/20",
+  },
+  {
     title: "Gym Management SaaS",
-    description:
-      "Sistema gestionale cloud per centri sportivi con gestione ruoli, prenotazioni corsi e automazione admin. Sviluppato in Laravel con ambiente Docker.",
-    tags: ["Laravel", "PHP", "Docker", "MySQL", "Breeze"],
+    description: "Software gestionale cloud per centri sportivi. Automazione della segreteria e gestione abbonamenti (SaaS).",
+    tags: ["Laravel", "Docker", "SaaS"],
     link: "#",
     image: "/projects/gym.jpg",
-    isNextJs: false,
-    category: "Software SaaS",
+    category: "Sistemi & App Su Misura",
     color: "from-purple-500/20",
   },
   {
     title: "Real-time Shift Planner",
-    description:
-      "Applicazione web per la gestione turni aziendali con sincronizzazione istantanea dei dati e architettura serverless su Firebase.",
-    tags: ["Firebase", "React", "Real-time DB", "Serverless"],
+    description: "Sistema cloud per la gestione dei turni aziendali con sincronizzazione istantanea tra i dipendenti.",
+    tags: ["React", "Firebase", "Real-time"],
     link: "https://gestioneturni-b1b21.web.app/",
     image: "/projects/turni.jpg",
-    isNextJs: false,
-    category: "Cloud Web App",
+    category: "Sistemi & App Su Misura",
     color: "from-orange-500/20",
-  },
-  {
-    title: "Windsurf Technical Blog",
-    description:
-      "Piattaforma editoriale avanzata con struttura dati personalizzata (CPT & ACF) per recensioni tecniche, attrezzature e spot.",
-    tags: ["WordPress", "PHP", "ACF", "Custom Data"],
-    link: "https://windsurf.wuaze.com/",
-    image: "/projects/windsurf-blog.jpg",
-    isNextJs: false,
-    category: "Backend WordPress",
-    color: "from-cyan-500/20",
-  },
-  {
-    title: "Social Core Engine (Symfony 7)",
-    description:
-      "Architettura backend scalabile per piattaforme social. Containerizzazione Docker completa e gestione avanzata delle relazioni database.",
-    tags: ["Symfony 7", "Docker", "PostgreSQL", "Tailwind"],
-    link: "#",
-    image: "/projects/social-core.jpg",
-    isNextJs: false,
-    category: "Backend Architecture",
-    color: "from-indigo-500/20",
-  },
-  {
-    title: "Financial Dashboard",
-    description:
-      "Dashboard finanziaria per l'analisi dei dati in tempo reale. Visualizzazione metrica complessa e interfaccia Next.js ottimizzata.",
-    tags: ["Next.js", "Tailwind", "Charts", "Fintech"],
-    link: "https://nextjs-dashboard-zeta-sooty-93.vercel.app/",
-    image: "/projects/dashboard.jpg",
-    isNextJs: true,
-    category: "Data Analysis",
-    color: "from-emerald-500/20",
-  },
-  {
-    title: "La Casetta nelle Mura",
-    description:
-      "Sito web per hospitality a Terracina. Ottimizzazione SEO locale e sistema di gestione prenotazioni semplificato per il cliente.",
-    tags: ["WordPress", "SEO", "Hospitality"],
-    link: "https://lacasettanellemura.it",
-    image: "/projects/casetta.jpg",
-    isNextJs: false,
-    category: "Business Site",
-    color: "from-amber-500/20",
-  },
-  {
-    title: "Studio Legale Anna Fusco",
-    description:
-      "Sito istituzionale professionale focalizzato sulla lead generation e sull'autorevolezza del brand legale.",
-    tags: ["WordPress", "Legal", "UI/UX"],
-    link: "https://avvocatoannafusco.it",
-    image: "/projects/legal.jpg",
-    isNextJs: false,
-    category: "Corporate",
-    color: "from-slate-500/20",
-  },
-  {
-    title: "Idraulico Iona Bros",
-    description:
-      "Web App ultra-performante sviluppata in Next.js con integrazione AI per la gestione intelligente delle richieste di pronto intervento.",
-    tags: ["Next.js", "Tailwind CSS", "Google Studio AI", "Vercel"],
-    link: "https://iona-bros-idraulica.vercel.app/", // Assicurati che questo sia il nuovo link se è cambiato
-    image: "/projects/idraulico.jpg",
-    isNextJs: true,
-    category: "AI Web App",
-    color: "from-blue-500/20", // Blu trasmette più fiducia per servizi tecnici
-  },
-  {
-    title: "Studio Contabile Cittarelli",
-    description:
-      "Piattaforma digitale per consulenza fiscale. Utilizza l'AI per l'analisi preliminare dei documenti e un'interfaccia Tailwind ottimizzata per la conversione.",
-    tags: ["Next.js", "AI Integration", "Tailwind CSS", "Vercel"],
-    link: "https://studio-contabile.vercel.app/", // Aggiungi il dominio separato che hai preso
-    image: "/projects/contabile.jpg",
-    isNextJs: true,
-    category: "FinTech Solution",
-    color: "from-emerald-500/20", // Verde smeraldo richiama il settore finanziario/contabile
   },
 ];
 
-export default function Projects() {
-  const [mounted, setMounted] = React.useState(false);
+export default function ProjectsGrid() {
+  const [filter, setFilter] = useState<string>("Tutti");
 
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
+  const filteredProjects = projectsList.filter((p) =>
+    filter === "Tutti" ? true : p.category === filter
+  );
 
-  if (!mounted) {
-    return <div className="min-h-[400px]" />;
-  }
   return (
-    <div className="mt-8 md:mt-16 w-full mb-20">
-      <Swiper
-        effect={"coverflow"}
-        grabCursor={true}
-        centeredSlides={true}
-        slidesPerView={"auto"}
-        loop={true}
-        autoplay={{ delay: 4000, disableOnInteraction: false }}
-        coverflowEffect={{
-          rotate: 5,
-          stretch: 0,
-          depth: 100,
-          modifier: 2, // Forza del rialzo centrale
-          slideShadows: false,
-        }}
-        pagination={{ clickable: true, dynamicBullets: true }}
-        modules={[EffectCoverflow, Pagination, Autoplay]}
-        className="projects-swiper py-12"
-      >
-        {projectsList.map((project, index) => (
-          <SwiperSlide
-            key={index}
-            className="max-w-[340px] md:max-w-[550px] transition-all duration-500"
-          >
-            <div className="group relative bg-[#0d0d0f] rounded-[2rem] border border-white/10 overflow-hidden flex flex-col hover:border-indigo-500/40 transition-all duration-500 shadow-2xl h-full">
-              {/* AREA FOTO */}
-              <div className="relative h-56 md:h-72 w-full overflow-hidden bg-black/40">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-contain p-6 transition-transform duration-700 group-hover:scale-105"
-                />
-                <div
-                  className={`absolute inset-0 bg-gradient-to-b ${project.color} to-transparent opacity-30`}
-                />
+    <section className="py-20 px-6 max-w-7xl mx-auto">
+      {/* Header Centrato - Titolo Ridimensionato */}
+      <div className="flex flex-col items-center text-center mb-16 space-y-4">
+        <h2 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter leading-tight">
+          Portfolio <span className="text-indigo-500">Progetti</span>
+        </h2>
+        <p className="text-gray-500 text-sm md:text-base max-w-xl mx-auto font-medium">
+          Soluzioni digitali su misura focalizzate su performance e conversione.
+        </p>
 
-                {project.isNextJs && (
-                  <div className="absolute top-5 right-5 z-20">
-                    <span className="flex items-center gap-1.5 px-3 py-1 bg-black/80 border border-white/20 backdrop-blur-md rounded-full shadow-xl">
-                      <span className="h-1.5 w-1.5 rounded-full bg-indigo-500 animate-pulse" />
-                      <span className="text-[10px] font-bold text-white uppercase tracking-wider">
-                        Next.js
-                      </span>
-                    </span>
-                  </div>
-                )}
+        {/* Barra Filtri: Forzata su una riga con scroll */}
+        <div className="w-full flex justify-center pt-6">
+          <div className="flex flex-nowrap overflow-x-auto no-scrollbar gap-2 bg-white/5 p-1.5 rounded-2xl border border-white/10 backdrop-blur-md max-w-full sm:max-w-max px-2">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setFilter(cat)}
+                className={`whitespace-nowrap px-5 py-2 rounded-xl text-[10px] font-bold uppercase tracking-widest transition-all duration-300 ${
+                  filter === cat
+                    ? "bg-indigo-600 text-white shadow-lg shadow-indigo-500/40"
+                    : "text-gray-500 hover:text-white"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Grid */}
+      <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <AnimatePresence mode="popLayout">
+          {filteredProjects.map((project) => (
+            <motion.div
+              key={project.title}
+              layout
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className="group relative bg-[#0a0a0b] rounded-[2rem] border border-white/5 overflow-hidden flex flex-col hover:border-indigo-500/30 transition-all duration-500 h-full"
+            >
+              {/* AREA FOTO: Object-contain per vedere tutto, zoom quasi impercettibile */}
+              <div className="relative aspect-video w-full bg-white/[0.02] flex items-center justify-center p-4">
+                <div className="relative w-full h-full overflow-hidden rounded-xl">
+                    <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-contain transition-transform duration-1000 group-hover:scale-105"
+                    />
+                </div>
+                {/* Overlay Brand color molto soffuso */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${project.color} to-transparent opacity-10 pointer-events-none`} />
               </div>
 
-              {/* AREA TESTO */}
-              <div className="p-6 md:p-8 flex flex-col flex-grow">
-                <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-tighter leading-none">
-                    {project.title}
-                  </h3>
+              {/* CONTENUTO */}
+              <div className="p-7 flex flex-col flex-grow">
+                <div className="flex justify-between items-start mb-3 gap-4">
+                  <div>
+                    <span className="text-indigo-500 text-[8px] font-bold uppercase tracking-[0.2em] block mb-1">
+                        {project.category}
+                    </span>
+                    <h3 className="text-xl font-black text-white uppercase tracking-tighter leading-tight">
+                        {project.title}
+                    </h3>
+                  </div>
                   <motion.a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ rotate: 45, scale: 1.1 }}
-                    className="p-2 bg-white/5 border border-white/10 rounded-full text-white hover:bg-white hover:text-black transition-all"
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    className="shrink-0 p-2 bg-white/5 rounded-full text-white/30 hover:text-white transition-all border border-white/5"
                   >
-                    <ArrowTopRightOnSquareIcon className="w-5 h-5" />
+                    <ArrowTopRightOnSquareIcon className="w-4 h-4" />
                   </motion.a>
                 </div>
 
-                <p className="text-gray-400 text-xs md:text-sm leading-relaxed mb-6 font-medium">
+                <p className="text-gray-400 text-xs leading-relaxed mb-6 font-medium line-clamp-3">
                   {project.description}
                 </p>
 
-                <div className="flex flex-wrap gap-2 mt-auto">
+                <div className="flex flex-wrap gap-1.5 mt-auto">
                   {project.tags.map((tag) => (
-                    <div
+                    <span
                       key={tag}
-                      className="flex items-center gap-1 px-2 py-0.5 bg-white/5 border border-white/5 rounded-md"
+                      className={`px-2.5 py-0.5 border rounded-md text-[8px] font-bold uppercase tracking-wider transition-all ${getTagStyle(tag)}`}
                     >
-                      <div className="w-1 h-1 rounded-full bg-gray-500" />
-                      <span className="text-[9px] font-bold text-gray-500 uppercase tracking-wider">
-                        {tag}
-                      </span>
-                    </div>
+                      {tag}
+                    </span>
                   ))}
                 </div>
               </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-
-      <style jsx global>{`
-        /* Effetto Focus: Le slide laterali sono rimpicciolite e sbiadite */
-        .swiper-slide {
-          opacity: 0.4;
-          transform: scale(0.85) translateY(20px);
-          filter: blur(2px);
-          transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        /* La slide attiva diventa grande, nitida e rialzata */
-        .swiper-slide-active {
-          opacity: 1;
-          transform: scale(1) translateY(0);
-          filter: blur(0);
-          z-index: 10;
-        }
-        .swiper-pagination-bullet {
-          background: rgba(255, 255, 255, 0.2);
-        }
-        .swiper-pagination-bullet-active {
-          background: #6366f1; /* Indigo-500 */
-        }
-      `}</style>
-    </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
+    </section>
   );
 }
