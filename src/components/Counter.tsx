@@ -1,7 +1,6 @@
 "use client";
-import { useEffect, useState } from "react";
-import { motion, useMotionValue, useTransform, animate, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+import { useMotionValue, useSpring, useTransform, useInView, motion } from "framer-motion";
 
 interface CounterProps {
   value: number;
@@ -9,22 +8,24 @@ interface CounterProps {
 }
 
 export default function Counter({ value, suffix = "" }: CounterProps) {
-  const count = useMotionValue(0);
-  const rounded = useTransform(count, (latest) => Math.round(latest));
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true }); // L'animazione parte solo quando visibile
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  
+  const count = useMotionValue(0);
+  // useSpring rende il movimento più "organico"
+  const springValue = useSpring(count, { stiffness: 60, damping: 20 });
+  const displayValue = useTransform(springValue, (latest) => Math.round(latest));
 
   useEffect(() => {
     if (isInView) {
-      const controls = animate(count, value, { duration: 2, ease: "easeOut" });
-      return controls.stop;
+      count.set(value);
     }
   }, [isInView, value, count]);
 
   return (
-    <motion.span ref={ref} className="tabular-nums">
-      {rounded.get()}
+    <span ref={ref} className="tabular-nums font-mono">
+      <motion.span>{displayValue}</motion.span>
       {suffix}
-    </motion.span>
+    </span>
   );
 }

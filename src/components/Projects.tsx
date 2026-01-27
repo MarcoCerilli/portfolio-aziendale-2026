@@ -12,75 +12,105 @@ interface Project {
   image: string;
   category: "Siti Aziendali & SEO" | "Sistemi & App Su Misura";
   color: string;
+  status: "online" | "demo" | "soon";
 }
 
 const categories = ["Tutti", "Siti Aziendali & SEO", "Sistemi & App Su Misura"];
 
 const getTagStyle = (tag: string) => {
   const t = tag.toLowerCase();
-  if (t.includes("next.js")) return "bg-blue-500/10 text-blue-400 border-blue-500/20";
-  if (t.includes("ai") || t.includes("google")) return "bg-purple-500/10 text-purple-400 border-purple-500/20";
-  if (t.includes("wordpress") || t.includes("seo")) return "bg-cyan-500/10 text-cyan-400 border-cyan-500/20";
-  if (t.includes("stripe") || t.includes("fintech")) return "bg-indigo-500/10 text-indigo-400 border-indigo-500/20";
-  if (t.includes("laravel") || t.includes("php")) return "bg-red-500/10 text-red-400 border-red-500/20";
-  if (t.includes("firebase") || t.includes("saas")) return "bg-orange-500/10 text-orange-400 border-orange-500/20";
+  if (t.includes("next.js"))
+    return "bg-blue-500/10 text-blue-400 border-blue-500/20";
+  if (t.includes("ai") || t.includes("google"))
+    return "bg-purple-500/10 text-purple-400 border-purple-500/20";
+  if (t.includes("wordpress") || t.includes("seo"))
+    return "bg-cyan-500/10 text-cyan-400 border-cyan-500/20";
+  if (t.includes("stripe") || t.includes("fintech"))
+    return "bg-indigo-500/10 text-indigo-400 border-indigo-500/20";
+  if (t.includes("laravel") || t.includes("php"))
+    return "bg-red-500/10 text-red-400 border-red-500/20";
+  if (t.includes("firebase") || t.includes("saas"))
+    return "bg-orange-500/10 text-orange-400 border-orange-500/20";
   return "bg-white/5 text-gray-400 border-white/10";
 };
 
 const projectsList: Project[] = [
   {
     title: "Idraulico Iona Bros",
-    description: "Web App Next.js ottimizzata per il pronto intervento. Integra l'AI per gestire le richieste dei clienti in tempo reale.",
+    description:
+      "Web App Next.js ottimizzata per il pronto intervento. Integra l'AI per gestire le richieste dei clienti in tempo reale.",
     tags: ["Next.js", "AI Integration", "Local SEO"],
-    link: "https://iona-bros-idraulica.vercel.app/",
+    link: "#",
     image: "/projects/idraulico.jpg",
     category: "Siti Aziendali & SEO",
     color: "from-blue-500/20",
+    status: "soon",
   },
   {
     title: "Studio Contabile Cittarelli",
-    description: "Piattaforma per consulenza fiscale. Design moderno focalizzato sulla conversione e l'analisi smart dei documenti.",
+    description:
+      "Piattaforma per consulenza fiscale. Design moderno focalizzato sulla conversione e l'analisi smart dei documenti.",
     tags: ["Next.js", "Tailwind", "FinTech"],
-    link: "https://studio-contabile.vercel.app/",
+    link: "#",
     image: "/projects/contabile.jpg",
     category: "Siti Aziendali & SEO",
     color: "from-emerald-500/20",
+    status: "soon",
   },
   {
     title: "ModernStore E-commerce",
-    description: "Piattaforma e-commerce full-stack con Stripe. Gestione totale dello stock e pagamenti sicuri.",
+    description:
+      "Piattaforma e-commerce full-stack con Stripe. Gestione totale dello stock e pagamenti sicuri.",
     tags: ["Next.js", "Stripe", "Prisma"],
     link: "https://modern-store-nine.vercel.app/",
     image: "/projects/ecommerce-clothing.jpg",
     category: "Sistemi & App Su Misura",
     color: "from-blue-600/20",
+    status: "demo",
   },
   {
     title: "La Casetta nelle Mura",
-    description: "Sito hospitality a Terracina. Ottimizzazione SEO per il posizionamento turistico e sistema di contatto diretto.",
+    description:
+      "Sito hospitality a Terracina. Ottimizzazione SEO per il posizionamento turistico e sistema di contatto diretto.",
     tags: ["WordPress", "SEO", "Hospitality"],
     link: "https://lacasettanellemura.it",
     image: "/projects/casetta.jpg",
     category: "Siti Aziendali & SEO",
     color: "from-amber-500/20",
+    status: "online",
   },
   {
     title: "Gym Management SaaS",
-    description: "Software gestionale cloud per centri sportivi. Automazione della segreteria e gestione abbonamenti (SaaS).",
+    description:
+      "Software gestionale cloud per centri sportivi. Automazione della segreteria e gestione abbonamenti (SaaS).",
     tags: ["Laravel", "Docker", "SaaS"],
     link: "#",
     image: "/projects/gym.jpg",
     category: "Sistemi & App Su Misura",
     color: "from-purple-500/20",
+    status: "demo",
   },
   {
     title: "Real-time Shift Planner",
-    description: "Sistema cloud per la gestione dei turni aziendali con sincronizzazione istantanea tra i dipendenti.",
+    description:
+      "Sistema cloud per la gestione dei turni aziendali con sincronizzazione istantanea tra i dipendenti.",
     tags: ["React", "Firebase", "Real-time"],
     link: "https://gestioneturni-b1b21.web.app/",
     image: "/projects/turni.jpg",
     category: "Sistemi & App Su Misura",
     color: "from-orange-500/20",
+    status: "demo",
+  },
+  {
+    title: "Vivaio Paola Bartoli",
+    description:
+      "Digital identity per vivaio d'eccellenza. Catalogo botanico dinamico, gestione asset con UploadThing e assistente virtuale Groq per il riconoscimento piante.",
+    tags: ["Next.js", "Prisma", "PostgreSQL", "Groq AI", "UploadThing"],
+    link: "https://vivaiopaolabartoliterracina.it",
+    image: "/projects/vivaio.jpg",
+    category: "Siti Aziendali & SEO", // Spostato qui se l'obiettivo è la visibilità del brand
+    color: "from-green-600/20",
+    status: "soon",
   },
 ];
 
@@ -88,7 +118,7 @@ export default function ProjectsGrid() {
   const [filter, setFilter] = useState<string>("Tutti");
 
   const filteredProjects = projectsList.filter((p) =>
-    filter === "Tutti" ? true : p.category === filter
+    filter === "Tutti" ? true : p.category === filter,
   );
 
   return (
@@ -123,7 +153,10 @@ export default function ProjectsGrid() {
       </div>
 
       {/* Grid */}
-      <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <motion.div
+        layout
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+      >
         <AnimatePresence mode="popLayout">
           {filteredProjects.map((project) => (
             <motion.div
@@ -137,15 +170,17 @@ export default function ProjectsGrid() {
               {/* AREA FOTO: Object-contain per vedere tutto, zoom quasi impercettibile */}
               <div className="relative aspect-video w-full bg-white/[0.02] flex items-center justify-center p-4">
                 <div className="relative w-full h-full overflow-hidden rounded-xl">
-                    <Image
+                  <Image
                     src={project.image}
                     alt={project.title}
                     fill
                     className="object-contain transition-transform duration-1000 group-hover:scale-105"
-                    />
+                  />
                 </div>
                 {/* Overlay Brand color molto soffuso */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${project.color} to-transparent opacity-10 pointer-events-none`} />
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${project.color} to-transparent opacity-10 pointer-events-none`}
+                />
               </div>
 
               {/* CONTENUTO */}
@@ -153,10 +188,10 @@ export default function ProjectsGrid() {
                 <div className="flex justify-between items-start mb-3 gap-4">
                   <div>
                     <span className="text-indigo-500 text-[8px] font-bold uppercase tracking-[0.2em] block mb-1">
-                        {project.category}
+                      {project.category}
                     </span>
                     <h3 className="text-xl font-black text-white uppercase tracking-tighter leading-tight">
-                        {project.title}
+                      {project.title}
                     </h3>
                   </div>
                   <motion.a
