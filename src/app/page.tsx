@@ -12,31 +12,27 @@ export default function Home() {
     <main className="min-h-screen bg-black text-white selection:bg-indigo-500/30 overflow-x-hidden">
       <Hero />
 
-      {/* TechStack - Spaziatura più dinamica */}
-      <AnimatedSection delay={0.2} className="py-12 md:py-20">
-        <div className="container mx-auto px-6">
-           <TechStack />
-        </div>
-      </AnimatedSection>
-
-      {/* TrustSection - Ridotto il gap per non allontanare troppo il contenuto */}
-      <AnimatedSection delay={0.3} className="py-8 md:py-12">
-        <div className="container mx-auto px-6">
+      {/* TechStack & Trust - Padding ridotto perché sono sezioni "di supporto" */}
+      <div className="py-12 md:py-16">
+        <AnimatedSection delay={0.2}>
+          <TechStack />
+        </AnimatedSection>
+        <AnimatedSection delay={0.3} className="mt-8 md:mt-12">
           <TrustSection />
-        </div>
-      </AnimatedSection>
+        </AnimatedSection>
+      </div>
 
-      {/* Progetti - Aumento del respiro per dare importanza ai lavori */}
-      <section id="progetti" className="py-20 md:py-32 bg-black">
+      {/* Progetti - Padding TOP generoso, padding BOTTOM ridotto */}
+      <section id="progetti" className="pt-20 pb-10 md:pt-32 md:pb-16 bg-black">
         <AnimatedSection className="container mx-auto px-6" delay={0.4}>
           <Projects />
         </AnimatedSection>
       </section>
 
-      {/* Pacchetti - Border-t sottile per separare le sezioni scure */}
+      {/* Pacchetti - Padding TOP ridotto (per eliminare il buco), BOTTOM generoso */}
       <section
         id="pacchetti"
-        className="py-20 md:py-32 bg-[#050505] border-t border-white/5"
+        className="pt-10 pb-20 md:pt-16 md:pb-32 bg-black border-t border-white/5"
       >
         <AnimatedSection className="container mx-auto px-6" delay={0.5}>
           <Packages />
