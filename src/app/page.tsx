@@ -9,45 +9,36 @@ import Projects from "@/components/Projects";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black text-white selection:bg-indigo-500/30">
+    <main className="min-h-screen bg-black text-white selection:bg-indigo-500/30 overflow-x-hidden">
       <Hero />
 
-      {/* TechStack - Manteniamo py-8 per un respiro minimo */}
-      <AnimatedSection delay={0.2} className="py-8">
-        <TechStack />
+      {/* TechStack - Spaziatura più dinamica */}
+      <AnimatedSection delay={0.2} className="py-12 md:py-20">
+        <div className="container mx-auto px-6">
+           <TechStack />
+        </div>
       </AnimatedSection>
 
-      {/* TrustSection */}
-      <AnimatedSection delay={0.3} className="py-6">
-        <TrustSection />
+      {/* TrustSection - Ridotto il gap per non allontanare troppo il contenuto */}
+      <AnimatedSection delay={0.3} className="py-8 md:py-12">
+        <div className="container mx-auto px-6">
+          <TrustSection />
+        </div>
       </AnimatedSection>
 
-      {/* Progetti */}
-      <section id="progetti" className="py-16 bg-black">
+      {/* Progetti - Aumento del respiro per dare importanza ai lavori */}
+      <section id="progetti" className="py-20 md:py-32 bg-black">
         <AnimatedSection className="container mx-auto px-6" delay={0.4}>
-          <div className="mb-10 text-center">
-            <h2 className="text-[10px] font-black text-gray-500 uppercase tracking-[0.4em] mb-2">
-              Portfolio
-            </h2>
-          </div>
           <Projects />
         </AnimatedSection>
       </section>
 
-      {/* Pacchetti */}
+      {/* Pacchetti - Border-t sottile per separare le sezioni scure */}
       <section
         id="pacchetti"
-        className="py-16 bg-black border-t border-white/5"
+        className="py-20 md:py-32 bg-[#050505] border-t border-white/5"
       >
         <AnimatedSection className="container mx-auto px-6" delay={0.5}>
-          <div className="mb-10 text-center">
-            <h2 className="text-[10px] font-black text-gray-500 uppercase tracking-[0.4em] mb-2">
-              Pacchetti
-            </h2>
-            <h3 className="text-3xl md:text-5xl font-black text-white tracking-tighter">
-              Scegli il piano <span className="text-indigo-500">per te</span>
-            </h3>
-          </div>
           <Packages />
         </AnimatedSection>
       </section>
