@@ -25,7 +25,7 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({ children, delay = 0, 
       variants={variants}
       initial="hidden"
       whileInView="visible" // Attiva l'animazione quando l'elemento è visibile
-      viewport={{ once: true, amount: 0.2 }} // Animazione solo la prima volta, quando il 20% è visibile
+      viewport={{ once: true, amount: 0.1 }} // Animazione solo la prima volta, quando il 20% è visibile
       transition={{ delay: delay }}
     >
       {children}

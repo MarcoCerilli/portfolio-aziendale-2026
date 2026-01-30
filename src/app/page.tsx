@@ -24,9 +24,9 @@ export default function Home() {
 
       {/* Progetti - Padding TOP generoso, padding BOTTOM ridotto */}
       <section id="progetti" className="pt-20 pb-10 md:pt-32 md:pb-16 bg-black">
-        <AnimatedSection className="container mx-auto px-6" delay={0.4}>
+       {/*  <AnimatedSection className="container mx-auto px-6" delay={0.4}> */}
           <Projects />
-        </AnimatedSection>
+       {/*  </AnimatedSection> */}
       </section>
 
       {/* Pacchetti - Padding TOP ridotto (per eliminare il buco), BOTTOM generoso */}
