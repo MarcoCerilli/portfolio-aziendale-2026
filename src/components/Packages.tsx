@@ -63,83 +63,78 @@ const packageList: Package[] = [
 
 const Packages = () => {
  return (
-    <section id="pacchetti" className="py-20 md:py-32 bg-black relative overflow-hidden">
-      {/* Background Glow decorativo */}
+   // Ridotto py-20/32 a py-12/16 per compattare la sezione
+    <section id="pacchetti" className="py-12 md:py-16 bg-black relative overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-indigo-500/5 blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        {/* Header con margini ottimizzati */}
-        <div className="text-center mb-16 md:mb-24">
-          <h2 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter mb-6">
+        {/* Ridotto mb-16/24 a mb-10/12 */}
+        <div className="text-center mb-10 md:mb-14">
+          <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter mb-4">
             Scegli la tua <span className="text-indigo-500">Soluzione</span>
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto font-medium italic text-sm md:text-lg leading-relaxed">
-            Offerte chiare e trasparenti per far crescere il tuo business con le tecnologie web più avanzate.
+          <p className="text-gray-400 max-w-xl mx-auto font-medium italic text-xs md:text-base leading-relaxed">
+            Offerte chiare e trasparenti per far crescere il tuo business.
           </p>
         </div>
 
-        {/* Grid con gap aumentato per mobile */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
+        {/* Grid con gap ottimizzato */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {packageList.map((pkg, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className={`relative flex flex-col p-8 md:p-12 rounded-[2.5rem] border transition-all duration-500 ${
+              viewport={{ once: true }}
+              whileHover={{ y: -8 }}
+              // Ridotto padding interno da p-12 a p-8 md:p-10
+              className={`relative flex flex-col p-8 md:p-10 rounded-[2rem] border transition-all duration-500 ${
                 pkg.popular
-                  ? "border-indigo-500/50 shadow-[0_0_40px_rgba(99,102,241,0.15)] bg-indigo-500/5"
+                  ? "border-indigo-500/50 shadow-[0_0_40px_rgba(99,102,241,0.1)] bg-indigo-500/5"
                   : "border-white/10 bg-gray-900/30"
               } backdrop-blur-3xl`}
             >
-              {/* Badge Popolare - Ottimizzato posizionamento */}
               {pkg.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-2 bg-indigo-600 rounded-full flex items-center gap-2 shadow-[0_10px_20px_rgba(99,102,241,0.3)] z-20">
-                  <SparklesIcon className="w-4 h-4 text-white" />
-                  <span className="text-[10px] font-black text-white uppercase tracking-[0.2em]">
-                    Più Richiesto
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-indigo-600 rounded-full flex items-center gap-2 shadow-lg z-20">
+                  <SparklesIcon className="w-3 h-3 text-white" />
+                  <span className="text-[9px] font-black text-white uppercase tracking-[0.2em]">
+                    Popolare
                   </span>
                 </div>
               )}
 
-              {/* Contenuto Superiore */}
-              <div className="mb-10 text-center md:text-left">
-                <span className="text-[10px] font-bold text-indigo-400 uppercase tracking-[0.3em] mb-3 block">
+              {/* Header Card ridotto */}
+              <div className="mb-6">
+                <span className="text-[9px] font-bold text-indigo-400 uppercase tracking-[0.3em] mb-2 block">
                   {pkg.target}
                 </span>
-                <h3 className="text-3xl md:text-4xl font-black text-white uppercase mb-4 tracking-tight">
+                <h3 className="text-2xl md:text-3xl font-black text-white uppercase mb-2 tracking-tight">
                   {pkg.name}
                 </h3>
-                <p className="text-gray-400 text-sm md:text-base leading-relaxed">
+                <p className="text-gray-400 text-xs md:text-sm leading-relaxed">
                   {pkg.description}
                 </p>
               </div>
 
-              {/* Lista Features - Spaziatura icone */}
-              <ul className="space-y-5 mb-12 flex-grow">
+              {/* Lista Features più compatta */}
+              <ul className="space-y-3 mb-8 flex-grow">
                 {pkg.features.map((feat) => (
-                  <li key={feat} className="flex items-start text-gray-300 text-sm md:text-base leading-snug">
-                    <CheckCircleIcon className="w-5 h-5 mr-4 text-indigo-500 shrink-0 mt-0.5" />
+                  <li key={feat} className="flex items-start text-gray-300 text-xs md:text-sm leading-snug">
+                    <CheckCircleIcon className="w-4 h-4 mr-3 text-indigo-500 shrink-0 mt-0.5" />
                     <span>{feat}</span>
                   </li>
                 ))}
               </ul>
 
-              {/* Info Prezzo con border-t più visibile */}
-              <div className="pt-8 border-t border-white/10 mb-8 text-[10px] md:text-[11px] font-bold text-gray-500 italic uppercase tracking-widest text-center">
-                Preventivo basato sulle tue necessità
+              <div className="pt-6 border-t border-white/10 mb-6 text-[9px] font-bold text-gray-500 italic uppercase tracking-widest text-center">
+                Custom Quote
               </div>
 
-              {/* Bottone CTA - Padding aumentato per touch targets */}
               <motion.a
                 href={pkg.link}
-                target={pkg.link.startsWith("http") ? "_blank" : "_self"}
-                rel="noopener noreferrer"
-                whileTap={{ scale: 0.95 }}
-                className={`relative overflow-hidden group w-full py-5 rounded-2xl font-black uppercase tracking-widest text-[11px] text-white text-center transition-all bg-gradient-to-r ${pkg.color} shadow-2xl shadow-black/50`}
+                whileTap={{ scale: 0.98 }}
+                className={`relative overflow-hidden group w-full py-4 rounded-xl font-black uppercase tracking-widest text-[10px] text-white text-center transition-all bg-gradient-to-r ${pkg.color}`}
               >
-                <div className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 skew-x-12" />
                 <span className="relative z-10">{pkg.cta}</span>
               </motion.a>
             </motion.div>
