@@ -3,53 +3,60 @@ import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 
-// --- CURSORE RAZZO DIAGONALE (Puntatore Standard) ---
+// --- CURSORE RAZZO (Solo Desktop) ---
 const RocketCursor = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // Media query precisa: controlla larghezza e capacità touch
+    const checkMobile = () => {
+      setIsMobile(
+        window.innerWidth < 768 ||
+          window.matchMedia("(pointer: coarse)").matches,
+      );
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
     const moveCursor = (e: MouseEvent) => {
-      if (cursorRef.current) {
-        // Posizionamento ultra-rapido senza lag
+      if (cursorRef.current && !isMobile) {
         cursorRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
       }
     };
-    window.addEventListener("mousemove", moveCursor);
-    return () => window.removeEventListener("mousemove", moveCursor);
-  }, []);
+
+    if (!isMobile) {
+      window.addEventListener("mousemove", moveCursor);
+    }
+
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+      window.removeEventListener("mousemove", moveCursor);
+    };
+  }, [isMobile]);
+
+  // Se è mobile, non renderizziamo il razzo per liberare il cursore di sistema
+  if (isMobile) return null;
 
   return (
     <div
       ref={cursorRef}
-      className="fixed top-0 left-0 z-[9999] pointer-events-none"
+      className="fixed top-0 left-0 z-[9999] pointer-events-none hidden md:block"
       style={{ willChange: "transform", left: 0, top: 0 }}
     >
-      {/* Rotazione a -45 gradi per puntare in alto a sinistra */}
       <div className="relative -top-1 -left-1 flex flex-col items-center rotate-[-45deg]">
-        {/* Corpo del Razzo */}
-        <svg 
-          width="24" height="24" viewBox="0 0 24 24" 
-          fill="none" xmlns="http://www.w3.org/2000/svg"
-        >
-          <path 
-            d="M12 2C12 2 7 5.5 7 12.5V16.5L4.5 19V21H19.5V19L17 16.5V12.5C17 5.5 12 2 12 2Z" 
-            className="fill-indigo-600 stroke-indigo-400" 
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M12 2C12 2 7 5.5 7 12.5V16.5L4.5 19V21H19.5V19L17 16.5V12.5C17 5.5 12 2 12 2Z"
+            className="fill-indigo-600 stroke-indigo-400"
             strokeWidth="1"
           />
           <circle cx="12" cy="10" r="1.5" fill="white" fillOpacity="0.8" />
         </svg>
-        
-        {/* Fiammella Animata */}
-        <motion.div 
-          animate={{ 
-            scaleY: [1, 1.8, 1],
-            opacity: [0.8, 1, 0.8] 
-          }}
-          transition={{ 
-            duration: 0.15, 
-            repeat: Infinity, 
-            ease: "easeInOut" 
-          }}
+        <motion.div
+          animate={{ scaleY: [1, 1.8, 1], opacity: [0.8, 1, 0.8] }}
+          transition={{ duration: 0.15, repeat: Infinity }}
           className="w-2 h-4 bg-gradient-to-t from-orange-600 via-yellow-400 to-transparent rounded-full blur-[1px] -mt-1"
         />
       </div>
@@ -59,7 +66,9 @@ const RocketCursor = () => {
 
 // --- LOGICA STELLE ---
 class Star {
-  x: number; y: number; z: number;
+  x: number;
+  y: number;
+  z: number;
   constructor(w: number, h: number) {
     this.x = Math.random() * w - w / 2;
     this.y = Math.random() * h - h / 2;
@@ -93,30 +102,29 @@ const HeroSpace = () => {
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
-
     let stars: Star[] = [];
     let frameId: number;
-
     const init = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      stars = Array.from({ length: 400 }, () => new Star(canvas.width, canvas.height));
+      stars = Array.from(
+        { length: 400 },
+        () => new Star(canvas.width, canvas.height),
+      );
     };
-
     const loop = () => {
       ctx.fillStyle = "white";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      stars.forEach(s => {
+      stars.forEach((s) => {
         s.update(canvas.width, canvas.height, speed);
         s.draw(ctx, canvas.width, canvas.height);
       });
       frameId = requestAnimationFrame(loop);
     };
-
     window.addEventListener("resize", init);
-    init(); loop();
+    init();
+    loop();
     const timer = setTimeout(() => setSpeed(0.8), 2500);
-
     return () => {
       window.removeEventListener("resize", init);
       cancelAnimationFrame(frameId);
@@ -131,27 +139,39 @@ const HeroSpace = () => {
   return (
     <>
       <RocketCursor />
-      
-      <section className="relative w-full h-[110vh] flex items-center justify-center overflow-hidden bg-white cursor-none">
-        <canvas ref={canvasRef} className="absolute inset-0 z-0 pointer-events-none" />
 
-        <motion.div 
+      {/* h-[70vh] su mobile per compattare tutto e md:cursor-none solo su desktop */}
+      <section className="relative w-full h-auto min-h-[80vh] md:h-[110vh] flex items-start md:items-center justify-center overflow-hidden bg-white md:cursor-none pb-20 md:pb-0">
+        <canvas
+          ref={canvasRef}
+          className="absolute inset-0 z-0 pointer-events-none"
+        />
+
+        <motion.div
           style={{ y: yContent, opacity }}
-          className="relative z-30 flex flex-col items-center max-w-5xl px-6 w-full text-center cursor-none"
+          // pt-12 sposta il contenuto subito sotto l'header, -mt-4 corregge l'avatar
+          className="relative z-30 flex flex-col items-center max-w-5xl px-6 w-full text-center pt-12 md:pt-0 md:justify-center md:h-full"
         >
-          {/* AVATAR */}
-          <div className="relative mb-8 pointer-events-none">
+          {/* AVATAR: -mt-16 "succhia" l'immagine verso l'alto eliminando il gap bianco */}
+          <div className="relative mb-6 -mt-4 md:mt-0 md:mb-8 pointer-events-none">
             <div className="absolute -inset-8 bg-indigo-50 rounded-full blur-3xl opacity-60 animate-pulse" />
-            <div className="relative w-28 h-28 md:w-36 md:h-36 rounded-[2.5rem] overflow-hidden border-2 border-white shadow-2xl rotate-2 bg-white">
-              <Image src="/profile.jpg" alt="Marco" fill className="object-cover" priority />
+            <div className="relative w-24 h-24 md:w-36 md:h-36 rounded-[2rem] overflow-hidden border-2 border-white shadow-2xl rotate-2 bg-white">
+              <Image
+                src="/profile.jpg"
+                alt="Marco"
+                fill
+                className="object-cover"
+                priority
+                unoptimized
+              />
             </div>
           </div>
 
-          <div className="space-y-4 pointer-events-none">
-            <p className="text-[10px] font-black uppercase tracking-[0.5em] text-indigo-600/70">
+          <div className="space-y-3 md:space-y-4 pointer-events-none">
+            <p className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] text-indigo-600/70">
               Mission: Digital Excellence
             </p>
-            <h1 className="text-6xl md:text-[9.5rem] font-black text-slate-900 tracking-tighter leading-[0.8] uppercase">
+            <h1 className="text-5xl md:text-[9.5rem] font-black text-slate-900 tracking-tighter leading-[0.9] md:leading-[0.8] uppercase">
               Web <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 italic">
                 Architect
@@ -159,19 +179,19 @@ const HeroSpace = () => {
             </h1>
           </div>
 
-          <div className="mt-14 relative z-50">
-            <motion.a 
-              href="#progetti" 
+          <div className="mt-8 md:mt-14 relative z-50">
+            <motion.a
+              href="#progetti"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-12 py-5 bg-slate-900 text-white font-black text-[11px] uppercase tracking-[0.2em] rounded-2xl shadow-2xl inline-block hover:bg-indigo-600 cursor-none"
+              className="px-8 py-4 md:px-12 md:py-5 bg-slate-900 text-white font-black text-[10px] md:text-[11px] uppercase tracking-[0.2em] rounded-2xl shadow-2xl inline-block hover:bg-indigo-600"
             >
               Inizia il Viaggio
             </motion.a>
           </div>
         </motion.div>
 
-        <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-white via-white/80 to-transparent z-20 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-full h-24 md:h-64 bg-gradient-to-t from-white via-white/80 to-transparent z-20 pointer-events-none" />
       </section>
     </>
   );

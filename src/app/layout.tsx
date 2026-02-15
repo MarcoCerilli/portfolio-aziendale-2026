@@ -14,18 +14,15 @@ export const metadata: Metadata = {
   description: "Portfolio professionale: siti web Next.js ultra-veloci e design moderno.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+// src/app/layout.tsx
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    // 1. Rimuoviamo la classe "dark"
     <html lang="it" className={`${inter.variable} scroll-smooth`}>
-      {/* 2. Cambiamo bg-gray-950 in bg-slate-50 e text-gray-100 in text-slate-900 */}
-      <body className="font-sans bg-slate-50 text-slate-900 antialiased selection:bg-indigo-500/30">
+      {/* Aggiunto h-full e rimosso eventuali margini di default */}
+      <body className="font-sans bg-slate-50 text-slate-900 antialiased selection:bg-indigo-500/30 min-h-screen">
         <Header />
-        <main>{children}</main>
+        {/* Rimosso <main> qui perché lo hai già in page.tsx, evitiamo doppi contenitori */}
+        {children}
         <FloatingContact />
       </body>
     </html>

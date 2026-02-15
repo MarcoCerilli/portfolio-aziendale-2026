@@ -224,6 +224,7 @@ export default function ProjectsGrid() {
                     src={project.image}
                     alt={project.title}
                     fill
+                    unoptimized
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   {/* Overlay gradiente all'hover */}
