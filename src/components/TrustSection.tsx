@@ -38,39 +38,40 @@ const stats = [
     value: 10,
     label: "Progetti Conclusi",
     suffix: "+",
-    color: "from-blue-400 to-indigo-600",
+    // Gradienti leggermente più saturi per risaltare sul bianco
+    color: "from-blue-600 to-indigo-700",
   },
   {
     value: 99,
     label: "Soddisfazione Cliente",
     suffix: "%",
-    color: "from-emerald-400 to-teal-500",
+    color: "from-emerald-500 to-teal-600",
   },
   {
     value: 100,
     label: "Codice Ottimizzato",
     suffix: "%",
-    color: "from-rose-400 to-orange-500",
+    color: "from-rose-500 to-orange-600",
   },
 ];
 
 const TrustSection = () => {
   return (
-    // RIDOTTO: py-24 -> py-8 per compattare il layout
-    <section id="risultati" className="py-8 bg-black relative">
-      {/* Intestazione Sezione - RIDOTTO mb-16 -> mb-8 */}
-      <div className="max-w-6xl mx-auto px-6 mb-8">
+    // Passato da bg-black a bg-white
+    <section id="risultati" className="py-12 md:py-20 bg-white relative">
+      {/* Intestazione Sezione */}
+      <div className="max-w-6xl mx-auto px-6 mb-12">
         <motion.h3
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center text-[10px] font-black text-gray-500 uppercase tracking-[0.4em]"
+          className="text-center text-[11px] font-black text-slate-400 uppercase tracking-[0.5em]"
         >
           Affidabilità & Performance
         </motion.h3>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto px-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto px-6">
         {stats.map((stat, index) => (
           <motion.div
             key={stat.label}
@@ -78,28 +79,28 @@ const TrustSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
             viewport={{ once: true }}
-            whileHover={{ y: -5, borderColor: "rgba(255,255,255,0.2)" }}
-            // COMPATTATO: p-12 -> p-8 per mobile e desktop
-            className="group relative p-8 bg-gray-900/40 backdrop-blur-2xl rounded-[2rem] border border-white/5 flex flex-col items-center text-center transition-all duration-500"
+            whileHover={{ y: -8, borderColor: "rgba(79, 70, 229, 0.2)" }}
+            // Card Bianca, bordo slate e ombra morbida
+            className="group relative p-10 bg-white rounded-[2.5rem] border border-slate-100 flex flex-col items-center text-center transition-all duration-500 shadow-xl shadow-slate-100/50"
           >
             <div
-              className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-[0.02] transition-opacity duration-700 rounded-[2rem]`}
+              className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 rounded-[2.5rem]`}
             />
 
             <div className="relative z-10">
-              {/* RIDOTTO: text-6xl -> text-5xl per un look più elegante e meno ingombrante */}
               <p
-                className={`text-5xl md:text-6xl font-black mb-2 tracking-tighter bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}
+                className={`text-6xl md:text-7xl font-black mb-4 tracking-tighter bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}
               >
                 <Counter value={stat.value} suffix={stat.suffix} />
               </p>
 
-              <p className="text-gray-500 font-bold uppercase tracking-[0.2em] text-[10px]">
+              <p className="text-slate-500 font-bold uppercase tracking-[0.2em] text-[11px]">
                 {stat.label}
               </p>
             </div>
 
-            <div className="absolute top-4 right-6 w-1 h-1 rounded-full bg-white/10 group-hover:scale-[2] group-hover:bg-indigo-500 transition-all duration-500" />
+            {/* Puntino decorativo in alto a destra */}
+            <div className="absolute top-6 right-8 w-1.5 h-1.5 rounded-full bg-slate-100 group-hover:scale-[1.5] group-hover:bg-indigo-500 transition-all duration-500" />
           </motion.div>
         ))}
       </div>

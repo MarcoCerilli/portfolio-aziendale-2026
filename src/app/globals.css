@@ -1,32 +1,55 @@
 @import "tailwindcss";
 
 :root {
-    --background: #030712;
-    /* gray-950 */
-    --foreground: #f9fafb;
-    /* gray-50 */
+    /* Uno sfondo molto chiaro con una punta di blu/grigio per non stancare gli occhi */
+    --background: #fdfeff; 
+    --foreground: #1e293b; /* slate-800 per un testo leggibile e professionale */
+    
+    /* Colore per i dettagli e i bordi delle card */
+    --card-border: #f1f5f9; /* slate-100 */
+    --card-bg: #ffffff;
+    
     --font-inter: var(--font-inter);
 }
 
 body {
-    background-color: var(--background);
+    /* Creiamo un leggero movimento sullo sfondo invece del nero statico */
+    background: radial-gradient(circle at top right, #f8fafc 0%, #f1f5f9 100%);
     color: var(--foreground);
     font-family: var(--font-inter), ui-sans-serif, system-ui;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
 }
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px; /* Altezza del tuo header */
+    scroll-padding-top: 80px;
 }
+
+/* SOSTITUISCI LE TUE CARD GLASSMORPHISM CON QUESTA LOGICA:
+   Invece di: className="bg-white/10 backdrop-blur-md border border-white/20"
+   Usa:      className="bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all"
+*/
 
 @keyframes gradient-x {
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
 }
+
 .animate-gradient-x {
   background-size: 200% 200%;
   animation: gradient-x 5s ease infinite;
 }
 
+/* Rimuovi completamente ogni selettore .dark se presente */
 
-/* Rimuovi eventuali riferimenti a .dark o @media prefer-color-scheme */
+
+/* Nasconde la freccia ovunque */
+* {
+  cursor: none !important;
+}
+
+/* Assicura che anche sui bottoni non riappaia la manina */
+a, button, input, select {
+  cursor: none !important;
+}

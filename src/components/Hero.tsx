@@ -1,159 +1,179 @@
 "use client";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 
-// --- TIPO PARTICELLE ---
-interface Particle {
-  id: number;
-  width: number;
-  height: number;
-  left: number;
-  top: number;
-  opacity: number;
-  duration: number;
-}
+// --- CURSORE RAZZO DIAGONALE (Puntatore Standard) ---
+const RocketCursor = () => {
+  const cursorRef = useRef<HTMLDivElement>(null);
 
-// --- LOGICA GENERAZIONE ESTERNA ---
-const generateParticles = (): Particle[] => {
-  return [...Array(30)].map((_, i) => ({
-    id: i,
-    width: Math.random() * 2 + 1,
-    height: Math.random() * 2 + 1,
-    left: Math.random() * 100,
-    top: Math.random() * 100,
-    opacity: Math.random() * 0.3,
-    duration: Math.random() * 10 + 15,
-  }));
-};
-
-const HeroSpace = () => {
-  const containerRef = useRef<HTMLElement>(null);
-  const [particles, setParticles] = useState<Particle[]>([]);
-
-  // Evitiamo Hydration Mismatch popolando lo stato dopo il mount
   useEffect(() => {
-    const frameId = requestAnimationFrame(() => {
-      setParticles(generateParticles());
-    });
-    return () => cancelAnimationFrame(frameId);
+    const moveCursor = (e: MouseEvent) => {
+      if (cursorRef.current) {
+        // Posizionamento ultra-rapido senza lag
+        cursorRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+      }
+    };
+    window.addEventListener("mousemove", moveCursor);
+    return () => window.removeEventListener("mousemove", moveCursor);
   }, []);
 
-  // --- EFFETTI DI PARALLASSE ---
+  return (
+    <div
+      ref={cursorRef}
+      className="fixed top-0 left-0 z-[9999] pointer-events-none"
+      style={{ willChange: "transform", left: 0, top: 0 }}
+    >
+      {/* Rotazione a -45 gradi per puntare in alto a sinistra */}
+      <div className="relative -top-1 -left-1 flex flex-col items-center rotate-[-45deg]">
+        {/* Corpo del Razzo */}
+        <svg 
+          width="24" height="24" viewBox="0 0 24 24" 
+          fill="none" xmlns="http://www.w3.org/2000/svg"
+        >
+          <path 
+            d="M12 2C12 2 7 5.5 7 12.5V16.5L4.5 19V21H19.5V19L17 16.5V12.5C17 5.5 12 2 12 2Z" 
+            className="fill-indigo-600 stroke-indigo-400" 
+            strokeWidth="1"
+          />
+          <circle cx="12" cy="10" r="1.5" fill="white" fillOpacity="0.8" />
+        </svg>
+        
+        {/* Fiammella Animata */}
+        <motion.div 
+          animate={{ 
+            scaleY: [1, 1.8, 1],
+            opacity: [0.8, 1, 0.8] 
+          }}
+          transition={{ 
+            duration: 0.15, 
+            repeat: Infinity, 
+            ease: "easeInOut" 
+          }}
+          className="w-2 h-4 bg-gradient-to-t from-orange-600 via-yellow-400 to-transparent rounded-full blur-[1px] -mt-1"
+        />
+      </div>
+    </div>
+  );
+};
+
+// --- LOGICA STELLE ---
+class Star {
+  x: number; y: number; z: number;
+  constructor(w: number, h: number) {
+    this.x = Math.random() * w - w / 2;
+    this.y = Math.random() * h - h / 2;
+    this.z = Math.random() * w;
+  }
+  update(w: number, h: number, speed: number) {
+    this.z -= speed;
+    if (this.z <= 0) {
+      this.z = w;
+      this.x = Math.random() * w - w / 2;
+      this.y = Math.random() * h - h / 2;
+    }
+  }
+  draw(ctx: CanvasRenderingContext2D, w: number, h: number) {
+    const sx = (this.x / this.z) * (w / 2) + w / 2;
+    const sy = (this.y / this.z) * (h / 2) + h / 2;
+    const r = (1 - this.z / w) * 2;
+    ctx.beginPath();
+    ctx.arc(sx, sy, r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(99, 102, 241, ${1 - this.z / w})`;
+    ctx.fill();
+  }
+}
+
+const HeroSpace = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [speed, setSpeed] = useState(20);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let stars: Star[] = [];
+    let frameId: number;
+
+    const init = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      stars = Array.from({ length: 400 }, () => new Star(canvas.width, canvas.height));
+    };
+
+    const loop = () => {
+      ctx.fillStyle = "white";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      stars.forEach(s => {
+        s.update(canvas.width, canvas.height, speed);
+        s.draw(ctx, canvas.width, canvas.height);
+      });
+      frameId = requestAnimationFrame(loop);
+    };
+
+    window.addEventListener("resize", init);
+    init(); loop();
+    const timer = setTimeout(() => setSpeed(0.8), 2500);
+
+    return () => {
+      window.removeEventListener("resize", init);
+      cancelAnimationFrame(frameId);
+      clearTimeout(timer);
+    };
+  }, [speed]);
+
   const { scrollY } = useScroll();
-  const yText = useTransform(scrollY, [0, 500], [0, 80]);
-  const yBg = useTransform(scrollY, [0, 500], [0, -40]);
+  const yContent = useTransform(scrollY, [0, 1000], [0, -250]);
+  const opacity = useTransform(scrollY, [200, 950], [1, 0]);
 
   return (
-    <section
-      ref={containerRef}
-      /* PUNTO CHIAVE: 
-         - pt-20: Spazio di sicurezza per l'header.
-         - items-center + -mt-10 (nel div sotto): Bilancia perfettamente la verticale su mobile.
-      */
-      className="relative w-full min-h-[100svh] md:min-h-screen lg:min-h-[110vh] flex items-center justify-center overflow-hidden bg-[#030304] select-none pt-20 pb-12 md:pt-0 md:pb-0"
-    >
-      {/* --- SFONDO: EFFETTI LUCE --- */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-600/5 blur-[120px] rounded-full" />
-      </div>
+    <>
+      <RocketCursor />
+      
+      <section className="relative w-full h-[110vh] flex items-center justify-center overflow-hidden bg-white cursor-none">
+        <canvas ref={canvasRef} className="absolute inset-0 z-0 pointer-events-none" />
 
-      {/* --- SFONDO: PARTICELLE FLUTTUANTI --- */}
-      <motion.div style={{ y: yBg }} className="absolute inset-0 z-0 pointer-events-none">
-        {particles.length > 0 &&
-          particles.map((p) => (
-            <motion.div
-              key={p.id}
-              className="absolute bg-white rounded-full"
-              style={{
-                width: `${p.width}px`,
-                height: `${p.height}px`,
-                left: `${p.left}%`,
-                top: `${p.top}%`,
-                opacity: p.opacity,
-              }}
-              animate={{ y: [0, -30, 0], opacity: [p.opacity, 0.3, p.opacity] }}
-              transition={{ duration: p.duration, repeat: Infinity, ease: "linear" }}
-            />
-          ))}
-      </motion.div>
-
-      {/* --- BLOCCO CENTRALE --- */}
-      <motion.div
-        style={{ y: yText }}
-        /* -mt-10 tira su il contenuto su mobile per bilanciare il "troppo giù" */
-        className="relative z-10 flex flex-col items-center max-w-5xl px-6 w-full -mt-10 md:mt-0"
-      >
-        
-        {/* --- AVATAR CON CORNICE LAYERED --- */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-          className="mb-6 md:mb-10 relative group cursor-pointer"
+        <motion.div 
+          style={{ y: yContent, opacity }}
+          className="relative z-30 flex flex-col items-center max-w-5xl px-6 w-full text-center cursor-none"
         >
-          {/* Glow esterno */}
-          <div className="absolute -inset-4 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 rounded-[2.8rem] blur-xl opacity-0 group-hover:opacity-100 transition duration-1000"></div>
-
-          {/* Bordo riflettente tech */}
-          <div className="absolute -inset-[2px] bg-gradient-to-tr from-white/10 via-white/40 to-white/10 rounded-[2.2rem] group-hover:rotate-1 transition duration-1000"></div>
-
-          {/* Immagine Profilo: w-24 su mobile per salvaspazio verticale */}
-          <div className="relative w-24 h-24 md:w-44 md:h-44 rounded-[2rem] overflow-hidden border border-white/10 p-1.5 bg-[#0a0a0b] z-10 shadow-2xl">
-            <div className="relative w-full h-full overflow-hidden rounded-[1.6rem]">
-              <Image
-                src="/profile.jpg"
-                alt="Marco Cerilli"
-                fill
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent opacity-50 pointer-events-none" />
+          {/* AVATAR */}
+          <div className="relative mb-8 pointer-events-none">
+            <div className="absolute -inset-8 bg-indigo-50 rounded-full blur-3xl opacity-60 animate-pulse" />
+            <div className="relative w-28 h-28 md:w-36 md:h-36 rounded-[2.5rem] overflow-hidden border-2 border-white shadow-2xl rotate-2 bg-white">
+              <Image src="/profile.jpg" alt="Marco" fill className="object-cover" priority />
             </div>
           </div>
 
-          {/* Corner decorativo */}
-          <div className="absolute -top-1 -right-1 w-4 h-4 border-t-2 border-r-2 border-indigo-500/50 rounded-tr-lg z-20 group-hover:scale-125 transition-transform duration-500"></div>
-        </motion.div>
+          <div className="space-y-4 pointer-events-none">
+            <p className="text-[10px] font-black uppercase tracking-[0.5em] text-indigo-600/70">
+              Mission: Digital Excellence
+            </p>
+            <h1 className="text-6xl md:text-[9.5rem] font-black text-slate-900 tracking-tighter leading-[0.8] uppercase">
+              Web <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 italic">
+                Architect
+              </span>
+            </h1>
+          </div>
 
-        {/* --- TESTI --- */}
-        <div className="text-center">
-          <p className="text-purple-400 font-bold text-[10px] md:text-xs uppercase tracking-[0.5em] mb-4">
-            Web Architect
-          </p>
-
-          <h1 className="text-4xl md:text-8xl font-black text-white tracking-tight leading-[1.1] md:leading-[0.9] mb-6">
-            CREATING <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/40 italic">
-              NEXT GEN WEB
-            </span>
-          </h1>
-
-          <p className="text-gray-400 text-xs md:text-lg max-w-xl mx-auto mb-10 font-medium leading-relaxed px-4 md:px-0">
-            Sviluppo interfacce ad alte prestazioni con Next.js e integrazioni
-            AI. Design minimale, codice solido, scalabilità garantita.
-          </p>
-
-          {/* --- CTA BUTTONS --- */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <motion.a
-              href="#progetti"
-              whileHover={{ y: -2 }}
-              className="w-full sm:w-auto px-10 py-4 bg-indigo-600 text-white font-bold text-[10px] uppercase tracking-widest rounded-xl text-center shadow-[0_10px_20px_rgba(79,70,229,0.2)]"
+          <div className="mt-14 relative z-50">
+            <motion.a 
+              href="#progetti" 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-12 py-5 bg-slate-900 text-white font-black text-[11px] uppercase tracking-[0.2em] rounded-2xl shadow-2xl inline-block hover:bg-indigo-600 cursor-none"
             >
-              Progetti
-            </motion.a>
-            <motion.a
-              href="#contatti"
-              whileHover={{ y: -2 }}
-              className="w-full sm:w-auto px-10 py-4 border border-white/10 bg-white/5 backdrop-blur-xl text-white font-bold text-[10px] uppercase tracking-widest rounded-xl text-center"
-            >
-              Contattami
+              Inizia il Viaggio
             </motion.a>
           </div>
-        </div>
-      </motion.div>
-    </section>
+        </motion.div>
+
+        <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-white via-white/80 to-transparent z-20 pointer-events-none" />
+      </section>
+    </>
   );
 };
 

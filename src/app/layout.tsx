@@ -20,9 +20,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // Forziamo la classe "dark" e il background scuro
-    <html lang="it" className={`${inter.variable} dark scroll-smooth`}>
-      <body className="font-sans bg-gray-950 text-gray-100 antialiased selection:bg-indigo-500/30">
+    // 1. Rimuoviamo la classe "dark"
+    <html lang="it" className={`${inter.variable} scroll-smooth`}>
+      {/* 2. Cambiamo bg-gray-950 in bg-slate-50 e text-gray-100 in text-slate-900 */}
+      <body className="font-sans bg-slate-50 text-slate-900 antialiased selection:bg-indigo-500/30">
         <Header />
         <main>{children}</main>
         <FloatingContact />
