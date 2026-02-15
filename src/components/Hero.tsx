@@ -141,7 +141,7 @@ const HeroSpace = () => {
       <RocketCursor />
 
       {/* h-[70vh] su mobile per compattare tutto e md:cursor-none solo su desktop */}
-      <section className="relative w-full h-auto min-h-[80vh] md:h-[110vh] flex items-start md:items-center justify-center overflow-hidden bg-white md:cursor-none pb-20 md:pb-0">
+      <section className="relative w-full flex flex-col items-center justify-start overflow-hidden bg-white pt-10 pb-16 md:pt-0 md:pb-0 md:h-[110vh] md:justify-center">
         <canvas
           ref={canvasRef}
           className="absolute inset-0 z-0 pointer-events-none"
