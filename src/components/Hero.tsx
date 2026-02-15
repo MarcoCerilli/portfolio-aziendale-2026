@@ -196,7 +196,7 @@ const HeroSpace = () => {
           </motion.p>
 
           {/* PULSANTE CON SFUMATURA INDIGO */}
-          <div className="mt-10 md:mt-14 relative z-50">
+          <div className="mt-14 md:mt-14 relative z-50">
             <motion.a
               href="#progetti"
               whileHover={{
