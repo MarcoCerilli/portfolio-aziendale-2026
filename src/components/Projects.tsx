@@ -53,11 +53,11 @@ const projectsList: Project[] = [
     description:
       "Re-design sperimentale della piattaforma legale utilizzando Next.js 14. Performance estreme, animazioni fluide e architettura component-based.",
     tags: ["Next.js", "Tailwind", "Framer Motion"],
-    link: "#", // Inserisci qui il link vercel se lo hai
-    image: "/projects/legal.jpg",
+    link: "https://studio-legale-mu.vercel.app/", // Inserisci qui il link vercel se lo hai
+    image: "/projects/legale.jpg",
     category: "Sistemi & App Su Misura",
     color: "from-indigo-500/10",
-    status: "demo",
+    status: "soon",
   },
   {
     title: "Next.js Admin Dashboard",
