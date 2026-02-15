@@ -140,8 +140,8 @@ const HeroSpace = () => {
     <>
       <RocketCursor />
 
-      {/* h-[70vh] su mobile per compattare tutto e md:cursor-none solo su desktop */}
-      <section className="relative w-full flex flex-col items-center justify-start overflow-hidden bg-white pt-10 pb-16 md:pt-0 md:pb-0 md:h-[110vh] md:justify-center">
+      {/* 1. SECTION: h-auto e justify-start per controllo totale su mobile */}
+      <section className="relative w-full flex flex-col items-center justify-start overflow-hidden bg-white pt-6 pb-12 md:pt-0 md:pb-0 md:h-[110vh] md:justify-center">
         <canvas
           ref={canvasRef}
           className="absolute inset-0 z-0 pointer-events-none"
@@ -149,11 +149,10 @@ const HeroSpace = () => {
 
         <motion.div
           style={{ y: yContent, opacity }}
-          // pt-12 sposta il contenuto subito sotto l'header, -mt-4 corregge l'avatar
-          className="relative z-30 flex flex-col items-center max-w-5xl px-6 w-full text-center pt-12 md:pt-0 md:justify-center md:h-full"
+          className="relative z-30 flex flex-col items-center max-w-5xl px-6 w-full text-center md:justify-center md:h-full"
         >
-          {/* AVATAR: -mt-16 "succhia" l'immagine verso l'alto eliminando il gap bianco */}
-          <div className="relative mb-6 -mt-4 md:mt-0 md:mb-8 pointer-events-none">
+          {/* 3. AVATAR: Se la foto è ancora lontana dall'header, aumenta questo valore a -mt-10 */}
+          <div className="relative mb-6 -mt-2 md:mt-0 md:mb-8 pointer-events-none">
             <div className="absolute -inset-8 bg-indigo-50 rounded-full blur-3xl opacity-60 animate-pulse" />
             <div className="relative w-24 h-24 md:w-36 md:h-36 rounded-[2rem] overflow-hidden border-2 border-white shadow-2xl rotate-2 bg-white">
               <Image
@@ -191,7 +190,8 @@ const HeroSpace = () => {
           </div>
         </motion.div>
 
-        <div className="absolute bottom-0 left-0 w-full h-24 md:h-64 bg-gradient-to-t from-white via-white/80 to-transparent z-20 pointer-events-none" />
+        {/* 4. GRADIENTE: Ridotto a h-12 su mobile per non creare un "buco" bianco sotto il bottone */}
+        <div className="absolute bottom-0 left-0 w-full h-12 md:h-64 bg-gradient-to-t from-white via-white/80 to-transparent z-20 pointer-events-none" />
       </section>
     </>
   );

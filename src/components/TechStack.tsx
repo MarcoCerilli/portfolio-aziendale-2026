@@ -44,11 +44,10 @@ const itemVariants: Variants = {
 
 const TechStack = () => {
   return (
-    <section id="tecnologie" className="py-12 bg-white relative">
+    <section id="tecnologie" className="py-10 bg-white relative">
       <div className="max-w-7xl mx-auto px-6">
-        
         {/* Titolo più piccolo e raffinato */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           className="flex items-center gap-4 mb-12 opacity-40 hover:opacity-100 transition-opacity"
@@ -68,14 +67,16 @@ const TechStack = () => {
           className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-8"
         >
           {technologies.map((tech) => (
-            <motion.div 
-              key={tech.name} 
+            <motion.div
+              key={tech.name}
               variants={itemVariants}
               whileHover={{ y: -5 }}
               className="group flex flex-col items-center gap-3 transition-all"
             >
               <div className="relative p-4 rounded-2xl border border-slate-100 bg-slate-50/50 group-hover:bg-white group-hover:shadow-xl group-hover:shadow-indigo-100/50 transition-all duration-300">
-                <tech.icon className={`w-7 h-7 md:w-8 md:h-8 ${tech.color} opacity-60 group-hover:opacity-100 transition-opacity`} />
+                <tech.icon
+                  className={`w-7 h-7 md:w-8 md:h-8 ${tech.color} opacity-60 group-hover:opacity-100 transition-opacity`}
+                />
               </div>
               <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest group-hover:text-slate-900 transition-colors">
                 {tech.name}
