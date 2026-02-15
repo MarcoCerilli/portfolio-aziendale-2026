@@ -151,7 +151,7 @@ const HeroSpace = () => {
           style={{ y: yContent, opacity }}
           className="relative z-30 flex flex-col items-center max-w-5xl px-6 w-full text-center md:justify-center md:h-full"
         >
-          {/* 3. AVATAR: Se la foto è ancora lontana dall'header, aumenta questo valore a -mt-10 */}
+          {/* AVATAR */}
           <div className="relative mb-6 -mt-2 md:mt-0 md:mb-8 pointer-events-none">
             <div className="absolute -inset-8 bg-indigo-50 rounded-full blur-3xl opacity-60 animate-pulse" />
             <div className="relative w-24 h-24 md:w-36 md:h-36 rounded-[2rem] overflow-hidden border-2 border-white shadow-2xl rotate-2 bg-white">
@@ -166,6 +166,7 @@ const HeroSpace = () => {
             </div>
           </div>
 
+          {/* TITOLO PRINCIPALE */}
           <div className="space-y-3 md:space-y-4 pointer-events-none">
             <p className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] text-indigo-600/70">
               Mission: Digital Excellence
@@ -178,19 +179,39 @@ const HeroSpace = () => {
             </h1>
           </div>
 
-          <div className="mt-8 md:mt-14 relative z-50">
+          {/* NUOVO SOTTOTITOLO STRATEGICO */}
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="mt-6 md:mt-8 max-w-2xl text-slate-500 text-[11px] md:text-lg font-medium leading-relaxed uppercase tracking-wider md:normal-case md:tracking-normal"
+          >
+            Specialista in{" "}
+            <span className="text-slate-900 font-bold">
+              Integrazioni Headless
+            </span>
+            , E-commerce <span className="text-slate-900 font-bold">B2B</span> e
+            architetture scalabili su
+            <span className="text-indigo-600 font-bold"> Shopify Plus</span>.
+          </motion.p>
+
+          {/* PULSANTE CON SFUMATURA INDIGO */}
+          <div className="mt-10 md:mt-14 relative z-50">
             <motion.a
               href="#progetti"
-              whileHover={{ scale: 1.05 }}
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 20px 40px -10px rgba(79, 70, 229, 0.4)",
+              }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 md:px-12 md:py-5 bg-slate-900 text-white font-black text-[10px] md:text-[11px] uppercase tracking-[0.2em] rounded-2xl shadow-2xl inline-block hover:bg-indigo-600"
+              className="px-10 py-4 md:px-14 md:py-6 bg-gradient-to-br from-indigo-600 via-indigo-700 to-purple-700 text-white font-black text-[10px] md:text-[12px] uppercase tracking-[0.2em] rounded-2xl shadow-[0_10px_30px_-10px_rgba(79,70,229,0.5)] inline-block transition-all"
             >
-              Inizia il Viaggio
+              Esplora i Progetti
             </motion.a>
           </div>
         </motion.div>
 
-        {/* 4. GRADIENTE: Ridotto a h-12 su mobile per non creare un "buco" bianco sotto il bottone */}
+        {/* GRADIENTE FINALE */}
         <div className="absolute bottom-0 left-0 w-full h-12 md:h-64 bg-gradient-to-t from-white via-white/80 to-transparent z-20 pointer-events-none" />
       </section>
     </>
