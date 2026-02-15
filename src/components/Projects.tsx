@@ -49,11 +49,11 @@ const projectsList: Project[] = [
     status: "online",
   },
   {
-    title: "Anna Fusco Legal Demo",
+    title: "Anna Fusco Legal ( Demo Coming Soon )",
     description:
       "Re-design sperimentale della piattaforma legale utilizzando Next.js 14. Performance estreme, animazioni fluide e architettura component-based.",
     tags: ["Next.js", "Tailwind", "Framer Motion"],
-    link: "https://studio-legale-mu.vercel.app/", // Inserisci qui il link vercel se lo hai
+    link: "#", // Inserisci qui il link vercel se lo hai
     image: "/projects/legale.jpg",
     category: "Sistemi & App Su Misura",
     color: "from-indigo-500/10",
