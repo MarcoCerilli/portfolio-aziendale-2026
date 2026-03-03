@@ -20,8 +20,7 @@ const categories = ["Tutti", "Siti Aziendali & SEO", "Sistemi & App Su Misura"];
 // Badge ricolorati per sfondo chiaro (testi più scuri e bordi più definiti)
 const getTagStyle = (tag: string) => {
   const t = tag.toLowerCase();
-  if (t.includes("next.js"))
-    return "bg-blue-50 text-blue-700 border-blue-200";
+  if (t.includes("next.js")) return "bg-blue-50 text-blue-700 border-blue-200";
   if (t.includes("ai") || t.includes("google") || t.includes("groq"))
     return "bg-purple-50 text-purple-700 border-purple-200";
   if (t.includes("wordpress") || t.includes("seo"))
@@ -159,6 +158,17 @@ const projectsList: Project[] = [
     color: "from-purple-500/10",
     status: "demo",
   },
+ {
+    title: "Zecchi MultiServizi",
+    description:
+      "Software gestionale cloud per centri sportivi. Automazione della segreteria e gestione abbonamenti (SaaS). Sviluppato con architettura serverless per massima scalabilità e reattività.",
+    tags: ["Next.js", "Firebase", "TypeScript", "Shadcn UI"],
+    link: "https://zecchimultiservizi.it", 
+    image: "/projects/zecchi.jpg", 
+    category: "Sistemi & App Su Misura",
+    color: "from-purple-500/10",
+    status: "online",
+  },
 ];
 
 export default function ProjectsGrid() {
@@ -171,7 +181,6 @@ export default function ProjectsGrid() {
   return (
     // Aggiunto cursor-none per coerenza con la Hero
     <section className="py-12 md:py-20 px-4 md:px-6 max-w-7xl mx-auto cursor-none [&_*]:cursor-none">
-      
       {/* Header - Ridotto leggermente il margine inferiore */}
       <div className="flex flex-col items-center text-center mb-10 md:mb-16 space-y-4">
         <h2 className="text-4xl md:text-6xl font-black text-slate-900 uppercase tracking-tighter leading-tight">
@@ -243,7 +252,7 @@ export default function ProjectsGrid() {
                       {project.title}
                     </h3>
                   </div>
-                  
+
                   {/* Bottone Link Esterno */}
                   <motion.a
                     href={project.link}
