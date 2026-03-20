@@ -34,29 +34,29 @@ const getTagStyle = (tag: string) => {
   return "bg-slate-50 text-slate-600 border-slate-200";
 };
 
-const projectsList: Project[] = [
+const projectsList = [
   // --- NUOVI PROGETTI AGGIUNTI ---
   {
     title: "Avvocato Anna Fusco (Official)",
     description:
       "Sito istituzionale sviluppato in WordPress con CSS personalizzato e ottimizzazione per il settore legale. Focus su autorevolezza e accessibilità.",
-    tags: ["WordPress", "Custom CSS", "Legal Tech"],
+    tags: ["Next.js", "Tailwind", "Framer Motion"],
     link: "https://avvocatoannafusco.it",
-    image: "/projects/avvocato.jpg",
+    image: "/projects/legale.jpg",
     category: "Siti Aziendali & SEO",
     color: "from-slate-700/10",
     status: "online",
   },
   {
-    title: "Anna Fusco Legal ( Demo Coming Soon )",
+    title: "Mave Arredamenti",
     description:
-      "Re-design sperimentale della piattaforma legale utilizzando Next.js 14. Performance estreme, animazioni fluide e architettura component-based.",
+      "Piattaforma web per Mave Arredamenti sviluppata utilizzando Next.js 14. Performance estreme, animazioni fluide e architettura component-based.",
     tags: ["Next.js", "Tailwind", "Framer Motion"],
-    link: "#", // Inserisci qui il link vercel se lo hai
-    image: "/projects/legale.jpg",
-    category: "Sistemi & App Su Misura",
+    link: "https://mavearredamenti.it",
+    image: "/projects/mave.jpg", // Aggiorna questa immagine appena disponibile
+    category: "Siti Aziendali & SEO",
     color: "from-indigo-500/10",
-    status: "soon",
+    status: "online",
   },
   {
     title: "Next.js Admin Dashboard",
@@ -158,18 +158,18 @@ const projectsList: Project[] = [
     color: "from-purple-500/10",
     status: "demo",
   },
- {
+  {
     title: "Zecchi MultiServizi",
     description:
       "Software gestionale cloud per centri sportivi. Automazione della segreteria e gestione abbonamenti (SaaS). Sviluppato con architettura serverless per massima scalabilità e reattività.",
     tags: ["Next.js", "Firebase", "TypeScript", "Shadcn UI"],
-    link: "https://zecchimultiservizi.it", 
-    image: "/projects/zecchi.jpg", 
+    link: "https://zecchimultiservizi.it",
+    image: "/projects/zecchi.jpg",
     category: "Sistemi & App Su Misura",
     color: "from-purple-500/10",
     status: "online",
   },
-];
+] satisfies Project[];
 
 export default function ProjectsGrid() {
   const [filter, setFilter] = useState<string>("Tutti");
@@ -180,7 +180,7 @@ export default function ProjectsGrid() {
 
   return (
     // Aggiunto cursor-none per coerenza con la Hero
-    <section className="py-12 md:py-20 px-4 md:px-6 max-w-7xl mx-auto cursor-none [&_*]:cursor-none">
+    <section className="py-12 md:py-20 px-4 md:px-6 max-w-7xl mx-auto cursor-none **:cursor-none">
       {/* Header - Ridotto leggermente il margine inferiore */}
       <div className="flex flex-col items-center text-center mb-10 md:mb-16 space-y-4">
         <h2 className="text-4xl md:text-6xl font-black text-slate-900 uppercase tracking-tighter leading-tight">
@@ -242,7 +242,7 @@ export default function ProjectsGrid() {
               </div>
 
               {/* CONTENUTO */}
-              <div className="p-7 md:p-9 flex flex-col flex-grow">
+              <div className="p-7 md:p-9 flex flex-col grow">
                 <div className="flex justify-between items-start mb-4">
                   <div className="space-y-1">
                     <span className="text-indigo-600 text-[9px] font-black uppercase tracking-[0.2em] block">
