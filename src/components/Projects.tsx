@@ -40,7 +40,7 @@ const projectsList = [
     title: "Avvocato Anna Fusco (Official)",
     description:
       "Sito istituzionale sviluppato in WordPress con CSS personalizzato e ottimizzazione per il settore legale. Focus su autorevolezza e accessibilità.",
-    tags: ["Next.js", "Tailwind", "Framer Motion"],
+    tags: ["Next.js", "Tailwind", "Framer Motion", "Typescript"],
     link: "https://avvocatoannafusco.it",
     image: "/projects/legale.jpg",
     category: "Siti Aziendali & SEO",
@@ -53,9 +53,9 @@ const projectsList = [
       "Piattaforma web per Mave Arredamenti sviluppata utilizzando Next.js 14. Performance estreme, animazioni fluide e architettura component-based.",
     tags: ["Next.js", "Tailwind", "Framer Motion"],
     link: "https://mavearredamenti.it",
-    image: "/projects/mave.jpg", // Aggiorna questa immagine appena disponibile
+    image: "/projects/mave.jpg", 
     category: "Siti Aziendali & SEO",
-    color: "from-indigo-500/10",
+    color: "from-blue-500/10",
     status: "online",
   },
   {
