@@ -169,6 +169,29 @@ const projectsList = [
     color: "from-purple-500/10",
     status: "online",
   },
+ {
+    title: "LI Costruzioni",
+    description:
+      "Piattaforma web aziendale per il settore edile. Presentazione progetti, gestione portfolio cantieri e interfaccia ottimizzata per la lead generation. Design robusto e professionale focalizzato sull'artigianalità 4.0.",
+    tags: ["Next.js", "Tailwind CSS", "TypeScript", "Framer Motion"],
+    link: "https://li-costruzionisrl.it", // Assicurati che l'URL sia corretto
+    image: "/projects/li-costruzioni.jpg",
+    category: "Sistemi & App Su Misura",
+    color: "from-blue-500/10",
+    status: "online",
+  },
+  {
+    title: "Ermannotech",
+    description:
+      "E-commerce specializzato in stampe 3D di alta precisione e oggetti di design. Piattaforma scalabile realizzata su infrastruttura Aruba SuperSite, ottimizzata per la gestione del catalogo prodotti e pagamenti sicuri. Focus su UX intuitiva per la personalizzazione degli ordini.",
+    tags: ["Aruba SuperSite", "E-commerce", "Design 3D", "Stampa Additiva"],
+    link: "https://ermannotech.com",
+    image: "/projects/ermannotech.jpg",
+    category: "Sistemi & App Su Misura",
+    color: "from-blue-500/10",
+    status: "online",
+  },
+
 ] satisfies Project[];
 
 export default function ProjectsGrid() {
