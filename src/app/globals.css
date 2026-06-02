@@ -1,25 +1,44 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-    /* Uno sfondo molto chiaro con una punta di blu/grigio per non stancare gli occhi */
-    --background: #fdfeff; 
-    --foreground: #1e293b; /* slate-800 per un testo leggibile e professionale */
-    
-    /* Colore per i dettagli e i bordi delle card */
-    --card-border: #f1f5f9; /* slate-100 */
+    --background: #ffffff;
+    --foreground: #0f172a; /* slate-900 */
     --card-bg: #ffffff;
-    
-    --font-inter: var(--font-inter);
+    --card-border: #f1f5f9; /* slate-100 */
+    --accent: #4f46e5; /* indigo-600 */
+}
+
+.dark {
+    --background: #020617; /* slate-950 */
+    --foreground: #f8fafc; /* slate-50 */
+    --card-bg: #0f172a; /* slate-900 */
+    --card-border: #1e293b; /* slate-800 */
+    --accent: #818cf8; /* indigo-400 */
 }
 
 body {
-    /* Creiamo un leggero movimento sullo sfondo invece del nero statico */
-    background: radial-gradient(circle at top right, #f8fafc 0%, #f1f5f9 100%);
+    background-color: var(--background);
     color: var(--foreground);
     font-family: var(--font-inter), ui-sans-serif, system-ui;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+/* Sfondo dinamico per la body */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: radial-gradient(circle at top right, var(--card-border) 0%, var(--background) 100%);
+    pointer-events: none;
+}
+
 
 html {
     scroll-behavior: smooth;
@@ -44,12 +63,5 @@ html {
 /* Rimuovi completamente ogni selettore .dark se presente */
 
 
-/* Nasconde la freccia ovunque */
-* {
-  cursor: none !important;
-}
 
-/* Assicura che anche sui bottoni non riappaia la manina */
-a, button, input, select {
-  cursor: none !important;
-}
+/* Rimuovi completamente ogni selettore .dark se presente */

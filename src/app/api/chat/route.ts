@@ -33,7 +33,7 @@ export async function POST(req: Request) {
             - Specifica che i prezzi sono al netto di ritenuta (20%) e marca da bollo.
             - Sposta la conversazione su WhatsApp per dettagli: +39 380 429 1043.`,
             },
-            ...(history || []).map((h: any) => ({
+            ...(history || []).map((h: { role: string; parts: { text: string }[] }) => ({
               role: h.role === "model" ? "assistant" : "user",
               content: h.parts?.[0]?.text || "",
             })),
@@ -49,8 +49,8 @@ export async function POST(req: Request) {
     if (data.error) throw new Error(data.error.message);
 
     return NextResponse.json({ text: data.choices[0].message.content });
-  } catch (error: any) {
-    console.error("Errore Groq:", error.message);
+  } catch (error: unknown) {
+    console.error("Errore Groq:", error instanceof Error ? error.message : error);
     return NextResponse.json({
       text: "Servizio momentaneamente occupato. Scrivimi su WhatsApp: +39 380 429 1043",
     });

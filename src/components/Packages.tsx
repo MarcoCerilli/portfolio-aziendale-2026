@@ -63,17 +63,17 @@ const packageList: Package[] = [
 
 const Packages = () => {
   return (
-    <section id="pacchetti" className="py-12 md:py-20 bg-white relative overflow-hidden">
+    <section id="pacchetti" className="py-12 md:py-20 bg-white dark:bg-transparent relative overflow-hidden transition-colors duration-300">
       {/* Background Decor - Gradiente molto leggero */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-slate-50/50 pointer-events-none" />
-      <div className="absolute -top-24 -right-24 w-96 h-96 bg-indigo-100/50 blur-[100px] rounded-full" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-slate-50/50 dark:bg-slate-900/10 pointer-events-none" />
+      <div className="absolute -top-24 -right-24 w-96 h-96 bg-indigo-100/50 dark:bg-indigo-900/20 blur-[100px] rounded-full" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-5xl font-black text-slate-900 uppercase tracking-tighter mb-4">
-            Scegli la tua <span className="text-indigo-600">Soluzione</span>
+          <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">
+            Scegli la tua <span className="text-indigo-600 dark:text-indigo-400">Soluzione</span>
           </h2>
-          <p className="text-slate-500 max-w-xl mx-auto font-medium text-xs md:text-base leading-relaxed">
+          <p className="text-slate-500 dark:text-slate-400 max-w-xl mx-auto font-medium text-xs md:text-base leading-relaxed">
             Offerte chiare e trasparenti per far crescere il tuo business.
           </p>
         </div>
@@ -87,10 +87,10 @@ const Packages = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               whileHover={{ y: -10 }}
-              className={`relative flex flex-col p-8 md:p-10 rounded-[2.5rem] border transition-all duration-500 ${
+              className={`relative flex flex-col p-8 md:p-10 rounded-5xl border transition-all duration-500 ${
                 pkg.popular
-                  ? "border-indigo-200 bg-white shadow-[0_20px_50px_rgba(79,70,229,0.1)] ring-4 ring-indigo-50"
-                  : "border-slate-200 bg-white shadow-xl shadow-slate-200/40"
+                  ? "border-indigo-200 dark:border-indigo-500/30 bg-white dark:bg-slate-900 shadow-[0_20px_50px_rgba(79,70,229,0.1)] dark:shadow-indigo-900/20 ring-4 ring-indigo-50 dark:ring-indigo-900/10"
+                  : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xl shadow-slate-200/40 dark:shadow-black/20"
               }`}
             >
               {pkg.popular && (
@@ -107,10 +107,10 @@ const Packages = () => {
                 <span className="text-[10px] font-bold text-indigo-600 uppercase tracking-[0.3em] mb-3 block">
                   {pkg.target}
                 </span>
-                <h3 className="text-2xl md:text-3xl font-black text-slate-900 uppercase mb-3 tracking-tight">
+                <h3 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white uppercase mb-3 tracking-tight">
                   {pkg.name}
                 </h3>
-                <p className="text-slate-600 text-xs md:text-sm leading-relaxed font-medium">
+                <p className="text-slate-600 dark:text-slate-400 text-xs md:text-sm leading-relaxed font-medium">
                   {pkg.description}
                 </p>
               </div>
@@ -118,21 +118,21 @@ const Packages = () => {
               {/* Features */}
               <ul className="space-y-4 mb-10 flex-grow">
                 {pkg.features.map((feat) => (
-                  <li key={feat} className="flex items-start text-slate-600 text-xs md:text-sm leading-snug">
+                  <li key={feat} className="flex items-start text-slate-600 dark:text-slate-400 text-xs md:text-sm leading-snug">
                     <CheckCircleIcon className="w-5 h-5 mr-3 text-emerald-500 shrink-0 mt-0.5" />
                     <span className="font-medium">{feat}</span>
                   </li>
                 ))}
               </ul>
 
-              <div className="pt-6 border-t border-slate-100 mb-6 text-[10px] font-bold text-slate-400 italic uppercase tracking-widest text-center">
+              <div className="pt-6 border-t border-slate-100 dark:border-slate-800 mb-6 text-[10px] font-bold text-slate-400 dark:text-slate-500 italic uppercase tracking-widest text-center">
                 Preventivo Personalizzato
               </div>
 
               <motion.a
                 href={pkg.link}
                 whileTap={{ scale: 0.97 }}
-                className={`relative overflow-hidden group w-full py-4 rounded-2xl font-black uppercase tracking-widest text-[11px] text-white text-center shadow-lg transition-all bg-gradient-to-r ${pkg.color} hover:brightness-110`}
+                className={`relative overflow-hidden group w-full py-4 rounded-2xl font-black uppercase tracking-widest text-[11px] text-white text-center shadow-lg transition-all bg-linear-to-r ${pkg.color} hover:brightness-110`}
               >
                 <span className="relative z-10">{pkg.cta}</span>
               </motion.a>

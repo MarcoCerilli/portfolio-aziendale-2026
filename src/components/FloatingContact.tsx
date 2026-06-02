@@ -71,7 +71,7 @@ const FloatingContact = () => {
         { role: "user" as const, parts: [{ text: userMsg }] },
         { role: "model" as const, parts: [{ text: data.text }] }
       ].slice(-10));
-    } catch (err) {
+    } catch {
       setMessages((prev) => [...prev, { text: "Errore. Usa Whatsapp!", sender: "bot" }]);
     } finally {
       setLoading(false);
@@ -90,13 +90,13 @@ const FloatingContact = () => {
 
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 10 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 10 }}
-            // FINESTRA PIÙ LARGA (w-80) E PIÙ BASSA (h-[300px])
-            className="mb-3 bg-gray-900/98 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 w-72 md:w-80 overflow-hidden flex flex-col h-[300px]"
-          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 10 }}
+              // FINESTRA PIÙ LARGA (w-80) E PIÙ BASSA (h-[300px])
+              className="mb-3 bg-white/98 dark:bg-slate-900/98 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-200 dark:border-white/10 w-72 md:w-80 overflow-hidden flex flex-col h-[300px]"
+            >
             {/* Header con testi leggibili */}
             <div className="bg-indigo-600 px-4 py-2 text-white flex justify-between items-center">
               <div className="leading-tight">
@@ -105,7 +105,7 @@ const FloatingContact = () => {
                   <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span> Online
                 </p>
               </div>
-              <button onClick={() => setIsOpen(false)} className="p-1 hover:bg-white/20 rounded-md">
+              <button onClick={() => setIsOpen(false)} aria-label="Chiudi chat" className="p-1 hover:bg-white/20 rounded-md">
                 <XMarkIcon className="w-5 h-5" />
               </button>
             </div>
@@ -129,7 +129,7 @@ const FloatingContact = () => {
                 <div ref={scrollRef} className="flex-grow p-3 overflow-y-auto space-y-2.5 bg-transparent">
                   {messages.map((m, i) => (
                     <div key={i} className={`flex ${m.sender === "user" ? "justify-end" : "justify-start"}`}>
-                      <div className={`max-w-[85%] px-3 py-2 rounded-2xl text-[13px] leading-snug ${m.sender === "user" ? "bg-indigo-600 text-white" : "bg-gray-800 text-gray-100 border border-gray-700"}`}>
+                      <div className={`max-w-[85%] px-3 py-2 rounded-2xl text-[13px] leading-snug ${m.sender === "user" ? "bg-indigo-600 text-white" : "bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-700"}`}>
                         {m.text}
                       </div>
                     </div>
@@ -137,10 +137,10 @@ const FloatingContact = () => {
                   {loading && <div className="text-[10px] text-indigo-400 font-bold animate-pulse">Scrivendo...</div>}
                 </div>
                 
-                <form onSubmit={handleSendMessage} className="p-2 bg-gray-950/50 border-t border-white/10 flex gap-2">
+                <form onSubmit={handleSendMessage} className="p-2 bg-slate-50/50 dark:bg-gray-950/50 border-t border-slate-200 dark:border-white/10 flex gap-2">
                   <input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Scrivi qui..."
-                    className="flex-grow bg-gray-900 border border-white/20 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-indigo-500 placeholder:text-gray-500" />
-                  <button type="submit" disabled={loading} className="bg-indigo-600 p-2.5 rounded-xl text-white disabled:opacity-50 hover:bg-indigo-500">
+                    className="flex-grow bg-white dark:bg-gray-900 border border-slate-200 dark:border-white/20 rounded-xl px-3 py-2 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500 placeholder:text-gray-500" />
+                  <button type="submit" disabled={loading} aria-label="Invia messaggio" className="bg-indigo-600 p-2.5 rounded-xl text-white disabled:opacity-50 hover:bg-indigo-500">
                     <PaperAirplaneIcon className="w-5 h-5" />
                   </button>
                 </form>
@@ -154,6 +154,7 @@ const FloatingContact = () => {
         whileTap={{ scale: 0.9 }}
         whileHover={{ scale: 1.05 }}
         onClick={() => { setIsOpen(!isOpen); if (isOpen) setShowChat(false); }}
+        aria-label={isOpen ? "Chiudi finestra" : "Apri chat e contatti"}
         className="bg-indigo-600 p-3.5 rounded-full shadow-2xl text-white flex items-center justify-center border border-white/20"
       >
         {isOpen ? <XMarkIcon className="w-6 h-6" /> : <ChatBubbleLeftRightIcon className="w-6 h-6" />}

@@ -10,6 +10,8 @@ const navLinks = [
   { name: "Risultati", href: "/#risultati" },
 ];
 
+import ThemeToggle from "./ThemeToggle";
+
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -40,7 +42,7 @@ const Header = () => {
   return (
     <motion.header
       // Passato da bg-gray-950/70 a bg-white/80 e bordi slate-200
-      className="sticky top-0 z-[100] bg-white/80 backdrop-blur-xl border-b border-slate-200/60"
+      className="sticky top-0 z-100 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl border-b border-slate-200/60 dark:border-slate-800/60"
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
     >
@@ -53,7 +55,7 @@ const Header = () => {
           >
             M
           </motion.div>
-          <span className="text-xl md:text-2xl font-black tracking-tighter text-slate-900 transition-colors duration-300 group-hover:text-indigo-600">
+          <span className="text-xl md:text-2xl font-black tracking-tighter text-slate-900 dark:text-white transition-colors duration-300 group-hover:text-indigo-600">
             SOLUTIONS{" "}
             <span className="text-indigo-500 group-hover:text-indigo-400 transition-colors duration-300 italic">
               WEB
@@ -68,31 +70,40 @@ const Header = () => {
               key={link.name}
               href={link.href}
               // Cambiato text-gray-400 in text-slate-500
-              className="text-sm font-bold uppercase tracking-widest text-slate-500 hover:text-indigo-600 transition-colors relative group"
+              className="text-sm font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors relative group"
             >
               {link.name}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-500 transition-all group-hover:w-full"></span>
             </Link>
           ))}
-          <Link
-            href="/#contatti"
-            className="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest px-6 py-2.5 rounded-full shadow-md shadow-indigo-200 transition-all"
-          >
-            Lavoriamo Insieme
-          </Link>
+          
+          <div className="flex items-center gap-4">
+            <ThemeToggle />
+            <Link
+              href="/#contatti"
+              className="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest px-6 py-2.5 rounded-full shadow-md shadow-indigo-200 dark:shadow-indigo-900/20 transition-all"
+            >
+              Lavoriamo Insieme
+            </Link>
+          </div>
         </nav>
 
-        {/* MOBILE TOGGLE */}
-        <button
-          className="md:hidden p-2 z-[110] cursor-pointer text-indigo-600 hover:text-indigo-500 transition-colors"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? (
-            <XMarkIcon className="w-6 h-6 text-slate-900" />
-          ) : (
-            <SparklesIcon className="w-7 h-7 animate-pulse" />
-          )}
-        </button>
+        {/* MOBILE TOGGLE + THEME TOGGLE */}
+        <div className="flex md:hidden items-center gap-3">
+          <ThemeToggle />
+          <button
+            className="p-2 z-110 cursor-pointer text-indigo-600 hover:text-indigo-500 transition-colors"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle mobile menu"
+            aria-expanded={isOpen}
+          >
+            {isOpen ? (
+              <XMarkIcon className="w-6 h-6 text-slate-900 dark:text-white" />
+            ) : (
+              <SparklesIcon className="w-7 h-7 animate-pulse" />
+            )}
+          </button>
+        </div>
 
         {/* Mobile Menu Overlay */}
         <AnimatePresence>
@@ -103,14 +114,14 @@ const Header = () => {
               animate="opened"
               exit="closed"
               // Passato da bg-gray-950 a bg-white/95
-              className="fixed inset-0 h-screen w-full bg-white/95 backdrop-blur-2xl flex flex-col items-center justify-center space-y-8 z-[105]"
+              className="fixed inset-0 h-screen w-full bg-white/95 dark:bg-slate-950/95 backdrop-blur-2xl flex flex-col items-center justify-center space-y-8 z-105"
             >
               {navLinks.map((link) => (
                 <motion.div key={link.name} variants={linkVariants}>
                   <Link
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="text-lg font-bold uppercase tracking-[0.4em] text-slate-500 hover:text-indigo-600 transition-colors"
+                    className="text-lg font-bold uppercase tracking-[0.4em] text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -121,7 +132,7 @@ const Header = () => {
                 <Link
                   href="/#contatti"
                   onClick={() => setIsOpen(false)}
-                  className="bg-indigo-600 text-white px-8 py-3.5 rounded-full font-black uppercase tracking-widest text-[10px] shadow-lg shadow-indigo-200"
+                  className="bg-indigo-600 text-white px-8 py-3.5 rounded-full font-black uppercase tracking-widest text-[10px] shadow-lg shadow-indigo-200 dark:shadow-indigo-900/20"
                 >
                   Lavoriamo Insieme
                 </Link>

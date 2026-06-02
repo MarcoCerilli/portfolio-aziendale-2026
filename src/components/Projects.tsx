@@ -4,195 +4,7 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 
-interface Project {
-  title: string;
-  description: string;
-  tags: string[];
-  link: string;
-  image: string;
-  category: "Siti Aziendali & SEO" | "Sistemi & App Su Misura";
-  color: string;
-  status: "online" | "demo" | "soon";
-}
-
-const categories = ["Tutti", "Siti Aziendali & SEO", "Sistemi & App Su Misura"];
-
-// Badge ricolorati per sfondo chiaro (testi più scuri e bordi più definiti)
-const getTagStyle = (tag: string) => {
-  const t = tag.toLowerCase();
-  if (t.includes("next.js")) return "bg-blue-50 text-blue-700 border-blue-200";
-  if (t.includes("ai") || t.includes("google") || t.includes("groq"))
-    return "bg-purple-50 text-purple-700 border-purple-200";
-  if (t.includes("wordpress") || t.includes("seo"))
-    return "bg-cyan-50 text-cyan-700 border-cyan-200";
-  if (t.includes("stripe") || t.includes("fintech") || t.includes("b2b"))
-    return "bg-indigo-50 text-indigo-700 border-indigo-200";
-  if (t.includes("laravel") || t.includes("php"))
-    return "bg-red-50 text-red-700 border-red-200";
-  if (t.includes("firebase") || t.includes("saas"))
-    return "bg-orange-50 text-orange-700 border-orange-200";
-  return "bg-slate-50 text-slate-600 border-slate-200";
-};
-
-const projectsList = [
-  // --- NUOVI PROGETTI AGGIUNTI ---
-  {
-    title: "Avvocato Anna Fusco (Official)",
-    description:
-      "Sito istituzionale sviluppato in WordPress con CSS personalizzato e ottimizzazione per il settore legale. Focus su autorevolezza e accessibilità.",
-    tags: ["Next.js", "Tailwind", "Framer Motion", "Typescript"],
-    link: "https://avvocatoannafusco.it",
-    image: "/projects/legale.jpg",
-    category: "Siti Aziendali & SEO",
-    color: "from-slate-700/10",
-    status: "online",
-  },
-  {
-    title: "Mave Arredamenti",
-    description:
-      "Piattaforma web per Mave Arredamenti sviluppata utilizzando Next.js 14. Performance estreme, animazioni fluide e architettura component-based.",
-    tags: ["Next.js", "Tailwind", "Framer Motion"],
-    link: "https://mavearredamenti.it",
-    image: "/projects/mave.jpg", 
-    category: "Siti Aziendali & SEO",
-    color: "from-blue-500/10",
-    status: "online",
-  },
-  {
-    title: "Next.js Admin Dashboard",
-    description:
-      "Dashboard di gestione finanziaria completa: autenticazione, database PostgreSQL integrato e gestione dinamica delle fatture in tempo reale.",
-    tags: ["Next.js", "PostgreSQL", "Auth.js", "Server Components"],
-    link: "https://nextjs-dashboard-zeta-sooty-93.vercel.app/",
-    image: "/projects/dashboard.jpg",
-    category: "Sistemi & App Su Misura",
-    color: "from-blue-600/10",
-    status: "demo",
-  },
-  // --- PROGETTI PRECEDENTI ---
-  {
-    title: "Vivaio Paola Bartoli",
-    description:
-      "Digital identity per vivaio d'eccellenza. Catalogo botanico dinamico, gestione asset con UploadThing e assistente virtuale Groq.",
-    tags: ["Next.js", "Prisma", "Groq AI", "UploadThing"],
-    link: "https://vivaiopaolabartoliterracina.it",
-    image: "/projects/vivaio.jpg",
-    category: "Siti Aziendali & SEO",
-    color: "from-green-600/10",
-    status: "online",
-  },
-  {
-    title: "Il Quinto Polo Srls",
-    description:
-      "Piattaforma B2B personalizzata per l'ingrosso florovivaistico. Catalogo dinamico con listini riservati e integrazione WhatsApp Business.",
-    tags: ["WordPress", "ACF Pro", "B2B E-commerce", "WhatsApp API"],
-    link: "https://ilquintopolosrls.it",
-    image: "/projects/quintopolo.jpg",
-    category: "Sistemi & App Su Misura",
-    color: "from-green-700/10",
-    status: "online",
-  },
-  {
-    title: "ModernStore E-commerce",
-    description:
-      "Piattaforma e-commerce full-stack con Stripe. Gestione totale dello stock e pagamenti sicuri.",
-    tags: ["Next.js", "Stripe", "Prisma"],
-    link: "https://modern-store-nine.vercel.app/",
-    image: "/projects/ecommerce-clothing.jpg",
-    category: "Sistemi & App Su Misura",
-    color: "from-blue-600/10",
-    status: "demo",
-  },
-  {
-    title: "La Casetta nelle Mura",
-    description:
-      "Sito hospitality a Terracina. Ottimizzazione SEO per il posizionamento turistico e sistema di contatto diretto.",
-    tags: ["WordPress", "SEO", "Hospitality"],
-    link: "https://lacasettanellemura.it",
-    image: "/projects/casetta.jpg",
-    category: "Siti Aziendali & SEO",
-    color: "from-amber-500/10",
-    status: "online",
-  },
-  {
-    title: "Real-time Shift Planner",
-    description:
-      "Sistema cloud per la gestione dei turni aziendali con sincronizzazione istantanea tra i dipendenti.",
-    tags: ["React", "Firebase", "Real-time"],
-    link: "https://gestioneturni-b1b21.web.app/",
-    image: "/projects/turni.jpg",
-    category: "Sistemi & App Su Misura",
-    color: "from-orange-500/10",
-    status: "demo",
-  },
-  {
-    title: "Idraulico Iona Bros",
-    description:
-      "Web App Next.js ottimizzata per il pronto intervento. Integra l'AI per gestire le richieste dei clienti in tempo reale.",
-    tags: ["Next.js", "AI Integration", "Local SEO"],
-    link: "#",
-    image: "/projects/idraulico.jpg",
-    category: "Siti Aziendali & SEO",
-    color: "from-blue-500/10",
-    status: "soon",
-  },
-  {
-    title: "Studio Contabile Cittarelli",
-    description:
-      "Piattaforma per consulenza fiscale. Design moderno focalizzato sulla conversione e l'analisi smart dei documenti.",
-    tags: ["Next.js", "Tailwind", "FinTech"],
-    link: "#",
-    image: "/projects/contabile.jpg",
-    category: "Siti Aziendali & SEO",
-    color: "from-emerald-500/10",
-    status: "soon",
-  },
-  {
-    title: "Gym Management SaaS",
-    description:
-      "Software gestionale cloud per centri sportivi. Automazione della segreteria e gestione abbonamenti (SaaS).",
-    tags: ["Laravel", "Docker", "SaaS"],
-    link: "#",
-    image: "/projects/gym.jpg",
-    category: "Sistemi & App Su Misura",
-    color: "from-purple-500/10",
-    status: "demo",
-  },
-  {
-    title: "Zecchi MultiServizi",
-    description:
-      "Software gestionale cloud per centri sportivi. Automazione della segreteria e gestione abbonamenti (SaaS). Sviluppato con architettura serverless per massima scalabilità e reattività.",
-    tags: ["Next.js", "Firebase", "TypeScript", "Shadcn UI"],
-    link: "https://zecchimultiservizi.it",
-    image: "/projects/zecchi.jpg",
-    category: "Sistemi & App Su Misura",
-    color: "from-purple-500/10",
-    status: "online",
-  },
- {
-    title: "LI Costruzioni",
-    description:
-      "Piattaforma web aziendale per il settore edile. Presentazione progetti, gestione portfolio cantieri e interfaccia ottimizzata per la lead generation. Design robusto e professionale focalizzato sull'artigianalità 4.0.",
-    tags: ["Next.js", "Tailwind CSS", "TypeScript", "Framer Motion"],
-    link: "https://li-costruzionisrl.it", // Assicurati che l'URL sia corretto
-    image: "/projects/li-costruzioni.jpg",
-    category: "Sistemi & App Su Misura",
-    color: "from-blue-500/10",
-    status: "online",
-  },
-  {
-    title: "Ermannotech",
-    description:
-      "E-commerce specializzato in stampe 3D di alta precisione e oggetti di design. Piattaforma scalabile realizzata su infrastruttura Aruba SuperSite, ottimizzata per la gestione del catalogo prodotti e pagamenti sicuri. Focus su UX intuitiva per la personalizzazione degli ordini.",
-    tags: ["Aruba SuperSite", "E-commerce", "Design 3D", "Stampa Additiva"],
-    link: "https://ermannotech.com",
-    image: "/projects/ermannotech.jpg",
-    category: "Sistemi & App Su Misura",
-    color: "from-blue-500/10",
-    status: "online",
-  },
-
-] satisfies Project[];
+import { projectsList, categories, getTagStyle } from "@/data/projects";
 
 export default function ProjectsGrid() {
   const [filter, setFilter] = useState<string>("Tutti");
@@ -202,28 +14,27 @@ export default function ProjectsGrid() {
   );
 
   return (
-    // Aggiunto cursor-none per coerenza con la Hero
-    <section className="py-12 md:py-20 px-4 md:px-6 max-w-7xl mx-auto cursor-none **:cursor-none">
+    <section className="py-12 md:py-20 px-4 md:px-6 max-w-7xl mx-auto transition-colors duration-300">
       {/* Header - Ridotto leggermente il margine inferiore */}
       <div className="flex flex-col items-center text-center mb-10 md:mb-16 space-y-4">
-        <h2 className="text-4xl md:text-6xl font-black text-slate-900 uppercase tracking-tighter leading-tight">
-          Portfolio <span className="text-indigo-600">Progetti</span>
+        <h2 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-tight">
+          Portfolio <span className="text-indigo-600 dark:text-indigo-400">Progetti</span>
         </h2>
-        <p className="text-slate-500 text-xs md:text-base max-w-2xl mx-auto font-medium leading-relaxed">
+        <p className="text-slate-500 dark:text-slate-400 text-xs md:text-base max-w-2xl mx-auto font-medium leading-relaxed">
           Soluzioni digitali su misura focalizzate su performance e conversione.
         </p>
 
         {/* Filtri - Ottimizzati per il touch e il cursore personalizzato */}
         <div className="w-full flex justify-center pt-6">
-          <div className="flex flex-nowrap overflow-x-auto no-scrollbar gap-2 bg-slate-100 p-1.5 rounded-2xl border border-slate-200 shadow-sm">
+          <div className="flex flex-nowrap overflow-x-auto no-scrollbar gap-2 bg-slate-100 dark:bg-slate-900 p-1.5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
                 className={`whitespace-nowrap px-5 py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-widest transition-all duration-300 ${
                   filter === cat
-                    ? "bg-white text-indigo-600 shadow-md ring-1 ring-black/5"
-                    : "text-slate-500 hover:text-slate-900"
+                    ? "bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-md ring-1 ring-black/5 dark:ring-white/5"
+                    : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
                 }`}
               >
                 {cat}
@@ -247,11 +58,11 @@ export default function ProjectsGrid() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.4, ease: "circOut" }}
-              className="group relative bg-white rounded-[2.5rem] border border-slate-200 overflow-hidden flex flex-col hover:border-indigo-400/50 transition-all duration-500 h-full shadow-xl shadow-slate-200/60 hover:shadow-2xl hover:shadow-indigo-500/10"
+              className="group relative bg-white dark:bg-slate-900 rounded-5xl border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col hover:border-indigo-400/50 dark:hover:border-indigo-500/50 transition-all duration-500 h-full shadow-xl shadow-slate-200/60 dark:shadow-black/20 hover:shadow-2xl hover:shadow-[0_0_40px_rgba(99,102,241,0.3)] dark:hover:shadow-[0_0_40px_rgba(99,102,241,0.2)]"
             >
               {/* AREA FOTO - Migliorato l'hover */}
-              <div className="relative aspect-video w-full bg-slate-50 flex items-center justify-center p-4">
-                <div className="relative w-full h-full overflow-hidden rounded-2xl shadow-sm bg-white border border-slate-100">
+              <div className="relative aspect-video w-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center p-4">
+                <div className="relative w-full h-full overflow-hidden rounded-2xl shadow-sm bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
                   <Image
                     src={project.image}
                     alt={project.title}
@@ -268,10 +79,10 @@ export default function ProjectsGrid() {
               <div className="p-7 md:p-9 flex flex-col grow">
                 <div className="flex justify-between items-start mb-4">
                   <div className="space-y-1">
-                    <span className="text-indigo-600 text-[9px] font-black uppercase tracking-[0.2em] block">
+                    <span className="text-indigo-600 dark:text-indigo-400 text-[9px] font-black uppercase tracking-[0.2em] block">
                       {project.category}
                     </span>
-                    <h3 className="text-xl font-black text-slate-900 uppercase tracking-tighter leading-none">
+                    <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none">
                       {project.title}
                     </h3>
                   </div>
@@ -281,15 +92,16 @@ export default function ProjectsGrid() {
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`Vedi progetto ${project.title}`}
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     whileTap={{ scale: 0.9 }}
-                    className="p-3 bg-slate-900 text-white rounded-xl shadow-lg hover:bg-indigo-600 transition-colors"
+                    className="p-3 bg-slate-900 dark:bg-slate-800 text-white rounded-xl shadow-lg hover:bg-indigo-600 dark:hover:bg-indigo-500 transition-colors"
                   >
                     <ArrowTopRightOnSquareIcon className="w-4 h-4" />
                   </motion.a>
                 </div>
 
-                <p className="text-slate-600 text-sm leading-relaxed mb-8 font-medium line-clamp-3">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 font-medium line-clamp-3">
                   {project.description}
                 </p>
 

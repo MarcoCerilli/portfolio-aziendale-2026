@@ -11,9 +11,9 @@ interface TechSpecProps {
 
 // Mappa delle ombre e dei bordi ottimizzata per sfondo chiaro
 const colorMap = {
-  indigo: "group-hover:border-indigo-200 group-hover:shadow-[0_20px_40px_-15px_rgba(99,102,241,0.15)]",
-  cyan: "group-hover:border-cyan-200 group-hover:shadow-[0_20px_40px_-15px_rgba(6,182,212,0.15)]",
-  rose: "group-hover:border-rose-200 group-hover:shadow-[0_20px_40px_-15px_rgba(244,63,94,0.15)]",
+  indigo: "group-hover:border-indigo-200 dark:group-hover:border-indigo-500/30 group-hover:shadow-[0_20px_40px_-15px_rgba(99,102,241,0.15)] dark:group-hover:shadow-indigo-900/20",
+  cyan: "group-hover:border-cyan-200 dark:group-hover:border-cyan-500/30 group-hover:shadow-[0_20px_40px_-15px_rgba(6,182,212,0.15)] dark:group-hover:shadow-cyan-900/20",
+  rose: "group-hover:border-rose-200 dark:group-hover:border-rose-500/30 group-hover:shadow-[0_20px_40px_-15px_rgba(244,63,94,0.15)] dark:group-hover:shadow-rose-900/20",
 };
 
 const barMap = {
@@ -27,25 +27,25 @@ export default function TechSpec({ label, title, description, color }: TechSpecP
     <motion.div 
       whileHover={{ y: -8 }}
       // Passato da bg-white/[0.02] a bg-white con shadow solida
-      className={`group relative p-8 bg-white border border-slate-200 rounded-[2.5rem] overflow-hidden transition-all duration-500 shadow-xl shadow-slate-100 ${colorMap[color]}`}
+      className={`group relative p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-5xl overflow-hidden transition-all duration-500 shadow-xl shadow-slate-100 dark:shadow-black/20 ${colorMap[color]}`}
     >
       <div className="relative z-10">
         <span className={`text-[10px] font-black uppercase tracking-[0.3em] mb-6 block transition-colors duration-500 ${
-          color === 'indigo' ? 'text-indigo-600' : color === 'cyan' ? 'text-cyan-600' : 'text-rose-600'
+          color === 'indigo' ? 'text-indigo-600 dark:text-indigo-400' : color === 'cyan' ? 'text-cyan-600 dark:text-cyan-400' : 'text-rose-600 dark:text-rose-400'
         }`}>
           {label}
         </span>
         
-        <h3 className="text-3xl font-black text-slate-900 tracking-tighter mb-4 uppercase leading-none">
+        <h3 className="text-3xl font-black text-slate-900 dark:text-white tracking-tighter mb-4 uppercase leading-none">
           {title}
         </h3>
         
-        <p className="text-slate-600 text-sm leading-relaxed font-medium">
+        <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed font-medium">
           {description}
         </p>
 
         {/* Progress Bar - Ora più visibile */}
-        <div className="mt-8 w-full h-[2px] bg-slate-100 relative overflow-hidden rounded-full">
+        <div className="mt-8 w-full h-[2px] bg-slate-100 dark:bg-slate-800 relative overflow-hidden rounded-full">
           <motion.div 
             initial={{ x: "-100%" }}
             whileInView={{ x: "0%" }}

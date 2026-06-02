@@ -5,17 +5,15 @@ import {
   SiNextdotjs,
   SiTypescript,
   SiTailwindcss,
-  SiVercel,
   SiSupabase,
   SiWordpress,
   SiDocker,
-  SiGithub,
   SiShopify,
   SiFramer,
 } from "react-icons/si";
 
 const technologies = [
-  { name: "Next.js", icon: SiNextdotjs, color: "text-slate-900" },
+  { name: "Next.js", icon: SiNextdotjs, color: "text-slate-900 dark:text-white" },
   { name: "TypeScript", icon: SiTypescript, color: "text-blue-600" },
   { name: "Tailwind", icon: SiTailwindcss, color: "text-cyan-500" },
   { name: "Shopify", icon: SiShopify, color: "text-emerald-600" },
@@ -44,7 +42,7 @@ const itemVariants: Variants = {
 
 const TechStack = () => {
   return (
-    <section id="tecnologie" className="py-10 bg-white relative">
+    <section id="tecnologie" className="py-10 bg-white dark:bg-transparent relative transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6">
         {/* Titolo più piccolo e raffinato */}
         <motion.div
@@ -52,8 +50,8 @@ const TechStack = () => {
           whileInView={{ opacity: 1 }}
           className="flex items-center gap-4 mb-12 opacity-40 hover:opacity-100 transition-opacity"
         >
-          <div className="h-px w-12 bg-slate-300" />
-          <h3 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em]">
+          <div className="h-px w-12 bg-slate-300 dark:bg-slate-700" />
+          <h3 className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-[0.4em]">
             Tecnologie Core
           </h3>
         </motion.div>
@@ -73,12 +71,12 @@ const TechStack = () => {
               whileHover={{ y: -5 }}
               className="group flex flex-col items-center gap-3 transition-all"
             >
-              <div className="relative p-4 rounded-2xl border border-slate-100 bg-slate-50/50 group-hover:bg-white group-hover:shadow-xl group-hover:shadow-indigo-100/50 transition-all duration-300">
+              <div className="relative p-4 rounded-2xl border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 group-hover:bg-white dark:group-hover:bg-slate-800 group-hover:shadow-xl group-hover:shadow-indigo-100/50 dark:group-hover:shadow-indigo-900/20 transition-all duration-300">
                 <tech.icon
                   className={`w-7 h-7 md:w-8 md:h-8 ${tech.color} opacity-60 group-hover:opacity-100 transition-opacity`}
                 />
               </div>
-              <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest group-hover:text-slate-900 transition-colors">
+              <span className="text-[9px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
                 {tech.name}
               </span>
             </motion.div>
@@ -87,7 +85,7 @@ const TechStack = () => {
       </div>
 
       {/* Divisore sfumato sottile per separare dalla Hero senza stacchi netti */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-100 to-transparent" />
+      <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-slate-100 dark:via-slate-800 to-transparent" />
     </section>
   );
 };

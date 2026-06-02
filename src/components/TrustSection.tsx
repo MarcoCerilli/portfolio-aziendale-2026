@@ -58,14 +58,14 @@ const stats = [
 const TrustSection = () => {
   return (
     // Passato da bg-black a bg-white
-    <section id="risultati" className="py-12 md:py-20 bg-white relative">
+    <section id="risultati" className="py-12 md:py-20 bg-white dark:bg-transparent relative transition-colors duration-300">
       {/* Intestazione Sezione */}
       <div className="max-w-6xl mx-auto px-6 mb-12">
         <motion.h3
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center text-[11px] font-black text-slate-400 uppercase tracking-[0.5em]"
+          className="text-center text-[11px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.5em]"
         >
           Affidabilità & Performance
         </motion.h3>
@@ -81,26 +81,26 @@ const TrustSection = () => {
             viewport={{ once: true }}
             whileHover={{ y: -8, borderColor: "rgba(79, 70, 229, 0.2)" }}
             // Card Bianca, bordo slate e ombra morbida
-            className="group relative p-10 bg-white rounded-[2.5rem] border border-slate-100 flex flex-col items-center text-center transition-all duration-500 shadow-xl shadow-slate-100/50"
+            className="group relative p-10 bg-white dark:bg-slate-900 rounded-5xl border border-slate-100 dark:border-slate-800 flex flex-col items-center text-center transition-all duration-500 shadow-xl shadow-slate-100/50 dark:shadow-black/20"
           >
             <div
-              className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 rounded-[2.5rem]`}
+              className={`absolute inset-0 bg-linear-to-br ${stat.color} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 rounded-5xl`}
             />
 
             <div className="relative z-10">
               <p
-                className={`text-6xl md:text-7xl font-black mb-4 tracking-tighter bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}
+                className={`text-6xl md:text-7xl font-black mb-4 tracking-tighter bg-linear-to-r ${stat.color} bg-clip-text text-transparent`}
               >
                 <Counter value={stat.value} suffix={stat.suffix} />
               </p>
 
-              <p className="text-slate-500 font-bold uppercase tracking-[0.2em] text-[11px]">
+              <p className="text-slate-500 dark:text-slate-400 font-bold uppercase tracking-[0.2em] text-[11px]">
                 {stat.label}
               </p>
             </div>
 
             {/* Puntino decorativo in alto a destra */}
-            <div className="absolute top-6 right-8 w-1.5 h-1.5 rounded-full bg-slate-100 group-hover:scale-[1.5] group-hover:bg-indigo-500 transition-all duration-500" />
+            <div className="absolute top-6 right-8 w-1.5 h-1.5 rounded-full bg-slate-100 dark:bg-slate-800 group-hover:scale-[1.5] group-hover:bg-indigo-500 transition-all duration-500" />
           </motion.div>
         ))}
       </div>

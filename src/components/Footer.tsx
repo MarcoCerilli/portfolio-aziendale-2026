@@ -32,15 +32,15 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <footer id="contatti" className="py-20 border-t border-gray-800 bg-gray-950 relative overflow-hidden">
+    <footer id="contatti" className="py-20 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 relative overflow-hidden transition-colors duration-300">
       {/* Effetto Glow di sfondo per dare profondità */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-indigo-600/5 blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto px-4 text-center relative z-10">
-        <h2 className="text-3xl md:text-5xl font-black text-white mb-6 uppercase tracking-tighter">
+        <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tighter">
           Pronto a fare il <span className="text-indigo-500">Level Up?</span>
         </h2>
-        <p className="text-gray-400 mb-12 max-w-xl mx-auto text-sm md:text-base">
+        <p className="text-slate-500 dark:text-slate-400 mb-12 max-w-xl mx-auto text-sm md:text-base">
           Scegli la piattaforma che preferisci. Rispondo solitamente entro poche ore.
         </p>
 
@@ -51,6 +51,7 @@ const Footer = () => {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={link.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
