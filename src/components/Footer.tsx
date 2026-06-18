@@ -86,8 +86,13 @@ const Footer = () => {
           ))}
         </div>
 
-        <div className="mt-24 pt-8 border-t border-white/5 text-gray-600 text-[10px] uppercase tracking-widest">
-          © {new Date().getFullYear()} M SOLUTIONS. Crafted with Next.js & Gemini AI.
+        <div className="mt-24 pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center text-gray-500 text-xs md:text-sm">
+          <div>
+            © {new Date().getFullYear()} M SOLUTIONS WEB.
+          </div>
+          <div className="mt-2 md:mt-0 text-center md:text-right">
+            P. IVA: 03378710598 - Intestata a Marco Cerilli
+          </div>
         </div>
       </div>
     </footer>
