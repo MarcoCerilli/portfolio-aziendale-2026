@@ -1,7 +1,8 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
-import { CheckCircleIcon, SparklesIcon } from "@heroicons/react/24/solid";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { CheckCircleIcon, SparklesIcon, XMarkIcon } from "@heroicons/react/24/solid";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 // Definiamo l'interfaccia per i pacchetti
 interface Package {
@@ -18,19 +19,19 @@ interface Package {
 
 const packageList: Package[] = [
   {
-    name: "Landing Page Pro",
-    target: "Startup & Promo",
-    description: "Una pagina singola ottimizzata per convertire i visitatori in clienti. Perfetta per lanciare la tua attività.",
+    name: "Mini Sito Express",
+    target: "Startup & Nuovi Business",
+    description: "Un sito web professionale basato su un template ad alta conversione. Costi di dominio e tasse escluse.",
     features: [
-      "Landing Page Moderna",
-      "Velocità Estrema (Next.js)",
-      "Modulo Contatti & WhatsApp",
-      "Responsive Design",
+      "Template Design Premium",
+      "Setup su tuo dominio in 48h",
+      "Integrazione WhatsApp & Moduli",
+      "Nessun costo mensile",
     ],
     price: "199€",
     color: "from-sky-500 to-blue-600",
-    link: "https://wa.me/393804291043?text=Ciao!%20Vorrei%20informazioni%20per%20una%20Landing%20Page%20Pro.",
-    cta: "Inizia Ora",
+    link: "#",
+    cta: "Acquista Subito",
   },
   {
     name: "Sito Vetrina AI",
@@ -81,6 +82,8 @@ const packageList: Package[] = [
 ];
 
 const Packages = () => {
+  const [checkoutPkg, setCheckoutPkg] = useState<Package | null>(null);
+
   return (
     <section id="pacchetti" className="pt-4 pb-12 md:pt-6 md:pb-20 bg-white dark:bg-transparent relative overflow-hidden transition-colors duration-300">
       {/* Background Decor - Gradiente molto leggero */}
@@ -200,17 +203,118 @@ const Packages = () => {
                 </div>
               </div>
 
-              <motion.a
-                href={pkg.link}
-                whileTap={{ scale: 0.97 }}
-                className={`relative overflow-hidden group w-full py-4 rounded-2xl font-black uppercase tracking-widest text-[11px] text-white text-center shadow-lg transition-all bg-linear-to-r ${pkg.color} hover:brightness-110`}
-              >
-                <span className="relative z-10">{pkg.cta}</span>
-              </motion.a>
+              {pkg.cta === "Acquista Subito" ? (
+                <button
+                  onClick={() => setCheckoutPkg(pkg)}
+                  className={`w-full py-4 rounded-2xl font-black uppercase tracking-widest text-[11px] text-white text-center shadow-lg transition-all bg-linear-to-r ${pkg.color} hover:brightness-110`}
+                >
+                  {pkg.cta}
+                </button>
+              ) : (
+                <motion.a
+                  href={pkg.link}
+                  whileTap={{ scale: 0.97 }}
+                  className={`relative overflow-hidden group w-full py-4 rounded-2xl font-black uppercase tracking-widest text-[11px] text-white text-center shadow-lg transition-all bg-linear-to-r ${pkg.color} hover:brightness-110`}
+                >
+                  <span className="relative z-10">{pkg.cta}</span>
+                </motion.a>
+              )}
             </motion.div>
           ))}
         </div>
       </div>
+      {/* Modal Pagamenti */}
+      <AnimatePresence>
+        {checkoutPkg && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            <motion.div 
+              initial={{ opacity: 0 }} 
+              animate={{ opacity: 1 }} 
+              exit={{ opacity: 0 }}
+              onClick={() => setCheckoutPkg(null)}
+              className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
+            />
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              className="relative w-full max-w-md bg-white dark:bg-slate-900 rounded-3xl shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-700 z-10"
+            >
+              {/* Chiudi Modal */}
+              <button 
+                onClick={() => setCheckoutPkg(null)}
+                className="absolute top-4 right-4 p-2 bg-slate-100 dark:bg-slate-800 rounded-full text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors"
+              >
+                <XMarkIcon className="w-5 h-5" />
+              </button>
+
+              <div className="p-8">
+                <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-2 uppercase tracking-tighter">
+                  Checkout Sicuro
+                </h3>
+                <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mb-6">
+                  Stai acquistando: <strong className="text-slate-900 dark:text-white">{checkoutPkg.name}</strong> a {checkoutPkg.price}.
+                </p>
+
+                <div className="space-y-4">
+                  {/* Opzione PayPal (Integra API Ufficiali) */}
+                  <div className="w-full bg-slate-50 dark:bg-slate-800 rounded-xl p-4 border border-slate-200 dark:border-slate-700">
+                    <h4 className="font-bold text-slate-900 dark:text-white mb-4 text-center">
+                      Paga in modo sicuro o in 3 rate
+                    </h4>
+                    <div className="relative z-10 w-full">
+                      <PayPalScriptProvider options={{ clientId: "AX-s4ix-6TTjl8cpaw2zSG9FxyBdrV3TiTIMR8nKl3178QrRcA3strBoKPPw5kri6vitw5svZD_baFGC", currency: "EUR" }}>
+                        <PayPalButtons 
+                          style={{ layout: "vertical", color: "blue", shape: "rect", label: "pay" }}
+                          createOrder={(data, actions) => {
+                            // Pulisci il prezzo per estrarre solo il numero intero
+                            const numericPrice = checkoutPkg.price.replace(/[^\d]/g, '');
+                            return actions.order.create({
+                              intent: "CAPTURE",
+                              purchase_units: [
+                                {
+                                  description: checkoutPkg.name,
+                                  amount: {
+                                    currency_code: "EUR",
+                                    value: numericPrice + ".00",
+                                  },
+                                },
+                              ],
+                            });
+                          }}
+                          onApprove={(data, actions) => {
+                            return actions.order!.capture().then((details) => {
+                              const name = details.payer?.name?.given_name || "Cliente";
+                              alert(`Pagamento completato con successo da ${name}! Controlla la tua email per i prossimi step.`);
+                              setCheckoutPkg(null);
+                            });
+                          }}
+                        />
+                      </PayPalScriptProvider>
+                    </div>
+                  </div>
+
+                  {/* Opzione Bonifico */}
+                  <div className="w-full border border-slate-200 dark:border-slate-700 rounded-xl p-5 bg-slate-50 dark:bg-slate-800/50">
+                    <h4 className="font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+                      <svg className="w-5 h-5 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" /></svg>
+                      Bonifico Bancario
+                    </h4>
+                    <p className="text-xs text-slate-600 dark:text-slate-400 mb-3 leading-relaxed">
+                      Intestatario: <strong>Marco Cerilli</strong><br/>
+                      IBAN: <strong className="select-all bg-indigo-100 dark:bg-indigo-900/50 px-2 py-0.5 rounded text-indigo-700 dark:text-indigo-300 tracking-wider">IT13 H034 4174 162C C033 1000 143</strong><br/>
+                      Causale: Acquisto {checkoutPkg.name}
+                    </p>
+                    <p className="text-[10px] text-slate-500 font-medium">
+                      Invia la contabile a <a href="mailto:cerillimarco15@gmail.com" className="text-indigo-500 hover:underline">cerillimarco15@gmail.com</a> per attivare il progetto.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

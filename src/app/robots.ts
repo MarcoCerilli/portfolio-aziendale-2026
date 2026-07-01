@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://marcocerilli.com/sitemap.xml",
+    sitemap: "https://marcocerilli.it/sitemap.xml",
   };
 }
