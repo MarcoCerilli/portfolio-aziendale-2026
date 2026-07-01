@@ -82,13 +82,13 @@ const packageList: Package[] = [
 
 const Packages = () => {
   return (
-    <section id="pacchetti" className="py-12 md:py-20 bg-white dark:bg-transparent relative overflow-hidden transition-colors duration-300">
+    <section id="pacchetti" className="pt-4 pb-12 md:pt-6 md:pb-20 bg-white dark:bg-transparent relative overflow-hidden transition-colors duration-300">
       {/* Background Decor - Gradiente molto leggero */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-slate-50/50 dark:bg-slate-900/10 pointer-events-none" />
       <div className="absolute -top-24 -right-24 w-96 h-96 bg-indigo-100/50 dark:bg-indigo-900/20 blur-[100px] rounded-full" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-16 md:mb-24">
           <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">
             Scegli la tua <span className="text-indigo-600 dark:text-indigo-400">Soluzione</span>
           </h2>
@@ -97,27 +97,51 @@ const Packages = () => {
           </p>
         </div>
 
-        {/* Banner Pagamento Sicuro */}
+        {/* Wrapper per l'animazione di entrata */}
         <motion.div 
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto mb-16 bg-blue-50/80 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-800/50 rounded-3xl p-6 flex flex-col md:flex-row items-center gap-6 shadow-sm"
+          className="max-w-4xl mx-auto mb-10"
         >
-          <div className="bg-white dark:bg-slate-900 p-4 rounded-2xl shadow-sm shrink-0">
-            {/* Icona Sicurezza / Scudo */}
-            <svg className="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+          {/* Banner Pagamento Sicuro - Enfatizzato al massimo con Pulse intenso e veloce */}
+          <motion.div 
+            animate={{ 
+              boxShadow: [
+                "0px 0px 10px 0px rgba(59, 130, 246, 0.4)", 
+                "0px 0px 30px 5px rgba(59, 130, 246, 0.8)", 
+                "0px 0px 10px 0px rgba(59, 130, 246, 0.4)"
+              ],
+              borderColor: [
+                "rgba(59, 130, 246, 0.4)",
+                "rgba(59, 130, 246, 0.8)",
+                "rgba(59, 130, 246, 0.4)",
+              ]
+            }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            className="w-full bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 border-2 rounded-3xl p-6 flex flex-col md:flex-row items-center gap-6 relative overflow-hidden"
+          >
+          {/* Sfondo luminoso dietro il banner */}
+          <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-32 h-32 bg-blue-400/20 blur-3xl rounded-full" />
+          
+          <div className="bg-white dark:bg-slate-900 p-4 rounded-2xl shadow-lg shrink-0 relative z-10 border border-blue-200 dark:border-blue-700">
+            {/* Sfondo fisso leggermente azzurro senza animazioni a scomparsa */}
+            <div className="absolute inset-0 bg-blue-500/10 rounded-2xl" />
+            
+            {/* Icona Sicurezza / Scudo PayPal */}
+            <svg className="w-8 h-8 text-blue-600 dark:text-blue-400 relative z-10 drop-shadow-[0_0_8px_rgba(37,99,235,0.5)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
             </svg>
           </div>
           <div className="text-center md:text-left">
-            <h4 className="text-lg font-black text-slate-900 dark:text-white mb-1 tracking-tight">
+            <h4 className="text-lg font-black text-blue-900 dark:text-blue-100 mb-1 tracking-tight">
               Paga in 3 comode rate, zero rischi.
             </h4>
             <p className="text-slate-600 dark:text-slate-400 text-sm font-medium leading-relaxed">
               Realizza il tuo progetto oggi e suddividi il costo in 3 mesi tramite <strong>PayPal</strong> o <strong>Stripe</strong>. Il tuo investimento è protetto al 100%, zero interessi e zero stress.
             </p>
           </div>
+        </motion.div>
         </motion.div>
 
         {/* Grid a 2 Colonne (2x2) per carte più larghe e leggibili */}

@@ -76,8 +76,8 @@ export default function ProjectsGrid() {
         <motion.div
           drag="x"
           dragConstraints={{ right: 0, left: -carouselWidth }}
-          dragElastic={0.1}
-          dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
+          animate={{ x: [0, -carouselWidth] }}
+          transition={{ repeat: Infinity, ease: "linear", duration: 180, repeatType: "reverse" }}
           className="flex gap-6 md:gap-8"
         >
           <AnimatePresence mode="popLayout">
@@ -89,7 +89,7 @@ export default function ProjectsGrid() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.4, ease: "circOut" }}
-                className="group relative min-w-[85vw] md:min-w-[600px] lg:min-w-[700px] bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col hover:border-indigo-400/50 dark:hover:border-indigo-500/50 transition-colors duration-500 shadow-xl shadow-slate-200/60 dark:shadow-black/20 shrink-0"
+                className="group relative w-[85vw] md:w-[450px] lg:w-[560px] shrink-0 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col hover:border-indigo-400/50 dark:hover:border-indigo-500/50 transition-colors duration-500 shadow-lg shadow-slate-200/60 dark:shadow-black/20"
               >
               {/* AREA FOTO - Ottimizzata per screenshot Desktop orizzontali (16:9) */}
               <div className="relative w-full p-3 bg-slate-50/50 dark:bg-slate-800/30 border-b border-slate-100 dark:border-slate-800">
@@ -107,19 +107,42 @@ export default function ProjectsGrid() {
                 </div>
               </div>
 
-              {/* CONTENUTO */}
-              <div className="p-7 md:p-9 flex flex-col grow">
-                <div className="flex justify-between items-start mb-4">
-                  <div className="space-y-1">
-                    <span className="text-indigo-600 dark:text-indigo-400 text-[9px] font-black uppercase tracking-[0.2em] block">
-                      {project.category}
-                    </span>
-                    <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none">
-                      {project.title}
-                    </h3>
+              {/* CONTENUTO - Layout rinnovato e più elegante */}
+              <div className="p-4 md:p-5 flex flex-col grow">
+                {/* Header Card: Titolo e Categoria su righe separate */}
+                <div className="mb-3">
+                  <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-tight mb-1">
+                    {project.title}
+                  </h3>
+                  <span className="text-indigo-600 dark:text-indigo-400 text-[10px] font-bold uppercase tracking-[0.1em]">
+                    {project.category}
+                  </span>
+                </div>
+
+                {/* Descrizione */}
+                <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-4 font-medium line-clamp-3">
+                  {project.description}
+                </p>
+
+                {/* Footer Card: Tags a sinistra, Bottone a destra, separati da un bordino leggero */}
+                <div className="mt-auto pt-4 border-t border-slate-100 dark:border-slate-800 flex justify-between items-end gap-2">
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.tags.slice(0, 3).map((tag) => (
+                      <span
+                        key={tag}
+                        className={`px-2 py-1 rounded-md text-[9px] font-bold uppercase tracking-wider ${getTagStyle(tag)}`}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                    {project.tags.length > 3 && (
+                      <span className="px-2 py-1 rounded-md text-[9px] font-bold uppercase tracking-wider text-slate-400 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                        +{project.tags.length - 3}
+                      </span>
+                    )}
                   </div>
 
-                  {/* Bottone Link Esterno */}
+                  {/* Bottone Link Esterno - Spostato in basso */}
                   <motion.a
                     href={project.link}
                     target="_blank"
@@ -127,26 +150,10 @@ export default function ProjectsGrid() {
                     aria-label={`Vedi progetto ${project.title}`}
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     whileTap={{ scale: 0.9 }}
-                    className="p-3 bg-slate-900 dark:bg-slate-800 text-white rounded-xl shadow-lg hover:bg-indigo-600 dark:hover:bg-indigo-500 transition-colors"
+                    className="p-2 bg-slate-900 dark:bg-slate-800 text-white rounded-lg shadow-md hover:bg-indigo-600 dark:hover:bg-indigo-500 transition-colors shrink-0"
                   >
                     <ArrowTopRightOnSquareIcon className="w-4 h-4" />
                   </motion.a>
-                </div>
-
-                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 font-medium line-clamp-3">
-                  {project.description}
-                </p>
-
-                {/* Tags con stile dinamico */}
-                <div className="flex flex-wrap gap-2 mt-auto">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className={`px-3 py-1 border rounded-lg text-[9px] font-bold uppercase tracking-wider shadow-sm ${getTagStyle(tag)}`}
-                    >
-                      {tag}
-                    </span>
-                  ))}
                 </div>
               </div>
             </motion.div>

@@ -37,11 +37,11 @@ export const metadata: Metadata = {
     description: "Sviluppatore Web freelance a Terracina e Latina. Realizzazione siti web performanti, eCommerce e Web App su misura in Next.js.",
     type: "website",
     locale: "it_IT",
-    url: "https://marcocerilli.com", 
+    url: "https://marcocerilli.it", 
     siteName: "Marco Cerilli Portfolio",
     images: [
       {
-        url: "https://marcocerilli.com/og-image.jpg",
+        url: "https://marcocerilli.it/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Marco Cerilli - Sviluppatore Web",
@@ -52,11 +52,13 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Marco Cerilli | Sviluppatore Web Terracina",
     description: "Sviluppatore Web freelance a Terracina e Latina. Realizzazione siti web performanti in Next.js e React.",
-    images: ["https://marcocerilli.com/og-image.jpg"],
+    images: ["https://marcocerilli.it/og-image.jpg"],
   },
 };
 
 // src/app/layout.tsx
+import CookieBanner from "@/components/CookieBanner";
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="it" className={`${inter.variable} scroll-smooth`}>
@@ -67,6 +69,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {/* Rimosso <main> qui perché lo hai già in page.tsx, evitiamo doppi contenitori */}
           {children}
           <FloatingContact />
+          <CookieBanner />
         </ThemeProvider>
       </body>
     </html>

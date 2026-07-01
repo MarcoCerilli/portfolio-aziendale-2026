@@ -95,13 +95,17 @@ const Footer = () => {
               ))}
             </div>
 
-            {/* SEZIONE INFERIORE DEL BLOCCO: COPYRIGHT E PARTITA IVA */}
-            <div className="pt-8 border-t border-slate-100 dark:border-slate-800/60 flex flex-col md:flex-row justify-between items-center text-slate-500 dark:text-slate-400 text-xs md:text-sm font-medium">
-              <div className="mb-4 md:mb-0">
-                © {new Date().getFullYear()} M SOLUTIONS WEB.
+            {/* SEZIONE INFERIORE DEL BLOCCO: COPYRIGHT, PARTITA IVA E LEGALI */}
+            <div className="pt-8 border-t border-slate-100 dark:border-slate-800/60 flex flex-col md:flex-row justify-between items-center text-slate-500 dark:text-slate-400 text-xs md:text-sm font-medium gap-4">
+              <div className="flex flex-col md:flex-row items-center gap-2 md:gap-6">
+                <span>© {new Date().getFullYear()} M SOLUTIONS WEB.</span>
+                <div className="flex items-center gap-4 text-xs">
+                  <a href="/privacy-policy" className="hover:text-indigo-500 transition-colors">Privacy Policy</a>
+                  <a href="/cookie-policy" className="hover:text-indigo-500 transition-colors">Cookie Policy</a>
+                </div>
               </div>
               <div className="text-center md:text-right bg-slate-50 dark:bg-slate-800/50 px-4 py-2 rounded-full border border-slate-100 dark:border-slate-700">
-                P. IVA: <span className="font-bold text-slate-700 dark:text-slate-200">03378710598</span> - Intestata a Marco Cerilli
+                P. IVA: <span className="font-bold text-slate-700 dark:text-slate-200">03378710598</span> - Marco Cerilli
               </div>
             </div>
           </div>
