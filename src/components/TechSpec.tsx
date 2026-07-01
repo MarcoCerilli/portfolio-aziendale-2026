@@ -26,26 +26,49 @@ export default function TechSpec({ label, title, description, color }: TechSpecP
   return (
     <motion.div 
       whileHover={{ y: -8 }}
-      // Passato da bg-white/[0.02] a bg-white con shadow solida
-      className={`group relative p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-5xl overflow-hidden transition-all duration-500 shadow-xl shadow-slate-100 dark:shadow-black/20 ${colorMap[color]}`}
+      className={`group relative p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl overflow-hidden transition-all duration-500 shadow-xl shadow-slate-100 dark:shadow-black/20 flex flex-col justify-between ${colorMap[color]}`}
     >
-      <div className="relative z-10">
-        <span className={`text-[10px] font-black uppercase tracking-[0.3em] mb-6 block transition-colors duration-500 ${
-          color === 'indigo' ? 'text-indigo-600 dark:text-indigo-400' : color === 'cyan' ? 'text-cyan-600 dark:text-cyan-400' : 'text-rose-600 dark:text-rose-400'
-        }`}>
-          {label}
-        </span>
+      <div className="relative z-10 flex flex-col h-full">
+        <div className="flex justify-between items-start mb-6">
+          <span className={`text-[10px] font-black uppercase tracking-[0.3em] block transition-colors duration-500 ${
+            color === 'indigo' ? 'text-indigo-600 dark:text-indigo-400' : color === 'cyan' ? 'text-cyan-600 dark:text-cyan-400' : 'text-rose-600 dark:text-rose-400'
+          }`}>
+            {label}
+          </span>
+          
+          {/* Icona dinamica in base al colore */}
+          <div className={`p-2 rounded-xl bg-slate-50 dark:bg-slate-800 ${
+            color === 'indigo' ? 'text-indigo-500' : color === 'cyan' ? 'text-cyan-500' : 'text-rose-500'
+          }`}>
+            {color === 'indigo' && (
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            )}
+            {color === 'cyan' && (
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            )}
+            {color === 'rose' && (
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+              </svg>
+            )}
+          </div>
+        </div>
+        
         
         <h3 className="text-3xl font-black text-slate-900 dark:text-white tracking-tighter mb-4 uppercase leading-none">
           {title}
         </h3>
         
-        <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed font-medium">
+        <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed font-medium flex-grow">
           {description}
         </p>
 
-        {/* Progress Bar - Ora più visibile */}
-        <div className="mt-8 w-full h-[2px] bg-slate-100 dark:bg-slate-800 relative overflow-hidden rounded-full">
+        {/* Progress Bar */}
+        <div className="mt-8 w-full h-[3px] bg-slate-100 dark:bg-slate-800 relative overflow-hidden rounded-full">
           <motion.div 
             initial={{ x: "-100%" }}
             whileInView={{ x: "0%" }}

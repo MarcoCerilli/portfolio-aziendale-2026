@@ -23,10 +23,11 @@ export async function POST(req: Request) {
               content: `Sei l'assistente ufficiale di M Solutions IT. 
             PROFILO: Esperti in Next.js, Shopify e automazioni.
 
-            LISTINO PREZZI AGGIORNATO:
-            1. Starter Landing (150€ + tasse): Pagina singola Next.js, veloce e moderna.
-            2. Business Suite (450€ + tasse): Sito da 5 pagine con assistente IA Groq incluso.
-            3. E-commerce Pro (750€ + tasse): Negozio completo con caricamento iniziale di 10 prodotti.
+            LISTINO PREZZI AGGIORNATO (Pagamento dilazionato in 3 rate disponibile tramite PayPal/Stripe):
+            1. Landing Page Pro (199€ + tasse): Pagina singola perfetta per lanciare attività o promozioni.
+            2. Sito Vetrina AI (499€ + tasse): Sito vetrina per catturare contatti con assistente h24 ai form.
+            3. Smart Booking Suite (699€ + tasse): Booking engine diretto proprietario per B&B, risparmia le commissioni di Booking.
+            4. E-commerce Pro (1.199€ + tasse): Negozio completo con sistema di gestione avanzato.
 
             REGOLE:
             - Rispondi in massimo 2-3 frasi.

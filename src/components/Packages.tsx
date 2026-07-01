@@ -9,6 +9,7 @@ interface Package {
   target: string;
   description: string;
   features: string[];
+  price: string;
   color: string;
   link: string;
   cta: string;
@@ -17,44 +18,62 @@ interface Package {
 
 const packageList: Package[] = [
   {
-    name: "Starter Landing",
-    target: "Professionisti & Artigiani",
-    description: "Presenza online veloce, moderna e d&apos;impatto con tecnologia Next.js. Ideale per chi vuole iniziare a farsi notare.",
+    name: "Landing Page Pro",
+    target: "Startup & Promo",
+    description: "Una pagina singola ottimizzata per convertire i visitatori in clienti. Perfetta per lanciare la tua attività.",
     features: [
-      "Pagina Singola (Next.js)",
-      "Mobile-First & Performance",
-      "WhatsApp Direct Integration",
-      "SEO Setup Base",
+      "Landing Page Moderna",
+      "Velocità Estrema (Next.js)",
+      "Modulo Contatti & WhatsApp",
+      "Responsive Design",
     ],
+    price: "199€",
+    color: "from-sky-500 to-blue-600",
+    link: "https://wa.me/393804291043?text=Ciao!%20Vorrei%20informazioni%20per%20una%20Landing%20Page%20Pro.",
+    cta: "Inizia Ora",
+  },
+  {
+    name: "Sito Vetrina AI",
+    target: "Professionisti & Artigiani",
+    description: "Presenza online d'impatto con intelligenza artificiale per catturare contatti e prenotazioni h24.",
+    features: [
+      "Design Next.js ad alte prestazioni",
+      "Assistente AI h24 sui form",
+      "Gestione Automatica Lead",
+      "SEO Setup Base & Copywriting",
+    ],
+    price: "499€",
     color: "from-emerald-500 to-teal-600",
-    link: "https://wa.me/393804291043?text=Ciao!%20Vorrei%20informazioni%20per%20una%20Starter%20Landing.",
+    popular: true,
+    link: "https://wa.me/393804291043?text=Ciao!%20Vorrei%20informazioni%20per%20un%20Sito%20Vetrina%20AI.",
     cta: "Chatta su WhatsApp",
   },
   {
-    name: "Business Suite",
-    target: "Startup & Aziende",
-    description: "Sito aziendale completo con architettura scalabile e integrazione di intelligenza artificiale.",
+    name: "Smart Booking Suite",
+    target: "B&B e Case Vacanza",
+    description: "Disintermedia e risparmia le commissioni di Booking e Airbnb. Ricevi prenotazioni dirette dal tuo sito.",
     features: [
-      "Fino a 5 Pagine Custom",
-      "Chatbot AI Integrato (Gemini/Groq)",
-      "SEO Avanzata & Copywriting",
-      "Interfaccia Utente Premium",
+      "Booking Engine Proprietario",
+      "Sincronizzazione iCal (Zero Overbooking)",
+      "Pannello Gestione Prenotazioni",
+      "Assistente IA per gli ospiti",
     ],
+    price: "699€",
     color: "from-indigo-600 to-purple-600",
-    popular: true,
-    link: "mailto:cerillimarco15@gmail.com?subject=Richiesta%20Info%20Business%20Suite",
-    cta: "Invia una Email",
+    link: "mailto:cerillimarco15@gmail.com?subject=Richiesta%20Info%20Smart%20Booking%20Suite",
+    cta: "Richiedi Informazioni",
   },
   {
     name: "E-commerce Pro",
-    target: "Business & Store",
-    description: "Store pronto alla vendita con sistemi di pagamento sicuri e gestione semplificata dell&apos;inventario.",
+    target: "Business & Retail",
+    description: "Negozio online pronto a vendere, ottimizzato per conversioni, vendite veloci e scalabilità.",
     features: [
-      "Setup Store Professionale",
-      "Gateway Stripe & PayPal",
-      "Gestione Inventario Cloud",
-      "Formazione Gestione Ordini",
+      "Setup Store Completo & Scalabile",
+      "Pagamenti Multipli (Stripe, PayPal)",
+      "Gestione Inventario Avanzata",
+      "Fatturazione Automatica",
     ],
+    price: "1.199€",
     color: "from-rose-500 to-red-600",
     link: "https://wa.me/393804291043?text=Ciao!%20Vorrei%20informazioni%20per%20un%20E-commerce%20Pro.",
     cta: "Chiedi un Preventivo",
@@ -78,8 +97,31 @@ const Packages = () => {
           </p>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+        {/* Banner Pagamento Sicuro */}
+        <motion.div 
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto mb-16 bg-blue-50/80 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-800/50 rounded-3xl p-6 flex flex-col md:flex-row items-center gap-6 shadow-sm"
+        >
+          <div className="bg-white dark:bg-slate-900 p-4 rounded-2xl shadow-sm shrink-0">
+            {/* Icona Sicurezza / Scudo */}
+            <svg className="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+               <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <div className="text-center md:text-left">
+            <h4 className="text-lg font-black text-slate-900 dark:text-white mb-1 tracking-tight">
+              Paga in 3 comode rate, zero rischi.
+            </h4>
+            <p className="text-slate-600 dark:text-slate-400 text-sm font-medium leading-relaxed">
+              Realizza il tuo progetto oggi e suddividi il costo in 3 mesi tramite <strong>PayPal</strong> o <strong>Stripe</strong>. Il tuo investimento è protetto al 100%, zero interessi e zero stress.
+            </p>
+          </div>
+        </motion.div>
+
+        {/* Grid a 2 Colonne (2x2) per carte più larghe e leggibili */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10">
           {packageList.map((pkg, index) => (
             <motion.div
               key={index}
@@ -87,7 +129,7 @@ const Packages = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               whileHover={{ y: -10 }}
-              className={`relative flex flex-col p-8 md:p-10 rounded-5xl border transition-all duration-500 ${
+              className={`relative flex flex-col p-8 md:p-10 rounded-3xl border transition-all duration-500 ${
                 pkg.popular
                   ? "border-indigo-200 dark:border-indigo-500/30 bg-white dark:bg-slate-900 shadow-[0_20px_50px_rgba(79,70,229,0.1)] dark:shadow-indigo-900/20 ring-4 ring-indigo-50 dark:ring-indigo-900/10"
                   : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xl shadow-slate-200/40 dark:shadow-black/20"
@@ -125,8 +167,13 @@ const Packages = () => {
                 ))}
               </ul>
 
-              <div className="pt-6 border-t border-slate-100 dark:border-slate-800 mb-6 text-[10px] font-bold text-slate-400 dark:text-slate-500 italic uppercase tracking-widest text-center">
-                Preventivo Personalizzato
+              <div className="pt-6 border-t border-slate-100 dark:border-slate-800 mb-6 text-center">
+                <div className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white tracking-tighter mb-1">
+                  {pkg.price}
+                </div>
+                <div className="text-[10px] font-bold text-slate-400 dark:text-slate-500 italic uppercase tracking-widest leading-relaxed">
+                  * Tasse escluse <br/> Pagamento dilazionato
+                </div>
               </div>
 
               <motion.a

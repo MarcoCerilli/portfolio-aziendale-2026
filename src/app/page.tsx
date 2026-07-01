@@ -14,15 +14,15 @@ export default function Home() {
       {/* 1. HERO - Nessun padding qui, lo gestiamo dentro il componente Hero */}
       <Hero />
 
-      {/* 2. TECH STACK - Ridotto py (padding verticale) su mobile per eliminare il gap */}
-      <section className="py-8 md:py-16 bg-slate-50/50 dark:bg-slate-900/20 border-y border-slate-100 dark:border-slate-800">
+      {/* 2. TECH STACK */}
+      <section className="py-20 md:py-32 bg-slate-50/50 dark:bg-slate-900/20 border-y border-slate-100 dark:border-slate-800">
         <AnimatedSection delay={0.2}>
           <TechStack />
         </AnimatedSection>
       </section>
 
-      {/* 3. TECH SPECS - Sfondo Bianco */}
-      <section className="py-12 md:py-24 bg-white dark:bg-slate-950 relative">
+      {/* 3. TECH SPECS */}
+      <section className="py-20 md:py-32 bg-white dark:bg-slate-950 relative">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <AnimatedSection delay={0.1}>
@@ -56,14 +56,14 @@ export default function Home() {
       </section>
 
       {/* 4. TRUST SECTION (CONTATORI) */}
-      <section className="bg-white dark:bg-slate-950">
+      <section className="py-12 md:py-20 bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800">
         <AnimatedSection delay={0.4}>
           <TrustSection />
         </AnimatedSection>
       </section>
 
-      {/* 5. PROGETTI - Ridotto py-10 su mobile per staccare meglio */}
-      <section id="progetti" className="py-10 md:py-24 bg-slate-50/50 dark:bg-slate-900/20 border-y border-slate-100 dark:border-slate-800">
+      {/* 5. PROGETTI */}
+      <section id="progetti" className="py-20 md:py-32 bg-slate-50/50 dark:bg-slate-900/20 border-y border-slate-100 dark:border-slate-800">
         <div className="max-w-7xl mx-auto px-6">
           <AnimatedSection delay={0.5}>
             <Projects />
@@ -72,7 +72,7 @@ export default function Home() {
       </section>
 
       {/* 6. PACCHETTI */}
-      <section id="pacchetti" className="py-16 md:py-32 bg-white dark:bg-slate-950">
+      <section id="pacchetti" className="py-20 md:py-32 bg-white dark:bg-slate-950">
         <div className="max-w-7xl mx-auto px-6">
           <AnimatedSection delay={0.6}>
             <Packages />

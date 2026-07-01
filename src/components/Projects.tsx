@@ -47,7 +47,7 @@ export default function ProjectsGrid() {
       {/* Grid - Layout e animazioni */}
       <motion.div
         layout
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+        className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10"
       >
         <AnimatePresence>
           {filteredProjects.map((project) => (
@@ -58,20 +58,21 @@ export default function ProjectsGrid() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.4, ease: "circOut" }}
-              className="group relative bg-white dark:bg-slate-900 rounded-5xl border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col hover:border-indigo-400/50 dark:hover:border-indigo-500/50 transition-all duration-500 h-full shadow-xl shadow-slate-200/60 dark:shadow-black/20 hover:shadow-2xl hover:shadow-[0_0_40px_rgba(99,102,241,0.3)] dark:hover:shadow-[0_0_40px_rgba(99,102,241,0.2)]"
+              className="group relative bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col hover:border-indigo-400/50 dark:hover:border-indigo-500/50 transition-all duration-500 h-full shadow-xl shadow-slate-200/60 dark:shadow-black/20 hover:shadow-2xl hover:shadow-[0_0_40px_rgba(99,102,241,0.3)] dark:hover:shadow-[0_0_40px_rgba(99,102,241,0.2)]"
             >
-              {/* AREA FOTO - Migliorato l'hover */}
-              <div className="relative aspect-video w-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center p-4">
-                <div className="relative w-full h-full overflow-hidden rounded-2xl shadow-sm bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
+              {/* AREA FOTO - Ottimizzata per screenshot Desktop orizzontali (16:9) */}
+              <div className="relative w-full p-3 bg-slate-50/50 dark:bg-slate-800/30 border-b border-slate-100 dark:border-slate-800">
+                <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-sm border border-slate-200/60 dark:border-slate-700/50 z-0 bg-slate-100 dark:bg-slate-900">
+                  
+                  {/* Immagine Principale in Cover ma allineata in alto */}
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
                     unoptimized
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   />
-                  {/* Overlay gradiente all'hover */}
-                  <div className="absolute inset-0 bg-indigo-900/0 group-hover:bg-indigo-900/10 transition-colors duration-500" />
+                  <div className="absolute inset-0 bg-indigo-900/0 group-hover:bg-indigo-900/10 transition-colors duration-500 pointer-events-none" />
                 </div>
               </div>
 

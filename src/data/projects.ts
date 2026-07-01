@@ -30,6 +30,16 @@ export const getTagStyle = (tag: string) => {
 
 export const projectsList: Project[] = [
   {
+    title: "Lazio Vela",
+    description: "Placeholder: Progetto sviluppato con Next.js, TypeScript e Tailwind CSS, ospitato su Vercel. Include sistema di login con NextAuth.",
+    tags: ["Next.js", "TypeScript", "Tailwind", "Vercel", "NextAuth"],
+    link: "#",
+    image: "/projects/lazio-vela-placeholder.jpg",
+    category: "Sistemi & App Su Misura",
+    color: "from-blue-600/10",
+    status: "soon",
+  },
+  {
     title: "Avvocato Anna Fusco (Official)",
     description: "Sito istituzionale sviluppato in WordPress con CSS personalizzato e ottimizzazione per il settore legale. Focus su autorevolezza e accessibilità.",
     tags: ["Next.js", "Tailwind", "Framer Motion", "Typescript"],
