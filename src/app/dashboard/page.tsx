@@ -79,7 +79,7 @@ export default function DashboardPage() {
             <div className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-slate-100 dark:border-slate-700">
               <h3 className="font-bold text-slate-900 dark:text-white mb-2">Prossimo Step</h3>
               <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-                Stiamo configurando il tuo server. Riceverai un'email per inviarci i testi del sito entro 24 ore.
+                Stiamo configurando il tuo server. Riceverai un&apos;email per inviarci i testi del sito entro 24 ore.
               </p>
             </div>
             
