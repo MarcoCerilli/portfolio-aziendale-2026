@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://marcocerilli.com",
+    canonical: "https://marcocerilli.it",
   },
   openGraph: {
     title: "Marco Cerilli | Sviluppatore Web Terracina, Latina e Provincia",

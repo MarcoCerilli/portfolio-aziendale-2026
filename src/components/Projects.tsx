@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
@@ -8,10 +8,33 @@ import { projectsList, categories, getTagStyle } from "@/data/projects";
 
 export default function ProjectsGrid() {
   const [filter, setFilter] = useState<string>("Tutti");
+  const [carouselWidth, setCarouselWidth] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
   const filteredProjects = projectsList.filter((p) =>
     filter === "Tutti" ? true : p.category === filter,
   );
+
+  // Ricalcola i limiti del drag ogni volta che cambia il filtro o la finestra
+  useEffect(() => {
+    const updateWidth = () => {
+      if (carouselRef.current) {
+        setCarouselWidth(
+          carouselRef.current.scrollWidth - carouselRef.current.offsetWidth
+        );
+      }
+    };
+    
+    updateWidth();
+    // Piccolo ritardo per permettere a framer-motion di renderizzare le nuove card
+    const timeoutId = setTimeout(updateWidth, 100);
+    window.addEventListener("resize", updateWidth);
+    
+    return () => {
+      window.removeEventListener("resize", updateWidth);
+      clearTimeout(timeoutId);
+    };
+  }, [filter, filteredProjects.length]);
 
   return (
     <section className="py-12 md:py-20 px-4 md:px-6 max-w-7xl mx-auto transition-colors duration-300">
@@ -44,22 +67,30 @@ export default function ProjectsGrid() {
         </div>
       </div>
 
-      {/* Grid - Layout e animazioni */}
+      {/* Carosello Draggable */}
       <motion.div
-        layout
-        className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10"
+        ref={carouselRef}
+        className="cursor-grab active:cursor-grabbing overflow-hidden w-full py-4"
+        whileTap={{ cursor: "grabbing" }}
       >
-        <AnimatePresence>
-          {filteredProjects.map((project) => (
-            <motion.div
-              key={project.title}
-              layout
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.4, ease: "circOut" }}
-              className="group relative bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col hover:border-indigo-400/50 dark:hover:border-indigo-500/50 transition-all duration-500 h-full shadow-xl shadow-slate-200/60 dark:shadow-black/20 hover:shadow-2xl hover:shadow-[0_0_40px_rgba(99,102,241,0.3)] dark:hover:shadow-[0_0_40px_rgba(99,102,241,0.2)]"
-            >
+        <motion.div
+          drag="x"
+          dragConstraints={{ right: 0, left: -carouselWidth }}
+          dragElastic={0.1}
+          dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
+          className="flex gap-6 md:gap-8"
+        >
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project) => (
+              <motion.div
+                key={project.title}
+                layout
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.4, ease: "circOut" }}
+                className="group relative min-w-[85vw] md:min-w-[600px] lg:min-w-[700px] bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col hover:border-indigo-400/50 dark:hover:border-indigo-500/50 transition-colors duration-500 shadow-xl shadow-slate-200/60 dark:shadow-black/20 shrink-0"
+              >
               {/* AREA FOTO - Ottimizzata per screenshot Desktop orizzontali (16:9) */}
               <div className="relative w-full p-3 bg-slate-50/50 dark:bg-slate-800/30 border-b border-slate-100 dark:border-slate-800">
                 <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-sm border border-slate-200/60 dark:border-slate-700/50 z-0 bg-slate-100 dark:bg-slate-900">
@@ -119,8 +150,9 @@ export default function ProjectsGrid() {
                 </div>
               </div>
             </motion.div>
-          ))}
-        </AnimatePresence>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </motion.div>
     </section>
   );
