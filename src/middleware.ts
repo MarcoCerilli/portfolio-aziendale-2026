@@ -3,7 +3,7 @@ import type { NextRequest } from 'next/server'
 
 export function middleware(request: NextRequest) {
   // Flag per attivare/disattivare la manutenzione rapidamente
-  const isMaintenanceMode = true;
+  const isMaintenanceMode = false;
 
   if (!isMaintenanceMode) {
     return NextResponse.next();
