@@ -21,34 +21,37 @@ export default function Home() {
         </AnimatedSection>
       </section>
 
-      {/* 3. TECH SPECS */}
-      <section className="py-20 md:py-32 bg-white dark:bg-slate-950 relative">
+      {/* 3. TECH SPECS - BLOCCO A CONTRASTO */}
+      <section className="py-20 md:py-32 bg-slate-900 dark:bg-indigo-[950] relative overflow-hidden">
+        {/* Glow effect for the dark block */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-indigo-500/10 blur-3xl pointer-events-none rounded-full" />
+
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <AnimatedSection delay={0.1}>
               <TechSpec
                 color="indigo"
-                label="Architecture"
-                title="Headless CMS"
-                description="Backend e Frontend separati per massime prestazioni e sicurezza."
+                label="Prestazioni"
+                title="Next.js"
+                description="Utilizziamo la stessa tecnologia di brand come Netflix e Amazon. Siti web istantanei che abbattono il tasso di abbandono."
               />
             </AnimatedSection>
 
             <AnimatedSection delay={0.2}>
               <TechSpec
                 color="cyan"
-                label="Performance"
-                title="100/100"
-                description="Ottimizzazione maniacale dei Core Web Vitals per la SEO."
+                label="Infrastruttura"
+                title="Vercel"
+                description="Hosting di ultima generazione. Il tuo sito viene distribuito globalmente per caricarsi in millisecondi ovunque."
               />
             </AnimatedSection>
 
             <AnimatedSection delay={0.3}>
               <TechSpec
                 color="rose"
-                label="E-Commerce"
-                title="Shopify Custom"
-                description="Store custom ad alte conversioni senza i limiti dei temi pronti."
+                label="Autonomia"
+                title="WordPress / CMS"
+                description="Pannelli di controllo intuitivi. Aggiorna testi, foto e prodotti in totale autonomia senza dipendere da uno sviluppatore."
               />
             </AnimatedSection>
           </div>

@@ -7,6 +7,7 @@ import { XMarkIcon, SparklesIcon } from "@heroicons/react/24/outline";
 const navLinks = [
   { name: "Servizi", href: "/#pacchetti" },
   { name: "Tecnologie", href: "/#tecnologie" },
+  { name: "Template", href: "/templates" },
   { name: "Risultati", href: "/#risultati" },
 ];
 

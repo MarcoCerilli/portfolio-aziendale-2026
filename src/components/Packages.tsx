@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircleIcon, SparklesIcon, XMarkIcon } from "@heroicons/react/24/solid";
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+// import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 // Definiamo l'interfaccia per i pacchetti
 interface Package {
@@ -107,7 +107,7 @@ const Packages = () => {
           viewport={{ once: true }}
           className="max-w-4xl mx-auto mb-10"
         >
-          {/* Banner Pagamento Sicuro - Enfatizzato al massimo con Pulse intenso e veloce */}
+          {/* BANNER PAYPAL - TEMPORANEAMENTE COMMENTATO IN ATTESA DI UPGRADE ACCOUNT
           <motion.div 
             animate={{ 
               boxShadow: [
@@ -124,14 +124,11 @@ const Packages = () => {
             transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
             className="w-full bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 border-2 rounded-3xl p-6 flex flex-col md:flex-row items-center gap-6 relative overflow-hidden"
           >
-          {/* Sfondo luminoso dietro il banner */}
           <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-32 h-32 bg-blue-400/20 blur-3xl rounded-full" />
           
           <div className="bg-white dark:bg-slate-900 p-4 rounded-2xl shadow-lg shrink-0 relative z-10 border border-blue-200 dark:border-blue-700">
-            {/* Sfondo fisso leggermente azzurro senza animazioni a scomparsa */}
             <div className="absolute inset-0 bg-blue-500/10 rounded-2xl" />
             
-            {/* Icona Sicurezza / Scudo PayPal */}
             <svg className="w-8 h-8 text-blue-600 dark:text-blue-400 relative z-10 drop-shadow-[0_0_8px_rgba(37,99,235,0.5)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
             </svg>
@@ -145,6 +142,7 @@ const Packages = () => {
             </p>
           </div>
         </motion.div>
+        */}
         </motion.div>
 
         {/* Grid a 2 Colonne (2x2) per carte più larghe e leggibili */}
@@ -257,7 +255,7 @@ const Packages = () => {
                 </p>
 
                 <div className="space-y-4">
-                  {/* Opzione PayPal (Integra API Ufficiali) */}
+                  {/* CHECKOUT PAYPAL TEMPORANEAMENTE COMMENTATO 
                   <div className="w-full bg-slate-50 dark:bg-slate-800 rounded-xl p-4 border border-slate-200 dark:border-slate-700">
                     <h4 className="font-bold text-slate-900 dark:text-white mb-4 text-center">
                       Paga in modo sicuro o in 3 rate
@@ -267,7 +265,6 @@ const Packages = () => {
                         <PayPalButtons 
                           style={{ layout: "vertical", color: "blue", shape: "rect", label: "pay" }}
                           createOrder={(data, actions) => {
-                            // Pulisci il prezzo per estrarre solo il numero intero
                             const numericPrice = checkoutPkg.price.replace(/[^\d]/g, '');
                             return actions.order.create({
                               intent: "CAPTURE",
@@ -293,6 +290,7 @@ const Packages = () => {
                       </PayPalScriptProvider>
                     </div>
                   </div>
+                  */}
 
                   {/* Opzione Bonifico */}
                   <div className="w-full border border-slate-200 dark:border-slate-700 rounded-xl p-5 bg-slate-50 dark:bg-slate-800/50">
