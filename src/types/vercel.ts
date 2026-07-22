@@ -4,6 +4,7 @@ export interface VercelProject {
   framework: string | null;
   nodeVersion: string;
   accountId: string;
+  teamId?: string;
   updatedAt: number;
   createdAt: number;
   latestDeployments?: {

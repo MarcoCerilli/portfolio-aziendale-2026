@@ -30,12 +30,17 @@ export async function getVercelProjects(): Promise<VercelProject[]> {
   }
 }
 
-export async function getProjectEnvVars(projectId: string): Promise<VercelEnvVar[]> {
+export async function getProjectEnvVars(project: VercelProject): Promise<VercelEnvVar[]> {
   if (!VERCEL_API_TOKEN) return [];
 
   try {
-    // We request decrypted=1 to ensure we get the actual values of the environment variables
-    const res = await fetch(`https://api.vercel.com/v9/projects/${projectId}/env?target=production&decrypted=1`, {
+    // Add a cache buster and explicitly request decrypted values
+    let url = `https://api.vercel.com/v9/projects/${project.id}/env?target=production&decrypted=1`;
+    if (project.teamId || project.accountId) {
+      url += `&teamId=${project.teamId || project.accountId}`;
+    }
+
+    const res = await fetch(url, {
       headers: {
         Authorization: `Bearer ${VERCEL_API_TOKEN}`,
       },
@@ -43,13 +48,15 @@ export async function getProjectEnvVars(projectId: string): Promise<VercelEnvVar
     });
 
     if (!res.ok) {
+      console.error(`Error fetching envs for ${project.name}:`, await res.text());
       return [];
     }
 
     const data = await res.json();
+    console.log(`[Vercel API] ${project.name} Env Vars Count:`, data.envs?.length);
     return data.envs || [];
   } catch (error) {
-    console.error(`Error fetching env vars for project ${projectId}:`, error);
+    console.error(`Error fetching env vars for project ${project.name}:`, error);
     return [];
   }
 }
@@ -61,7 +68,7 @@ export async function getDemoProducts(): Promise<DemoProduct[]> {
   // Fetch env vars for all projects in parallel
   await Promise.all(
     projects.map(async (project) => {
-      const envs = await getProjectEnvVars(project.id);
+      const envs = await getProjectEnvVars(project);
       
       // Look for DEMO_CATEGORY to identify if it's a demo product intended for the portfolio
       const categoryEnv = envs.find((e) => e.key === 'DEMO_CATEGORY');
