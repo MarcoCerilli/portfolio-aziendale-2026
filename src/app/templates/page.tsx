@@ -96,121 +96,131 @@ export default async function TemplatesPage() {
 
       {/* Grid Templates */}
       <section className="max-w-7xl mx-auto px-6 mb-24 relative z-10">
-        <div className="flex flex-col gap-16 md:gap-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           {templates.map((tpl, idx) => {
             const templateDemos = demoProducts.filter(d => d.category.toLowerCase() === tpl.packageLink.toLowerCase());
             
             return (
               <div 
                 key={tpl.id}
-                className="flex flex-col animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both"
-                style={{ animationDelay: `${idx * 150}ms` }}
-              >
-                {/* Template Info Card */}
-                <div className={`relative bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border transition-all duration-300 flex flex-col lg:flex-row ${
+                className={`relative bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border transition-all duration-300 flex flex-col animate-in fade-in slide-in-from-bottom-8 fill-mode-both hover:shadow-2xl ${
                   tpl.popular 
                     ? "border-indigo-200 dark:border-indigo-500/30 shadow-[0_20px_50px_rgba(79,70,229,0.1)] dark:shadow-indigo-900/20" 
                     : "border-slate-200 dark:border-slate-800 shadow-xl shadow-slate-200/40 dark:shadow-black/20"
-                }`}>
-                  {tpl.popular && (
-                    <div className="absolute top-4 right-4 px-4 py-1.5 bg-indigo-600 rounded-full flex items-center gap-1.5 shadow-lg z-20">
-                      <SparklesIcon className="w-4 h-4 text-white" />
-                      <span className="text-[10px] font-black text-white uppercase tracking-[0.2em]">
-                        Il più richiesto
-                      </span>
-                    </div>
-                  )}
-                  
-                  {/* Left: Info */}
-                  <div className="p-8 md:p-12 lg:w-1/2 flex flex-col justify-center">
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className={`w-14 h-14 rounded-2xl bg-linear-to-br ${tpl.color} flex items-center justify-center shadow-lg text-white`}>
-                        <tpl.icon className="w-7 h-7" />
-                      </div>
-                      <div>
-                        <h2 className="text-3xl font-black uppercase tracking-tight text-slate-900 dark:text-white">
-                          {tpl.title}
-                        </h2>
-                        <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mt-1">
-                          Ideale per: {tpl.target}
-                        </p>
-                      </div>
-                    </div>
-
-                    <p className="text-base md:text-lg text-slate-600 dark:text-slate-400 font-medium leading-relaxed mb-8">
-                      {tpl.description}
-                    </p>
-
-                    <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-6 border border-slate-100 dark:border-slate-800 mb-8">
-                      <h4 className="text-xs font-black uppercase tracking-widest text-slate-900 dark:text-white mb-4">
-                        Incluso nel Setup:
-                      </h4>
-                      <ul className="space-y-3 grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6">
-                        {tpl.features.map((feat) => (
-                          <li key={feat} className="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400">
-                            <CheckCircleIcon className="w-5 h-5 text-indigo-500 shrink-0" />
-                            <span className="font-medium">{feat}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="flex flex-col sm:flex-row gap-4 items-center mt-auto">
-                      <Link
-                        href={`/#pacchetti`}
-                        className={`w-full sm:w-auto text-center px-8 py-4 rounded-xl font-black uppercase tracking-widest text-xs text-white shadow-lg transition-all bg-linear-to-r ${tpl.color} hover:brightness-110`}
-                      >
-                        Richiedi Setup
-                      </Link>
-                      <div className="text-center sm:text-left w-full sm:w-auto">
-                        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">
-                          Disponibile con pacchetto
-                        </span>
-                        <span className="text-xs font-black text-slate-900 dark:text-white block mt-0.5">
-                          {tpl.packageLink}
-                        </span>
-                      </div>
-                    </div>
+                }`}
+                style={{ animationDelay: `${idx * 150}ms`, animationDuration: '700ms' }}
+              >
+                {tpl.popular && (
+                  <div className="absolute top-4 right-4 px-4 py-1.5 bg-indigo-600 rounded-full flex items-center gap-1.5 shadow-lg z-20">
+                    <SparklesIcon className="w-4 h-4 text-white" />
+                    <span className="text-[10px] font-black text-white uppercase tracking-[0.2em]">
+                      Il più richiesto
+                    </span>
                   </div>
-
-                  {/* Right: Cover Image (if no demos or just as a showcase) */}
-                  <div className="relative lg:w-1/2 min-h-[300px] lg:min-h-full bg-slate-100 dark:bg-slate-800 border-l border-slate-200 dark:border-slate-800 overflow-hidden">
-                    <Image
-                      src={tpl.image}
-                      alt={`Mockup per ${tpl.title}`}
-                      fill
-                      className="object-cover object-center transition-transform duration-700 hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent flex items-end p-8">
-                      <div className="text-white">
-                        <span className="text-xs font-bold tracking-[0.15em] uppercase px-3 py-1 bg-white/20 backdrop-blur-md rounded-full border border-white/20">
-                          Design Base
-                        </span>
-                      </div>
+                )}
+                
+                {/* Top: Cover Image */}
+                <div className="relative w-full aspect-video bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-800 overflow-hidden group">
+                  <Image
+                    src={tpl.image}
+                    alt={`Mockup per ${tpl.title}`}
+                    fill
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent flex items-end p-6 pointer-events-none">
+                    <div className="text-white">
+                      <span className="text-[10px] font-bold tracking-[0.15em] uppercase px-3 py-1.5 bg-white/20 backdrop-blur-md rounded-full border border-white/20">
+                        Design Base
+                      </span>
                     </div>
                   </div>
                 </div>
 
-                {/* Demos Section for this Template */}
-                {templateDemos.length > 0 && (
-                  <div className="mt-8 ml-4 md:ml-12 border-l-2 border-indigo-500/20 pl-6 md:pl-10 relative">
-                    <div className="absolute -left-[11px] top-4 w-5 h-5 rounded-full bg-slate-50 dark:bg-slate-950 border-4 border-indigo-500"></div>
-                    <h3 className="text-xl font-black uppercase tracking-widest text-slate-900 dark:text-white mb-2">
-                      Demo Interattive
-                    </h3>
-                    <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mb-8 max-w-xl">
-                      Esplora i progetti reali realizzati con questa soluzione. Naviga i siti direttamente da qui o aprili in una nuova finestra per testare la velocità.
-                    </p>
-                    
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                      {templateDemos.map(demo => (
-                        <div key={demo.id} className="h-[450px] md:h-[600px]">
-                          <InteractiveDemo product={demo} />
-                        </div>
-                      ))}
+                {/* Bottom: Info */}
+                <div className="p-8 flex flex-col flex-grow">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className={`w-12 h-12 rounded-2xl bg-linear-to-br ${tpl.color} flex items-center justify-center shadow-lg text-white shrink-0`}>
+                      <tpl.icon className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h2 className="text-2xl font-black uppercase tracking-tight text-slate-900 dark:text-white">
+                        {tpl.title}
+                      </h2>
+                      <p className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mt-1">
+                        Ideale per: {tpl.target}
+                      </p>
                     </div>
                   </div>
-                )}
+
+                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium leading-relaxed mb-6">
+                    {tpl.description}
+                  </p>
+
+                  <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-5 border border-slate-100 dark:border-slate-800 mb-6">
+                    <h4 className="text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white mb-3">
+                      Incluso nel Setup:
+                    </h4>
+                    <ul className="space-y-2">
+                      {tpl.features.map((feat) => (
+                        <li key={feat} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
+                          <CheckCircleIcon className="w-4 h-4 text-indigo-500 shrink-0 mt-0.5" />
+                          <span className="font-medium">{feat}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Demos Section for this Template */}
+                  {templateDemos.length > 0 && (
+                    <div className="mb-8 p-5 bg-indigo-50/50 dark:bg-indigo-900/10 rounded-2xl border border-indigo-100 dark:border-indigo-500/10">
+                      <h4 className="text-[10px] font-black uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-3 flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
+                        Demo Live Disponibili:
+                      </h4>
+                      <div className="flex flex-col gap-3">
+                        {templateDemos.map(demo => (
+                          <Link 
+                            key={demo.id} 
+                            href={demo.url}
+                            target="_blank"
+                            className="flex items-center gap-3 p-2 rounded-xl hover:bg-white dark:hover:bg-slate-800 transition-colors group"
+                          >
+                            <div className="w-12 h-12 rounded-lg bg-slate-200 dark:bg-slate-700 overflow-hidden shrink-0 relative">
+                               <img 
+                                 src={demo.image || `https://image.thum.io/get/width/100/crop/100/noanimate/${demo.url}`}
+                                 alt={demo.name}
+                                 className="w-full h-full object-cover group-hover:scale-110 transition-transform"
+                               />
+                            </div>
+                            <div className="flex flex-col">
+                              <span className="text-sm font-bold text-slate-900 dark:text-white">{demo.name}</span>
+                              <span className="text-[10px] uppercase font-bold text-indigo-500 flex items-center gap-1">
+                                Esplora Live <span className="group-hover:translate-x-1 transition-transform">→</span>
+                              </span>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="flex flex-col sm:flex-row gap-4 items-center mt-auto pt-2">
+                    <Link
+                      href={`/#pacchetti`}
+                      className={`w-full sm:w-auto text-center px-6 py-3 rounded-xl font-black uppercase tracking-widest text-[10px] text-white shadow-lg transition-all bg-linear-to-r ${tpl.color} hover:brightness-110`}
+                    >
+                      Richiedi Setup
+                    </Link>
+                    <div className="text-center sm:text-left w-full sm:w-auto">
+                      <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest block">
+                        Disponibile con pacchetto
+                      </span>
+                      <span className="text-[11px] font-black text-slate-900 dark:text-white block mt-0.5">
+                        {tpl.packageLink}
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </div>
             );
           })}

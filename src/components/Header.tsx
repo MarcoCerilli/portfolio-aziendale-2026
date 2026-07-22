@@ -7,7 +7,6 @@ import { XMarkIcon, SparklesIcon } from "@heroicons/react/24/outline";
 const navLinks = [
   { name: "Servizi", href: "/#pacchetti" },
   { name: "Tecnologie", href: "/#tecnologie" },
-  { name: "Template", href: "/templates" },
   { name: "Risultati", href: "/#risultati" },
 ];
 
@@ -42,7 +41,6 @@ const Header = () => {
 
   return (
     <motion.header
-      // Passato da bg-gray-950/70 a bg-white/80 e bordi slate-200
       className="sticky top-0 z-100 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl border-b border-slate-200/60 dark:border-slate-800/60"
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
@@ -70,13 +68,20 @@ const Header = () => {
             <Link
               key={link.name}
               href={link.href}
-              // Cambiato text-gray-400 in text-slate-500
               className="text-sm font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors relative group"
             >
               {link.name}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-500 transition-all group-hover:w-full"></span>
             </Link>
           ))}
+          
+          <Link
+            href="/templates"
+            className="text-sm font-black uppercase tracking-widest text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300 transition-colors flex items-center gap-2 bg-indigo-50 dark:bg-indigo-900/30 px-4 py-2 rounded-full border border-indigo-200 dark:border-indigo-800"
+          >
+            <SparklesIcon className="w-4 h-4" />
+            Shop Templates
+          </Link>
           
           <div className="flex items-center gap-4">
             <ThemeToggle />
