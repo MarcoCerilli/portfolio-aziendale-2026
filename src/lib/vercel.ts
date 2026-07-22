@@ -34,27 +34,45 @@ export async function getProjectEnvVars(project: VercelProject): Promise<VercelE
   if (!VERCEL_API_TOKEN) return [];
 
   try {
-    // Add a cache buster and explicitly request decrypted values
     let url = `https://api.vercel.com/v9/projects/${project.id}/env?target=production&decrypted=1`;
     if (project.teamId || project.accountId) {
       url += `&teamId=${project.teamId || project.accountId}`;
     }
 
     const res = await fetch(url, {
-      headers: {
-        Authorization: `Bearer ${VERCEL_API_TOKEN}`,
-      },
+      headers: { Authorization: `Bearer ${VERCEL_API_TOKEN}` },
       next: { revalidate: process.env.NODE_ENV === 'development' ? 0 : 3600 },
     });
 
-    if (!res.ok) {
-      console.error(`Error fetching envs for ${project.name}:`, await res.text());
-      return [];
-    }
+    if (!res.ok) return [];
 
     const data = await res.json();
-    console.log(`[Vercel API] ${project.name} Env Vars Count:`, data.envs?.length);
-    return data.envs || [];
+    let envs: VercelEnvVar[] = data.envs || [];
+
+    // Decrypt specific env vars individually if they are still encrypted
+    const keysToDecrypt = ['DEMO_CATEGORY', 'DEMO_PRICE', 'DEMO_IMAGE', 'DEMO_FEATURES'];
+    
+    envs = await Promise.all(envs.map(async (env) => {
+      if (keysToDecrypt.includes(env.key) && env.type === 'encrypted' && (env as any).decrypted === false) {
+        let decryptUrl = `https://api.vercel.com/v1/projects/${project.id}/env/${env.id}`;
+        if (project.teamId || project.accountId) {
+          decryptUrl += `?teamId=${project.teamId || project.accountId}`;
+        }
+        
+        const decryptRes = await fetch(decryptUrl, {
+          headers: { Authorization: `Bearer ${VERCEL_API_TOKEN}` },
+          next: { revalidate: process.env.NODE_ENV === 'development' ? 0 : 3600 },
+        });
+        
+        if (decryptRes.ok) {
+          const decryptedData = await decryptRes.json();
+          return { ...env, value: decryptedData.value };
+        }
+      }
+      return env;
+    }));
+
+    return envs;
   } catch (error) {
     console.error(`Error fetching env vars for project ${project.name}:`, error);
     return [];

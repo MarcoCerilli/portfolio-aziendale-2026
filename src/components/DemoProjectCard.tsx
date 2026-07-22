@@ -17,7 +17,6 @@ export default function DemoProjectCard({ product }: DemoProjectCardProps) {
       </div>
 
       <div className="mb-6">
-        {/* Placeholder or Image */}
         {product.image ? (
           <div className="mb-6 h-48 w-full overflow-hidden rounded-xl bg-black/20">
             {/* Using standard img to avoid next/image domain configuration issues for dynamic domains */}
@@ -29,8 +28,17 @@ export default function DemoProjectCard({ product }: DemoProjectCardProps) {
             />
           </div>
         ) : (
-          <div className="mb-6 flex h-48 w-full items-center justify-center rounded-xl bg-gradient-to-br from-blue-900/40 to-purple-900/40 border border-white/5">
-             <span className="text-4xl font-bold text-white/20">{product.name.charAt(0)}</span>
+          <div className="mb-6 h-48 w-full overflow-hidden rounded-xl bg-black/20 border border-white/5 relative group-hover:border-blue-500/50 transition-colors">
+            {/* Auto screenshot fallback */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src={`https://image.thum.io/get/width/1024/crop/768/noanimate/${product.url}`} 
+              alt={`Anteprima di ${product.name}`} 
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
+            {/* Subtle overlay gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-60"></div>
           </div>
         )}
 
