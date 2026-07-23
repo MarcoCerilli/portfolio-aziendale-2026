@@ -1,3 +1,4 @@
+/* eslint-disable */
 const fs = require('fs');
 const env = fs.readFileSync('.env.local', 'utf8');
 const token = env.split('\n').find(line => line.startsWith('VERCEL_API_TOKEN=')).split('=')[1].trim();

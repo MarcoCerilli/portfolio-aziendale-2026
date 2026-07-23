@@ -53,7 +53,7 @@ export async function getProjectEnvVars(project: VercelProject): Promise<VercelE
     const keysToDecrypt = ['DEMO_CATEGORY', 'DEMO_PRICE', 'DEMO_IMAGE', 'DEMO_FEATURES'];
     
     envs = await Promise.all(envs.map(async (env) => {
-      if (keysToDecrypt.includes(env.key) && env.type === 'encrypted' && (env as any).decrypted === false) {
+      if (keysToDecrypt.includes(env.key) && env.type === 'encrypted' && env.decrypted === false) {
         let decryptUrl = `https://api.vercel.com/v1/projects/${project.id}/env/${env.id}`;
         if (project.teamId || project.accountId) {
           decryptUrl += `?teamId=${project.teamId || project.accountId}`;
@@ -79,6 +79,8 @@ export async function getProjectEnvVars(project: VercelProject): Promise<VercelE
   }
 }
 
+import categorizedProjects from '../../progetti_categorizzati.json';
+
 export async function getDemoProducts(): Promise<DemoProduct[]> {
   const projects = await getVercelProjects();
   const demoProducts: DemoProduct[] = [];
@@ -90,11 +92,25 @@ export async function getDemoProducts(): Promise<DemoProduct[]> {
       
       // Look for DEMO_CATEGORY to identify if it's a demo product intended for the portfolio
       const categoryEnv = envs.find((e) => e.key === 'DEMO_CATEGORY');
+      let category = categoryEnv ? categoryEnv.value : null;
+
+      // Fallback: se non c'è la variabile d'ambiente, proviamo a prendere la categoria generata dall'AI
+      const aiProject = categorizedProjects.find(p => p.name === project.name);
+      if (!category && aiProject && aiProject.categoryAndReason) {
+        // Es: "Siti Aziendali & SEO - Semplice sito..." -> prendiamo solo la prima parte
+        category = aiProject.categoryAndReason.split(' - ')[0].trim();
+      }
       
-      if (categoryEnv && categoryEnv.value) {
+      if (category) {
         const priceEnv = envs.find((e) => e.key === 'DEMO_PRICE');
         const imageEnv = envs.find((e) => e.key === 'DEMO_IMAGE');
         const featuresEnv = envs.find((e) => e.key === 'DEMO_FEATURES');
+
+        // Fallback per l'immagine dal file json
+        let finalImage = imageEnv && imageEnv.value ? imageEnv.value : null;
+        if (!finalImage && aiProject && 'image' in aiProject) {
+          finalImage = (aiProject as { image?: string }).image || null;
+        }
 
         // Determine the live URL
         let url = '';
@@ -111,9 +127,9 @@ export async function getDemoProducts(): Promise<DemoProduct[]> {
           // Format the name nicely if possible (e.g. "my-project" -> "My Project")
           name: project.name.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '),
           url,
-          category: categoryEnv.value,
+          category: category,
           price: priceEnv && priceEnv.value ? parseFloat(priceEnv.value) : null,
-          image: imageEnv && imageEnv.value ? imageEnv.value : null,
+          image: finalImage,
           features: featuresEnv && featuresEnv.value ? featuresEnv.value.split(',').map(f => f.trim()) : [],
         });
       }

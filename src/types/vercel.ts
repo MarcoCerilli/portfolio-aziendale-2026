@@ -24,6 +24,7 @@ export interface VercelEnvVar {
   key: string;
   value: string;
   target: string[];
+  decrypted?: boolean;
 }
 
 export interface DemoProduct {

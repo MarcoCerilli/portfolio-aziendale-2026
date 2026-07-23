@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Footer from "@/components/Footer";
 import { getDemoProducts } from "@/lib/vercel";
-import InteractiveDemo from "@/components/InteractiveDemo";
+import DemoProjectsGrid from "@/components/DemoProjectsGrid";
 
 const templates = [
   {
@@ -98,8 +98,6 @@ export default async function TemplatesPage() {
       <section className="max-w-7xl mx-auto px-6 mb-24 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           {templates.map((tpl, idx) => {
-            const templateDemos = demoProducts.filter(d => d.category.toLowerCase() === tpl.packageLink.toLowerCase());
-            
             return (
               <div 
                 key={tpl.id}
@@ -170,39 +168,7 @@ export default async function TemplatesPage() {
                     </ul>
                   </div>
 
-                  {/* Demos Section for this Template */}
-                  {templateDemos.length > 0 && (
-                    <div className="mb-8 p-5 bg-indigo-50/50 dark:bg-indigo-900/10 rounded-2xl border border-indigo-100 dark:border-indigo-500/10">
-                      <h4 className="text-[10px] font-black uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-3 flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
-                        Demo Live Disponibili:
-                      </h4>
-                      <div className="flex flex-col gap-3">
-                        {templateDemos.map(demo => (
-                          <Link 
-                            key={demo.id} 
-                            href={demo.url}
-                            target="_blank"
-                            className="flex items-center gap-3 p-2 rounded-xl hover:bg-white dark:hover:bg-slate-800 transition-colors group"
-                          >
-                            <div className="w-12 h-12 rounded-lg bg-slate-200 dark:bg-slate-700 overflow-hidden shrink-0 relative">
-                               <img 
-                                 src={demo.image || `https://image.thum.io/get/width/100/crop/100/noanimate/${demo.url}`}
-                                 alt={demo.name}
-                                 className="w-full h-full object-cover group-hover:scale-110 transition-transform"
-                               />
-                            </div>
-                            <div className="flex flex-col">
-                              <span className="text-sm font-bold text-slate-900 dark:text-white">{demo.name}</span>
-                              <span className="text-[10px] uppercase font-bold text-indigo-500 flex items-center gap-1">
-                                Esplora Live <span className="group-hover:translate-x-1 transition-transform">→</span>
-                              </span>
-                            </div>
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                  {/* Demos Section Removed - Displayed in DemoProjectsGrid */}
 
                   <div className="flex flex-col sm:flex-row gap-4 items-center mt-auto pt-2">
                     <Link
@@ -227,8 +193,13 @@ export default async function TemplatesPage() {
         </div>
       </section>
 
+      {/* Vercel Demos Gallery */}
+      <div className="border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-950/50 pt-8 pb-16">
+        <DemoProjectsGrid products={demoProducts} />
+      </div>
+
       {/* CTA Section */}
-      <section className="max-w-4xl mx-auto px-6 text-center pb-20">
+      <section className="max-w-4xl mx-auto px-6 text-center pb-20 mt-12">
         <div className="bg-indigo-600 rounded-3xl p-10 md:p-16 shadow-2xl shadow-indigo-600/20 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-indigo-900/40 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />

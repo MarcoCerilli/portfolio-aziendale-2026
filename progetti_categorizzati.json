@@ -1,0 +1,122 @@
+[
+  {
+    "name": "portfolio-aziendale-2026",
+    "repo": "portfolio-aziendale-2026",
+    "categoryAndReason": "Mini Sito Express - Presenta un portfolio aziendale.",
+    "image": "/projects/zecchi.jpg"
+  },
+  {
+    "name": "english-teacher-website",
+    "repo": "english-teacher-website",
+    "categoryAndReason": "Sito Vetrina Pro - Sito per insegnante di inglese.",
+    "image": "/projects/contabile.jpg"
+  },
+  {
+    "name": "vivaio-bartoli",
+    "repo": "vivaio-bartoli",
+    "categoryAndReason": "Sito Vetrina Pro - Presenta un nome di attività.",
+    "image": "/projects/vivaio.jpg"
+  },
+  {
+    "name": "lazio-vela",
+    "repo": "lazio-vela",
+    "categoryAndReason": "Sito Vetrina Pro - Nome del progetto suggerisce un sito vetrina.",
+    "image": "/projects/laziovela.png"
+  },
+  {
+    "name": "porta-maggio-next",
+    "repo": "porta-maggio-next",
+    "categoryAndReason": "Mini Sito Express - Semplice progetto NextJS.",
+    "image": "/projects/porta-maggio.png"
+  },
+  {
+    "name": "ermannotech-frontend-shopify",
+    "repo": "ermannotech-frontend-shopify",
+    "categoryAndReason": "E-commerce Pro - Sviluppato per Shopify.",
+    "image": "/projects/ermannotech.jpg"
+  },
+  {
+    "name": "lacasetta",
+    "repo": "lacasetta",
+    "categoryAndReason": "Sito Vetrina Pro - Nome progetto suggerisce una vetrina.",
+    "image": "/projects/lacasetta.png"
+  },
+  {
+    "name": "bnb-vestoso",
+    "repo": "bnb_vestoso",
+    "categoryAndReason": "Sito Vetrina Pro - Presenta un progetto NextJS multipagina.",
+    "image": "/projects/bigmama.png"
+  },
+  {
+    "name": "azienda-multiservizi",
+    "repo": "AziendaMultiservizi",
+    "categoryAndReason": "Sito Vetrina Pro - Presenta più servizi aziendali.",
+    "image": "/projects/quintopolo.jpg"
+  },
+  {
+    "name": "experience-app",
+    "repo": "Experience-App",
+    "categoryAndReason": "Mini Sito Express - Sembra un'applicazione essenziale.",
+    "image": "/projects/dashboard.jpg"
+  },
+  {
+    "name": "studio-legale",
+    "repo": "StudioLegale",
+    "categoryAndReason": "Sito Vetrina Pro - Presenta un'attività professionale.",
+    "image": "/projects/legale.jpg"
+  },
+  {
+    "name": "app-newsletter-payback",
+    "repo": "app_newsletter_payback",
+    "categoryAndReason": "Landing Page Custom - Sembra una pagina di iscrizione newsletter.",
+    "image": "/projects/twitter.jpg"
+  },
+  {
+    "name": "legal-saas",
+    "repo": "legal-saas",
+    "categoryAndReason": "Sito Vetrina Pro - Progetto SaaS con multiple funzionalità.",
+    "image": "/projects/avvocato.png"
+  },
+  {
+    "name": "falegnameria-artigiana",
+    "repo": "FalegnameriaArtigiana",
+    "categoryAndReason": "Sito Vetrina Pro - Presenta un'attività artigianale locale.",
+    "image": "/projects/idraulico.jpg"
+  },
+  {
+    "name": "fattura-elettronica",
+    "repo": "sdi-invoice-generator",
+    "categoryAndReason": "Sito Vetrina Pro - Presenta un progetto di fatturazione.",
+    "image": "/projects/dashboard.jpg"
+  },
+  {
+    "name": "li-costruzioni",
+    "repo": "LiCostruzioni",
+    "categoryAndReason": "Sito Vetrina Pro - Presenta un'attività locale di costruzioni.",
+    "image": "/projects/li-costruzioni.jpg"
+  },
+  {
+    "name": "m-solutions-crm",
+    "repo": "m-solutions-crm",
+    "categoryAndReason": "Sito Vetrina Pro - Progetto multipagina in NextJS.",
+    "image": "/projects/dashboard.jpg"
+  },
+  {
+    "name": "studio-contabile",
+    "repo": "StudioContabile",
+    "categoryAndReason": "Sito Vetrina Pro - Presenta un'attività professionale.",
+    "image": "/projects/contabile.jpg"
+  },
+  {
+    "name": "modern-store",
+    "repo": "Prostore",
+    "categoryAndReason": "E-commerce Pro - Sviluppato per store online.",
+    "image": "/projects/ecommerce-clothing.jpg"
+  },
+  {
+    "name": "stream-chat-test",
+    "repo": "stream-chat-test",
+    "categoryAndReason": "Mini Sito Express - Sembra un progetto di base.",
+    "image": "/projects/turni.jpg"
+  }
+]
