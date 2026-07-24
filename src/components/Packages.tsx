@@ -211,8 +211,8 @@ const Packages = () => {
                 <div className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white tracking-tighter mb-1">
                   {pkg.price}
                 </div>
-                <div className="text-[10px] font-bold text-slate-400 dark:text-slate-500 italic uppercase tracking-widest leading-relaxed">
-                  * Regime Forfettario (senza IVA) <br/> Pagamento dilazionato
+                <div className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest leading-relaxed">
+                  Tasse escluse (Regime Forfettario) <br/> Pagamento dilazionato
                 </div>
               </div>
 

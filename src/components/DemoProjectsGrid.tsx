@@ -14,37 +14,35 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.8 }}
       transition={{ duration: 0.4, ease: "circOut" }}
-      className="group relative w-[85vw] md:w-[450px] lg:w-[560px] shrink-0 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col hover:border-indigo-400/50 dark:hover:border-indigo-500/50 transition-colors duration-500 shadow-lg shadow-slate-200/60 dark:shadow-black/20"
+      className="group relative w-[90vw] md:w-[480px] lg:w-[540px] shrink-0 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 overflow-hidden flex flex-col hover:border-indigo-500/50 transition-all duration-500 shadow-2xl shadow-slate-900/10 dark:shadow-black/50 hover:-translate-y-2 hover:shadow-[0_30px_60px_-15px_rgba(79,70,229,0.25)]"
     >
-      {/* FOTO E OVERLAY PER NUOVA SCHEDA */}
-      <div className="relative w-full p-3 bg-slate-50/50 dark:bg-slate-800/30 border-b border-slate-100 dark:border-slate-800">
-        <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-sm border border-slate-200/60 dark:border-slate-700/50 z-0 bg-slate-100 dark:bg-slate-900">
-          <a
-            href={product.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="absolute inset-0 cursor-pointer group/preview block"
-          >
-            <Image
-              src={product.image || '/projects/coming-soon.svg'}
-              alt={`Screenshot di ${product.name}`}
-              fill
-              unoptimized
-              className="object-cover object-top transition-transform duration-700 group-hover/preview:scale-105"
-            />
-            
-            {/* Play Button Overlay */}
-            <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-[2px] flex items-center justify-center opacity-0 group-hover/preview:opacity-100 transition-opacity duration-300">
-              <div className="flex flex-col items-center transform translate-y-4 group-hover/preview:translate-y-0 transition-transform duration-300">
-                <div className="w-16 h-16 rounded-full bg-indigo-600 flex items-center justify-center mb-3 shadow-lg shadow-indigo-600/30">
-                  <FiPlay className="w-6 h-6 text-white ml-1" />
-                </div>
-                <span className="text-white font-bold tracking-widest uppercase text-sm text-center">Esplora Demo Live</span>
-                <span className="text-indigo-200 text-xs mt-1">Apri in una nuova scheda</span>
+      {/* FOTO E OVERLAY PER NUOVA SCHEDA (Full Width Suspended) */}
+      <div className="relative w-full aspect-[16/10] bg-slate-950 border-b border-slate-100 dark:border-slate-800 group overflow-hidden">
+        <a
+          href={product.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute inset-0 cursor-pointer group/preview block"
+        >
+          <Image
+            src={product.image || '/projects/coming-soon.svg'}
+            alt={`Screenshot di ${product.name}`}
+            fill
+            unoptimized
+            className="object-contain object-center p-2 transition-transform duration-700 group-hover/preview:scale-105"
+          />
+          
+          {/* Play Button Overlay */}
+          <div className="absolute inset-0 bg-slate-950/60 backdrop-blur-[2px] flex items-center justify-center opacity-0 group-hover/preview:opacity-100 transition-opacity duration-300">
+            <div className="flex flex-col items-center transform translate-y-4 group-hover/preview:translate-y-0 transition-transform duration-300">
+              <div className="w-16 h-16 rounded-full bg-indigo-600 flex items-center justify-center mb-3 shadow-xl shadow-indigo-600/40">
+                <FiPlay className="w-6 h-6 text-white ml-0.5" />
               </div>
+              <span className="text-white font-bold tracking-widest uppercase text-xs text-center">Esplora Demo Live</span>
+              <span className="text-indigo-200 text-[11px] mt-1">Apri in una nuova scheda</span>
             </div>
-          </a>
-        </div>
+          </div>
+        </a>
       </div>
 
       {/* CONTENUTO */}
@@ -77,7 +75,7 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
         <div className="mt-auto pt-4 border-t border-slate-100 dark:border-slate-800 flex justify-between items-end gap-2">
           <div className="flex flex-col">
             <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-              A partire da
+              A partire da (tasse escluse)
             </span>
             <span className="text-lg font-black text-slate-900 dark:text-white">
               {product.price ? `${product.price}€` : '599€'}
@@ -140,7 +138,7 @@ export default function DemoProjectsGrid({ products }: DemoProjectsGridProps) {
   if (products.length === 0) return null;
 
   return (
-    <section className="py-12 md:py-20 px-4 md:px-6 max-w-7xl mx-auto transition-colors duration-300">
+    <section className="py-12 md:py-20 px-4 md:px-6 max-w-7xl mx-auto transition-colors duration-300 overflow-visible">
       <div className="flex flex-col items-center text-center mb-10 md:mb-16 space-y-4">
         <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-tight">
           Esplora i <span className="text-indigo-600 dark:text-indigo-400">Progetti Demo</span>
@@ -170,7 +168,7 @@ export default function DemoProjectsGrid({ products }: DemoProjectsGridProps) {
 
       <motion.div
         ref={carouselRef}
-        className="cursor-grab active:cursor-grabbing overflow-hidden w-full py-4"
+        className="cursor-grab active:cursor-grabbing overflow-x-auto no-scrollbar w-full py-8 -my-4"
         whileTap={{ cursor: "grabbing" }}
       >
         <motion.div
@@ -178,7 +176,7 @@ export default function DemoProjectsGrid({ products }: DemoProjectsGridProps) {
           dragConstraints={{ right: 0, left: -carouselWidth }}
           animate={{ x: carouselWidth > 0 ? [0, -carouselWidth] : 0 }}
           transition={{ repeat: Infinity, ease: "linear", duration: 180, repeatType: "reverse" }}
-          className="flex gap-6 md:gap-8"
+          className="flex gap-6 md:gap-8 py-4 px-2"
         >
           <AnimatePresence mode="popLayout">
             {filteredProducts.map((product) => (

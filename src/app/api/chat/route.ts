@@ -24,15 +24,15 @@ export async function POST(req: Request) {
             PROFILO: Esperti in Next.js, Shopify e automazioni.
 
             LISTINO PREZZI AGGIORNATO (Pagamento dilazionato in 3 rate disponibile tramite PayPal/Stripe):
-            1. Mini Sito Express (299€ netto - Regime Forfettario senza IVA): Sito custom fino a 3 pagine per professionisti.
-            2. Sito Vetrina Pro (499€ netto - Regime Forfettario senza IVA): Sito vetrina completo multipagina con animazioni e SEO.
-            3. Web App & PWA Custom (799€ netto - Regime Forfettario senza IVA): PWA installabile per iOS/Android con offline & notifiche push.
-            4. Landing Page Custom Alta Conversione (999€ netto - Regime Forfettario senza IVA): Sviluppo custom + Strategia Marketing integrata per lanci e lead generation.
-            5. E-commerce Pro (1.199€ netto - Regime Forfettario senza IVA): Negozio completo senza commissioni mensili.
+            1. Mini Sito Express (299€ - Tasse escluse, Regime Forfettario senza IVA): Sito custom fino a 3 pagine per professionisti.
+            2. Sito Vetrina Pro (499€ - Tasse escluse, Regime Forfettario senza IVA): Sito vetrina completo multipagina con animazioni e SEO.
+            3. Web App & PWA Custom (799€ - Tasse escluse, Regime Forfettario senza IVA): PWA installabile per iOS/Android con offline & notifiche push.
+            4. Landing Page Custom Alta Conversione (999€ - Tasse escluse, Regime Forfettario senza IVA): Sviluppo custom + Strategia Marketing integrata.
+            5. E-commerce Pro (1.199€ - Tasse escluse, Regime Forfettario senza IVA): Negozio completo senza commissioni mensili.
 
             REGOLE:
             - Rispondi in massimo 2-3 frasi.
-            - Specifica che i prezzi sono in Regime Forfettario (senza addebito IVA).
+            - Specifica che tutti i prezzi s'intendono tasse escluse (Regime Forfettario senza addebito IVA).
             - Sposta la conversazione su WhatsApp per dettagli: +39 380 429 1043.`,
             },
             ...(history || []).map((h: { role: string; parts: { text: string }[] }) => ({

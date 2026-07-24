@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import React from "react";
 import { CheckCircleIcon, CodeBracketIcon, SparklesIcon, PresentationChartLineIcon, ShoppingBagIcon, DevicePhoneMobileIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
@@ -5,6 +6,12 @@ import Image from "next/image";
 import Footer from "@/components/Footer";
 import { getDemoProducts } from "@/lib/vercel";
 import DemoProjectsGrid from "@/components/DemoProjectsGrid";
+
+export const metadata: Metadata = {
+  title: "Soluzioni Web Su Misura & PWA | Marco Cerilli - Terracina & Latina",
+  description: "Pacchetti web e soluzioni custom sviluppate a mano a Terracina, Latina e provincia. Landing page ad alta conversione, PWA, Gestionali iCal e E-commerce in Next.js.",
+  keywords: ["sviluppatore web terracina", "realizzazione siti web latina", "pwa terracina", "landing page latina", "sviluppatore web provincia latina"],
+};
 
 const templates = [
   {
@@ -26,18 +33,35 @@ const templates = [
   },
   {
     id: "local-business",
-    title: "Local Business Elite",
-    target: "Ristoranti, Palestre, Artigiani",
+    title: "Local Business Elite (Standard)",
+    target: "Ristoranti, Palestre, Artigiani & Attività Locali",
     packageLink: "Sito Vetrina Pro",
     price: "499€",
-    description: "La soluzione multipagina definitiva per attività locali. Struttura solida per dominare la SEO locale e generare fiducia.",
+    description: "La soluzione multipagina definitiva per attività locali. Struttura solida per dominare la SEO locale, catalogo servizi e form contatti.",
     features: [
       "Menu o Catalogo Servizi",
       "Google Maps & Orari integrati",
-      "Form di Prenotazione Avanzato",
+      "Form Contatto / Richiesta Preventivo",
       "Pannello CMS per aggiornamenti"
     ],
     color: "from-indigo-600 to-purple-600",
+    icon: SparklesIcon,
+    image: "/projects/lacasetta.png",
+  },
+  {
+    id: "hospitality-booking-pro",
+    title: "Hospitality & Booking Pro",
+    target: "B&B, Case Vacanze, Strutture Ricettive & Noleggi",
+    packageLink: "Web App & PWA Custom",
+    price: "799€",
+    description: "Piattaforma di prenotazione avanzata per B&B e case vacanze con sincronizzazione iCal (Airbnb/Booking), mini gestionale CRM Admin e calendario in tempo reale.",
+    features: [
+      "Sincronizzazione iCal (Airbnb & Booking)",
+      "Mini Gestionale CRM & Dashboard Admin",
+      "Calendario Disponibilità Real-Time",
+      "Conferme Automatiche via Email/Form"
+    ],
+    color: "from-teal-500 to-emerald-600",
     icon: SparklesIcon,
     image: "/projects/porta-maggio.png",
   },
@@ -122,10 +146,10 @@ export default async function TemplatesPage() {
             return (
               <div 
                 key={tpl.id}
-                className={`relative bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border transition-all duration-300 flex flex-col animate-in fade-in slide-in-from-bottom-8 fill-mode-both hover:shadow-2xl ${
+                className={`relative bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border transition-all duration-500 hover:-translate-y-2 flex flex-col animate-in fade-in slide-in-from-bottom-8 fill-mode-both ${
                   tpl.popular 
-                    ? "border-indigo-200 dark:border-indigo-500/30 shadow-[0_20px_50px_rgba(79,70,229,0.1)] dark:shadow-indigo-900/20" 
-                    : "border-slate-200 dark:border-slate-800 shadow-xl shadow-slate-200/40 dark:shadow-black/20"
+                    ? "border-indigo-300 dark:border-indigo-500/40 shadow-2xl shadow-indigo-600/15 hover:shadow-[0_35px_70px_-15px_rgba(79,70,229,0.3)]" 
+                    : "border-slate-200 dark:border-slate-800 shadow-xl shadow-slate-900/5 dark:shadow-black/40 hover:shadow-[0_30px_60px_-15px_rgba(15,23,42,0.2)]"
                 }`}
                 style={{ animationDelay: `${idx * 150}ms`, animationDuration: '700ms' }}
               >
@@ -138,21 +162,19 @@ export default async function TemplatesPage() {
                   </div>
                 )}
                 
-                {/* Top: Cover Image (Contenuta interamente senza tagli) */}
-                <div className="relative w-full p-4 bg-slate-50/50 dark:bg-slate-800/30 border-b border-slate-100 dark:border-slate-800">
-                  <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden shadow-sm border border-slate-200/60 dark:border-slate-700/50 bg-slate-900 group flex items-center justify-center">
-                    <Image
-                      src={tpl.image}
-                      alt={`Mockup per ${tpl.title}`}
-                      fill
-                      unoptimized
-                      className="object-contain object-center p-2 transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent flex items-end p-4 pointer-events-none">
-                      <span className="text-[10px] font-bold tracking-[0.15em] uppercase px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-white border border-white/20">
-                        Design Base
-                      </span>
-                    </div>
+                {/* Top: Cover Image (Full Width Contain No Cropping) */}
+                <div className="relative w-full aspect-[16/10] bg-slate-950 border-b border-slate-100 dark:border-slate-800 group overflow-hidden flex items-center justify-center">
+                  <Image
+                    src={tpl.image}
+                    alt={`Mockup per ${tpl.title}`}
+                    fill
+                    unoptimized
+                    className="object-contain object-center p-2 transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent flex items-end p-4 pointer-events-none">
+                    <span className="text-[10px] font-bold tracking-[0.15em] uppercase px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-white border border-white/20">
+                      Design Custom
+                    </span>
                   </div>
                 </div>
 
@@ -167,9 +189,14 @@ export default async function TemplatesPage() {
                         <h2 className="text-2xl font-black uppercase tracking-tight text-slate-900 dark:text-white">
                           {tpl.title}
                         </h2>
-                        <span className="text-xl font-black text-indigo-600 dark:text-indigo-400">
-                          {tpl.price}
-                        </span>
+                        <div className="flex flex-col items-end">
+                          <span className="text-xl font-black text-indigo-600 dark:text-indigo-400">
+                            {tpl.price}
+                          </span>
+                          <span className="text-[9px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-tight">
+                            tasse escluse
+                          </span>
+                        </div>
                       </div>
                       <p className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mt-1">
                         Ideale per: {tpl.target}
