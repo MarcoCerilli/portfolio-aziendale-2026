@@ -32,7 +32,7 @@ export default function DemoProjectCard({ product }: DemoProjectCardProps) {
             {/* Auto screenshot fallback */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img 
-              src={`https://image.thum.io/get/width/1024/crop/768/noanimate/${product.url}`} 
+              src={product.image || '/projects/coming-soon.svg'} 
               alt={`Anteprima di ${product.name}`} 
               className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               loading="lazy"
@@ -61,7 +61,7 @@ export default function DemoProjectCard({ product }: DemoProjectCardProps) {
         <div className="flex flex-col">
           <span className="text-xs text-gray-400 uppercase tracking-wider">A partire da</span>
           <span className="text-xl font-bold text-white">
-            {product.price ? `€${product.price.toFixed(2)}` : 'Su preventivo'}
+            {product.price ? `${product.price}€` : '599€'}
           </span>
         </div>
         

@@ -19,24 +19,9 @@ interface Package {
 
 const packageList: Package[] = [
   {
-    name: "Landing Page Custom",
-    target: "Lanci & Singoli Prodotti",
-    description: "Pagina singola ad altissima conversione programmata a mano (Next.js) per massima velocità. (Dominio e tasse escluse)",
-    features: [
-      "Codice Custom ultra-veloce",
-      "Form Acquisizione Contatti",
-      "Integrazione WhatsApp",
-      "Design Esclusivo",
-    ],
-    price: "199€",
-    color: "from-sky-500 to-blue-600",
-    link: "#",
-    cta: "Acquista Subito",
-  },
-  {
     name: "Mini Sito Express",
     target: "Startup & Professionisti",
-    description: "Sito web custom fino a 3 pagine (es. Home, Servizi, Contatti) perfetto per la presenza online. (Dominio e tasse escluse)",
+    description: "Sito web custom fino a 3 pagine (es. Home, Servizi, Contatti) perfetto per la presenza online. (Dominio escluso - Regime forfettario senza IVA)",
     features: [
       "Fino a 3 Pagine Custom",
       "Setup su tuo dominio",
@@ -45,14 +30,13 @@ const packageList: Package[] = [
     ],
     price: "299€",
     color: "from-emerald-500 to-teal-600",
-    popular: true,
     link: "#",
-    cta: "Acquista Subito",
+    cta: "Chiedi un Preventivo",
   },
   {
     name: "Sito Vetrina Pro",
     target: "PMI & Artigiani",
-    description: "Sito completo multipagina con funzionalità avanzate, animazioni fluide e gestione lead. (Dominio e tasse escluse)",
+    description: "Sito completo multipagina con funzionalità avanzate, animazioni fluide e gestione lead. (Dominio escluso - Regime forfettario senza IVA)",
     features: [
       "Pagine illimitate / CMS Base",
       "Assistente AI integrato",
@@ -65,9 +49,40 @@ const packageList: Package[] = [
     cta: "Richiedi Informazioni",
   },
   {
+    name: "Web App & PWA Custom",
+    target: "Servizi, Prenotazioni & Mobile",
+    description: "Applicativo web installabile come un'App (iOS/Android) con funzionamento offline, notifiche push e gestione dati in tempo reale. (Dominio escluso - Regime forfettario senza IVA)",
+    features: [
+      "Installabile su iOS & Android (PWA)",
+      "Funzionamento Offline & Cache",
+      "Notifiche Push & Database Real-time",
+      "Area Riservata / Auth Integrata",
+    ],
+    price: "799€",
+    color: "from-amber-500 to-orange-600",
+    link: "mailto:cerillimarco15@gmail.com?subject=Richiesta%20Web%20App%20%26%20PWA%20Custom",
+    cta: "Chiedi un Preventivo",
+  },
+  {
+    name: "Landing Page Custom (Alta Conversione)",
+    target: "Lanci, Funnel & Lead Generation",
+    description: "Pagina ad altissima conversione progettata su misura insieme alla nostra strategia di marketing per trasformare visitatori in clienti paganti. (Dominio escluso - Regime forfettario senza IVA)",
+    features: [
+      "Strategia Marketing & Copy Persuasivo",
+      "Codice Custom Next.js Ultra-veloce",
+      "Form Lead Gen & Integrazione WhatsApp",
+      "Tracciamento Pixel & Analytics Pronto",
+    ],
+    price: "999€",
+    color: "from-sky-500 to-blue-600",
+    popular: true,
+    link: "mailto:cerillimarco15@gmail.com?subject=Richiesta%20Landing%20Page%20Custom%20999",
+    cta: "Chiedi una Consulenza",
+  },
+  {
     name: "E-commerce Pro",
     target: "Vendita Online",
-    description: "Negozio online custom pronto a vendere, senza commissioni mensili tipo Shopify. (Dominio e tasse escluse)",
+    description: "Negozio online custom pronto a vendere, senza commissioni mensili tipo Shopify. (Dominio escluso - Regime forfettario senza IVA)",
     features: [
       "Carrello e Checkout Custom",
       "Pagamenti Stripe/PayPal",
@@ -145,8 +160,8 @@ const Packages = () => {
         */}
         </motion.div>
 
-        {/* Grid a 2 Colonne (2x2) per carte più larghe e leggibili */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10">
+        {/* Grid per 5 pacchetti */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
           {packageList.map((pkg, index) => (
             <motion.div
               key={index}
@@ -197,7 +212,7 @@ const Packages = () => {
                   {pkg.price}
                 </div>
                 <div className="text-[10px] font-bold text-slate-400 dark:text-slate-500 italic uppercase tracking-widest leading-relaxed">
-                  * Tasse escluse <br/> Pagamento dilazionato
+                  * Regime Forfettario (senza IVA) <br/> Pagamento dilazionato
                 </div>
               </div>
 

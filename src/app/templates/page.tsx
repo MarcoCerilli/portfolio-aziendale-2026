@@ -1,5 +1,5 @@
 import React from "react";
-import { CheckCircleIcon, CodeBracketIcon, SparklesIcon, PresentationChartLineIcon, ShoppingBagIcon } from "@heroicons/react/24/solid";
+import { CheckCircleIcon, CodeBracketIcon, SparklesIcon, PresentationChartLineIcon, ShoppingBagIcon, DevicePhoneMobileIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import Image from "next/image";
 import Footer from "@/components/Footer";
@@ -8,26 +8,11 @@ import DemoProjectsGrid from "@/components/DemoProjectsGrid";
 
 const templates = [
   {
-    id: "leadmagnet-pro",
-    title: "LeadMagnet Pro",
-    target: "Coach, Consulenti, Info-produttori",
-    packageLink: "Landing Page Custom",
-    description: "Una singola pagina con una 'Hero' accattivante, perfetta per scaricare un Ebook o prenotare una chiamata tramite Calendly.",
-    features: [
-      "Alta conversione (CR > 20%)",
-      "Integrazione Calendly / Form",
-      "Sezione Recensioni (Social Proof)",
-      "Caricamento istantaneo (Next.js)"
-    ],
-    color: "from-sky-500 to-blue-600",
-    icon: PresentationChartLineIcon,
-    image: "/projects/zecchi.jpg",
-  },
-  {
     id: "freelance-hub",
     title: "Freelance Hub",
     target: "Liberi professionisti, Designer, Fotografi",
     packageLink: "Mini Sito Express",
+    price: "299€",
     description: "Un sito essenziale di 3 pagine (Home, Servizi, Contatti) con design minimale, dark mode nativa e focus sul personal branding.",
     features: [
       "Portfolio & Case Studies",
@@ -37,14 +22,14 @@ const templates = [
     ],
     color: "from-emerald-500 to-teal-600",
     icon: CodeBracketIcon,
-    popular: true,
-    image: "/projects/avvocato.png",
+    image: "/projects/idraulico.jpg",
   },
   {
     id: "local-business",
     title: "Local Business Elite",
     target: "Ristoranti, Palestre, Artigiani",
     packageLink: "Sito Vetrina Pro",
+    price: "499€",
     description: "La soluzione multipagina definitiva per attività locali. Struttura solida per dominare la SEO locale e generare fiducia.",
     features: [
       "Menu o Catalogo Servizi",
@@ -54,13 +39,49 @@ const templates = [
     ],
     color: "from-indigo-600 to-purple-600",
     icon: SparklesIcon,
-    image: "/projects/bigmama.png",
+    image: "/projects/porta-maggio.png",
+  },
+  {
+    id: "pwa-app-suite",
+    title: "PWA & Web App Suite",
+    target: "Servizi, Prenotazioni & Mobile App",
+    packageLink: "Web App & PWA Custom",
+    price: "799€",
+    description: "Applicativo web installabile come un'App (iOS/Android) con funzionamento offline, notifiche push e gestione dati in tempo reale.",
+    features: [
+      "Installabile come App su iOS & Android",
+      "Notifiche Push & Cache Offline",
+      "Area Riservata & Auth Integrata",
+      "Database Real-time & API Custom"
+    ],
+    color: "from-amber-500 to-orange-600",
+    icon: DevicePhoneMobileIcon,
+    image: "/projects/dashboard.jpg",
+  },
+  {
+    id: "leadmagnet-pro",
+    title: "LeadMagnet Pro",
+    target: "Coach, Consulenti, Lanci & Funnel",
+    packageLink: "Landing Page Custom",
+    price: "999€",
+    description: "Pagina ad Alta Conversione progettata su misura insieme alla nostra strategia di marketing per trasformare il traffico in clienti.",
+    features: [
+      "Strategia Marketing & Copy Persuasivo",
+      "Integrazione Form Lead Gen & Calendly",
+      "Tracciamenti Pixel & Analytics Pronti",
+      "Caricamento istantaneo (< 0.8s Next.js)"
+    ],
+    color: "from-sky-500 to-blue-600",
+    icon: PresentationChartLineIcon,
+    popular: true,
+    image: "/templates/landingpage.png",
   },
   {
     id: "minimal-store",
     title: "Minimal Digital Store",
     target: "Brand emergenti, Venditori digitali",
     packageLink: "E-commerce Pro",
+    price: "1.199€",
     description: "Template e-commerce per 1-20 prodotti. Velocissimo, zero commissioni mensili extra e carrello slide-over ottimizzato.",
     features: [
       "Vetrina Prodotti e Carosello",
@@ -83,14 +104,14 @@ export default async function TemplatesPage() {
       {/* Header Section */}
       <section className="max-w-7xl mx-auto px-6 mb-20 text-center relative z-10 animate-in fade-in slide-in-from-bottom-8 duration-700">
         <span className="inline-block py-1 px-3 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-sm font-bold uppercase tracking-widest mb-6 border border-indigo-200 dark:border-indigo-800">
-          Boutique Digitale
+          Soluzioni & Pacchetti Su Misura
         </span>
         <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-6 leading-tight">
-          Soluzioni Sartoriali, <br/>
-          <span className="text-indigo-600 dark:text-indigo-400">Pronto Uso</span>
+          Architetture Web <br/>
+          <span className="text-indigo-600 dark:text-indigo-400">Sviluppate Su Misura</span>
         </h1>
         <p className="max-w-2xl mx-auto text-lg text-slate-600 dark:text-slate-400 font-medium">
-          Esplora le nostre soluzioni premium. Il design di un&apos;agenzia, la velocità del codice moderno (Next.js), e l&apos;affiancamento di uno sviluppatore dedicato. Scegli il tuo punto di partenza.
+          Ogni progetto viene realizzato custom a mano (Next.js) con sviluppatore dedicato, senza CMS generici. Scegli l&apos;architettura di partenza e richiedi una consulenza strategica immediata.
         </p>
       </section>
 
@@ -117,17 +138,18 @@ export default async function TemplatesPage() {
                   </div>
                 )}
                 
-                {/* Top: Cover Image */}
-                <div className="relative w-full aspect-video bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-800 overflow-hidden group">
-                  <Image
-                    src={tpl.image}
-                    alt={`Mockup per ${tpl.title}`}
-                    fill
-                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent flex items-end p-6 pointer-events-none">
-                    <div className="text-white">
-                      <span className="text-[10px] font-bold tracking-[0.15em] uppercase px-3 py-1.5 bg-white/20 backdrop-blur-md rounded-full border border-white/20">
+                {/* Top: Cover Image (Contenuta interamente senza tagli) */}
+                <div className="relative w-full p-4 bg-slate-50/50 dark:bg-slate-800/30 border-b border-slate-100 dark:border-slate-800">
+                  <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden shadow-sm border border-slate-200/60 dark:border-slate-700/50 bg-slate-900 group flex items-center justify-center">
+                    <Image
+                      src={tpl.image}
+                      alt={`Mockup per ${tpl.title}`}
+                      fill
+                      unoptimized
+                      className="object-contain object-center p-2 transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent flex items-end p-4 pointer-events-none">
+                      <span className="text-[10px] font-bold tracking-[0.15em] uppercase px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-white border border-white/20">
                         Design Base
                       </span>
                     </div>
@@ -137,13 +159,18 @@ export default async function TemplatesPage() {
                 {/* Bottom: Info */}
                 <div className="p-8 flex flex-col flex-grow">
                   <div className="flex items-center gap-4 mb-6">
-                    <div className={`w-12 h-12 rounded-2xl bg-linear-to-br ${tpl.color} flex items-center justify-center shadow-lg text-white shrink-0`}>
+                    <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${tpl.color} flex items-center justify-center shadow-lg text-white shrink-0`}>
                       <tpl.icon className="w-6 h-6" />
                     </div>
-                    <div>
-                      <h2 className="text-2xl font-black uppercase tracking-tight text-slate-900 dark:text-white">
-                        {tpl.title}
-                      </h2>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between gap-2">
+                        <h2 className="text-2xl font-black uppercase tracking-tight text-slate-900 dark:text-white">
+                          {tpl.title}
+                        </h2>
+                        <span className="text-xl font-black text-indigo-600 dark:text-indigo-400">
+                          {tpl.price}
+                        </span>
+                      </div>
                       <p className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mt-1">
                         Ideale per: {tpl.target}
                       </p>
@@ -156,7 +183,7 @@ export default async function TemplatesPage() {
 
                   <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-5 border border-slate-100 dark:border-slate-800 mb-6">
                     <h4 className="text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white mb-3">
-                      Incluso nel Setup:
+                      Incluso nello Sviluppo:
                     </h4>
                     <ul className="space-y-2">
                       {tpl.features.map((feat) => (
@@ -168,21 +195,21 @@ export default async function TemplatesPage() {
                     </ul>
                   </div>
 
-                  {/* Demos Section Removed - Displayed in DemoProjectsGrid */}
-
                   <div className="flex flex-col sm:flex-row gap-4 items-center mt-auto pt-2">
-                    <Link
-                      href={`/#pacchetti`}
-                      className={`w-full sm:w-auto text-center px-6 py-3 rounded-xl font-black uppercase tracking-widest text-[10px] text-white shadow-lg transition-all bg-linear-to-r ${tpl.color} hover:brightness-110`}
+                    <a
+                      href={`https://wa.me/393804291043?text=${encodeURIComponent(`Ciao Marco, vorrei informazioni e consulenza per il pacchetto ${tpl.title} (${tpl.price})`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`w-full sm:w-auto text-center px-6 py-3 rounded-xl font-black uppercase tracking-widest text-[10px] text-white shadow-lg transition-all bg-gradient-to-r ${tpl.color} hover:brightness-110 flex items-center justify-center gap-2`}
                     >
-                      Richiedi Setup
-                    </Link>
+                      Richiedi Consulenza WhatsApp
+                    </a>
                     <div className="text-center sm:text-left w-full sm:w-auto">
                       <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest block">
-                        Disponibile con pacchetto
+                        Pacchetto Personalizzato
                       </span>
                       <span className="text-[11px] font-black text-slate-900 dark:text-white block mt-0.5">
-                        {tpl.packageLink}
+                        {tpl.packageLink} — {tpl.price}
                       </span>
                     </div>
                   </div>

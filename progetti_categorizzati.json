@@ -33,7 +33,7 @@
     "name": "ermannotech-frontend-shopify",
     "repo": "ermannotech-frontend-shopify",
     "categoryAndReason": "E-commerce Pro - Sviluppato per Shopify.",
-    "image": "/projects/ermannotech.jpg"
+    "image": "/projects/ermannotech.png"
   },
   {
     "name": "lacasetta",
@@ -51,7 +51,7 @@
     "name": "azienda-multiservizi",
     "repo": "AziendaMultiservizi",
     "categoryAndReason": "Sito Vetrina Pro - Presenta più servizi aziendali.",
-    "image": "/projects/quintopolo.jpg"
+    "image": "/projects/zecchi.jpg"
   },
   {
     "name": "experience-app",
@@ -64,12 +64,6 @@
     "repo": "StudioLegale",
     "categoryAndReason": "Sito Vetrina Pro - Presenta un'attività professionale.",
     "image": "/projects/legale.jpg"
-  },
-  {
-    "name": "app-newsletter-payback",
-    "repo": "app_newsletter_payback",
-    "categoryAndReason": "Landing Page Custom - Sembra una pagina di iscrizione newsletter.",
-    "image": "/projects/twitter.jpg"
   },
   {
     "name": "legal-saas",

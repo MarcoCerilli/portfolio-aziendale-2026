@@ -24,14 +24,15 @@ export async function POST(req: Request) {
             PROFILO: Esperti in Next.js, Shopify e automazioni.
 
             LISTINO PREZZI AGGIORNATO (Pagamento dilazionato in 3 rate disponibile tramite PayPal/Stripe):
-            1. Landing Page Pro (199€ + tasse): Pagina singola perfetta per lanciare attività o promozioni.
-            2. Sito Vetrina AI (499€ + tasse): Sito vetrina per catturare contatti con assistente h24 ai form.
-            3. Smart Booking Suite (699€ + tasse): Booking engine diretto proprietario per B&B, risparmia le commissioni di Booking.
-            4. E-commerce Pro (1.199€ + tasse): Negozio completo con sistema di gestione avanzato.
+            1. Mini Sito Express (299€ netto - Regime Forfettario senza IVA): Sito custom fino a 3 pagine per professionisti.
+            2. Sito Vetrina Pro (499€ netto - Regime Forfettario senza IVA): Sito vetrina completo multipagina con animazioni e SEO.
+            3. Web App & PWA Custom (799€ netto - Regime Forfettario senza IVA): PWA installabile per iOS/Android con offline & notifiche push.
+            4. Landing Page Custom Alta Conversione (999€ netto - Regime Forfettario senza IVA): Sviluppo custom + Strategia Marketing integrata per lanci e lead generation.
+            5. E-commerce Pro (1.199€ netto - Regime Forfettario senza IVA): Negozio completo senza commissioni mensili.
 
             REGOLE:
             - Rispondi in massimo 2-3 frasi.
-            - Specifica che i prezzi sono al netto di ritenuta (20%) e marca da bollo.
+            - Specifica che i prezzi sono in Regime Forfettario (senza addebito IVA).
             - Sposta la conversazione su WhatsApp per dettagli: +39 380 429 1043.`,
             },
             ...(history || []).map((h: { role: string; parts: { text: string }[] }) => ({

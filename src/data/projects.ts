@@ -1,15 +1,30 @@
+export type ProjectCategory =
+  | "Landing Page Custom"
+  | "Mini Sito Express"
+  | "Sito Vetrina Pro"
+  | "E-commerce Pro"
+  | "Sistemi & App Su Misura";
+
 export interface Project {
   title: string;
   description: string;
   tags: string[];
   link: string;
   image: string;
-  category: "Siti Aziendali & SEO" | "Sistemi & App Su Misura";
+  category: ProjectCategory;
+  price: string;
   color: string;
   status: "online" | "demo" | "soon";
 }
 
-export const categories = ["Tutti", "Siti Aziendali & SEO", "Sistemi & App Su Misura"];
+export const categories: ("Tutti" | ProjectCategory)[] = [
+  "Tutti",
+  "Landing Page Custom",
+  "Mini Sito Express",
+  "Sito Vetrina Pro",
+  "E-commerce Pro",
+  "Sistemi & App Su Misura",
+];
 
 // Badge ricolorati per sfondo chiaro (testi più scuri e bordi più definiti)
 export const getTagStyle = (tag: string) => {
@@ -35,7 +50,8 @@ export const projectsList: Project[] = [
     tags: ["Next.js", "TypeScript", "Tailwind", "Vercel", "NextAuth"],
     link: "#",
     image: "/projects/laziovela.png",
-    category: "Sistemi & App Su Misura",
+    category: "Sito Vetrina Pro",
+    price: "499€",
     color: "from-blue-600/10",
     status: "soon",
   },
@@ -45,7 +61,8 @@ export const projectsList: Project[] = [
     tags: ["Next.js", "Tailwind", "Framer Motion", "Typescript"],
     link: "https://avvocatoannafusco.it",
     image: "/projects/avvocato.png",
-    category: "Siti Aziendali & SEO",
+    category: "Sito Vetrina Pro",
+    price: "499€",
     color: "from-slate-700/10",
     status: "online",
   },
@@ -55,7 +72,8 @@ export const projectsList: Project[] = [
     tags: ["Next.js", "Tailwind", "Framer Motion"],
     link: "https://mavearredamenti.it",
     image: "/projects/mave.jpg", 
-    category: "Siti Aziendali & SEO",
+    category: "Sito Vetrina Pro",
+    price: "499€",
     color: "from-blue-500/10",
     status: "online",
   },
@@ -66,6 +84,7 @@ export const projectsList: Project[] = [
     link: "https://nextjs-dashboard-zeta-sooty-93.vercel.app/",
     image: "/projects/dashboard.jpg",
     category: "Sistemi & App Su Misura",
+    price: "Da 599€",
     color: "from-blue-600/10",
     status: "demo",
   },
@@ -75,7 +94,8 @@ export const projectsList: Project[] = [
     tags: ["Next.js", "Prisma", "Groq AI", "UploadThing"],
     link: "https://vivaiopaolabartoliterracina.it",
     image: "/projects/vivaio.jpg",
-    category: "Siti Aziendali & SEO",
+    category: "Sito Vetrina Pro",
+    price: "499€",
     color: "from-green-600/10",
     status: "online",
   },
@@ -84,8 +104,9 @@ export const projectsList: Project[] = [
     description: "Piattaforma B2B personalizzata per l'ingrosso. Semplifica gli ordini dei rivenditori con listini riservati e integrazione diretta per ordini via WhatsApp.",
     tags: ["WordPress", "ACF Pro", "B2B E-commerce", "WhatsApp API"],
     link: "https://ilquintopolosrls.it",
-    image: "/projects/quintopolo.jpg",
-    category: "Sistemi & App Su Misura",
+    image: "/projects/zecchi.jpg",
+    category: "Sito Vetrina Pro",
+    price: "499€",
     color: "from-green-700/10",
     status: "online",
   },
@@ -95,7 +116,8 @@ export const projectsList: Project[] = [
     tags: ["Next.js", "Stripe", "Prisma"],
     link: "https://modern-store-nine.vercel.app/",
     image: "/projects/ecommerce-clothing.jpg",
-    category: "Sistemi & App Su Misura",
+    category: "E-commerce Pro",
+    price: "1.199€",
     color: "from-blue-600/10",
     status: "demo",
   },
@@ -105,7 +127,8 @@ export const projectsList: Project[] = [
     tags: ["WordPress", "SEO", "Hospitality"],
     link: "https://lacasettanellemura.it",
     image: "/projects/lacasetta.png",
-    category: "Siti Aziendali & SEO",
+    category: "Sito Vetrina Pro",
+    price: "499€",
     color: "from-amber-500/10",
     status: "online",
   },
@@ -116,6 +139,7 @@ export const projectsList: Project[] = [
     link: "https://gestioneturni-b1b21.web.app/",
     image: "/projects/turni.jpg",
     category: "Sistemi & App Su Misura",
+    price: "Da 599€",
     color: "from-orange-500/10",
     status: "demo",
   },
@@ -123,11 +147,12 @@ export const projectsList: Project[] = [
     title: "Idraulico Iona Bros",
     description: "Web App Next.js ottimizzata per il pronto intervento. Integra l'AI per gestire le richieste dei clienti in tempo reale.",
     tags: ["Next.js", "AI Integration", "Local SEO"],
-    link: "#",
+    link: "https://iona-bros-idraulica.vercel.app/",
     image: "/projects/idraulico.jpg",
-    category: "Siti Aziendali & SEO",
+    category: "Sito Vetrina Pro",
+    price: "499€",
     color: "from-blue-500/10",
-    status: "soon",
+    status: "online",
   },
   {
     title: "Studio Contabile Cittarelli",
@@ -135,7 +160,8 @@ export const projectsList: Project[] = [
     tags: ["Next.js", "Tailwind", "FinTech"],
     link: "#",
     image: "/projects/contabile.jpg",
-    category: "Siti Aziendali & SEO",
+    category: "Sito Vetrina Pro",
+    price: "499€",
     color: "from-emerald-500/10",
     status: "soon",
   },
@@ -146,6 +172,7 @@ export const projectsList: Project[] = [
     link: "#",
     image: "/projects/gym.jpg",
     category: "Sistemi & App Su Misura",
+    price: "Da 599€",
     color: "from-purple-500/10",
     status: "demo",
   },
@@ -155,7 +182,8 @@ export const projectsList: Project[] = [
     tags: ["Next.js", "Firebase", "TypeScript", "Shadcn UI"],
     link: "https://zecchimultiservizi.it",
     image: "/projects/zecchi.jpg",
-    category: "Sistemi & App Su Misura",
+    category: "Landing Page Custom",
+    price: "199€",
     color: "from-purple-500/10",
     status: "online",
   },
@@ -165,7 +193,8 @@ export const projectsList: Project[] = [
     tags: ["Next.js", "Tailwind CSS", "TypeScript", "Framer Motion"],
     link: "https://li-costruzionisrl.it",
     image: "/projects/li-costruzioni.jpg",
-    category: "Sistemi & App Su Misura",
+    category: "Sito Vetrina Pro",
+    price: "499€",
     color: "from-blue-500/10",
     status: "online",
   },
@@ -175,7 +204,8 @@ export const projectsList: Project[] = [
     tags: ["Next.js", "Shopify", "TypeScript", "Tailwind CSS", "Vercel"],
     link: "https://ermannotech.com",
     image: "/projects/ermannotech.png",
-    category: "Sistemi & App Su Misura",
+    category: "E-commerce Pro",
+    price: "1.199€",
     color: "from-blue-500/10",
     status: "online",
   },
@@ -185,7 +215,8 @@ export const projectsList: Project[] = [
     tags: ["Next.js", "Tailwind CSS", "iCal Sync", "Nodemailer"],
     link: "https://bigmamaterracina.it",
     image: "/projects/bigmama.png",
-    category: "Sistemi & App Su Misura",
+    category: "Sito Vetrina Pro",
+    price: "499€",
     color: "from-rose-500/10",
     status: "online",
   },
@@ -195,7 +226,8 @@ export const projectsList: Project[] = [
     tags: ["Next.js", "Tailwind CSS", "iCal Sync", "Nodemailer"],
     link: "https://portamaggioterracina.it",
     image: "/projects/porta-maggio.png",
-    category: "Sistemi & App Su Misura",
+    category: "Mini Sito Express",
+    price: "299€",
     color: "from-amber-500/10",
     status: "online",
   },

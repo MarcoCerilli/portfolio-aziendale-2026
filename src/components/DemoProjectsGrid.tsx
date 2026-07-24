@@ -26,7 +26,7 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
             className="absolute inset-0 cursor-pointer group/preview block"
           >
             <Image
-              src={product.image || `https://image.thum.io/get/width/1024/crop/768/noanimate/${product.url}`}
+              src={product.image || '/projects/coming-soon.svg'}
               alt={`Screenshot di ${product.name}`}
               fill
               unoptimized
@@ -80,7 +80,7 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
               A partire da
             </span>
             <span className="text-lg font-black text-slate-900 dark:text-white">
-              {product.price ? `€${product.price.toFixed(2)}` : 'Su preventivo'}
+              {product.price ? `${product.price}€` : '599€'}
             </span>
           </div>
 

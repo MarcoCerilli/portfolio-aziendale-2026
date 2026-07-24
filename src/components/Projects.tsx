@@ -19,7 +19,7 @@ function ProjectCard({ project }: { project: Project }) {
     >
       {/* AREA FOTO / PREVIEW */}
       <div className="relative w-full p-3 bg-slate-50/50 dark:bg-slate-800/30 border-b border-slate-100 dark:border-slate-800">
-        <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-sm border border-slate-200/60 dark:border-slate-700/50 z-0 bg-slate-100 dark:bg-slate-900">
+        <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden shadow-sm border border-slate-200/60 dark:border-slate-700/50 z-0 bg-slate-900 flex items-center justify-center">
           
           <a
             href={project.link !== "#" ? project.link : undefined}
@@ -32,7 +32,7 @@ function ProjectCard({ project }: { project: Project }) {
               alt={project.title}
               fill
               unoptimized
-              className="object-cover object-top transition-transform duration-700 group-hover/preview:scale-105"
+              className="object-contain object-top p-1 transition-transform duration-700 group-hover/preview:scale-105"
             />
             
             {/* Play Button Overlay */}
@@ -53,12 +53,12 @@ function ProjectCard({ project }: { project: Project }) {
       {/* CONTENUTO */}
       <div className="p-4 md:p-5 flex flex-col grow">
         <div className="mb-3">
-          <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-tight mb-1">
-            {project.title}
-          </h3>
-          <span className="text-indigo-600 dark:text-indigo-400 text-[10px] font-bold uppercase tracking-[0.1em]">
+          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200/80 dark:border-indigo-800/50 mb-2">
             {project.category}
           </span>
+          <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-tight">
+            {project.title}
+          </h3>
         </div>
 
         <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-4 font-medium line-clamp-3">

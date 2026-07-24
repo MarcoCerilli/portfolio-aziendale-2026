@@ -80,36 +80,59 @@ export async function getProjectEnvVars(project: VercelProject): Promise<VercelE
 }
 
 import categorizedProjects from '../../progetti_categorizzati.json';
+import { projectsList } from '@/data/projects';
 
 export async function getDemoProducts(): Promise<DemoProduct[]> {
   const projects = await getVercelProjects();
   const demoProducts: DemoProduct[] = [];
 
+  const allowedDemoKeywords = ['experience', 'fatturazione', 'ama', 'modernstore', 'prostore', 'englishteacher', 'english'];
+
   // Fetch env vars for all projects in parallel
   await Promise.all(
     projects.map(async (project) => {
+      const pNameLower = project.name.toLowerCase().replace(/[-_]/g, '');
+      if (pNameLower.includes('payback')) return;
+
+      const isAllowedDemo = allowedDemoKeywords.some(k => pNameLower.includes(k));
+
+      // Exclude ANY project that exists in homepage projectsList unless explicitly allowed demo
+      const inPortfolioList = projectsList.some((p) => {
+        const pTitle = p.title.toLowerCase().replace(/[-_\s]/g, '');
+        return pNameLower.includes(pTitle) || pTitle.includes(pNameLower);
+      });
+
+      const inCategorized = categorizedProjects.some((cp) => {
+        const cpName = cp.name.toLowerCase().replace(/[-_]/g, '');
+        const cpRepo = cp.repo.toLowerCase().replace(/[-_]/g, '');
+        return pNameLower === cpName || pNameLower === cpRepo;
+      });
+
+      if ((inPortfolioList || inCategorized) && !isAllowedDemo) return;
+
       const envs = await getProjectEnvVars(project);
       
-      // Look for DEMO_CATEGORY to identify if it's a demo product intended for the portfolio
-      const categoryEnv = envs.find((e) => e.key === 'DEMO_CATEGORY');
-      let category = categoryEnv ? categoryEnv.value : null;
-
-      // Fallback: se non c'è la variabile d'ambiente, proviamo a prendere la categoria generata dall'AI
-      const aiProject = categorizedProjects.find(p => p.name === project.name);
-      if (!category && aiProject && aiProject.categoryAndReason) {
-        // Es: "Siti Aziendali & SEO - Semplice sito..." -> prendiamo solo la prima parte
-        category = aiProject.categoryAndReason.split(' - ')[0].trim();
+      let category = envs.find((e) => e.key === 'DEMO_CATEGORY')?.value || null;
+      if (!category) {
+        if (pNameLower.includes('experience')) category = 'Mini Sito Express';
+        else if (pNameLower.includes('fatturazione')) category = 'Web App & PWA Custom';
+        else if (pNameLower.includes('ama') || pNameLower.includes('english')) category = 'Sito Vetrina Pro';
+        else if (pNameLower.includes('modernstore') || pNameLower.includes('prostore')) category = 'E-commerce Pro';
       }
-      
-      if (category) {
+
+      if (category || isAllowedDemo) {
         const priceEnv = envs.find((e) => e.key === 'DEMO_PRICE');
-        const imageEnv = envs.find((e) => e.key === 'DEMO_IMAGE');
         const featuresEnv = envs.find((e) => e.key === 'DEMO_FEATURES');
 
-        // Fallback per l'immagine dal file json
-        let finalImage = imageEnv && imageEnv.value ? imageEnv.value : null;
-        if (!finalImage && aiProject && 'image' in aiProject) {
-          finalImage = (aiProject as { image?: string }).image || null;
+        // Impostiamo senza foto (coming-soon.svg) per ora come richiesto
+        const finalImage = '/projects/coming-soon.svg';
+        
+        let numericPrice: number | null = priceEnv && priceEnv.value ? parseFloat(priceEnv.value) : null;
+        if (!numericPrice) {
+          if (category === 'Mini Sito Express') numericPrice = 299;
+          else if (category === 'Sito Vetrina Pro') numericPrice = 499;
+          else if (category === 'Web App & PWA Custom') numericPrice = 799;
+          else if (category === 'E-commerce Pro') numericPrice = 1199;
         }
 
         // Determine the live URL
@@ -124,17 +147,67 @@ export async function getDemoProducts(): Promise<DemoProduct[]> {
 
         demoProducts.push({
           id: project.id,
-          // Format the name nicely if possible (e.g. "my-project" -> "My Project")
           name: project.name.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '),
           url,
-          category: category,
-          price: priceEnv && priceEnv.value ? parseFloat(priceEnv.value) : null,
+          category: category || 'Sito Vetrina Pro',
+          price: numericPrice,
           image: finalImage,
           features: featuresEnv && featuresEnv.value ? featuresEnv.value.split(',').map(f => f.trim()) : [],
         });
       }
     })
   );
+
+  // Lista di fallbacks per i progetti DEMO richiesti senza foto (coming-soon.svg)
+  if (demoProducts.length === 0) {
+    return [
+      {
+        id: "demo-experience-app",
+        name: "Experience App",
+        url: "https://experience-app.vercel.app",
+        category: "Mini Sito Express",
+        price: 299,
+        image: "/projects/coming-soon.svg",
+        features: ["Applicazione Web Interattiva", "Interfaccia Utente Reattiva", "Design Moderno"]
+      },
+      {
+        id: "demo-english-teacher",
+        name: "English Teacher Website",
+        url: "https://english-teacher-website.vercel.app",
+        category: "Sito Vetrina Pro",
+        price: 499,
+        image: "/projects/coming-soon.svg",
+        features: ["Piattaforma Corsi & Lezioni", "Prenotazione Calendario", "Sezione Testimonianze"]
+      },
+      {
+        id: "demo-fatturazione-elettronica",
+        name: "Fatturazione Elettronica",
+        url: "https://fatturazione-elettronica.vercel.app",
+        category: "Web App & PWA Custom",
+        price: 799,
+        image: "/projects/coming-soon.svg",
+        features: ["Gestione Fatture e Clienti", "Esportazione Dati XML/PDF", "Dashboard Contabile"]
+      },
+      {
+        id: "demo-onoranze-ama",
+        name: "Onoranze AMA",
+        url: "https://onoranze-ama.vercel.app",
+        category: "Sito Vetrina Pro",
+        price: 499,
+        image: "/projects/coming-soon.svg",
+        features: ["Catalogo Servizi Completo", "Form Contatto Inizio H24", "Ottimizzazione SEO Locale"]
+      },
+      {
+        id: "demo-modern-store",
+        name: "ModernStore E-Commerce",
+        url: "https://modernstore.vercel.app",
+        category: "E-commerce Pro",
+        price: 1199,
+        image: "/projects/coming-soon.svg",
+        features: ["Carrello e Checkout Stripe", "Gestione Inventario Prodotti", "Fast Performance Next.js"]
+      }
+    ];
+  }
 
   // Sort alphabetically by name
   return demoProducts.sort((a, b) => a.name.localeCompare(b.name));

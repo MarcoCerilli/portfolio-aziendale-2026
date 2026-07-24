@@ -80,7 +80,7 @@ const Header = () => {
             className="text-sm font-black uppercase tracking-widest text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300 transition-colors flex items-center gap-2 bg-indigo-50 dark:bg-indigo-900/30 px-4 py-2 rounded-full border border-indigo-200 dark:border-indigo-800"
           >
             <SparklesIcon className="w-4 h-4" />
-            Shop Templates
+            Soluzioni & Demo
           </Link>
           
           <div className="flex items-center gap-4">
