@@ -84,7 +84,7 @@ export async function getDemoProducts(): Promise<DemoProduct[]> {
     {
       id: "demo-experience-app",
       name: "Experience App PWA",
-      url: "https://experience-app.vercel.app",
+      url: "https://experience-app-pi.vercel.app/",
       category: "Web App & PWA Custom",
       price: 799,
       image: "/projects/coming-soon.svg",
@@ -105,7 +105,7 @@ export async function getDemoProducts(): Promise<DemoProduct[]> {
       url: "https://fatturazione-elettronica.vercel.app",
       category: "Web App & PWA Custom",
       price: 799,
-      image: "/projects/coming-soon.svg",
+      image: "/templates/fattura.png",
       features: ["Gestione Fatture e Clienti", "Esportazione Dati XML/PDF", "Dashboard Contabile"]
     },
     {

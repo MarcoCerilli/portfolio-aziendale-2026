@@ -155,17 +155,6 @@ export const projectsList: Project[] = [
     status: "online",
   },
   {
-    title: "Studio Contabile Cittarelli",
-    description: "Piattaforma per consulenza fiscale. Design moderno focalizzato sulla conversione e l'analisi smart dei documenti.",
-    tags: ["Next.js", "Tailwind", "FinTech"],
-    link: "#",
-    image: "/projects/contabile.jpg",
-    category: "Sito Vetrina Pro",
-    price: "499€",
-    color: "from-emerald-500/10",
-    status: "soon",
-  },
-  {
     title: "Gym Management SaaS",
     description: "Software gestionale cloud per centri sportivi. Automazione della segreteria e gestione abbonamenti (SaaS).",
     tags: ["Laravel", "Docker", "SaaS"],
