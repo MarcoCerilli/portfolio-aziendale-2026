@@ -74,12 +74,15 @@ const Hero = () => {
               Vedi i Progetti
               <ArrowRightIcon className="w-4 h-4" />
             </a>
-            <a
-              href="#contatti"
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                window.dispatchEvent(new Event("open-chat"));
+              }}
               className="w-full sm:w-auto flex items-center justify-center px-8 py-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white font-bold text-sm uppercase tracking-widest rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 hover:scale-105 transition-all"
             >
               Contattami
-            </a>
+            </button>
           </motion.div>
         </div>
 

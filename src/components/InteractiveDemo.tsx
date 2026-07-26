@@ -5,6 +5,7 @@ import { DemoProduct } from "@/types/vercel";
 import { FiExternalLink, FiMonitor, FiSmartphone, FiPlay } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 interface InteractiveDemoProps {
   product: DemoProduct;
@@ -71,11 +72,12 @@ export default function InteractiveDemo({ product }: InteractiveDemoProps) {
                 onClick={() => setIsInteractive(true)}
               >
                 {/* Fallback Image / Screenshot */}
-                <img 
+                <Image 
                   src={product.image || `https://image.thum.io/get/width/1024/crop/768/noanimate/${product.url}`}
                   alt={`Screenshot di ${product.name}`}
-                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                  loading="lazy"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                 />
                 
                 {/* Play Button Overlay */}

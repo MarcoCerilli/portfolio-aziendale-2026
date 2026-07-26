@@ -6,11 +6,12 @@ import Image from "next/image";
 import Footer from "@/components/Footer";
 import { getDemoProducts } from "@/lib/vercel";
 import DemoProjectsGrid from "@/components/DemoProjectsGrid";
+import ContactButton from "@/components/ContactButton";
 
 export const metadata: Metadata = {
-  title: "Soluzioni Web Su Misura & PWA | Marco Cerilli - Terracina & Latina",
-  description: "Pacchetti web e soluzioni custom sviluppate a mano a Terracina, Latina e provincia. Landing page ad alta conversione, PWA, Gestionali iCal e E-commerce in Next.js.",
-  keywords: ["sviluppatore web terracina", "realizzazione siti web latina", "pwa terracina", "landing page latina", "sviluppatore web provincia latina"],
+  title: "Soluzioni Web Su Misura & PWA | Marco Cerilli - Terracina, Latina e Provincia",
+  description: "Pacchetti web e soluzioni custom sviluppate a mano a Terracina, Latina e provincia. Landing page ad alta conversione, PWA, Gestionali e E-commerce in Next.js.",
+  keywords: ["sviluppatore web terracina", "realizzazione siti web latina e provincia", "pwa terracina latina", "landing page latina", "sviluppatore web provincia latina", "creazione e-commerce terracina", "web agency latina e provincia"],
 };
 
 const templates = [
@@ -223,14 +224,7 @@ export default async function TemplatesPage() {
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-4 items-center mt-auto pt-2">
-                    <a
-                      href={`https://wa.me/393804291043?text=${encodeURIComponent(`Ciao Marco, vorrei informazioni e consulenza per il pacchetto ${tpl.title} (${tpl.price})`)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`w-full sm:w-auto text-center px-6 py-3 rounded-xl font-black uppercase tracking-widest text-[10px] text-white shadow-lg transition-all bg-gradient-to-r ${tpl.color} hover:brightness-110 flex items-center justify-center gap-2`}
-                    >
-                      Richiedi Consulenza WhatsApp
-                    </a>
+                    <ContactButton color={tpl.color} label="Richiedi Consulenza WhatsApp" />
                     <div className="text-center sm:text-left w-full sm:w-auto">
                       <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest block">
                         Pacchetto Personalizzato

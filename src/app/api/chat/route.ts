@@ -5,56 +5,66 @@ export async function POST(req: Request) {
     const { message, history } = await req.json();
     const apiKey = process.env.GROQ_API_KEY;
 
-    if (!apiKey) return NextResponse.json({ text: "API Key mancante." });
+    if (!apiKey) {
+      return NextResponse.json({ text: "Servizio non disponibile. WhatsApp: +39 380 429 1043" });
+    }
 
-    const response = await fetch(
-      "https://api.groq.com/openai/v1/chat/completions",
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
-            {
-              role: "system",
-              content: `Sei l'assistente ufficiale di M Solutions IT. 
-            PROFILO: Esperti in Next.js, Shopify e automazioni.
+    const systemInstruction = `Sei l'assistente IA ufficiale di Marco Cerilli (M Solutions), uno Sviluppatore Web freelance di base a Terracina e Latina, specializzato in Next.js, Vercel e Shopify.
+    Il tuo compito è fornire informazioni chiare, cordiali e coincise. NON INVENTARE INFORMAZIONI (no allucinazioni).
 
-            LISTINO PREZZI AGGIORNATO (Pagamento dilazionato in 3 rate disponibile tramite PayPal/Stripe):
-            1. Mini Sito Express (299€ - Tasse escluse, Regime Forfettario senza IVA): Sito custom fino a 3 pagine per professionisti.
-            2. Sito Vetrina Pro (499€ - Tasse escluse, Regime Forfettario senza IVA): Sito vetrina completo multipagina con animazioni e SEO.
-            3. Web App & PWA Custom (799€ - Tasse escluse, Regime Forfettario senza IVA): PWA installabile per iOS/Android con offline & notifiche push.
-            4. Landing Page Custom Alta Conversione (999€ - Tasse escluse, Regime Forfettario senza IVA): Sviluppo custom + Strategia Marketing integrata.
-            5. E-commerce Pro (1.199€ - Tasse escluse, Regime Forfettario senza IVA): Negozio completo senza commissioni mensili.
+    INFORMAZIONI UTILI:
+    - Marco Cerilli realizza siti web performanti, eCommerce e Web App su misura.
+    - Pacchetto Starter Landing: 120€ (Tasse escluse). Include Next.js 15, Mobile-First, WhatsApp Direct, Hosting.
+    - Pacchetto Business Suite (Il più richiesto): 350€ (Tasse escluse). Include 5 pagine custom, AI Gemini Integrata, SEO Gold, Premium Dark UI.
+    - Pacchetto Shopify Store: 450€ (Tasse escluse). E-commerce, Stripe & PayPal, Gestione Ordini, Post-lancio 30gg.
+    - Tutte le tariffe si intendono Tasse escluse.
 
-            REGOLE:
-            - Rispondi in massimo 2-3 frasi.
-            - Specifica che tutti i prezzi s'intendono tasse escluse (Regime Forfettario senza addebito IVA).
-            - Sposta la conversazione su WhatsApp per dettagli: +39 380 429 1043.`,
-            },
-            ...(history || []).map((h: { role: string; parts: { text: string }[] }) => ({
-              role: h.role === "model" ? "assistant" : "user",
-              content: h.parts?.[0]?.text || "",
-            })),
-            { role: "user", content: message },
-          ],
-          max_tokens: 150,
-          temperature: 0.7,
-        }),
-      }
-    );
+    REGOLE DI RISPOSTA:
+    - Sii professionale ma amichevole.
+    - Rispondi in italiano in modo breve (max 2-3 frasi).
+    - Se l'utente vuole un preventivo personalizzato, consulenza o altre richieste complesse, invitalo calorosamente a contattare Marco su WhatsApp al numero: +39 380 429 1043.`;
+
+    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: "llama-3.3-70b-versatile",
+        messages: [
+          {
+            role: "system",
+            content: systemInstruction
+          },
+          ...(history || []).map((h: any) => ({
+            role: h.role === "model" ? "assistant" : "user",
+            content: h.parts ? h.parts[0].text : h.content // Supporto retrocompatibile per frontend
+          })),
+          { role: "user", content: message }
+        ],
+        max_tokens: 150,
+        temperature: 0.3 // Temperatura bassa per limitare le allucinazioni
+      }),
+    });
 
     const data = await response.json();
+    
     if (data.error) throw new Error(data.error.message);
 
     return NextResponse.json({ text: data.choices[0].message.content });
-  } catch (error: unknown) {
-    console.error("Errore Groq:", error instanceof Error ? error.message : error);
-    return NextResponse.json({
-      text: "Servizio momentaneamente occupato. Scrivimi su WhatsApp: +39 380 429 1043",
+
+  } catch (error: any) {
+    console.error("Errore API Chat:", error.message);
+
+    if (error.message?.includes("429")) {
+      return NextResponse.json({
+        text: "Riceviamo molte richieste! Per favore, scrivimi direttamente su WhatsApp (+39 380 429 1043).",
+      });
+    }
+
+    return NextResponse.json({ 
+      text: "Servizio momentaneamente occupato. Scrivimi su WhatsApp: +39 380 429 1043" 
     });
   }
 }

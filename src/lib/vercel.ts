@@ -87,7 +87,7 @@ export async function getDemoProducts(): Promise<DemoProduct[]> {
       url: "https://experience-app-pi.vercel.app/",
       category: "Web App & PWA Custom",
       price: 799,
-      image: "/projects/coming-soon.svg",
+      image: "/templates/experience.png",
       features: ["PWA Installabile (iOS/Android)", "Notifiche Push & Offline Cache", "Esperienza Utente App Native"]
     },
     {

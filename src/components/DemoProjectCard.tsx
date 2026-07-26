@@ -8,7 +8,7 @@ interface DemoProjectCardProps {
 
 export default function DemoProjectCard({ product }: DemoProjectCardProps) {
   return (
-    <div className="group relative flex flex-col justify-between overflow-hidden rounded-2xl bg-white/5 p-6 backdrop-blur-lg border border-white/10 transition-all duration-300 hover:border-blue-500/50 hover:bg-white/10 hover:shadow-2xl hover:shadow-blue-500/20">
+    <div className="w-[280px] sm:w-[320px] shrink-0 group relative flex flex-col justify-between overflow-hidden rounded-2xl bg-white/5 p-6 backdrop-blur-lg border border-white/10 transition-all duration-300 hover:border-blue-500/50 hover:bg-white/10 hover:shadow-2xl hover:shadow-blue-500/20">
       
       {/* Category Badge */}
       <div className="absolute top-4 right-4 flex items-center gap-1.5 rounded-full bg-blue-500/20 px-3 py-1 text-xs font-medium text-blue-300 border border-blue-500/30">

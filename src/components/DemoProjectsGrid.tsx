@@ -166,18 +166,20 @@ export default function DemoProjectsGrid({ products }: DemoProjectsGridProps) {
         </div>
       </div>
 
-      <motion.div
-        ref={carouselRef}
-        className="cursor-grab active:cursor-grabbing overflow-x-auto no-scrollbar w-full py-8 -my-4"
-        whileTap={{ cursor: "grabbing" }}
-      >
+      {/* Contenitore con overflow-hidden per eliminare la scrollbar ed effetto sospeso (più padding) */}
+      <div className="w-full overflow-visible py-16 -my-12 relative mask-image-gradient">
         <motion.div
-          drag={carouselWidth > 0 ? "x" : false}
-          dragConstraints={{ right: 0, left: -carouselWidth }}
-          animate={{ x: carouselWidth > 0 ? [0, -carouselWidth] : 0 }}
-          transition={{ repeat: Infinity, ease: "linear", duration: 180, repeatType: "reverse" }}
-          className="flex gap-6 md:gap-8 py-4 px-2"
+          ref={carouselRef}
+          className="cursor-grab active:cursor-grabbing w-full"
+          whileTap={{ cursor: "grabbing" }}
         >
+          <motion.div
+            drag={carouselWidth > 0 ? "x" : false}
+            dragConstraints={{ right: 0, left: -carouselWidth }}
+            animate={{ x: carouselWidth > 0 ? [0, -carouselWidth] : 0 }}
+            transition={{ repeat: Infinity, ease: "linear", duration: 60, repeatType: "reverse" }}
+            className="flex gap-6 md:gap-10 px-4 md:px-8 w-max"
+          >
           <AnimatePresence mode="popLayout">
             {filteredProducts.map((product) => (
               <DemoProjectCard key={product.id} product={product} />
@@ -185,6 +187,7 @@ export default function DemoProjectsGrid({ products }: DemoProjectsGridProps) {
           </AnimatePresence>
         </motion.div>
       </motion.div>
+      </div>
     </section>
   );
 }

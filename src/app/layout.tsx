@@ -3,45 +3,27 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import FloatingContact from "@/components/FloatingContact";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
 });
 
-import { ThemeProvider } from "@/components/ThemeProvider";
-
 export const metadata: Metadata = {
   title: "Marco Cerilli | Sviluppatore Web Terracina, Latina e Provincia",
   description: "Sviluppatore Web freelance a Terracina e Latina. Realizzazione siti web performanti, eCommerce e Web App su misura in Next.js e React.",
   keywords: ["sviluppatore web terracina", "realizzazione siti web latina", "web agency terracina", "creazione siti web", "next.js", "seo latina", "sviluppatore web freelance"],
-  authors: [{ name: "Marco Cerilli" }],
-  creator: "Marco Cerilli",
-  publisher: "Marco Cerilli",
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  alternates: {
-    canonical: "https://marcocerilli.it",
-  },
   openGraph: {
     title: "Marco Cerilli | Sviluppatore Web Terracina, Latina e Provincia",
     description: "Sviluppatore Web freelance a Terracina e Latina. Realizzazione siti web performanti, eCommerce e Web App su misura in Next.js.",
     type: "website",
     locale: "it_IT",
-    url: "https://marcocerilli.it", 
+    url: "https://marcocerilli.com", 
     siteName: "Marco Cerilli Portfolio",
     images: [
       {
-        url: "https://marcocerilli.it/og-image.jpg",
+        url: "https://marcocerilli.com/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Marco Cerilli - Sviluppatore Web",
@@ -52,37 +34,39 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Marco Cerilli | Sviluppatore Web Terracina",
     description: "Sviluppatore Web freelance a Terracina e Latina. Realizzazione siti web performanti in Next.js e React.",
-    images: ["https://marcocerilli.it/og-image.jpg"],
-  },
-  icons: {
-    icon: [
-      { url: "/icon-48x48.png", sizes: "48x48", type: "image/png" },
-      { url: "/icon-96x96.png", sizes: "96x96", type: "image/png" },
-      { url: "/icon-144x144.png", sizes: "144x144", type: "image/png" },
-      { url: "/icon-192x192.png", sizes: "192x192", type: "image/png" },
-      { url: "/icon-512x512.png", sizes: "512x512", type: "image/png" },
-    ],
-    shortcut: "/favicon.ico",
-    apple: [
-      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
-    ],
+    images: ["https://marcocerilli.com/og-image.jpg"],
   },
 };
 
-// src/app/layout.tsx
-import CookieBanner from "@/components/CookieBanner";
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Marco Cerilli - Sviluppatore Web",
+    "image": "https://marcocerilli.com/og-image.jpg",
+    "url": "https://marcocerilli.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Terracina",
+      "addressRegion": "LT",
+      "addressCountry": "IT"
+    },
+    "description": "Sviluppatore Web freelance a Terracina e Latina. Realizzazione siti web performanti, eCommerce e Web App su misura in Next.js e React.",
+  };
+
   return (
-    <html lang="it" className={`${inter.variable} scroll-smooth`}>
-      {/* Aggiunto h-full e rimosso eventuali margini di default */}
-      <body className="font-sans bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased selection:bg-indigo-500/30 min-h-screen transition-colors duration-300">
+    <html lang="it" className={`${inter.variable} scroll-smooth overflow-x-hidden`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <body className="font-sans bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased selection:bg-indigo-500/30 min-h-screen transition-colors duration-300 overflow-x-hidden">
         <ThemeProvider>
           <Header />
-          {/* Rimosso <main> qui perché lo hai già in page.tsx, evitiamo doppi contenitori */}
           {children}
           <FloatingContact />
-          <CookieBanner />
         </ThemeProvider>
       </body>
     </html>
