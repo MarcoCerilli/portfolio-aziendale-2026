@@ -93,7 +93,7 @@ export async function getDemoProducts(): Promise<DemoProduct[]> {
     {
       id: "demo-english-teacher",
       name: "English Teacher Website",
-      url: "https://english-teacher-website.vercel.app",
+      url: "https://english-teacher-website-lemon.vercel.app",
       category: "Sito Vetrina Pro",
       price: 499,
       image: "/templates/english.png",
