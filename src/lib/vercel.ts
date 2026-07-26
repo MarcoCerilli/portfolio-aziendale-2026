@@ -102,7 +102,7 @@ export async function getDemoProducts(): Promise<DemoProduct[]> {
     {
       id: "demo-fatturazione-elettronica",
       name: "Fatturazione Elettronica",
-      url: "https://fatturazione-elettronica.vercel.app",
+      url: "https://sdi-invoice-generator.vercel.app/",
       category: "Web App & PWA Custom",
       price: 799,
       image: "/templates/fattura.png",
