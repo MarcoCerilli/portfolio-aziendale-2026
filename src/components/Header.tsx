@@ -134,7 +134,18 @@ const Header = () => {
                 </motion.div>
               ))}
 
-              <motion.div variants={linkVariants} className="pt-4">
+              <motion.div variants={linkVariants} className="pt-2 pb-4">
+                <Link
+                  href="/templates"
+                  onClick={() => setIsOpen(false)}
+                  className="text-sm font-black uppercase tracking-widest text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300 transition-colors flex items-center gap-2 justify-center bg-indigo-50 dark:bg-indigo-900/30 px-6 py-3 rounded-full border border-indigo-200 dark:border-indigo-800"
+                >
+                  <SparklesIcon className="w-5 h-5" />
+                  Soluzioni & Demo
+                </Link>
+              </motion.div>
+
+              <motion.div variants={linkVariants} className="pt-2">
                 <Link
                   href="/#contatti"
                   onClick={() => setIsOpen(false)}
