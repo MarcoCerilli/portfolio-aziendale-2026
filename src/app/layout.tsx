@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import FloatingContact from "@/components/FloatingContact";
+import ScrollToTop from "@/components/ScrollToTop";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
 const inter = Inter({
@@ -67,6 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Header />
           {children}
           <FloatingContact />
+          <ScrollToTop />
         </ThemeProvider>
       </body>
     </html>
