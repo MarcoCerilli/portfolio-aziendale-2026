@@ -35,14 +35,14 @@ const Counter = ({
 
 const stats = [
   {
-    value: 10,
+    value: 15,
     label: "Progetti Conclusi",
     suffix: "+",
     // Gradienti leggermente più saturi per risaltare sul bianco
     color: "from-blue-600 to-indigo-700",
   },
   {
-    value: 99,
+    value: 100,
     label: "Soddisfazione Cliente",
     suffix: "%",
     color: "from-emerald-500 to-teal-600",

@@ -6,7 +6,7 @@ import { CheckCircleIcon } from "@heroicons/react/24/solid";
 const packageList = [
   {
     name: "Starter Landing",
-    price: "120",
+    price: "299",
     description: "Presenza online veloce, moderna e d'impatto.",
     features: ["Next.js 15 Speed", "Mobile-First", "WhatsApp Direct", "Hosting Incluso"],
     color: "from-emerald-400 to-teal-500",
@@ -14,7 +14,7 @@ const packageList = [
   },
   {
     name: "Business Suite",
-    price: "350",
+    price: "499",
     description: "Sito aziendale completo con tecnologia AI Gemini.",
     features: ["5 Pagine Custom", "AI Gemini Integrata", "SEO Gold", "Premium Dark UI"],
     color: "from-indigo-500 to-purple-500",
@@ -23,7 +23,7 @@ const packageList = [
   },
   {
     name: "Shopify Store",
-    price: "450",
+    price: "1.199",
     description: "E-commerce pronto alla vendita, sicuro e veloce.",
     features: ["Setup Shopify/Woo", "Stripe & PayPal", "Gestione Ordini", "Post-lancio 30gg"],
     color: "from-rose-500 to-red-600",
