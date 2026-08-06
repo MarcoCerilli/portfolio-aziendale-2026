@@ -19,7 +19,7 @@ const templates = [
     id: "freelance-hub",
     title: "Freelance Hub",
     target: "Liberi professionisti, Designer, Fotografi",
-    packageLink: "Mini Sito Express",
+    packageLink: "Starter Landing",
     price: "449€",
     description: "Un sito essenziale di 3 pagine (Home, Servizi, Contatti) con design minimale, dark mode nativa e focus sul personal branding.",
     features: [
@@ -37,7 +37,7 @@ const templates = [
     title: "Local Business Elite (Standard)",
     target: "Ristoranti, Palestre, Artigiani & Attività Locali",
     packageLink: "Sito Vetrina Pro",
-    price: "749€",
+    price: "499€",
     description: "La soluzione multipagina definitiva per attività locali. Struttura solida per dominare la SEO locale, catalogo servizi e form contatti.",
     features: [
       "Menu o Catalogo Servizi",
@@ -53,8 +53,8 @@ const templates = [
     id: "hospitality-booking-pro",
     title: "Hospitality & Booking Pro",
     target: "B&B, Case Vacanze, Strutture Ricettive & Noleggi",
-    packageLink: "Web App & PWA Custom",
-    price: "1.799€",
+    packageLink: "Hotel Engine Pro",
+    price: "1.299€",
     description: "Piattaforma di prenotazione avanzata per B&B e case vacanze con sincronizzazione iCal (Airbnb/Booking), mini gestionale CRM Admin e calendario in tempo reale.",
     features: [
       "Sincronizzazione iCal (Airbnb & Booking)",
@@ -70,8 +70,8 @@ const templates = [
     id: "pwa-app-suite",
     title: "PWA & Web App Suite",
     target: "Servizi, Prenotazioni & Mobile App",
-    packageLink: "Web App & PWA Custom",
-    price: "1.799€",
+    packageLink: "Full Custom",
+    price: "Su preventivo",
     description: "Applicativo web installabile come un'App (iOS/Android) con funzionamento offline, notifiche push e gestione dati in tempo reale.",
     features: [
       "Installabile come App su iOS & Android",
@@ -88,7 +88,7 @@ const templates = [
     title: "LeadMagnet Pro",
     target: "Coach, Consulenti, Lanci & Funnel",
     packageLink: "Landing Page Custom",
-    price: "1.399€",
+    price: "999€",
     description: "Pagina ad Alta Conversione progettata su misura insieme alla nostra strategia di marketing per trasformare il traffico in clienti.",
     features: [
       "Strategia Marketing & Copy Persuasivo",
@@ -105,8 +105,8 @@ const templates = [
     id: "minimal-store",
     title: "Minimal Digital Store",
     target: "Brand emergenti, Venditori digitali",
-    packageLink: "E-commerce Pro",
-    price: "2.199€",
+    packageLink: "E-commerce Shopify",
+    price: "1.199€",
     description: "Template e-commerce per 1-20 prodotti. Velocissimo, zero commissioni mensili extra e carrello slide-over ottimizzato.",
     features: [
       "Vetrina Prodotti e Carosello",
