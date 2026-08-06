@@ -38,11 +38,13 @@ type EcommerceTier = {
   monthlyExtra: string;
   gradientClass: string;
   popular?: boolean;
+  isCustom?: boolean;
   icon: string;
   pros: string[];
   cons: string[];
   idealFor: string;
   techStack: string[];
+  coreStack?: { label: string; color: string }[];
 };
 
 const ecommercePlans: EcommerceTier[] = [
@@ -116,24 +118,31 @@ const ecommercePlans: EcommerceTier[] = [
   {
     id: "custom",
     name: "Full Custom",
-    tagline: "E-commerce su misura da zero",
+    tagline: "Infrastruttura Next.js · TypeScript · Vercel",
     price: "Su preventivo",
-    monthlyExtra: "Infrastruttura variabile",
-    gradientClass: "from-rose-500 to-orange-500",
+    monthlyExtra: "Infrastruttura su misura",
+    gradientClass: "from-slate-800 to-slate-950",
+    isCustom: true,
     icon: "🚀",
     pros: [
       "Zero compromessi e zero commissioni",
-      "Logiche di business proprietarie",
-      "Scalabilità illimitata",
-      "Integrazione con ERP/CRM/WMS",
+      "Architettura Next.js App Router + TypeScript",
+      "Deploy su Vercel Edge Network globale",
+      "Integrazione con ERP/CRM/WMS/PIM",
+      "Scalabilità illimitata e performance garantita",
     ],
     cons: [
-      "Tempi di sviluppo lunghi",
-      "Budget elevato",
-      "Richiede team tecnico interno",
+      "Budget e tempi definiti in fase di analisi",
+      "Richiede briefing tecnico dettagliato",
     ],
     idealFor: "Aziende con processi complessi o volumi enterprise",
-    techStack: ["Next.js", "Node.js", "PostgreSQL", "Stripe API"],
+    techStack: ["Next.js 15", "TypeScript", "Tailwind CSS", "Vercel", "PostgreSQL", "Stripe API"],
+    coreStack: [
+      { label: "Next.js", color: "bg-white/15 border-white/20" },
+      { label: "TypeScript", color: "bg-blue-500/30 border-blue-400/40" },
+      { label: "Tailwind", color: "bg-cyan-500/30 border-cyan-400/40" },
+      { label: "Vercel", color: "bg-white/15 border-white/20" },
+    ],
   },
 ];
 
@@ -258,8 +267,15 @@ function EcommerceCard({ plan, index }: { plan: EcommerceTier; index: number }) 
             <span className="text-[10px] font-black text-white uppercase tracking-widest">Più Scelto</span>
           </div>
         )}
+        {/* Decorative elements — extra per custom */}
         <div className="absolute -right-8 -top-8 w-32 h-32 rounded-full bg-white/10 pointer-events-none" />
         <div className="absolute -right-4 bottom-0 w-20 h-20 rounded-full bg-white/5 pointer-events-none" />
+        {plan.isCustom && (
+          <>
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-indigo-500/10 blur-2xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+          </>
+        )}
         <div className="relative z-10">
           <span className="text-3xl mb-3 block">{plan.icon}</span>
           <h3 className="text-xl font-black text-white uppercase tracking-tight leading-tight mb-0.5">
@@ -281,8 +297,21 @@ function EcommerceCard({ plan, index }: { plan: EcommerceTier; index: number }) 
               Totale: €{calcolaTotaleCliente(plan.price)} (+ 4% INPS + €2 bollo)
             </p>
           )}
+          {/* Core stack badges — solo per full custom */}
+          {plan.isCustom && plan.coreStack && (
+            <div className="mt-4 flex flex-wrap gap-1.5">
+              {plan.coreStack.map((s) => (
+                <span
+                  key={s.label}
+                  className={`px-2.5 py-1 rounded-lg text-[10px] font-black text-white uppercase tracking-wider border backdrop-blur-sm ${s.color}`}
+                >
+                  {s.label}
+                </span>
+              ))}
+            </div>
+          )}
           <div className="mt-3 px-3 py-1.5 bg-black/20 rounded-lg inline-flex items-center gap-1.5">
-            <span className="text-white/70 text-[10px] font-bold uppercase tracking-wider">+ Ricorrente:</span>
+            <span className="text-white/70 text-[10px] font-bold uppercase tracking-wider">Infrastruttura:</span>
             <span className="text-white text-[10px] font-black">{plan.monthlyExtra}</span>
           </div>
         </div>
