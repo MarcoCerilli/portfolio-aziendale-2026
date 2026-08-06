@@ -1,5 +1,11 @@
 import { NextResponse } from "next/server";
 
+interface ChatMessage {
+  role: "user" | "model" | "assistant";
+  parts?: { text: string }[];
+  content?: string;
+}
+
 export async function POST(req: Request) {
   try {
     const { message, history } = await req.json();
@@ -37,7 +43,7 @@ export async function POST(req: Request) {
             role: "system",
             content: systemInstruction
           },
-          ...(history || []).map((h: any) => ({
+          ...(history || []).map((h: ChatMessage) => ({
             role: h.role === "model" ? "assistant" : "user",
             content: h.parts ? h.parts[0].text : h.content // Supporto retrocompatibile per frontend
           })),
@@ -54,10 +60,11 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ text: data.choices[0].message.content });
 
-  } catch (error: any) {
-    console.error("Errore API Chat:", error.message);
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : String(error);
+    console.error("Errore API Chat:", message);
 
-    if (error.message?.includes("429")) {
+    if (message.includes("429")) {
       return NextResponse.json({
         text: "Riceviamo molte richieste! Per favore, scrivimi direttamente su WhatsApp (+39 380 429 1043).",
       });

@@ -38,19 +38,18 @@ const stats = [
     value: 15,
     label: "Progetti Conclusi",
     suffix: "+",
-    // Gradienti leggermente più saturi per risaltare sul bianco
     color: "from-blue-600 to-indigo-700",
   },
   {
     value: 100,
-    label: "Soddisfazione Cliente",
+    label: "Clienti Soddisfatti",
     suffix: "%",
     color: "from-emerald-500 to-teal-600",
   },
   {
-    value: 100,
-    label: "Codice Ottimizzato",
-    suffix: "%",
+    value: 5,
+    label: "Anni di Esperienza",
+    suffix: "+",
     color: "from-rose-500 to-orange-600",
   },
 ];

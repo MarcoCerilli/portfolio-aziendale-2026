@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence, Variants } from "framer-motion";
-import { XMarkIcon, SparklesIcon } from "@heroicons/react/24/outline";
+import { XMarkIcon, Bars3Icon, SparklesIcon } from "@heroicons/react/24/outline";
 
 const navLinks = [
   { name: "Servizi", href: "/#pacchetti" },
@@ -106,7 +106,7 @@ const Header = () => {
             {isOpen ? (
               <XMarkIcon className="w-6 h-6 text-slate-900 dark:text-white" />
             ) : (
-              <SparklesIcon className="w-7 h-7 animate-pulse" />
+              <Bars3Icon className="w-6 h-6 text-slate-700 dark:text-slate-300" />
             )}
           </button>
         </div>

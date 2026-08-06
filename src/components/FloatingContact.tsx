@@ -38,13 +38,7 @@ const FloatingContact = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsOpen(true);
-      const audio = new Audio("https://assets.mixkit.co/active_storage/sfx/2354/2354-preview.mp3");
-      audio.volume = 0.1;
-      audio.play().catch((e) => console.log("Errore audio:", e));
-    }, 4000);
-    return () => clearTimeout(timer);
+    // Nessuna apertura automatica — rispettosa dell'esperienza utente
   }, []);
 
   useEffect(() => {
@@ -229,8 +223,11 @@ const FloatingContact = () => {
         whileHover={{ scale: 1.05 }}
         onClick={() => { setIsOpen(!isOpen); if (isOpen) setChatMode("menu"); }}
         aria-label={isOpen ? "Chiudi finestra" : "Apri chat e contatti"}
-        className="bg-indigo-600 p-4 rounded-full shadow-2xl text-white flex items-center justify-center border border-white/20"
+        className="relative bg-indigo-600 p-4 rounded-full shadow-2xl text-white flex items-center justify-center border border-white/20"
       >
+        {!isOpen && (
+          <span className="absolute inset-0 rounded-full bg-indigo-500 animate-ping opacity-30 pointer-events-none" />
+        )}
         {isOpen ? <XMarkIcon className="w-6 h-6" /> : <ChatBubbleLeftRightIcon className="w-6 h-6" />}
       </motion.button>
     </div>

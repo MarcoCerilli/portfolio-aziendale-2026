@@ -47,10 +47,10 @@ const Footer = () => {
 
           <div className="relative z-10 text-center">
             <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tighter">
-              Pronto a fare il <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600">Level Up?</span>
+              Iniziamo il tuo <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600">Progetto</span>
             </h2>
             <p className="text-slate-500 dark:text-slate-400 mb-12 max-w-xl mx-auto text-sm md:text-base">
-              Scegli la piattaforma che preferisci. Rispondo solitamente entro poche ore.
+              Scegli il canale preferito. Rispondo entro poche ore per discutere la tua idea e trovare la soluzione migliore.
             </p>
 
             <div className="flex flex-wrap justify-center gap-8 md:gap-16 mb-16 md:mb-20">
