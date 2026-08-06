@@ -125,6 +125,15 @@ export async function getDemoProducts(): Promise<DemoProduct[]> {
       price: 1199,
       image: "/projects/ecommerce-clothing.jpg",
       features: ["Carrello e Checkout Stripe", "Gestione Inventario Prodotti", "Fast Performance Next.js"]
+    },
+    {
+      id: "demo-bigmama",
+      name: "Booking Engine — B&B Demo",
+      url: "https://bigmamaterracina.it",
+      category: "Booking Engine",
+      price: 699,
+      image: "/projects/bigmama.png",
+      features: ["Booking Engine Proprietario", "iCal Sync (Zero Overbooking)", "Pagamenti Diretti Stripe"]
     }
   ];
 

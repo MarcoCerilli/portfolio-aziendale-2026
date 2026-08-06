@@ -3,6 +3,7 @@ export type ProjectCategory =
   | "Mini Sito Express"
   | "Sito Vetrina Pro"
   | "E-commerce Pro"
+  | "Booking Engine"
   | "Sistemi & App Su Misura";
 
 export interface Project {
@@ -23,6 +24,7 @@ export const categories: ("Tutti" | ProjectCategory)[] = [
   "Mini Sito Express",
   "Sito Vetrina Pro",
   "E-commerce Pro",
+  "Booking Engine",
   "Sistemi & App Su Misura",
 ];
 
@@ -200,13 +202,13 @@ export const projectsList: Project[] = [
   },
   {
     title: "Big Mama Terracina",
-    description: "Sito per struttura ricettiva con sistema di prenotazione diretto. Aumenta i margini disintermediando dalle OTA e sincronizza automaticamente i calendari.",
-    tags: ["Next.js", "Tailwind CSS", "iCal Sync", "Nodemailer"],
+    description: "Sito hospitality a Terracina con sistema di prenotazione diretto proprietario. Zero commissioni alle OTA, sincronizzazione iCal automatica e pagamenti diretti via Stripe.",
+    tags: ["Next.js", "Tailwind CSS", "iCal Sync", "Stripe"],
     link: "https://bigmamaterracina.it",
     image: "/projects/bigmama.png",
-    category: "Sito Vetrina Pro",
-    price: "499€",
-    color: "from-rose-500/10",
+    category: "Booking Engine",
+    price: "699€",
+    color: "from-indigo-500/10",
     status: "online",
   },
 ];
