@@ -24,7 +24,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative w-full flex flex-col items-center justify-center overflow-hidden bg-transparent pt-24 pb-20 md:pt-32 md:pb-32 transition-colors duration-300 min-h-[90vh]">
+    <section className="relative w-full flex flex-col items-center justify-center overflow-hidden bg-transparent pt-16 pb-12 md:pt-24 md:pb-16 transition-colors duration-300 min-h-[80vh]">
       {/* Sfondo animato molto sottile per dare profondità */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-100/40 dark:bg-indigo-900/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-50/50 dark:bg-blue-900/5 rounded-full blur-3xl pointer-events-none" />

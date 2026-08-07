@@ -129,7 +129,7 @@ export default function ProjectsGrid() {
   }, [filter, filteredProjects.length]);
 
   return (
-    <section className="py-12 md:py-20 px-4 md:px-6 max-w-7xl mx-auto transition-colors duration-300">
+    <section className="py-4 md:py-8 px-4 md:px-6 max-w-7xl mx-auto transition-colors duration-300">
       <div className="flex flex-col items-center text-center mb-10 md:mb-16 space-y-4">
         <h2 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-tight">
           Portfolio <span className="text-indigo-600 dark:text-indigo-400">Progetti</span>

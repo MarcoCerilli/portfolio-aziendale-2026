@@ -15,14 +15,14 @@ export default function Home() {
       <Hero />
 
       {/* 2. TECH STACK */}
-      <section className="py-20 md:py-32 bg-slate-50/50 dark:bg-slate-900/20 border-y border-slate-100 dark:border-slate-800">
+      <section className="py-12 md:py-16 bg-slate-50/50 dark:bg-slate-900/20 border-y border-slate-100 dark:border-slate-800">
         <AnimatedSection delay={0.2}>
           <TechStack />
         </AnimatedSection>
       </section>
 
       {/* 3. TECH SPECS - BLOCCO A CONTRASTO */}
-      <section className="py-20 md:py-32 bg-slate-900 dark:bg-indigo-[950] relative overflow-hidden">
+      <section className="py-12 md:py-16 bg-slate-900 dark:bg-indigo-[950] relative overflow-hidden">
         {/* Glow effect for the dark block */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-indigo-500/10 blur-3xl pointer-events-none rounded-full" />
 
@@ -59,14 +59,14 @@ export default function Home() {
       </section>
 
       {/* 4. TRUST SECTION (CONTATORI) */}
-      <section className="py-12 md:py-20 bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800">
+      <section className="py-8 md:py-12 bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800">
         <AnimatedSection delay={0.4}>
           <TrustSection />
         </AnimatedSection>
       </section>
 
       {/* 5. PROGETTI */}
-      <section id="progetti" className="py-20 md:py-32 bg-slate-50/50 dark:bg-slate-900/20 border-y border-slate-100 dark:border-slate-800">
+      <section id="progetti" className="py-12 md:py-16 bg-slate-50/50 dark:bg-slate-900/20 border-y border-slate-100 dark:border-slate-800">
         <div className="max-w-7xl mx-auto px-6">
           <AnimatedSection delay={0.5}>
             <Projects />
@@ -75,7 +75,7 @@ export default function Home() {
       </section>
 
       {/* 6. PACCHETTI */}
-      <section id="pacchetti" className="py-20 md:py-32 bg-white dark:bg-slate-950">
+      <section id="pacchetti" className="py-12 md:py-16 bg-white dark:bg-slate-950">
         <div className="max-w-7xl mx-auto px-6">
           <AnimatedSection delay={0.6}>
             <Packages />
