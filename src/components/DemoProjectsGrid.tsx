@@ -73,14 +73,14 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
         </div>
 
         <div className="mt-auto pt-4 border-t border-slate-100 dark:border-slate-800 flex justify-between items-end gap-2">
-          <div className="flex flex-col">
+          {/* <div className="flex flex-col">
             <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
               Prezzo
             </span>
             <span className="text-lg font-black text-slate-900 dark:text-white">
               Da definire
             </span>
-          </div>
+          </div> */}
 
           <motion.a
             href={product.url}

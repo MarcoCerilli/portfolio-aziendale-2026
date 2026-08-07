@@ -3,13 +3,13 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // Calcola il totale cliente: netto + 4% rivalsa INPS + €2 marca da bollo
-function calcolaTotaleCliente(nettoStr: string): string {
-  const netto = parseFloat(nettoStr.replace(".", "").replace(",", "."));
-  const inps = netto * 0.04;
-  const bollo = 2.0;
-  const totale = netto + inps + bollo;
-  return totale.toLocaleString("it-IT", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
+// function calcolaTotaleCliente(nettoStr: string): string {
+//   const netto = parseFloat(nettoStr.replace(".", "").replace(",", "."));
+//   const inps = netto * 0.04;
+//   const bollo = 2.0;
+//   const totale = netto + inps + bollo;
+//   return totale.toLocaleString("it-IT", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+// }
 
 const packageList = [
   {
@@ -282,7 +282,7 @@ function EcommerceCard({ plan, index }: { plan: EcommerceTier; index: number }) 
             {plan.name}
           </h3>
           <p className="text-white/70 text-xs font-medium mb-4">{plan.tagline}</p>
-          <div className="flex items-end gap-1.5">
+          {/* <div className="flex items-end gap-1.5">
             {plan.price === "Su preventivo" ? (
               <span className="text-2xl font-black text-white">Su preventivo</span>
             ) : (
@@ -296,7 +296,7 @@ function EcommerceCard({ plan, index }: { plan: EcommerceTier; index: number }) 
             <p className="text-white/50 text-[10px] font-medium mt-1">
               Totale: €{calcolaTotaleCliente(plan.price)} (+ 4% INPS + €2 bollo)
             </p>
-          )}
+          )} */}
           {/* Core stack badges — solo per full custom */}
           {plan.isCustom && plan.coreStack && (
             <div className="mt-4 flex flex-wrap gap-1.5">
@@ -409,7 +409,7 @@ function EcommerceCard({ plan, index }: { plan: EcommerceTier; index: number }) 
           className={`relative overflow-hidden group w-full py-3.5 mt-5 rounded-2xl font-black uppercase tracking-widest text-[10px] text-white text-center bg-gradient-to-r ${plan.gradientClass} shadow-md`}
         >
           <div className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-700 skew-x-12" />
-          <span className="relative z-10">Richiedi Preventivo</span>
+          <span className="relative z-10">Richiedi Informazioni</span>
         </motion.button>
       </div>
     </motion.div>
@@ -446,7 +446,7 @@ function BookingCard({ plan, index }: { plan: BookingPlan; index: number }) {
             {plan.name}
           </h3>
           <p className="text-white/70 text-xs font-medium mb-4">{plan.tagline}</p>
-          <div className="flex items-end gap-1.5">
+          {/* <div className="flex items-end gap-1.5">
             {plan.price === "Su preventivo" ? (
               <span className="text-2xl font-black text-white">Su preventivo</span>
             ) : (
@@ -460,7 +460,7 @@ function BookingCard({ plan, index }: { plan: BookingPlan; index: number }) {
             <p className="text-white/50 text-[10px] font-medium mt-1">
               Totale: €{calcolaTotaleCliente(plan.price)} (+ 4% INPS + €2 bollo)
             </p>
-          )}
+          )} */}
           <div className="mt-3 px-3 py-1.5 bg-black/20 rounded-lg inline-flex items-center gap-1.5">
             <span className="text-white/70 text-[10px] font-bold uppercase tracking-wider">+</span>
             <span className="text-white text-[10px] font-black">{plan.monthlyExtra}</span>
@@ -523,7 +523,7 @@ function BookingCard({ plan, index }: { plan: BookingPlan; index: number }) {
           className={`relative overflow-hidden group w-full py-3.5 mt-5 rounded-2xl font-black uppercase tracking-widest text-[10px] text-white text-center bg-gradient-to-r ${plan.gradientClass} shadow-md`}
         >
           <div className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-700 skew-x-12" />
-          <span className="relative z-10">Richiedi Preventivo</span>
+          <span className="relative z-10">Richiedi Informazioni</span>
         </motion.button>
       </div>
     </motion.div>
@@ -637,7 +637,7 @@ const Packages = () => {
                       {pkg.name}
                     </h3>
                     <p className="text-slate-500 dark:text-slate-400 text-sm mb-5">{pkg.description}</p>
-                    <div className="flex items-end gap-1.5 mb-2">
+                    {/* <div className="flex items-end gap-1.5 mb-2">
                       <span className={`text-5xl font-black bg-gradient-to-br ${pkg.color} bg-clip-text text-transparent`}>
                         €{pkg.price}
                       </span>
@@ -651,7 +651,7 @@ const Packages = () => {
                         €{calcolaTotaleCliente(pkg.price)}
                       </span>
                       <span className="text-[10px] text-slate-400 dark:text-slate-500">(+ 4% INPS + €2 bollo)</span>
-                    </div>
+                    </div> */}
                   </div>
                   <ul className="space-y-3.5 mb-8 flex-grow">
                     {pkg.features.map((feat) => (
@@ -665,14 +665,14 @@ const Packages = () => {
                       </li>
                     ))}
                   </ul>
-                  <div className="pt-4 border-t border-slate-100 dark:border-slate-800 mb-6 space-y-1">
+                  {/* <div className="pt-4 border-t border-slate-100 dark:border-slate-800 mb-6 space-y-1">
                     <p className="text-[11px] font-semibold text-slate-400 dark:text-slate-500 leading-snug">
                       Operazione effettuata in regime forfettario ex art. 1 c. 54-89 L. 190/2014.
                     </p>
                     <p className="text-[11px] text-slate-400 dark:text-slate-500 leading-snug">
                       Imponibile soggetto a rivalsa INPS 4% — Marca da bollo €2,00 (D.P.R. 642/72).
                     </p>
-                  </div>
+                  </div> */}
                   <motion.button
                     onClick={(e) => {
                       e.preventDefault();
@@ -727,7 +727,7 @@ const Packages = () => {
               </div>
 
               {/* Fiscal note */}
-              <motion.div
+              {/* <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
@@ -739,7 +739,7 @@ const Packages = () => {
                 <p className="text-[11px] text-slate-400 dark:text-slate-500">
                   Imponibile soggetto a rivalsa INPS 4% — Marca da bollo €2,00 (D.P.R. 642/72). I prezzi mensili delle piattaforme sono indicativi.
                 </p>
-              </motion.div>
+              </motion.div> */}
             </motion.div>
           )}
 
@@ -779,7 +779,7 @@ const Packages = () => {
               </div>
 
               {/* Fiscal note */}
-              <motion.div
+              {/* <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
@@ -791,7 +791,7 @@ const Packages = () => {
                 <p className="text-[11px] text-slate-400 dark:text-slate-500">
                   Imponibile soggetto a rivalsa INPS 4% — Marca da bollo €2,00 (D.P.R. 642/72).
                 </p>
-              </motion.div>
+              </motion.div> */}
             </motion.div>
           )}
         </AnimatePresence>

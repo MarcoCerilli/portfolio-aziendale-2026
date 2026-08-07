@@ -190,11 +190,11 @@ export default async function TemplatesPage() {
                         <h2 className="text-2xl font-black uppercase tracking-tight text-slate-900 dark:text-white">
                           {tpl.title}
                         </h2>
-                        <div className="flex flex-col items-end">
+                        {/* <div className="flex flex-col items-end">
                           <span className="text-xl font-black text-indigo-600 dark:text-indigo-400">
                             {tpl.price}
                           </span>
-                        </div>
+                        </div> */}
                       </div>
                       <p className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mt-1">
                         Ideale per: {tpl.target}
@@ -220,17 +220,17 @@ export default async function TemplatesPage() {
                     </ul>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row gap-4 items-center mt-auto pt-2">
-                    <ContactButton color={tpl.color} label="Richiedi Consulenza WhatsApp" />
-                    <div className="text-center sm:text-left w-full sm:w-auto">
-                      <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest block">
-                        Pacchetto Personalizzato
-                      </span>
-                      <span className="text-[11px] font-black text-slate-900 dark:text-white block mt-0.5">
-                        {tpl.packageLink} — {tpl.price}
-                      </span>
+                    <div className="flex flex-col sm:flex-row gap-4 items-center mt-auto pt-2">
+                      <ContactButton color={tpl.color} label="Richiedi Informazioni" />
+                      <div className="text-center sm:text-left w-full sm:w-auto">
+                        <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest block">
+                          Pacchetto Personalizzato
+                        </span>
+                        <span className="text-[11px] font-black text-slate-900 dark:text-white block mt-0.5">
+                          {tpl.packageLink}
+                        </span>
+                      </div>
                     </div>
-                  </div>
                 </div>
               </div>
             );

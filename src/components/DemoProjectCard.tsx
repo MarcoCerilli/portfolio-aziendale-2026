@@ -58,12 +58,12 @@ export default function DemoProjectCard({ product }: DemoProjectCardProps) {
       </div>
 
       <div className="mt-auto flex items-center justify-between border-t border-white/10 pt-4">
-        <div className="flex flex-col">
+        {/* <div className="flex flex-col">
           <span className="text-xs text-gray-400 uppercase tracking-wider">Prezzo</span>
           <span className="text-xl font-bold text-white">
             Da definire
           </span>
-        </div>
+        </div> */}
         
         <Link 
           href={product.url} 
