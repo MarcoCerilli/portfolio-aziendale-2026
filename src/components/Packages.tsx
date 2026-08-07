@@ -533,7 +533,7 @@ function BookingCard({ plan, index }: { plan: BookingPlan; index: number }) {
 // ─── MAIN PACKAGES COMPONENT ─────────────────────────────────────────────────
 
 const Packages = () => {
-  const [activeTab, setActiveTab] = useState<"web" | "ecommerce" | "booking">("web");
+  const [activeTab, setActiveTab] = useState<"all" | "web" | "ecommerce" | "booking">("all");
 
   return (
     <section id="pacchetti" className="py-20">
@@ -560,240 +560,165 @@ const Packages = () => {
             Soluzioni chiare e trasparenti. Nessun costo nascosto, solo risultati concreti.
           </p>
 
-          {/* Tab switcher */}
+          {/* Tab switcher / Dropdown */}
           <div className="flex justify-center pt-4">
-            <div className="inline-flex flex-wrap justify-center gap-1 bg-slate-100 dark:bg-slate-900 rounded-2xl p-1.5 border border-slate-200 dark:border-slate-800 shadow-sm">
-              <button
-                id="tab-siti-web"
-                onClick={() => setActiveTab("web")}
-                className={`px-4 py-2.5 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all duration-300 ${
-                  activeTab === "web"
-                    ? "bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-md ring-1 ring-black/5 dark:ring-white/5"
-                    : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-                }`}
+            <div className="relative w-full max-w-xs">
+              <select
+                value={activeTab}
+                onChange={(e) => setActiveTab(e.target.value as "all" | "web" | "ecommerce" | "booking")}
+                className="w-full appearance-none bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 font-bold uppercase tracking-widest text-[11px] py-3.5 pl-5 pr-10 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/50 shadow-sm cursor-pointer transition-colors duration-300"
               >
-                🌐 Siti Web
-              </button>
-              <button
-                id="tab-ecommerce"
-                onClick={() => setActiveTab("ecommerce")}
-                className={`px-4 py-2.5 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all duration-300 ${
-                  activeTab === "ecommerce"
-                    ? "bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-md ring-1 ring-black/5 dark:ring-white/5"
-                    : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-                }`}
-              >
-                🛒 E-Commerce
-              </button>
-              <button
-                id="tab-booking"
-                onClick={() => setActiveTab("booking")}
-                className={`px-4 py-2.5 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all duration-300 ${
-                  activeTab === "booking"
-                    ? "bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-md ring-1 ring-black/5 dark:ring-white/5"
-                    : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-                }`}
-              >
-                📅 Booking Engine
-              </button>
+                <option value="all">🌟 Tutti i Pacchetti</option>
+                <option value="web">🌐 Siti Web</option>
+                <option value="ecommerce">🛒 E-Commerce</option>
+                <option value="booking">📅 Booking Engine</option>
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500 dark:text-slate-400">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </div>
             </div>
           </div>
         </motion.div>
 
         {/* Tab content */}
         <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.3 }}
+            className="space-y-16"
+          >
+            {/* WEB TAB */}
+            {(activeTab === "all" || activeTab === "web") && (
+              <div className="space-y-8">
+                {activeTab === "all" && (
+                  <h3 className="text-2xl font-black text-center text-slate-900 dark:text-white uppercase tracking-tighter">
+                    Siti Web
+                  </h3>
+                )}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+                  {packageList.map((pkg, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 }}
+                      whileHover={{ scale: 1.02, y: -4 }}
+                      className={`relative flex flex-col p-8 rounded-3xl border transition-all duration-300 ${
+                        pkg.popular
+                          ? "border-indigo-300 dark:border-indigo-500/50 bg-indigo-50/50 dark:bg-indigo-500/5 shadow-xl shadow-indigo-100 dark:shadow-indigo-900/20"
+                          : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-lg shadow-slate-100/80 dark:shadow-black/20 hover:border-slate-300 dark:hover:border-slate-700"
+                      }`}
+                    >
+                      {pkg.popular && (
+                        <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-5 py-1.5 bg-indigo-600 rounded-full shadow-lg shadow-indigo-500/30 z-20">
+                          <span className="text-[11px] font-black text-white uppercase tracking-widest">Più Richiesto</span>
+                        </div>
+                      )}
+                      <div className="mb-8">
+                        <h3 className="text-xl font-black text-slate-900 dark:text-white mb-1 uppercase tracking-tight">
+                          {pkg.name}
+                        </h3>
+                        <p className="text-slate-500 dark:text-slate-400 text-sm mb-5">{pkg.description}</p>
+                      </div>
+                      <ul className="space-y-3.5 mb-8 flex-grow">
+                        {pkg.features.map((feat) => (
+                          <li key={feat} className="flex items-center gap-3 text-slate-700 dark:text-slate-300 text-sm font-medium">
+                            <span className={`w-4 h-4 shrink-0 rounded-full bg-gradient-to-br ${pkg.color} flex items-center justify-center`}>
+                              <svg className="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                              </svg>
+                            </span>
+                            {feat}
+                          </li>
+                        ))}
+                      </ul>
+                      <motion.button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          window.dispatchEvent(new Event("open-chat"));
+                        }}
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.97 }}
+                        className={`relative overflow-hidden group w-full py-4 rounded-2xl font-black uppercase tracking-widest text-[11px] text-white text-center transition-all bg-gradient-to-r ${pkg.color} shadow-md`}
+                      >
+                        <div className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-700 skew-x-12" />
+                        <span className="relative z-10">Parliamo del Progetto</span>
+                      </motion.button>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            )}
 
-          {/* WEB TAB */}
-          {activeTab === "web" && (
-            <motion.div
-              key="web"
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -16 }}
-              transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto"
-            >
-              {packageList.map((pkg, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ scale: 1.02, y: -4 }}
-                  className={`relative flex flex-col p-8 rounded-3xl border transition-all duration-300 ${
-                    pkg.popular
-                      ? "border-indigo-300 dark:border-indigo-500/50 bg-indigo-50/50 dark:bg-indigo-500/5 shadow-xl shadow-indigo-100 dark:shadow-indigo-900/20"
-                      : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-lg shadow-slate-100/80 dark:shadow-black/20 hover:border-slate-300 dark:hover:border-slate-700"
-                  }`}
-                >
-                  {pkg.popular && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-5 py-1.5 bg-indigo-600 rounded-full shadow-lg shadow-indigo-500/30 z-20">
-                      <span className="text-[11px] font-black text-white uppercase tracking-widest">Più Richiesto</span>
+            {/* ECOMMERCE TAB */}
+            {(activeTab === "all" || activeTab === "ecommerce") && (
+              <div className="space-y-8">
+                {activeTab === "all" && (
+                  <h3 className="text-2xl font-black text-center text-slate-900 dark:text-white uppercase tracking-tighter">
+                    E-Commerce
+                  </h3>
+                )}
+                {/* Info banner */}
+                <div className="p-4 md:p-5 rounded-2xl bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-950/30 dark:to-purple-950/30 border border-indigo-100 dark:border-indigo-900/40">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+                    <div className="text-2xl shrink-0">💡</div>
+                    <div>
+                      <p className="text-slate-900 dark:text-white font-black text-sm uppercase tracking-tight">
+                        Quale piattaforma fa per te?
+                      </p>
+                      <p className="text-slate-500 dark:text-slate-400 text-xs mt-0.5 leading-relaxed">
+                        Il prezzo indicato è il <strong className="text-slate-700 dark:text-slate-300">costo di setup una-tantum</strong>.
+                        Considera sempre i costi ricorrenti mensili della piattaforma scelta.
+                      </p>
                     </div>
-                  )}
-                  <div className="mb-8">
-                    <h3 className="text-xl font-black text-slate-900 dark:text-white mb-1 uppercase tracking-tight">
-                      {pkg.name}
-                    </h3>
-                    <p className="text-slate-500 dark:text-slate-400 text-sm mb-5">{pkg.description}</p>
-                    {/* <div className="flex items-end gap-1.5 mb-2">
-                      <span className={`text-5xl font-black bg-gradient-to-br ${pkg.color} bg-clip-text text-transparent`}>
-                        €{pkg.price}
-                      </span>
-                      <span className="text-slate-400 dark:text-slate-500 font-semibold mb-1.5 text-sm">/netto</span>
-                    </div>
-                    <div className="flex items-center gap-1.5 flex-wrap">
-                      <span className="text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
-                        Totale cliente:
-                      </span>
-                      <span className="text-[13px] font-black text-slate-600 dark:text-slate-300">
-                        €{calcolaTotaleCliente(pkg.price)}
-                      </span>
-                      <span className="text-[10px] text-slate-400 dark:text-slate-500">(+ 4% INPS + €2 bollo)</span>
-                    </div> */}
-                  </div>
-                  <ul className="space-y-3.5 mb-8 flex-grow">
-                    {pkg.features.map((feat) => (
-                      <li key={feat} className="flex items-center gap-3 text-slate-700 dark:text-slate-300 text-sm font-medium">
-                        <span className={`w-4 h-4 shrink-0 rounded-full bg-gradient-to-br ${pkg.color} flex items-center justify-center`}>
-                          <svg className="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                          </svg>
-                        </span>
-                        {feat}
-                      </li>
-                    ))}
-                  </ul>
-                  {/* <div className="pt-4 border-t border-slate-100 dark:border-slate-800 mb-6 space-y-1">
-                    <p className="text-[11px] font-semibold text-slate-400 dark:text-slate-500 leading-snug">
-                      Operazione effettuata in regime forfettario ex art. 1 c. 54-89 L. 190/2014.
-                    </p>
-                    <p className="text-[11px] text-slate-400 dark:text-slate-500 leading-snug">
-                      Imponibile soggetto a rivalsa INPS 4% — Marca da bollo €2,00 (D.P.R. 642/72).
-                    </p>
-                  </div> */}
-                  <motion.button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      window.dispatchEvent(new Event("open-chat"));
-                    }}
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                    className={`relative overflow-hidden group w-full py-4 rounded-2xl font-black uppercase tracking-widest text-[11px] text-white text-center transition-all bg-gradient-to-r ${pkg.color} shadow-md`}
-                  >
-                    <div className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-700 skew-x-12" />
-                    <span className="relative z-10">Parliamo del Progetto</span>
-                  </motion.button>
-                </motion.div>
-              ))}
-            </motion.div>
-          )}
-
-          {/* ECOMMERCE TAB */}
-          {activeTab === "ecommerce" && (
-            <motion.div
-              key="ecommerce"
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -16 }}
-              transition={{ duration: 0.3 }}
-            >
-              {/* Info banner */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="mb-8 p-4 md:p-5 rounded-2xl bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-950/30 dark:to-purple-950/30 border border-indigo-100 dark:border-indigo-900/40"
-              >
-                <div className="flex flex-col sm:flex-row sm:items-center gap-3">
-                  <div className="text-2xl shrink-0">💡</div>
-                  <div>
-                    <p className="text-slate-900 dark:text-white font-black text-sm uppercase tracking-tight">
-                      Quale piattaforma fa per te?
-                    </p>
-                    <p className="text-slate-500 dark:text-slate-400 text-xs mt-0.5 leading-relaxed">
-                      Il prezzo indicato è il <strong className="text-slate-700 dark:text-slate-300">costo di setup una-tantum</strong>.
-                      Considera sempre i costi ricorrenti mensili della piattaforma scelta.
-                    </p>
                   </div>
                 </div>
-              </motion.div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
-                {ecommercePlans.map((plan, index) => (
-                  <EcommerceCard key={plan.id} plan={plan} index={index} />
-                ))}
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+                  {ecommercePlans.map((plan, index) => (
+                    <EcommerceCard key={plan.id} plan={plan} index={index} />
+                  ))}
+                </div>
               </div>
+            )}
 
-              {/* Fiscal note */}
-              {/* <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-                className="mt-8 text-center space-y-1"
-              >
-                <p className="text-[11px] font-semibold text-slate-400 dark:text-slate-500">
-                  Operazione effettuata in regime forfettario ex art. 1 c. 54-89 L. 190/2014.
-                </p>
-                <p className="text-[11px] text-slate-400 dark:text-slate-500">
-                  Imponibile soggetto a rivalsa INPS 4% — Marca da bollo €2,00 (D.P.R. 642/72). I prezzi mensili delle piattaforme sono indicativi.
-                </p>
-              </motion.div> */}
-            </motion.div>
-          )}
-
-          {/* BOOKING TAB */}
-          {activeTab === "booking" && (
-            <motion.div
-              key="booking"
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -16 }}
-              transition={{ duration: 0.3 }}
-            >
-              {/* Info banner */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="mb-8 p-4 md:p-5 rounded-2xl bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-950/30 dark:to-purple-950/30 border border-indigo-100 dark:border-indigo-900/40"
-              >
-                <div className="flex flex-col sm:flex-row sm:items-center gap-3">
-                  <div className="text-2xl shrink-0">📅</div>
-                  <div>
-                    <p className="text-slate-900 dark:text-white font-black text-sm uppercase tracking-tight">
-                      Addio commissioni Booking.com e Airbnb
-                    </p>
-                    <p className="text-slate-500 dark:text-slate-400 text-xs mt-0.5 leading-relaxed">
-                      Sistema di prenotazione proprietario integrato nel tuo sito. <strong className="text-slate-700 dark:text-slate-300">Zero commissioni</strong> alle OTA, pagamenti diretti, controllo totale.
-                    </p>
+            {/* BOOKING TAB */}
+            {(activeTab === "all" || activeTab === "booking") && (
+              <div className="space-y-8">
+                {activeTab === "all" && (
+                  <h3 className="text-2xl font-black text-center text-slate-900 dark:text-white uppercase tracking-tighter">
+                    Booking Engine
+                  </h3>
+                )}
+                {/* Info banner */}
+                <div className="p-4 md:p-5 rounded-2xl bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-950/30 dark:to-purple-950/30 border border-indigo-100 dark:border-indigo-900/40">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+                    <div className="text-2xl shrink-0">📅</div>
+                    <div>
+                      <p className="text-slate-900 dark:text-white font-black text-sm uppercase tracking-tight">
+                        Addio commissioni Booking.com e Airbnb
+                      </p>
+                      <p className="text-slate-500 dark:text-slate-400 text-xs mt-0.5 leading-relaxed">
+                        Sistema di prenotazione proprietario integrato nel tuo sito. <strong className="text-slate-700 dark:text-slate-300">Zero commissioni</strong> alle OTA, pagamenti diretti, controllo totale.
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </motion.div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
-                {bookingPlans.map((plan, index) => (
-                  <BookingCard key={plan.id} plan={plan} index={index} />
-                ))}
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+                  {bookingPlans.map((plan, index) => (
+                    <BookingCard key={plan.id} plan={plan} index={index} />
+                  ))}
+                </div>
               </div>
-
-              {/* Fiscal note */}
-              {/* <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-                className="mt-8 text-center space-y-1"
-              >
-                <p className="text-[11px] font-semibold text-slate-400 dark:text-slate-500">
-                  Operazione effettuata in regime forfettario ex art. 1 c. 54-89 L. 190/2014.
-                </p>
-                <p className="text-[11px] text-slate-400 dark:text-slate-500">
-                  Imponibile soggetto a rivalsa INPS 4% — Marca da bollo €2,00 (D.P.R. 642/72).
-                </p>
-              </motion.div> */}
-            </motion.div>
-          )}
+            )}
+          </motion.div>
         </AnimatePresence>
       </div>
     </section>
