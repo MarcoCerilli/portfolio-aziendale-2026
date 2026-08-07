@@ -93,8 +93,7 @@ export default function DashboardPage() {
 
             <div className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col justify-center items-center text-center">
               <p className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-1">Totale</p>
-              <p className="text-3xl font-black text-indigo-600 dark:text-indigo-400">299€</p>
-            </div>
+              <p className="text-3xl font-black text-indigo-600 dark:text-indigo-400">Da definire</p>            </div>
           </div>
         </div>
       </main>

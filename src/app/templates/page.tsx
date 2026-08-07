@@ -20,7 +20,7 @@ const templates = [
     title: "Freelance Hub",
     target: "Liberi professionisti, Designer, Fotografi",
     packageLink: "Starter Landing",
-    price: "449€",
+    price: "Su preventivo",
     description: "Un sito essenziale di 3 pagine (Home, Servizi, Contatti) con design minimale, dark mode nativa e focus sul personal branding.",
     features: [
       "Portfolio & Case Studies",
@@ -37,7 +37,7 @@ const templates = [
     title: "Local Business Elite (Standard)",
     target: "Ristoranti, Palestre, Artigiani & Attività Locali",
     packageLink: "Sito Vetrina Pro",
-    price: "499€",
+    price: "Su preventivo",
     description: "La soluzione multipagina definitiva per attività locali. Struttura solida per dominare la SEO locale, catalogo servizi e form contatti.",
     features: [
       "Menu o Catalogo Servizi",
@@ -54,7 +54,7 @@ const templates = [
     title: "Hospitality & Booking Pro",
     target: "B&B, Case Vacanze, Strutture Ricettive & Noleggi",
     packageLink: "Hotel Engine Pro",
-    price: "1.299€",
+    price: "Su preventivo",
     description: "Piattaforma di prenotazione avanzata per B&B e case vacanze con sincronizzazione iCal (Airbnb/Booking), mini gestionale CRM Admin e calendario in tempo reale.",
     features: [
       "Sincronizzazione iCal (Airbnb & Booking)",
@@ -88,7 +88,7 @@ const templates = [
     title: "LeadMagnet Pro",
     target: "Coach, Consulenti, Lanci & Funnel",
     packageLink: "Landing Page Custom",
-    price: "999€",
+    price: "Su preventivo",
     description: "Pagina ad Alta Conversione progettata su misura insieme alla nostra strategia di marketing per trasformare il traffico in clienti.",
     features: [
       "Strategia Marketing & Copy Persuasivo",
@@ -106,7 +106,7 @@ const templates = [
     title: "Minimal Digital Store",
     target: "Brand emergenti, Venditori digitali",
     packageLink: "E-commerce Shopify",
-    price: "1.199€",
+    price: "Su preventivo",
     description: "Template e-commerce per 1-20 prodotti. Velocissimo, zero commissioni mensili extra e carrello slide-over ottimizzato.",
     features: [
       "Vetrina Prodotti e Carosello",
@@ -193,9 +193,6 @@ export default async function TemplatesPage() {
                         <div className="flex flex-col items-end">
                           <span className="text-xl font-black text-indigo-600 dark:text-indigo-400">
                             {tpl.price}
-                          </span>
-                          <span className="text-[9px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-tight">
-                            tasse escluse
                           </span>
                         </div>
                       </div>

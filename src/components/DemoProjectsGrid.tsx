@@ -75,10 +75,10 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
         <div className="mt-auto pt-4 border-t border-slate-100 dark:border-slate-800 flex justify-between items-end gap-2">
           <div className="flex flex-col">
             <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-              A partire da (tasse escluse)
+              Prezzo
             </span>
             <span className="text-lg font-black text-slate-900 dark:text-white">
-              {product.price ? `${product.price}€` : '599€'}
+              Da definire
             </span>
           </div>
 

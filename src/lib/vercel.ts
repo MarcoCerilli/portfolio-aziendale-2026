@@ -86,7 +86,7 @@ export async function getDemoProducts(): Promise<DemoProduct[]> {
       name: "Experience App PWA",
       url: "https://experience-app-pi.vercel.app/",
       category: "Web App & PWA Custom",
-      price: 749,
+      price: null,
       image: "/templates/experience.png",
       features: ["PWA Installabile (iOS/Android)", "Notifiche Push & Offline Cache", "Esperienza Utente App Native"]
     },
@@ -95,7 +95,7 @@ export async function getDemoProducts(): Promise<DemoProduct[]> {
       name: "English Teacher Website",
       url: "https://english-teacher-website-lemon.vercel.app",
       category: "Sito Vetrina Pro",
-      price: 749,
+      price: null,
       image: "/templates/english.png",
       features: ["Piattaforma Corsi & Lezioni", "Prenotazione Calendario", "Sezione Testimonianze"]
     },
@@ -104,7 +104,7 @@ export async function getDemoProducts(): Promise<DemoProduct[]> {
       name: "Fatturazione Elettronica",
       url: "https://sdi-invoice-generator.vercel.app/",
       category: "Web App & PWA Custom",
-      price: 749,
+      price: null,
       image: "/templates/fattura.png",
       features: ["Gestione Fatture e Clienti", "Esportazione Dati XML/PDF", "Dashboard Contabile"]
     },
@@ -113,7 +113,7 @@ export async function getDemoProducts(): Promise<DemoProduct[]> {
       name: "Onoranze AMA",
       url: "https://onoranze-ama.vercel.app",
       category: "Sito Vetrina Pro",
-      price: 749,
+      price: null,
       image: "/templates/onoranze.png",
       features: ["Catalogo Servizi Completo", "Form Contatto Inizio H24", "Ottimizzazione SEO Locale"]
     },
@@ -122,7 +122,7 @@ export async function getDemoProducts(): Promise<DemoProduct[]> {
       name: "ModernStore E-Commerce",
       url: "https://modern-store-nine.vercel.app/",
       category: "E-commerce Pro",
-      price: 899,
+      price: null,
       image: "/projects/ecommerce-clothing.jpg",
       features: ["Carrello e Checkout Stripe", "Gestione Inventario Prodotti", "Fast Performance Next.js"]
     },
@@ -131,7 +131,7 @@ export async function getDemoProducts(): Promise<DemoProduct[]> {
       name: "Booking Engine — B&B Demo",
       url: "https://bigmamaterracina.it",
       category: "Booking Engine",
-      price: 699,
+      price: null,
       image: "/projects/bigmama.png",
       features: ["Booking Engine Proprietario", "iCal Sync (Zero Overbooking)", "Pagamenti Diretti Stripe"]
     }

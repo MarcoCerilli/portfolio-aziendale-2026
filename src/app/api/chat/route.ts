@@ -20,11 +20,9 @@ export async function POST(req: Request) {
 
     INFORMAZIONI UTILI:
     - Marco Cerilli realizza siti web performanti, eCommerce e Web App su misura.
-    - Pacchetto Starter Landing: 120€ (Tasse escluse). Include Next.js 15, Mobile-First, WhatsApp Direct, Hosting.
-    - Pacchetto Business Suite (Il più richiesto): 350€ (Tasse escluse). Include 5 pagine custom, AI Gemini Integrata, SEO Gold, Premium Dark UI.
-    - Pacchetto Shopify Store: 450€ (Tasse escluse). E-commerce, Stripe & PayPal, Gestione Ordini, Post-lancio 30gg.
-    - Tutte le tariffe si intendono Tasse escluse.
-
+    - Pacchetto Starter Landing: Include Next.js 15, Mobile-First, WhatsApp Direct, Hosting.
+    - Pacchetto Business Suite (Il più richiesto): Include 5 pagine custom, AI Gemini Integrata, SEO Gold, Premium Dark UI.
+    - Pacchetto Shopify Store: E-commerce, Stripe & PayPal, Gestione Ordini, Post-lancio 30gg.
     REGOLE DI RISPOSTA:
     - Sii professionale ma amichevole.
     - Rispondi in italiano in modo breve (max 2-3 frasi).
