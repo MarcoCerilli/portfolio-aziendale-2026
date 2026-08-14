@@ -48,18 +48,12 @@ const Header = () => {
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         {/* LOGO */}
         <a href="/" className="group flex items-center gap-2">
-          <motion.div
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-sm font-black text-white shadow-lg shadow-indigo-500/20"
-          >
-            M
-          </motion.div>
-          <span className="text-xl md:text-2xl font-black tracking-tighter text-slate-900 dark:text-white transition-colors duration-300 group-hover:text-indigo-600">
-            SOLUTIONS{" "}
-            <span className="text-indigo-500 group-hover:text-indigo-400 transition-colors duration-300 italic">
-              WEB
-            </span>
-          </span>
+          <motion.img 
+            whileHover={{ scale: 1.05 }}
+            src="/images/logo.png" 
+            alt="M Solutions Web" 
+            className="h-8 md:h-10 object-contain" 
+          />
         </a>
 
         {/* Desktop Nav */}
