@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+
 import { motion } from "framer-motion";
 import { SparklesIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
 
@@ -24,7 +24,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative w-full flex flex-col items-center justify-center overflow-hidden bg-transparent pt-16 pb-12 md:pt-24 md:pb-16 transition-colors duration-300 min-h-[80vh]">
+    <section className="relative w-full flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-slate-950 pt-16 pb-12 md:pt-24 md:pb-16 transition-colors duration-300 min-h-[80vh]">
       {/* Sfondo animato molto sottile per dare profondità */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-100/40 dark:bg-indigo-900/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-50/50 dark:bg-blue-900/5 rounded-full blur-3xl pointer-events-none" />
@@ -38,15 +38,7 @@ const Hero = () => {
         {/* LATO SINISTRO: Testo */}
         <div className="flex-1 text-center lg:text-left flex flex-col items-center lg:items-start">
           
-          <motion.div variants={itemVariants} className="mb-6">
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-bold uppercase tracking-widest text-slate-600 dark:text-slate-400">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-              </span>
-              Disponibile per nuovi progetti
-            </span>
-          </motion.div>
+
 
           <motion.h1 variants={itemVariants} className="text-5xl sm:text-6xl lg:text-7xl font-black text-slate-900 dark:text-white tracking-tight leading-[1.1] mb-6">
             Web & E-commerce <br className="hidden lg:block" />
@@ -94,13 +86,10 @@ const Hero = () => {
             
             {/* Card Principale Immagine */}
             <div className="absolute inset-4 sm:inset-10 rounded-3xl overflow-hidden border border-white/50 dark:border-slate-800/80 shadow-2xl bg-white dark:bg-slate-900 z-10">
-              <Image
+              <img
                 src="/profile.jpg"
                 alt="Marco Cerilli"
-                fill
-                className="object-cover object-top scale-105"
-                priority
-                unoptimized
+                className="w-full h-full object-cover object-top scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
               
@@ -137,7 +126,7 @@ const Hero = () => {
               </div>
               <div>
                 <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Stack</p>
-                <p className="text-sm font-black text-slate-900 dark:text-white">Next.js + Vercel</p>
+                <p className="text-sm font-black text-slate-900 dark:text-white">Astro + Next.js</p>
               </div>
             </motion.div>
           </div>

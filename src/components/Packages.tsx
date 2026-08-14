@@ -310,10 +310,10 @@ function EcommerceCard({ plan, index }: { plan: EcommerceTier; index: number }) 
               ))}
             </div>
           )}
-          <div className="mt-3 px-3 py-1.5 bg-black/20 rounded-lg inline-flex items-center gap-1.5">
+          {/* <div className="mt-3 px-3 py-1.5 bg-black/20 rounded-lg inline-flex items-center gap-1.5">
             <span className="text-white/70 text-[10px] font-bold uppercase tracking-wider">Infrastruttura:</span>
             <span className="text-white text-[10px] font-black">{plan.monthlyExtra}</span>
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -461,10 +461,10 @@ function BookingCard({ plan, index }: { plan: BookingPlan; index: number }) {
               Totale: €{calcolaTotaleCliente(plan.price)} (+ 4% INPS + €2 bollo)
             </p>
           )} */}
-          <div className="mt-3 px-3 py-1.5 bg-black/20 rounded-lg inline-flex items-center gap-1.5">
+          {/* <div className="mt-3 px-3 py-1.5 bg-black/20 rounded-lg inline-flex items-center gap-1.5">
             <span className="text-white/70 text-[10px] font-bold uppercase tracking-wider">+</span>
             <span className="text-white text-[10px] font-black">{plan.monthlyExtra}</span>
-          </div>
+          </div> */}
         </div>
       </div>
 

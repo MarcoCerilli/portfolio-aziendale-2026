@@ -31,6 +31,10 @@ export const categories: ("Tutti" | ProjectCategory)[] = [
 // Badge ricolorati per sfondo chiaro (testi più scuri e bordi più definiti)
 export const getTagStyle = (tag: string) => {
   const t = tag.toLowerCase();
+  if (t.includes("astro"))
+    return "bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-300 border-orange-200 dark:border-orange-800/50";
+  if (t.includes("react"))
+    return "bg-cyan-50 dark:bg-cyan-900/20 text-cyan-700 dark:text-cyan-300 border-cyan-200 dark:border-cyan-800/50";
   if (t.includes("next.js")) return "bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800/50";
   if (t.includes("ai") || t.includes("google") || t.includes("groq"))
     return "bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800/50";
@@ -48,14 +52,14 @@ export const getTagStyle = (tag: string) => {
 export const projectsList: Project[] = [
   {
     title: "Lazio Vela",
-    description: "Piattaforma su misura con area riservata sicura. Progettata per prestazioni estreme e un'esperienza utente fluida e professionale.",
-    tags: ["Next.js", "TypeScript", "Tailwind", "Vercel", "NextAuth"],
-    link: "#",
+    description: "Piattaforma su misura con area riservata sicura per circolo velico. Progettata per prestazioni estreme e un'esperienza utente fluida e professionale.",
+    tags: ["Astro", "Next.js", "TypeScript", "Tailwind", "Vercel"],
+    link: "https://laziovela.it",
     image: "/projects/laziovela.png",
     category: "Sito Vetrina Pro",
     price: "Su preventivo",
     color: "from-blue-600/10",
-    status: "soon",
+    status: "online",
   },
   {
     title: "Avvocato Anna Fusco (Official)",
@@ -106,8 +110,8 @@ export const projectsList: Project[] = [
     description: "Piattaforma B2B personalizzata per l'ingrosso. Semplifica gli ordini dei rivenditori con listini riservati e integrazione diretta per ordini via WhatsApp.",
     tags: ["WordPress", "ACF Pro", "B2B E-commerce", "WhatsApp API"],
     link: "https://ilquintopolosrls.it",
-    image: "/projects/zecchi.jpg",
-    category: "Sito Vetrina Pro",
+    image: "/projects/quintopolo.jpg",
+    category: "E-commerce Pro",
     price: "Su preventivo",
     color: "from-green-700/10",
     status: "online",
@@ -210,5 +214,60 @@ export const projectsList: Project[] = [
     price: "Su preventivo",
     color: "from-indigo-500/10",
     status: "online",
+  },
+  {
+    title: "Casa Vacanze Porta Maggio",
+    description: "Sito per casa vacanze con booking engine custom. Gestione delle disponibilità in tempo reale tramite sincronizzazione iCal, notifiche e pagamenti diretti.",
+    tags: ["Next.js", "Tailwind CSS", "iCal Sync", "Nodemailer", "Stripe"],
+    link: "https://portamaggioterracina.it",
+    image: "/projects/porta-maggio.png",
+    category: "Booking Engine",
+    price: "Su preventivo",
+    color: "from-amber-500/10",
+    status: "online",
+  },
+  {
+    title: "English Teacher Website",
+    description: "Piattaforma web interattiva per corsi e lezioni private d'inglese. Include calendario per la prenotazione delle lezioni e area risorse per gli studenti.",
+    tags: ["Next.js", "Tailwind CSS", "Booking", "i18n"],
+    link: "https://english-teacher-website.vercel.app",
+    image: "/projects/english.png",
+    category: "Sito Vetrina Pro",
+    price: "Su preventivo",
+    color: "from-blue-600/10",
+    status: "demo",
+  },
+  {
+    title: "Onoranze Funebri AMA",
+    description: "Portale istituzionale con reperibilità H24, catalogo servizi integrato e ottimizzazione SEO per ricerche locali con assistenza immediata.",
+    tags: ["Next.js", "Tailwind CSS", "Local SEO", "H24"],
+    link: "https://onoranze-ama.vercel.app",
+    image: "/projects/onoranze.png",
+    category: "Sito Vetrina Pro",
+    price: "Su preventivo",
+    color: "from-slate-700/10",
+    status: "demo",
+  },
+  {
+    title: "Experience App",
+    description: "Applicazione interattiva per la prenotazione e gestione di esperienze esclusive. UI moderna e flussi ottimizzati per massimizzare le conversioni.",
+    tags: ["React", "Tailwind CSS", "Booking"],
+    link: "#",
+    image: "/templates/experience.png",
+    category: "Sistemi & App Su Misura",
+    price: "Su preventivo",
+    color: "from-slate-700/10",
+    status: "demo",
+  },
+  {
+    title: "Fattura Elettronica App",
+    description: "Software cloud per l'emissione, gestione e archiviazione delle fatture elettroniche con dashboard analitica in tempo reale.",
+    tags: ["Next.js", "PostgreSQL", "SDI API"],
+    link: "#",
+    image: "/projects/dashboard.jpg",
+    category: "Sistemi & App Su Misura",
+    price: "Su preventivo",
+    color: "from-slate-700/10",
+    status: "demo",
   },
 ];

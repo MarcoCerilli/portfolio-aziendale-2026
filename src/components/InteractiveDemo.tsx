@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { DemoProduct } from "@/types/vercel";
+import type { DemoProduct } from "@/types/vercel";
 import { FiExternalLink, FiMonitor, FiSmartphone, FiPlay } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
-import Image from "next/image";
+
+
 
 interface InteractiveDemoProps {
   product: DemoProduct;
@@ -41,7 +41,7 @@ export default function InteractiveDemo({ product }: InteractiveDemoProps) {
           </button>
         </div>
 
-        <Link 
+        <a 
           href={product.url} 
           target="_blank" 
           rel="noopener noreferrer" 
@@ -49,7 +49,7 @@ export default function InteractiveDemo({ product }: InteractiveDemoProps) {
         >
           <span>Apri in nuova tab</span>
           <FiExternalLink className="w-3.5 h-3.5" />
-        </Link>
+        </a>
       </div>
 
       {/* Frame Content */}
@@ -72,12 +72,10 @@ export default function InteractiveDemo({ product }: InteractiveDemoProps) {
                 onClick={() => setIsInteractive(true)}
               >
                 {/* Fallback Image / Screenshot */}
-                <Image 
+                <img 
                   src={product.image || `https://image.thum.io/get/width/1024/crop/768/noanimate/${product.url}`}
                   alt={`Screenshot di ${product.name}`}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-contain object-center p-2 transition-transform duration-700 group-hover:scale-105"
                 />
                 
                 {/* Play Button Overlay */}

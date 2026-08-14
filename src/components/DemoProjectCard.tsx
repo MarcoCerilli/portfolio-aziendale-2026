@@ -1,5 +1,4 @@
-import { DemoProduct } from '@/types/vercel';
-import Link from 'next/link';
+import type { DemoProduct } from '@/types/vercel';
 import { FiExternalLink, FiCheck, FiTag } from 'react-icons/fi';
 
 interface DemoProjectCardProps {
@@ -8,7 +7,7 @@ interface DemoProjectCardProps {
 
 export default function DemoProjectCard({ product }: DemoProjectCardProps) {
   return (
-    <div className="w-[280px] sm:w-[320px] shrink-0 group relative flex flex-col justify-between overflow-hidden rounded-2xl bg-white/5 p-6 backdrop-blur-lg border border-white/10 transition-all duration-300 hover:border-blue-500/50 hover:bg-white/10 hover:shadow-2xl hover:shadow-blue-500/20">
+    <div className="w-[280px] sm:w-[320px] shrink-0 group relative flex flex-col justify-between overflow-visible rounded-2xl bg-white/5 p-6 backdrop-blur-lg border border-white/10 transition-all duration-300 hover:border-blue-500/50 hover:bg-white/10 hover:shadow-2xl hover:shadow-blue-500/20">
       
       {/* Category Badge */}
       <div className="absolute top-4 right-4 flex items-center gap-1.5 rounded-full bg-blue-500/20 px-3 py-1 text-xs font-medium text-blue-300 border border-blue-500/30">
@@ -18,23 +17,23 @@ export default function DemoProjectCard({ product }: DemoProjectCardProps) {
 
       <div className="mb-6">
         {product.image ? (
-          <div className="mb-6 h-48 w-full overflow-hidden rounded-xl bg-black/20">
+          <div className="mb-6 h-48 w-full overflow-hidden rounded-xl bg-slate-950 p-2 flex items-center justify-center">
             {/* Using standard img to avoid next/image domain configuration issues for dynamic domains */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img 
               src={product.image} 
               alt={product.name} 
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              className="h-full w-full object-contain object-center transition-transform duration-500 group-hover:scale-105"
             />
           </div>
         ) : (
-          <div className="mb-6 h-48 w-full overflow-hidden rounded-xl bg-black/20 border border-white/5 relative group-hover:border-blue-500/50 transition-colors">
+          <div className="mb-6 h-48 w-full overflow-hidden rounded-xl bg-slate-950 p-2 flex items-center justify-center border border-white/5 relative group-hover:border-blue-500/50 transition-colors">
             {/* Auto screenshot fallback */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img 
               src={product.image || '/projects/coming-soon.svg'} 
               alt={`Anteprima di ${product.name}`} 
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              className="h-full w-full object-contain object-center transition-transform duration-500 group-hover:scale-105"
               loading="lazy"
             />
             {/* Subtle overlay gradient */}
@@ -65,7 +64,7 @@ export default function DemoProjectCard({ product }: DemoProjectCardProps) {
           </span>
         </div> */}
         
-        <Link 
+        <a 
           href={product.url} 
           target="_blank" 
           rel="noopener noreferrer"
@@ -73,7 +72,7 @@ export default function DemoProjectCard({ product }: DemoProjectCardProps) {
         >
           Vedi Live
           <FiExternalLink />
-        </Link>
+        </a>
       </div>
     </div>
   );

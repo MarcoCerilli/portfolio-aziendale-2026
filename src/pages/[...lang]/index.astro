@@ -1,0 +1,85 @@
+---
+import Base from "@/layouts/Base.astro";
+import { getEntryCTM } from "@/lib/contentParser.astro";
+import { generatePaths } from "@/lib/utils/i18nUtils.ts";
+
+// Nuovi componenti React dal portfolio Next.js originale
+import Hero from "@/react/Hero";
+import TechStack from "@/react/TechStack";
+import Packages from "@/react/Packages";
+import AnimatedSection from "@/react/AnimatedSection";
+import Projects from "@/react/Projects";
+import TechSpec from "@/react/TechSpec";
+import TrustSection from "@/react/TrustSection";
+import DemoProjectsSection from "@/components/sections/DemoProjectsSection.astro";
+
+export function getStaticPaths() {
+  return generatePaths();
+}
+
+const homepageContent = await getEntryCTM(
+  "homepage",
+  "-index",
+  Astro.currentLocale,
+);
+---
+
+<Base {...homepageContent?.data} headerLayout="two" headerPosition="fixed" ctaSpacingTop={false}>
+  <main class="min-h-screen text-slate-900 dark:text-slate-100 overflow-x-hidden transition-colors duration-300">
+    <Hero client:load />
+
+    <section class="py-12 md:py-16 bg-slate-50/50 dark:bg-slate-900/20 border-y border-slate-100 dark:border-slate-800">
+      <TechStack client:load />
+    </section>
+
+    <section class="py-12 md:py-16 bg-slate-900 dark:bg-indigo-950 relative overflow-hidden">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-indigo-500/10 blur-3xl pointer-events-none rounded-full"></div>
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <TechSpec
+            client:load
+            color="indigo"
+            label="Prestazioni"
+            title="Astro & Next.js"
+            description="Utilizziamo le tecnologie moderne più performanti al mondo. Siti web istantanei che abbattono il tasso di abbandono."
+          />
+          <TechSpec
+            client:load
+            color="cyan"
+            label="Infrastruttura"
+            title="Vercel & Neon"
+            description="Hosting serverless di ultima generazione. Database scalabile a zero e distribuzione globale in millisecondi."
+          />
+          <TechSpec
+            client:load
+            color="rose"
+            label="Autonomia"
+            title="WordPress / CMS"
+            description="Pannelli di controllo intuitivi. Aggiorna testi, foto e prodotti in totale autonomia senza dipendere da uno sviluppatore."
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-8 md:py-12 bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800">
+      <TrustSection client:load />
+    </section>
+
+    <section id="progetti" class="py-12 md:py-16 bg-slate-50/50 dark:bg-slate-900/20 border-y border-slate-100 dark:border-slate-800">
+      <div class="max-w-7xl mx-auto px-6">
+        <Projects client:load />
+      </div>
+    </section>
+
+    <section id="demo" class="py-6 md:py-10 bg-white dark:bg-slate-950 border-b border-slate-100 dark:border-slate-800">
+      <DemoProjectsSection />
+    </section>
+
+    <section id="pacchetti" class="py-12 md:py-16 bg-white dark:bg-slate-950">
+      <div class="max-w-7xl mx-auto px-6">
+        <Packages client:load />
+      </div>
+    </section>
+  </main>
+</Base>
+

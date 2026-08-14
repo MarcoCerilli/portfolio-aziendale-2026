@@ -1,0 +1,71 @@
+{
+  "header": [
+    {
+      "enable": true,
+      "name": "Servizi",
+      "url": "/#pacchetti"
+    },
+    {
+      "enable": true,
+      "name": "Tecnologie",
+      "url": "/#tecnologie"
+    },
+    {
+      "enable": true,
+      "name": "Risultati",
+      "url": "/#risultati"
+    }
+  ],
+  "footer": [
+    {
+      "label": "Link Rapidi",
+      "list": [
+        {
+          "enable": true,
+          "name": "Home",
+          "url": "/"
+        },
+        {
+          "enable": true,
+          "name": "Servizi",
+          "url": "/#pacchetti"
+        },
+        {
+          "enable": true,
+          "name": "Tecnologie",
+          "url": "/#tecnologie"
+        },
+        {
+          "enable": true,
+          "name": "Risultati",
+          "url": "/#risultati"
+        }
+      ]
+    },
+    {
+      "label": "Esplora",
+      "list": [
+        {
+          "enable": true,
+          "name": "Richiedi Consulenza",
+          "url": "/#contatti"
+        }
+      ]
+    },
+    {
+      "label": "Legale",
+      "list": [
+        {
+          "enable": true,
+          "name": "Privacy Policy",
+          "url": "/privacy-policy/"
+        },
+        {
+          "enable": true,
+          "name": "Termini e Condizioni",
+          "url": "/terms-conditions/"
+        }
+      ]
+    }
+  ]
+}

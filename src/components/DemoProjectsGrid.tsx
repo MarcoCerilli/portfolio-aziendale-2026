@@ -1,10 +1,10 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
-import Image from "next/image";
+
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import { FiCheck, FiPlay } from "react-icons/fi";
-import { DemoProduct } from "@/types/vercel";
+import type { DemoProduct } from "@/types/vercel";
 
 function DemoProjectCard({ product }: { product: DemoProduct }) {
   return (
@@ -24,12 +24,10 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
           rel="noopener noreferrer"
           className="absolute inset-0 cursor-pointer group/preview block"
         >
-          <Image
+          <img
             src={product.image || '/projects/coming-soon.svg'}
             alt={`Screenshot di ${product.name}`}
-            fill
-            unoptimized
-            className="object-contain object-center p-2 transition-transform duration-700 group-hover/preview:scale-105"
+            className="absolute inset-0 w-full h-full object-contain object-center p-2 transition-transform duration-700 group-hover/preview:scale-105"
           />
           
           {/* Play Button Overlay */}
@@ -106,96 +104,122 @@ interface DemoProjectsGridProps {
 
 export default function DemoProjectsGrid({ products }: DemoProjectsGridProps) {
   const [filter, setFilter] = useState<string>("Tutti");
-  const [carouselWidth, setCarouselWidth] = useState(0);
-  const carouselRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   // Extract unique categories from the products
-  const categories = ["Tutti", ...Array.from(new Set(products.map(p => p.category)))];
+  const categories = ["Tutti", ...Array.from(new Set(products.map((p) => p.category)))];
 
   const filteredProducts = products.filter((p) =>
-    filter === "Tutti" ? true : p.category === filter
+    filter === "Tutti" ? true : p.category === filter,
   );
 
-  useEffect(() => {
-    const updateWidth = () => {
-      if (carouselRef.current) {
-        setCarouselWidth(
-          Math.max(0, carouselRef.current.scrollWidth - carouselRef.current.offsetWidth)
-        );
-      }
-    };
-    
-    updateWidth();
-    const timeoutId = setTimeout(updateWidth, 100);
-    window.addEventListener("resize", updateWidth);
-    
-    return () => {
-      window.removeEventListener("resize", updateWidth);
-      clearTimeout(timeoutId);
-    };
-  }, [filter, filteredProducts.length]);
+  const handleScroll = (direction: "left" | "right") => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+    const card = container.querySelector(".group");
+    const step = card ? card.getBoundingClientRect().width + 24 : 450;
+
+    container.scrollBy({
+      left: direction === "left" ? -step : step,
+      behavior: "smooth",
+    });
+  };
+
+  const handleFilterChange = (cat: string) => {
+    setFilter(cat);
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTo({ left: 0, behavior: "smooth" });
+    }
+  };
 
   if (products.length === 0) return null;
 
   return (
-    <section className="py-12 md:py-20 px-4 md:px-6 max-w-7xl mx-auto transition-colors duration-300 overflow-visible">
-      <div className="flex flex-col items-center text-center mb-10 md:mb-16 space-y-4">
-        <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-tight">
-          Esplora i <span className="text-indigo-600 dark:text-indigo-400">Progetti Demo</span>
+    <section aria-label="Progetti Demo Live" className="py-12 md:py-16 px-4 md:px-6 max-w-7xl mx-auto transition-colors duration-300">
+      <div className="flex flex-col items-center text-center mb-8 md:mb-12 space-y-3">
+        <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-950/80 border border-indigo-200 dark:border-indigo-800 text-xs font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300">
+          Template Live
+        </span>
+        <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
+          Esplora i <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-indigo-400">Progetti Demo</span>
         </h2>
-        <p className="text-slate-500 dark:text-slate-400 text-xs md:text-base max-w-2xl mx-auto font-medium leading-relaxed">
+        <p className="text-slate-600 dark:text-slate-300 text-sm md:text-base max-w-2xl mx-auto font-normal leading-relaxed">
           Sfoglia e naviga in tempo reale i nostri template live, divisi per categoria.
         </p>
 
-        {/* Filter bar — scrollabile su mobile */}
-        <div className="w-full flex justify-center pt-6">
-          <div className="relative w-full max-w-3xl">
-            {/* Fade edges su mobile per suggerire scroll */}
-            <div className="absolute left-0 top-0 bottom-0 w-6 bg-gradient-to-r from-white/80 dark:from-slate-950/80 to-transparent z-10 pointer-events-none rounded-l-2xl md:hidden" />
-            <div className="absolute right-0 top-0 bottom-0 w-6 bg-gradient-to-l from-white/80 dark:from-slate-950/80 to-transparent z-10 pointer-events-none rounded-r-2xl md:hidden" />
-            <div
-              className="flex flex-nowrap overflow-x-auto gap-2 bg-slate-100 dark:bg-slate-900 p-1.5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm"
-              style={{ scrollbarWidth: "none", WebkitOverflowScrolling: "touch" } as React.CSSProperties}
-            >
-              {categories.map((cat) => (
+        {/* Filter bar */}
+        <div className="w-full flex justify-center pt-3">
+          <div className="flex flex-wrap justify-center gap-2 p-1.5 bg-slate-100 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200 dark:border-slate-800">
+            {categories.map((cat) => {
+              const isSelected = filter === cat;
+              return (
                 <button
                   key={cat}
-                  onClick={() => setFilter(cat)}
-                  className={`whitespace-nowrap flex-shrink-0 px-4 md:px-5 py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-widest transition-all duration-300 ${
-                    filter === cat
-                      ? "bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-md ring-1 ring-black/5 dark:ring-white/5"
-                      : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleFilterChange(cat);
+                  }}
+                  className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${
+                    isSelected
+                      ? "bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-md shadow-slate-200/50 dark:shadow-black/40 ring-1 ring-black/5 dark:ring-white/10"
+                      : "text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-slate-800/50"
                   }`}
                 >
                   {cat}
                 </button>
-              ))}
-            </div>
+              );
+            })}
           </div>
         </div>
       </div>
 
-      {/* Contenitore con overflow-hidden per eliminare la scrollbar ed effetto sospeso (più padding) */}
-      <div className="w-full overflow-visible py-16 -my-12 relative mask-image-gradient">
-        <motion.div
-          ref={carouselRef}
-          className="cursor-grab active:cursor-grabbing w-full"
-          whileTap={{ cursor: "grabbing" }}
-        >
-          <motion.div
-            drag={carouselWidth > 0 ? "x" : false}
-            dragConstraints={{ right: 0, left: -carouselWidth }}
-            animate={{ x: carouselWidth > 0 ? [0, -carouselWidth] : 0 }}
-            transition={{ repeat: Infinity, ease: "linear", duration: 60, repeatType: "reverse" }}
-            className="flex gap-6 md:gap-10 px-4 md:px-8 w-max"
+      {/* Controller Carosello Demo */}
+      <div className="flex items-center justify-between px-2 mb-4">
+        <div className="flex items-center gap-2">
+          <span className="text-xs font-extrabold text-slate-700 dark:text-slate-300 uppercase tracking-widest">
+            {filteredProducts.length} {filteredProducts.length === 1 ? "Demo" : "Demo Disponibili"}
+          </span>
+          <span className="text-xs text-slate-500 dark:text-slate-400">• Scorri o clicca per navigare</span>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              handleScroll("left");
+            }}
+            className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-100 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 dark:hover:text-white hover:border-indigo-600 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 transition-all active:scale-95 cursor-pointer"
+            aria-label="Demo precedente"
           >
-          <AnimatePresence mode="popLayout">
-            {filteredProducts.map((product) => (
-              <DemoProjectCard key={product.id} product={product} />
-            ))}
-          </AnimatePresence>
-        </motion.div>
-      </motion.div>
+            ←
+          </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              handleScroll("right");
+            }}
+            className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-100 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 dark:hover:text-white hover:border-indigo-600 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 transition-all active:scale-95 cursor-pointer"
+            aria-label="Demo successiva"
+          >
+            →
+          </button>
+        </div>
+      </div>
+
+      {/* Contenitore Carosello Demo */}
+      <div
+        ref={scrollContainerRef}
+        tabIndex={0}
+        aria-label="Elenco demo live"
+        className="flex gap-6 overflow-x-auto pb-12 pt-8 px-4 -mx-4 snap-x snap-mandatory scroll-smooth focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 cursor-grab active:cursor-grabbing"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+      >
+        {filteredProducts.map((product) => (
+          <DemoProjectCard key={product.id} product={product} />
+        ))}
       </div>
     </section>
   );

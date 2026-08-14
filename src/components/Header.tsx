@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import Link from "next/link";
-import { motion, AnimatePresence, Variants } from "framer-motion";
+
+import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { XMarkIcon, Bars3Icon, SparklesIcon } from "@heroicons/react/24/outline";
 
 const navLinks = [
@@ -47,7 +47,7 @@ const Header = () => {
     >
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         {/* LOGO */}
-        <Link href="/" className="group flex items-center gap-2">
+        <a href="/" className="group flex items-center gap-2">
           <motion.div
             whileHover={{ scale: 1.1, rotate: 5 }}
             className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-sm font-black text-white shadow-lg shadow-indigo-500/20"
@@ -60,37 +60,29 @@ const Header = () => {
               WEB
             </span>
           </span>
-        </Link>
+        </a>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center space-x-8">
           {navLinks.map((link) => (
-            <Link
+            <a
               key={link.name}
               href={link.href}
               className="text-sm font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors relative group"
             >
               {link.name}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-500 transition-all group-hover:w-full"></span>
-            </Link>
+            </a>
           ))}
-          
-          <Link
-            href="/templates"
-            className="text-sm font-black uppercase tracking-widest text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300 transition-colors flex items-center gap-2 bg-indigo-50 dark:bg-indigo-900/30 px-4 py-2 rounded-full border border-indigo-200 dark:border-indigo-800"
-          >
-            <SparklesIcon className="w-4 h-4" />
-            Soluzioni & Demo
-          </Link>
-          
+
           <div className="flex items-center gap-4">
             <ThemeToggle />
-            <Link
+            <a
               href="/#contatti"
               className="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest px-6 py-2.5 rounded-full shadow-md shadow-indigo-200 dark:shadow-indigo-900/20 transition-all"
             >
-              Lavoriamo Insieme
-            </Link>
+              Richiedi Consulenza
+            </a>
           </div>
         </nav>
 
@@ -124,35 +116,26 @@ const Header = () => {
             >
               {navLinks.map((link) => (
                 <motion.div key={link.name} variants={linkVariants}>
-                  <Link
+                  <a
                     href={link.href}
                     onClick={() => setIsOpen(false)}
                     className="text-lg font-bold uppercase tracking-[0.4em] text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
                   >
                     {link.name}
-                  </Link>
+                  </a>
                 </motion.div>
               ))}
 
-              <motion.div variants={linkVariants} className="pt-2 pb-4">
-                <Link
-                  href="/templates"
-                  onClick={() => setIsOpen(false)}
-                  className="text-sm font-black uppercase tracking-widest text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300 transition-colors flex items-center gap-2 justify-center bg-indigo-50 dark:bg-indigo-900/30 px-6 py-3 rounded-full border border-indigo-200 dark:border-indigo-800"
-                >
-                  <SparklesIcon className="w-5 h-5" />
-                  Soluzioni & Demo
-                </Link>
-              </motion.div>
+
 
               <motion.div variants={linkVariants} className="pt-2">
-                <Link
+                <a
                   href="/#contatti"
                   onClick={() => setIsOpen(false)}
                   className="bg-indigo-600 text-white px-8 py-3.5 rounded-full font-black uppercase tracking-widest text-[10px] shadow-lg shadow-indigo-200 dark:shadow-indigo-900/20"
                 >
-                  Lavoriamo Insieme
-                </Link>
+                  Richiedi Consulenza
+                </a>
               </motion.div>
             </motion.div>
           )}

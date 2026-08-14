@@ -1,0 +1,22 @@
+---
+import DemoProjectsGrid from "@/react/DemoProjectsGrid";
+import { projectsList } from "@/data/projects";
+import type { DemoProduct } from "@/types/vercel";
+
+const demoProducts: DemoProduct[] = projectsList
+  .filter(p => p.status === "demo")
+  .map((p, idx) => ({
+    id: idx.toString(),
+    name: p.title,
+    url: p.link,
+    category: p.category,
+    price: null,
+    image: p.image,
+    features: p.tags
+  }));
+---
+<section class="section pt-0">
+  <div class="container overflow-hidden">
+    <DemoProjectsGrid client:load products={demoProducts} />
+  </div>
+</section>

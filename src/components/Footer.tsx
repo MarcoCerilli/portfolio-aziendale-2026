@@ -1,12 +1,13 @@
 "use client";
 import { motion } from 'framer-motion';
-import { SiLinkedin, SiGithub, SiWhatsapp } from 'react-icons/si';
+import { FaLinkedin } from 'react-icons/fa6';
+import { SiGithub, SiWhatsapp } from 'react-icons/si';
 import { EnvelopeIcon } from '@heroicons/react/24/outline';
 
 const socialLinks = [
   { 
     name: 'LinkedIn', 
-    icon: SiLinkedin, 
+    icon: FaLinkedin, 
     href: 'https://www.linkedin.com/in/marco-cerilli', 
     brandColor: '#0077B5' 
   },
@@ -32,7 +33,7 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <footer id="contatti" className="py-12 md:py-24 bg-slate-50 dark:bg-slate-950 relative overflow-hidden transition-colors duration-300">
+    <footer id="contatti" className="py-6 md:py-12 bg-slate-50 dark:bg-slate-950 relative overflow-hidden transition-colors duration-300">
       <div className="container mx-auto px-4 relative z-10 flex justify-center">
         {/* BLOCCO UNICO ACCATTIVANTE */}
         <motion.div 
@@ -40,7 +41,7 @@ const Footer = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="w-full max-w-5xl bg-white dark:bg-slate-900/50 backdrop-blur-xl border border-slate-200 dark:border-slate-800 rounded-[2rem] p-8 md:p-16 shadow-2xl relative overflow-hidden"
+          className="w-full max-w-5xl bg-white dark:bg-slate-900/50 backdrop-blur-xl border border-slate-200 dark:border-slate-800 rounded-[2rem] p-6 md:p-10 shadow-2xl relative overflow-hidden"
         >
           {/* Riflesso interno al blocco */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[200%] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-500/10 via-transparent to-transparent pointer-events-none" />
@@ -53,7 +54,7 @@ const Footer = () => {
               Scegli il canale preferito. Rispondo entro poche ore per discutere la tua idea e trovare la soluzione migliore.
             </p>
 
-            <div className="flex flex-wrap justify-center gap-8 md:gap-16 mb-16 md:mb-20">
+            <div className="flex flex-wrap justify-center gap-8 md:gap-16 mb-8 md:mb-10">
               {socialLinks.map((link, index) => (
                 <motion.a
                   key={link.name}

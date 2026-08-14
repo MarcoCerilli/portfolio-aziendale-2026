@@ -28,7 +28,7 @@ const FloatingContact = () => {
   const [geminiHistory, setGeminiHistory] = useState<GeminiHistoryItem[]>([]);
 
   const [aiMessages, setAiMessages] = useState<Message[]>([
-    { text: "Ciao! Sono l'assistente IA di M Solutions. Come posso aiutarti?", sender: "bot" },
+    { text: "Ciao! Sono l'assistente IA di M Solutions Web. Come posso aiutarti?", sender: "bot" },
   ]);
   
   const [waMessages, setWaMessages] = useState<Message[]>([
@@ -100,7 +100,7 @@ const FloatingContact = () => {
 
   return (
     <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[9999]">
-      <style jsx>{`
+      <style>{`
         @keyframes shimmer {
           100% { transform: translateX(100%); }
         }

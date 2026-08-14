@@ -1,7 +1,7 @@
 // src/components/AnimatedSection.tsx
 "use client";
-import React, { ReactNode } from 'react';
-import { motion, Variants } from 'framer-motion';
+import React, { type ReactNode } from 'react';
+import { motion, type Variants } from 'framer-motion';
 
 interface AnimatedSectionProps {
     children: ReactNode;

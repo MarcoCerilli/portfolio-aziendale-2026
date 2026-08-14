@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
 
 export default function CookieBanner() {
   const [isVisible, setIsVisible] = useState(false);
@@ -62,12 +61,12 @@ export default function CookieBanner() {
               >
                 Rifiuta
               </button>
-              <Link
+              <a
                 href="/cookie-policy"
                 className="flex-1 flex justify-center items-center bg-transparent hover:bg-slate-800 text-slate-400 hover:text-white font-bold py-2 rounded-xl transition-colors text-xs"
               >
                 Scopri di più
-              </Link>
+              </a>
             </div>
           </div>
         </motion.div>
