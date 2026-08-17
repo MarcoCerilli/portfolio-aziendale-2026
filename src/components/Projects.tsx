@@ -13,7 +13,7 @@ function ProjectCard({ project }: { project: Project }) {
   const hasLiveLink = project.link && project.link !== "#";
 
   return (
-    <article className="w-[300px] sm:w-[380px] md:w-[440px] shrink-0 snap-start bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 overflow-visible flex flex-col hover:border-indigo-500/60 dark:hover:border-indigo-500/60 hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-300 group select-none">
+    <article className="relative hover:z-50 w-[300px] sm:w-[380px] md:w-[440px] shrink-0 snap-start bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 overflow-visible flex flex-col hover:border-indigo-500/60 dark:hover:border-indigo-500/60 hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-300 group select-none">
       {/* AREA FOTO / PREVIEW */}
       <div className="relative w-full p-3.5 rounded-t-3xl bg-slate-50 dark:bg-slate-950/60 border-b border-slate-100 dark:border-slate-800">
         <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden shadow-inner border border-slate-200/60 dark:border-slate-800 bg-slate-950 flex items-center justify-center p-2">
@@ -235,7 +235,7 @@ export default function ProjectsCarousel() {
         ref={scrollContainerRef}
         tabIndex={0}
         aria-label="Elenco carosello progetti"
-        className="flex gap-6 overflow-x-auto pb-12 pt-8 px-4 -mx-4 snap-x snap-mandatory scroll-smooth focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 cursor-grab active:cursor-grabbing"
+        className="flex gap-6 overflow-x-auto pb-24 pt-20 px-8 -mx-8 md:px-16 md:-mx-16 lg:px-24 lg:-mx-24 xl:px-32 xl:-mx-32 snap-x snap-mandatory scroll-smooth focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 cursor-grab active:cursor-grabbing"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {filteredProjects.map((project) => (

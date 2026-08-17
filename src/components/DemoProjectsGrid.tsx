@@ -14,7 +14,7 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.8 }}
       transition={{ duration: 0.4, ease: "circOut" }}
-      className="group relative w-[90vw] md:w-[480px] lg:w-[540px] shrink-0 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 overflow-hidden flex flex-col hover:border-indigo-500/50 transition-all duration-500 shadow-2xl shadow-slate-900/10 dark:shadow-black/50 hover:-translate-y-2 hover:shadow-[0_30px_60px_-15px_rgba(79,70,229,0.25)]"
+      className="group relative hover:z-50 w-[90vw] md:w-[480px] lg:w-[540px] shrink-0 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 overflow-hidden flex flex-col hover:border-indigo-500/50 transition-all duration-500 shadow-2xl shadow-slate-900/10 dark:shadow-black/50 hover:-translate-y-2 hover:shadow-[0_30px_60px_-15px_rgba(79,70,229,0.25)]"
     >
       {/* FOTO E OVERLAY PER NUOVA SCHEDA (Full Width Suspended) */}
       <div className="relative w-full aspect-[16/10] bg-slate-950 border-b border-slate-100 dark:border-slate-800 group overflow-hidden">
@@ -214,7 +214,7 @@ export default function DemoProjectsGrid({ products }: DemoProjectsGridProps) {
         ref={scrollContainerRef}
         tabIndex={0}
         aria-label="Elenco demo live"
-        className="flex gap-6 overflow-x-auto pb-12 pt-8 px-4 -mx-4 snap-x snap-mandatory scroll-smooth focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 cursor-grab active:cursor-grabbing"
+        className="flex gap-6 overflow-x-auto pb-24 pt-20 px-8 -mx-8 md:px-16 md:-mx-16 lg:px-24 lg:-mx-24 xl:px-32 xl:-mx-32 snap-x snap-mandatory scroll-smooth focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 cursor-grab active:cursor-grabbing"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {filteredProducts.map((product) => (
