@@ -34,3 +34,7 @@ pnpm-workspace.yaml
 
 .claude
 .env.local
+
+# TypeScript build cache
+*.tsbuildinfo
+tsconfig.tsbuildinfo
