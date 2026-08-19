@@ -54,7 +54,7 @@ const itemVariants: Variants = {
 
 const TechStack = () => {
   return (
-    <section id="tecnologie" aria-label="Stack Tecnologico e Strumenti" className="py-12 bg-white dark:bg-transparent relative transition-colors duration-300">
+    <div id="tecnologie" aria-label="Stack Tecnologico e Strumenti" className="py-12 md:py-16 bg-slate-50/50 dark:bg-slate-900/20 border-y border-slate-100 dark:border-slate-800 relative transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6">
         {/* Titolo Sezione Accessibile */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-3">
@@ -103,7 +103,7 @@ const TechStack = () => {
 
       {/* Divisore sfumato sottile per separare dalla Hero senza stacchi netti */}
       <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-slate-100 dark:via-slate-800 to-transparent" aria-hidden="true" />
-    </section>
+    </div>
   );
 };
 

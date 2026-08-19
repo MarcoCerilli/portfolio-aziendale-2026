@@ -28,25 +28,23 @@ export const categories: ("Tutti" | ProjectCategory)[] = [
   "Sistemi & App Su Misura",
 ];
 
-// Badge ricolorati per sfondo chiaro (testi più scuri e bordi più definiti)
-export const getTagStyle = (tag: string) => {
+// Tag badge classes — mapped to .tag-* classes safelisted in src/styles/safe.css
+// (Tailwind v4 purges dynamically-built utility strings; semantic classes are always included)
+export const getTagStyle = (tag: string): string => {
   const t = tag.toLowerCase();
-  if (t.includes("astro"))
-    return "bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-300 border-orange-200 dark:border-orange-800/50";
-  if (t.includes("react"))
-    return "bg-cyan-50 dark:bg-cyan-900/20 text-cyan-700 dark:text-cyan-300 border-cyan-200 dark:border-cyan-800/50";
-  if (t.includes("next.js")) return "bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800/50";
+  if (t.includes("astro") || t.includes("firebase") || t.includes("saas"))
+    return "tag-orange";
+  if (t.includes("react") || t.includes("wordpress") || t.includes("seo"))
+    return "tag-cyan";
+  if (t.includes("next.js") || t.includes("typescript") || t.includes("mysql"))
+    return "tag-blue";
   if (t.includes("ai") || t.includes("google") || t.includes("groq"))
-    return "bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800/50";
-  if (t.includes("wordpress") || t.includes("seo"))
-    return "bg-cyan-50 dark:bg-cyan-900/20 text-cyan-700 dark:text-cyan-300 border-cyan-200 dark:border-cyan-800/50";
+    return "tag-purple";
   if (t.includes("stripe") || t.includes("fintech") || t.includes("b2b"))
-    return "bg-indigo-50 dark:bg-indigo-900/20 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800/50";
+    return "tag-indigo";
   if (t.includes("laravel") || t.includes("php"))
-    return "bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 border-red-200 dark:border-red-800/50";
-  if (t.includes("firebase") || t.includes("saas"))
-    return "bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-300 border-orange-200 dark:border-orange-800/50";
-  return "bg-slate-50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700";
+    return "tag-red";
+  return "tag-slate";
 };
 
 export const projectsList: Project[] = [
@@ -129,8 +127,8 @@ export const projectsList: Project[] = [
   },
   {
     title: "La Casetta nelle Mura",
-    description: "Sito hospitality a Terracina. Ottimizzazione SEO per il posizionamento turistico e sistema di contatto diretto.",
-    tags: ["WordPress", "SEO", "Hospitality"],
+    description: "Sito hospitality a Terracina sviluppato in Astro. Ottimizzazione SEO per il posizionamento turistico e sistema di contatto diretto. Performance 100/100 su PageSpeed.",
+    tags: ["Astro", "Tailwind CSS", "SEO", "Hospitality"],
     link: "https://lacasettanellemura.it",
     image: "/projects/lacasetta.png",
     category: "Sito Vetrina Pro",
