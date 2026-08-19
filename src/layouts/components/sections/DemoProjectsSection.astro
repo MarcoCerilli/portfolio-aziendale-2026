@@ -15,8 +15,6 @@ const demoProducts: DemoProduct[] = projectsList
     features: p.tags
   }));
 ---
-<section class="section pt-0">
-  <div class="container">
-    <DemoProjectsGrid client:load products={demoProducts} />
-  </div>
+<section class="py-12 md:py-16 bg-white dark:bg-slate-950 border-b border-slate-100 dark:border-slate-800 w-full overflow-hidden">
+  <DemoProjectsGrid client:load products={demoProducts} />
 </section>
