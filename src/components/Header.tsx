@@ -1,8 +1,7 @@
-"use client";
 import { useState } from "react";
 
 import { motion, AnimatePresence, type Variants } from "framer-motion";
-import { XMarkIcon, Bars3Icon, SparklesIcon } from "@heroicons/react/24/outline";
+import { XMarkIcon, Bars3Icon } from "@heroicons/react/24/outline";
 
 const navLinks = [
   { name: "Servizi", href: "/#pacchetti" },

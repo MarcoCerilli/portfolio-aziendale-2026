@@ -36,7 +36,7 @@ let {
   options,
 } = actualContent as ctaInterface;
 
-const { hasSectionSpacing = true } = Astro.props;
+const { hasSectionSpacing = false } = Astro.props;
 
 // Extracting required values from 'options' object
 let { appearance = "dark", centeredContent = false } = options || {};
@@ -44,7 +44,7 @@ const isDarkAppearance = appearance === "dark";
 const isCenteredContent = centeredContent || isDarkAppearance;
 const buttonClass = [
   isDarkAppearance &&
-    "rounded-md px-7 py-4.5 text-base leading-6 font-semibold normal-case",
+    "rounded-full px-6 py-3 text-sm font-bold leading-6 normal-case shadow-lg shadow-indigo-500/20",
   appearance === "accent" && "effect-color-light",
   appearance === "light" && "effect-color-accent",
   button?.class,
@@ -68,7 +68,7 @@ if (!hasContentSource || !enable || !hasVisibleContent) {
   <div class:list={["relative overflow-hidden"]}>
     {
       isDarkAppearance ? (
-        <div class="cta-section-background section-spacing-vertical bg-theme-dark relative overflow-hidden py-10 text-center md:py-14 xl:py-16">
+        <div class="cta-section-background bg-theme-dark relative overflow-hidden py-8 text-center md:py-10 lg:py-12">
           <span
             aria-hidden="true"
             class="cta-section-dot-pattern cta-section-dot-pattern-start"
@@ -81,23 +81,23 @@ if (!hasContentSource || !enable || !hasVisibleContent) {
           <div
             class="relative z-10 container text-center"
             data-scroll-reveal="blur-up">
-            <div class="mx-auto max-w-5xl">
+            <div class="mx-auto max-w-4xl">
               {title && (
                 <h2
-                  class="text-display-6 md:text-display-5 lg:text-display-4 mx-auto text-white"
+                  class="text-2xl xs:text-3xl md:text-4xl lg:text-5xl font-black mx-auto text-white tracking-tight leading-tight"
                   set:html={markdownify(title)}
                 />
               )}
 
               {description && (
                 <div
-                  class="text-light leading-body mx-auto mt-5 max-w-2xl text-base md:mt-6"
+                  class="text-slate-300 leading-relaxed mx-auto mt-3 max-w-xl text-xs md:text-sm"
                   set:html={markdownify(description, true)}
                 />
               )}
 
               {buttonProps?.enable && (
-                <div class="mt-7">
+                <div class="mt-5">
                   <Button {...buttonProps} />
                 </div>
               )}
@@ -108,26 +108,26 @@ if (!hasContentSource || !enable || !hasVisibleContent) {
         <div
           data-scroll-reveal="blur-up"
           class:list={[
-            "container grid gap-x-20 gap-y-5 xl:gap-x-10",
+            "container py-8 md:py-10 grid gap-x-20 gap-y-5 xl:gap-x-10",
             isCenteredContent
               ? "grid-cols-1 justify-items-center text-center"
-              : "lg:grid-cols-2 lg:place-items-center lg:gap-y-20",
+              : "lg:grid-cols-2 lg:place-items-center lg:gap-y-12",
           ]}>
-          <div class:list={[isCenteredContent ? "max-w-5xl" : "max-w-3xl"]}>
+          <div class:list={[isCenteredContent ? "max-w-4xl" : "max-w-3xl"]}>
             {title && (
               <h2
-                class="text-display-6 xs:text-display-5 md:text-display-4 xl:text-display-3 mx-auto"
+                class="text-2xl xs:text-3xl md:text-4xl font-black mx-auto tracking-tight"
                 set:html={markdownify(title)}
               />
             )}
           </div>
           <div
             class:list={[
-              "space-y-10",
-              isCenteredContent ? "max-w-2xl" : "max-w-lg",
+              "space-y-6",
+              isCenteredContent ? "max-w-xl" : "max-w-lg",
             ]}>
             {description && (
-              <div class="text-lg" set:html={markdownify(description, true)} />
+              <div class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed" set:html={markdownify(description, true)} />
             )}
 
             {buttonProps?.enable && <Button {...buttonProps} />}

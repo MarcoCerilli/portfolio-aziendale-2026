@@ -1,4 +1,3 @@
-"use client";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 import {
@@ -56,7 +55,7 @@ const FloatingContact = () => {
     }
   }, [aiMessages, waMessages, chatMode, loading]);
 
-  const handleSendMessage = async (e: React.FormEvent) => {
+  const handleSendMessage = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     if (!input.trim() || loading) return;
 

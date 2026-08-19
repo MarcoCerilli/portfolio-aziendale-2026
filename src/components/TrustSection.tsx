@@ -1,5 +1,5 @@
-"use client";
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
+
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 import { ShieldCheckIcon } from "@heroicons/react/24/solid";
 

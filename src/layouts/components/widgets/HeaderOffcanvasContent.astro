@@ -11,7 +11,7 @@ import { useTranslations } from "@/lib/utils/i18nUtils.ts";
 const {
   settings: {
     headerOffcanvas: { enable, logo, description },
-    contactInfo: { address, phone, email },
+    contactInfo: { phone, email },
   },
 } = config;
 
@@ -26,90 +26,56 @@ if (!enable) {
 
 <div
   data-lenis-scroll-native
-  class="flex h-screen flex-col justify-between space-y-6 overflow-auto bg-white px-8 pt-16 pb-5 md:px-16 md:pb-10">
+  class="flex h-screen flex-col justify-between space-y-6 overflow-auto bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 px-6 sm:px-8 pt-16 pb-6 border-s border-slate-200 dark:border-slate-800">
   <button
     type="button"
     data-hs-overlay={`#${offcanvas}`}
     title={t("aria.closeOffcanvas")}
-    class="absolute end-7 top-5 z-20 inline-flex h-12 w-12 items-center justify-center gap-x-2 rounded-full bg-slate-100 text-xl ring-transparent transition-all duration-500 ease-out hover:rotate-90"
+    class="absolute end-6 top-5 z-20 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all duration-200 cursor-pointer"
     aria-expanded="true">
-    <Icons icon="X" />
+    <Icons icon="X" class="w-5 h-5" />
   </button>
 
-  <Logo class="text-dark justify-start" src={logo} />
-  {
-    (description || t("headerOffcanvas.description")) && (
-      <p
-        set:html={markdownify(description || t("headerOffcanvas.description"))}
-      />
-    )
-  }
+  <div>
+    <Logo class="justify-start mb-3" src={logo} />
+    {
+      (description || t("headerOffcanvas.description")) && (
+        <p
+          class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed"
+          set:html={markdownify(description || t("headerOffcanvas.description"))}
+        />
+      )
+    }
+  </div>
 
-  <Social
-    linkType="follow"
-    list={social.main.filter((social) => social.enable)}
-  />
-  <div class="mb-10 pt-10 lg:hidden">
+  <div class="my-4 pt-4 border-t border-slate-100 dark:border-slate-800/80 lg:hidden">
     <Navbar isMobile={true} navigationButton={navigationButton} />
   </div>
 
-  <div class="mt-auto space-y-10">
-    <div>
-      <div
-        class="bg-theme-dark flex h-12 w-12 items-center justify-center rounded-lg">
-        <svg
-          width="20"
-          height="24"
-          viewBox="0 0 20 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M16.6443 16.6443L9.75 23.5386L2.85571 16.6443C-0.951903 12.8366 -0.951903 6.66332 2.85571 2.85571C6.66332 -0.951903 12.8366 -0.951903 16.6443 2.85571C20.4519 6.66332 20.4519 12.8366 16.6443 16.6443ZM9.75 11.9167C10.9466 11.9167 11.9167 10.9467 11.9167 9.75C11.9167 8.55338 10.9466 7.58333 9.75 7.58333C8.55335 7.58333 7.58333 8.55338 7.58333 9.75C7.58333 10.9467 8.55335 11.9167 9.75 11.9167Z"
-            fill="white">
-          </path>
-        </svg>
-      </div>
-      {
-        t("headerOffcanvas.addressLabel") && (
-          <div
-            class="text-dark mt-5 mb-2 text-lg font-medium"
-            set:html={markdownify(t("headerOffcanvas.addressLabel"))}
-          />
-        )
-      }
-      {
-        address && (
-          <address class="not-italic" set:html={markdownify(address)} />
-        )
-      }
+  <div class="mt-auto pt-6 border-t border-slate-100 dark:border-slate-800/80 space-y-4 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+    <div class="flex flex-col gap-2">
+      {phone && (
+        <a href={`tel:${phone.replace(/\s+/g, "")}`} class="flex items-center gap-2.5 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+          <span class="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+            <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path d="M16.625 17.5C14.8889 17.5 13.1701 17.125 11.4688 16.375C9.76736 15.625 8.22222 14.5556 6.83333 13.1667C5.44444 11.7778 4.375 10.2361 3.625 8.54167C2.875 6.84722 2.5 5.125 2.5 3.375V2.5H7.41667L8.1875 6.6875L5.8125 9.08333C6.11806 9.625 6.45833 10.1389 6.83333 10.625C7.20833 11.1111 7.61111 11.5625 8.04167 11.9792C8.44444 12.3819 8.88542 12.7674 9.36458 13.1354C9.84375 13.5035 10.3611 13.8472 10.9167 14.1667L13.3333 11.75L17.5 12.6042V17.5H16.625Z"/></svg>
+          </span>
+          <span set:html={markdownify(phone)} />
+        </a>
+      )}
+      {email && (
+        <a href={`mailto:${email}`} class="flex items-center gap-2.5 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+          <span class="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+            <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path d="M1.66675 16.6667V3.33333H18.3334V16.6667H1.66675ZM10.0001 10.8333L16.6667 6.66666V4.99999L10.0001 9.16666L3.33341 4.99999V6.66666L10.0001 10.8333Z"/></svg>
+          </span>
+          <span set:html={markdownify(email)} />
+        </a>
+      )}
     </div>
-    <div>
-      <div
-        class="bg-theme-dark flex h-12 w-12 items-center justify-center rounded-lg">
-        <svg
-          width="22"
-          height="20"
-          viewBox="0 0 22 20"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M1.08333 0H20.5833C21.1817 0 21.6667 0.48503 21.6667 1.08333V18.4167C21.6667 19.015 21.1817 19.5 20.5833 19.5H1.08333C0.48503 19.5 0 19.015 0 18.4167V1.08333C0 0.48503 0.48503 0 1.08333 0ZM10.899 9.40648L3.95115 3.50751L2.54884 5.15916L10.9125 12.2602L19.1256 5.15251L17.7077 3.51416L10.899 9.40648Z"
-            fill="white">
-          </path>
-        </svg>
-      </div>
-      {
-        t("headerOffcanvas.contactLabel") && (
-          <div
-            class="text-dark mt-5 mb-2 text-lg font-medium"
-            set:html={markdownify(t("headerOffcanvas.contactLabel"))}
-          />
-        )
-      }
-      <div class="prose-a:underline">
-        {phone && <p set:html={markdownify(phone)} />}
-        {email && <p set:html={markdownify(email)} />}
-      </div>
-    </div>
+
+    <Social
+      linkType="follow"
+      class="pt-2"
+      list={social.main.filter((social) => social.enable)}
+    />
   </div>
 </div>

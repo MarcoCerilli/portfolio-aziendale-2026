@@ -6,6 +6,7 @@ import Offcanvas from "../../widgets/Offcanvas.astro";
 import LanguageSwitcher from "@/layouts/components/global/header/LanguageSwitcher.astro";
 import NavbarToggler from "@/layouts/components/global/header/NavbarToggler.astro";
 import Navbar from "./Navbar.astro";
+import ThemeToggle from "./ThemeToggle.astro";
 
 import { useTranslations } from "@/lib/utils/i18nUtils.ts";
 import config from ".astro/config.generated.json";
@@ -96,17 +97,16 @@ const accentAppearance = currentLayout.hasDarkAppearance ? "light" : "dark";
     { fixed: position === "fixed" },
   ]}>
 
-
   <header
     class:list={[
-      "header group/header",
+      "header group/header bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl border-b border-slate-200/60 dark:border-slate-800/60",
       `header-${resolvedLayout}`,
       { "has-dark-background": currentLayout.hasDarkAppearance },
       { "header-transparent": currentLayout.isTransparent },
       ClassName,
     ]}>
     <nav class="relative container">
-      <div class="hs-dropdown relative flex items-center py-6">
+      <div class="hs-dropdown relative flex items-center justify-between py-3.5 md:py-4">
         {currentLayout.hasDarkAppearance ? <Logo src={logoSrc} /> : <Logo />}
 
         <Navbar
@@ -117,48 +117,54 @@ const accentAppearance = currentLayout.hasDarkAppearance ? "light" : "dark";
           ]}
         />
 
-        {
-          hasLanguageSwitcher && (
-            <div class="ms-auto flex lg:hidden">
-              <LanguageSwitcher appearance={accentAppearance} />
-            </div>
-          )
-        }
-
-        {
-          hasDesktopActions && (
-            <div class="hidden gap-3.5 max-lg:ms-auto max-lg:me-4 lg:flex lg:items-center">
-              {hasLanguageSwitcher && (
+        {/* Actions (Desktop & Mobile) */}
+        <div class="flex items-center gap-2 sm:gap-3 ms-auto lg:ms-0">
+          {
+            hasLanguageSwitcher && (
+              <div class="flex lg:hidden">
                 <LanguageSwitcher appearance={accentAppearance} />
-              )}
+              </div>
+            )
+          }
 
-              {navigationButton.enable && (
-                <Button
-                  variant="fill"
-                  hoverEffect="creative-fill"
-                  {...navigationButton}
-                  label={t("navigation.buttonLabel")}
-                />
-              )}
-            </div>
-          )
-        }
+          {/* Dark / Light Mode Switch */}
+          <ThemeToggle />
 
-        {
-          headerOffcanvas?.enable && (
-            <NavbarToggler
-              title={t("aria.openSidebarContent")}
-              appearance={accentAppearance}
-              isOffcanvasToggler={true}
-              class:list={["rounded-md", "lg:hidden"]}
-              aria-haspopup="dialog"
-              aria-expanded="false"
-              aria-controls="offcanvas-main"
-              data-hs-overlay="#offcanvas-main"
-              data-hs-overlay-options='{"emulateScrollbarSpace": true}'
-            />
-          )
-        }
+          {
+            hasDesktopActions && (
+              <div class="hidden gap-3.5 lg:flex lg:items-center">
+                {hasLanguageSwitcher && (
+                  <LanguageSwitcher appearance={accentAppearance} />
+                )}
+
+                {navigationButton.enable && (
+                  <Button
+                    variant="fill"
+                    hoverEffect="creative-fill"
+                    {...navigationButton}
+                    label={t("navigation.buttonLabel")}
+                  />
+                )}
+              </div>
+            )
+          }
+
+          {
+            headerOffcanvas?.enable && (
+              <NavbarToggler
+                title={t("aria.openSidebarContent")}
+                appearance={accentAppearance}
+                isOffcanvasToggler={true}
+                class:list={["lg:hidden"]}
+                aria-haspopup="dialog"
+                aria-expanded="false"
+                aria-controls="offcanvas-main"
+                data-hs-overlay="#offcanvas-main"
+                data-hs-overlay-options='{"emulateScrollbarSpace": true}'
+              />
+            )
+          }
+        </div>
       </div>
     </nav>
   </header>

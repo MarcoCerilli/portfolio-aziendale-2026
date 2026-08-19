@@ -1,15 +1,5 @@
-"use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
-// Calcola il totale cliente: netto + 4% rivalsa INPS + €2 marca da bollo
-// function calcolaTotaleCliente(nettoStr: string): string {
-//   const netto = parseFloat(nettoStr.replace(".", "").replace(",", "."));
-//   const inps = netto * 0.04;
-//   const bollo = 2.0;
-//   const totale = netto + inps + bollo;
-//   return totale.toLocaleString("it-IT", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-// }
 
 const packageList = [
   {
@@ -282,21 +272,6 @@ function EcommerceCard({ plan, index }: { plan: EcommerceTier; index: number }) 
             {plan.name}
           </h3>
           <p className="text-white/70 text-xs font-medium mb-4">{plan.tagline}</p>
-          {/* <div className="flex items-end gap-1.5">
-            {plan.price === "Su preventivo" ? (
-              <span className="text-2xl font-black text-white">Su preventivo</span>
-            ) : (
-              <>
-                <span className="text-4xl font-black text-white">€{plan.price}</span>
-                <span className="text-white/60 font-semibold mb-1.5 text-xs">/setup netto</span>
-              </>
-            )}
-          </div>
-          {plan.price !== "Su preventivo" && (
-            <p className="text-white/50 text-[10px] font-medium mt-1">
-              Totale: €{calcolaTotaleCliente(plan.price)} (+ 4% INPS + €2 bollo)
-            </p>
-          )} */}
           {/* Core stack badges — solo per full custom */}
           {plan.isCustom && plan.coreStack && (
             <div className="mt-4 flex flex-wrap gap-1.5">
@@ -310,10 +285,7 @@ function EcommerceCard({ plan, index }: { plan: EcommerceTier; index: number }) 
               ))}
             </div>
           )}
-          {/* <div className="mt-3 px-3 py-1.5 bg-black/20 rounded-lg inline-flex items-center gap-1.5">
-            <span className="text-white/70 text-[10px] font-bold uppercase tracking-wider">Infrastruttura:</span>
-            <span className="text-white text-[10px] font-black">{plan.monthlyExtra}</span>
-          </div> */}
+
         </div>
       </div>
 
@@ -446,25 +418,6 @@ function BookingCard({ plan, index }: { plan: BookingPlan; index: number }) {
             {plan.name}
           </h3>
           <p className="text-white/70 text-xs font-medium mb-4">{plan.tagline}</p>
-          {/* <div className="flex items-end gap-1.5">
-            {plan.price === "Su preventivo" ? (
-              <span className="text-2xl font-black text-white">Su preventivo</span>
-            ) : (
-              <>
-                <span className="text-4xl font-black text-white">€{plan.price}</span>
-                <span className="text-white/60 font-semibold mb-1.5 text-xs">/setup netto</span>
-              </>
-            )}
-          </div>
-          {plan.price !== "Su preventivo" && (
-            <p className="text-white/50 text-[10px] font-medium mt-1">
-              Totale: €{calcolaTotaleCliente(plan.price)} (+ 4% INPS + €2 bollo)
-            </p>
-          )} */}
-          {/* <div className="mt-3 px-3 py-1.5 bg-black/20 rounded-lg inline-flex items-center gap-1.5">
-            <span className="text-white/70 text-[10px] font-bold uppercase tracking-wider">+</span>
-            <span className="text-white text-[10px] font-black">{plan.monthlyExtra}</span>
-          </div> */}
         </div>
       </div>
 
@@ -560,24 +513,31 @@ const Packages = () => {
             Soluzioni chiare e trasparenti. Nessun costo nascosto, solo risultati concreti.
           </p>
 
-          {/* Tab switcher / Dropdown */}
-          <div className="flex justify-center pt-4">
-            <div className="relative w-full max-w-xs">
-              <select
-                value={activeTab}
-                onChange={(e) => setActiveTab(e.target.value as "all" | "web" | "ecommerce" | "booking")}
-                className="w-full appearance-none bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 font-bold uppercase tracking-widest text-[11px] py-3.5 pl-5 pr-10 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/50 shadow-sm cursor-pointer transition-colors duration-300"
-              >
-                <option value="all">🌟 Tutti i Pacchetti</option>
-                <option value="web">🌐 Siti Web</option>
-                <option value="ecommerce">🛒 E-Commerce</option>
-                <option value="booking">📅 Booking Engine</option>
-              </select>
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500 dark:text-slate-400">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
-              </div>
+          {/* Tab Switcher Pills */}
+          <div className="w-full flex justify-center pt-3 px-2">
+            <div className="flex flex-wrap items-center justify-center gap-2 p-1.5 bg-slate-100 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200 dark:border-slate-800 shadow-inner">
+              {[
+                { id: "all", label: "🌟 Tutti i Servizi" },
+                { id: "web", label: "🌐 Siti Web" },
+                { id: "ecommerce", label: "🛒 E-Commerce" },
+                { id: "booking", label: "📅 Booking Engine" },
+              ].map((tab) => {
+                const isSelected = activeTab === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    type="button"
+                    onClick={() => setActiveTab(tab.id as "all" | "web" | "ecommerce" | "booking")}
+                    className={`px-4 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 select-none ${
+                      isSelected
+                        ? "bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-md shadow-slate-200/50 dark:shadow-black/40 ring-1 ring-black/5 dark:ring-white/10"
+                        : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-slate-800/50"
+                    }`}
+                  >
+                    {tab.label}
+                  </button>
+                );
+              })}
             </div>
           </div>
         </motion.div>

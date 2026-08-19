@@ -1,12 +1,10 @@
 ---
-import { getLocaleUrlCTM } from "@/lib/utils/i18nUtils.ts";
 import { markdownify } from "@/lib/utils/textConverter";
 import { splitProtectedText } from "@/lib/utils/splitProtectedText";
 import SocialComponent from "@/components/widgets/Social.astro";
 import social from "@/config/social.json";
 import { useTranslations } from "@/lib/utils/i18nUtils.ts";
 import Logo from "@/components/global/Logo.astro";
-import { getFooterMenuGroups } from "@/lib/utils/menu";
 
 const { footerSpaceTop = false, hasFooterDarkBackground = false } = Astro.props;
 
@@ -20,7 +18,6 @@ let {
 } = config.settings;
 
 footerDescription = footerDescription || t("footer.description") || "";
-const footerColumns = getFooterMenuGroups(t);
 
 const copyrightText = splitProtectedText(
   copyright.text || t("footer.copyright") || "",
@@ -44,70 +41,99 @@ const footerSocials = social.main
 <footer
   class:list={[
     "py-0!",
-    hasFooterDarkBackground ? "footer-dark" : "bg-theme-light",
-    footerSpaceTop && "mt-16 lg:mt-20 xl:mt-24",
+    hasFooterDarkBackground ? "footer-dark bg-slate-950 text-slate-300" : "bg-theme-light text-slate-700",
+    footerSpaceTop && "mt-12 lg:mt-16",
   ]}>
   <div class="container">
-    <div class="py-8 md:py-12 flex flex-col items-center text-center">
-      <Logo class="gap-1.5" />
-      {
-        footerDescription && (
-          <p
-            class="footer-description leading-body text-text-default mt-4 max-w-md text-sm md:text-base"
-            set:html={markdownify(footerDescription)}
-          />
-        )
-      }
-      <div class="mt-4 flex flex-col md:flex-row items-center gap-4 text-sm md:text-base">
-        <div class="flex items-center gap-2 hover:underline">
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 20 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M16.625 17.5C14.8889 17.5 13.1701 17.125 11.4688 16.375C9.76736 15.625 8.22222 14.5556 6.83333 13.1667C5.44444 11.7778 4.375 10.2361 3.625 8.54167C2.875 6.84722 2.5 5.125 2.5 3.375V2.5H7.41667L8.1875 6.6875L5.8125 9.08333C6.11806 9.625 6.45833 10.1389 6.83333 10.625C7.20833 11.1111 7.61111 11.5625 8.04167 11.9792C8.44444 12.3819 8.88542 12.7674 9.36458 13.1354C9.84375 13.5035 10.3611 13.8472 10.9167 14.1667L13.3333 11.75L17.5 12.6042V17.5H16.625Z"
-              fill="currentColor">
-            </path>
-          </svg>
-          <span set:html={markdownify(phone)} />
-        </div>
-
-        <div class="flex items-center gap-2 hover:underline">
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 20 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M1.66675 16.6667V3.33333H18.3334V16.6667H1.66675ZM10.0001 10.8333L16.6667 6.66666V4.99999L10.0001 9.16666L3.33341 4.99999V6.66666L10.0001 10.8333Z"
-              fill="currentColor">
-            </path>
-          </svg>
-
-          <span set:html={markdownify(email)} />
-        </div>
+    <div class="py-6 md:py-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      {/* Brand & Tagline */}
+      <div class="flex flex-col items-center md:items-start text-center md:text-left">
+        <Logo class="gap-1.5" />
+        {
+          footerDescription && (
+            <p
+              class="footer-description text-slate-400 mt-2 max-w-sm text-xs md:text-sm leading-relaxed"
+              set:html={markdownify(footerDescription)}
+            />
+          )
+        }
       </div>
 
-      <SocialComponent
-        size="md"
-        buttonSize="md"
-        class="footer-social mt-6 gap-2 justify-center"
-        linkType="follow"
-        list={footerSocials}
-      />
+      {/* Contacts & Socials */}
+      <div class="flex flex-col sm:flex-row items-center gap-4 md:gap-6">
+        {/* Contact links */}
+        <div class="flex flex-wrap items-center justify-center gap-3 text-xs md:text-sm text-slate-300">
+          {phone && (
+            <a
+              href={`tel:${phone.replace(/\s+/g, "")}`}
+              class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 hover:border-indigo-500/50 hover:text-indigo-400 transition-colors shadow-sm"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="text-indigo-400"
+              >
+                <path
+                  d="M16.625 17.5C14.8889 17.5 13.1701 17.125 11.4688 16.375C9.76736 15.625 8.22222 14.5556 6.83333 13.1667C5.44444 11.7778 4.375 10.2361 3.625 8.54167C2.875 6.84722 2.5 5.125 2.5 3.375V2.5H7.41667L8.1875 6.6875L5.8125 9.08333C6.11806 9.625 6.45833 10.1389 6.83333 10.625C7.20833 11.1111 7.61111 11.5625 8.04167 11.9792C8.44444 12.3819 8.88542 12.7674 9.36458 13.1354C9.84375 13.5035 10.3611 13.8472 10.9167 14.1667L13.3333 11.75L17.5 12.6042V17.5H16.625Z"
+                  fill="currentColor"
+                />
+              </svg>
+              <span set:html={markdownify(phone)} />
+            </a>
+          )}
+
+          {email && (
+            <a
+              href={`mailto:${email}`}
+              class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 hover:border-indigo-500/50 hover:text-indigo-400 transition-colors shadow-sm"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="text-indigo-400"
+              >
+                <path
+                  d="M1.66675 16.6667V3.33333H18.3334V16.6667H1.66675ZM10.0001 10.8333L16.6667 6.66666V4.99999L10.0001 9.16666L3.33341 4.99999V6.66666L10.0001 10.8333Z"
+                  fill="currentColor"
+                />
+              </svg>
+              <span set:html={markdownify(email)} />
+            </a>
+          )}
+        </div>
+
+        {/* Socials */}
+        <SocialComponent
+          size="sm"
+          buttonSize="md"
+          class="footer-social gap-2 justify-center"
+          linkType="follow"
+          list={footerSocials}
+        />
+      </div>
     </div>
-    <div class="footer-bottom border-t py-3 text-center">
+
+    {/* Bottom Bar */}
+    <div class="footer-bottom border-t border-slate-800/80 py-3.5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-400">
       {
         config.settings.copyright?.enable && (
           <p
-            class="footer-copyright leading-body text-text-default text-base"
+            class="footer-copyright text-xs text-slate-400"
             set:html={markdownify(copyrightText)}
           />
         )
       }
+      <div class="flex items-center gap-4 text-xs text-slate-400">
+        <a href="/privacy-policy/" class="hover:text-white transition-colors">Privacy Policy</a>
+        <span>•</span>
+        <a href="/terms-conditions/" class="hover:text-white transition-colors">Termini e Condizioni</a>
+      </div>
     </div>
   </div>
 </footer>

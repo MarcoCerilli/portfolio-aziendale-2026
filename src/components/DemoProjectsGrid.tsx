@@ -1,7 +1,6 @@
-"use client";
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import { FiCheck, FiPlay } from "react-icons/fi";
 import type { DemoProduct } from "@/types/vercel";
@@ -14,7 +13,7 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.8 }}
       transition={{ duration: 0.4, ease: "circOut" }}
-      className="group relative hover:z-50 w-[90vw] md:w-[480px] lg:w-[540px] shrink-0 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 overflow-hidden flex flex-col hover:border-indigo-500/50 transition-all duration-500 shadow-2xl shadow-slate-900/10 dark:shadow-black/50 hover:-translate-y-2 hover:shadow-[0_30px_60px_-15px_rgba(79,70,229,0.25)]"
+      className="group relative hover:z-50 w-[86vw] max-w-[340px] sm:w-[380px] md:w-[440px] shrink-0 snap-center sm:snap-start bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 overflow-hidden flex flex-col hover:border-indigo-500/50 transition-all duration-300 shadow-xl shadow-slate-900/5 dark:shadow-black/40 hover:-translate-y-1 hover:shadow-2xl hover:shadow-indigo-500/10"
     >
       {/* FOTO E OVERLAY PER NUOVA SCHEDA (Full Width Suspended) */}
       <div className="relative w-full aspect-[16/10] bg-slate-950 border-b border-slate-100 dark:border-slate-800 group overflow-hidden">
@@ -27,6 +26,10 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
           <img
             src={product.image || '/projects/coming-soon.svg'}
             alt={`Screenshot di ${product.name}`}
+            width="440"
+            height="275"
+            loading="lazy"
+            decoding="async"
             className="absolute inset-0 w-full h-full object-contain object-center p-2 transition-transform duration-700 group-hover/preview:scale-105"
           />
           
@@ -71,15 +74,6 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
         </div>
 
         <div className="mt-auto pt-4 border-t border-slate-100 dark:border-slate-800 flex justify-between items-end gap-2">
-          {/* <div className="flex flex-col">
-            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-              Prezzo
-            </span>
-            <span className="text-lg font-black text-slate-900 dark:text-white">
-              Da definire
-            </span>
-          </div> */}
-
           <motion.a
             href={product.url}
             target="_blank"
@@ -135,8 +129,8 @@ export default function DemoProjectsGrid({ products }: DemoProjectsGridProps) {
   if (products.length === 0) return null;
 
   return (
-    <section aria-label="Progetti Demo Live" className="py-12 md:py-16 px-4 md:px-6 max-w-7xl mx-auto transition-colors duration-300">
-      <div className="flex flex-col items-center text-center mb-8 md:mb-12 space-y-3">
+    <section aria-label="Progetti Demo Live" className="w-full py-4 transition-colors duration-300">
+      <div className="flex flex-col items-center text-center mb-6 md:mb-8 space-y-3">
         <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-950/80 border border-indigo-200 dark:border-indigo-800 text-xs font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300">
           Template Live
         </span>
@@ -147,65 +141,65 @@ export default function DemoProjectsGrid({ products }: DemoProjectsGridProps) {
           Sfoglia e naviga in tempo reale i nostri template live, divisi per categoria.
         </p>
 
-        {/* Filter bar */}
-        <div className="w-full flex justify-center pt-3">
-          <div className="flex flex-wrap justify-center gap-2 p-1.5 bg-slate-100 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200 dark:border-slate-800">
-            {categories.map((cat) => {
-              const isSelected = filter === cat;
-              return (
+        {/* Barra di Controllo Unificata (Filtri + Switch Frecce + Contatore) */}
+        <div className="w-full max-w-5xl mx-auto pt-2">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-3 p-2.5 bg-slate-100/90 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+            {/* Filtri Categoria: Tutti visibili */}
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-1.5 w-full md:w-auto">
+              {categories.map((cat) => {
+                const isSelected = filter === cat;
+                return (
+                  <button
+                    key={cat}
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleFilterChange(cat);
+                    }}
+                    className={`px-3.5 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 select-none ${
+                      isSelected
+                        ? "bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-sm ring-1 ring-black/5 dark:ring-white/10"
+                        : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-slate-800/50"
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Switch di Scorrimento + Contatore accorpati */}
+            <div className="flex items-center justify-between md:justify-end w-full md:w-auto gap-3 shrink-0 pt-2.5 md:pt-0 border-t md:border-t-0 border-slate-200/60 dark:border-slate-800/60 px-2">
+              <span className="text-xs font-extrabold text-slate-600 dark:text-slate-400 uppercase tracking-wider whitespace-nowrap">
+                {filteredProducts.length} {filteredProducts.length === 1 ? "Demo" : "Demo Disponibili"}
+              </span>
+
+              <div className="flex items-center gap-2">
                 <button
-                  key={cat}
                   type="button"
                   onClick={(e) => {
                     e.preventDefault();
-                    handleFilterChange(cat);
+                    handleScroll("left");
                   }}
-                  className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${
-                    isSelected
-                      ? "bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-md shadow-slate-200/50 dark:shadow-black/40 ring-1 ring-black/5 dark:ring-white/10"
-                      : "text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-slate-800/50"
-                  }`}
+                  className="p-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 dark:hover:text-white hover:border-indigo-600 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 transition-all active:scale-95 cursor-pointer"
+                  aria-label="Demo precedente"
                 >
-                  {cat}
+                  ←
                 </button>
-              );
-            })}
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleScroll("right");
+                  }}
+                  className="p-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 dark:hover:text-white hover:border-indigo-600 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 transition-all active:scale-95 cursor-pointer"
+                  aria-label="Demo successiva"
+                >
+                  →
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-
-      {/* Controller Carosello Demo */}
-      <div className="flex items-center justify-between px-2 mb-4">
-        <div className="flex items-center gap-2">
-          <span className="text-xs font-extrabold text-slate-700 dark:text-slate-300 uppercase tracking-widest">
-            {filteredProducts.length} {filteredProducts.length === 1 ? "Demo" : "Demo Disponibili"}
-          </span>
-          <span className="text-xs text-slate-500 dark:text-slate-400">• Scorri o clicca per navigare</span>
-        </div>
-
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              handleScroll("left");
-            }}
-            className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-100 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 dark:hover:text-white hover:border-indigo-600 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 transition-all active:scale-95 cursor-pointer"
-            aria-label="Demo precedente"
-          >
-            ←
-          </button>
-          <button
-            type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              handleScroll("right");
-            }}
-            className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-100 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 dark:hover:text-white hover:border-indigo-600 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 transition-all active:scale-95 cursor-pointer"
-            aria-label="Demo successiva"
-          >
-            →
-          </button>
         </div>
       </div>
 
@@ -214,7 +208,7 @@ export default function DemoProjectsGrid({ products }: DemoProjectsGridProps) {
         ref={scrollContainerRef}
         tabIndex={0}
         aria-label="Elenco demo live"
-        className="flex gap-6 overflow-x-auto pb-24 pt-20 px-8 -mx-8 md:px-16 md:-mx-16 lg:px-24 lg:-mx-24 xl:px-32 xl:-mx-32 snap-x snap-mandatory scroll-smooth focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 cursor-grab active:cursor-grabbing"
+        className="flex gap-6 overflow-x-auto py-4 px-4 sm:px-6 md:px-8 snap-x snap-mandatory scroll-smooth focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 cursor-grab active:cursor-grabbing"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {filteredProducts.map((product) => (

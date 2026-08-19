@@ -264,7 +264,7 @@ export const projectsList: Project[] = [
     description: "Software cloud per l'emissione, gestione e archiviazione delle fatture elettroniche con dashboard analitica in tempo reale.",
     tags: ["Next.js", "PostgreSQL", "SDI API"],
     link: "#",
-    image: "/projects/dashboard.jpg",
+    image: "/templates/fattura.png",
     category: "Sistemi & App Su Misura",
     price: "Su preventivo",
     color: "from-slate-700/10",

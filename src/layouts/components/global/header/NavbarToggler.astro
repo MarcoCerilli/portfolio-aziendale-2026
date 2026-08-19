@@ -15,7 +15,6 @@ const {
   ...rest
 } = Astro.props;
 
-const isLightToggler = appearance === "light";
 const restAttrs = { ...rest };
 const overlaySelector = restAttrs["data-hs-overlay"];
 const controlledId =
@@ -48,10 +47,7 @@ delete restAttrs["aria-haspopup"];
   aria-haspopup={hasPopup}
   aria-pressed={expanded}
   class:list={[
-    "group ms-4 inline-flex h-15 w-15 items-center justify-center rounded border text-center transition",
-    isLightToggler
-      ? "border-white/10 bg-white/10 text-white"
-      : "bg-slate-100 text-slate-800",
+    "group inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all duration-200 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 cursor-pointer active:scale-95",
     !isOffcanvasToggler && "hs-dropdown-toggle relative lg:hidden",
     ClassName,
   ]}
