@@ -14,7 +14,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
     <article
       aria-label={project.title}
-      className="relative w-[82vw] max-w-[340px] sm:w-[360px] md:w-[420px] shrink-0 snap-start bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 flex flex-col hover:border-indigo-500/60 dark:hover:border-indigo-500/60 hover:shadow-2xl hover:shadow-indigo-500/15 hover:-translate-y-1 transition-all duration-300 group select-none"
+      className="relative w-full md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-start bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 flex flex-col hover:border-indigo-500/60 dark:hover:border-indigo-500/60 hover:shadow-2xl hover:shadow-indigo-500/15 hover:-translate-y-1 transition-all duration-300 group select-none"
       style={{ boxShadow: "0 8px 32px 0 rgba(80,80,160,0.08), 0 1.5px 6px 0 rgba(0,0,0,0.06)" }}
     >
       {/* PREVIEW */}
@@ -25,7 +25,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             alt={`Anteprima del progetto ${project.title}`}
             width="420"
             height="263"
-            loading={index < 2 ? "eager" : "lazy"}
+            loading={index < 3 ? "eager" : "lazy"}
             decoding="async"
             draggable={false}
             className="w-full h-full object-contain object-center transition-transform duration-700 group-hover:scale-105"
@@ -122,9 +122,8 @@ export default function ProjectsCarousel() {
   const scroll = (dir: "left" | "right") => {
     const c = scrollRef.current;
     if (!c) return;
-    const card = c.querySelector("article");
-    const step = card ? card.getBoundingClientRect().width + 24 : 380;
-    c.scrollBy({ left: dir === "left" ? -step : step, behavior: "smooth" });
+    const scrollAmount = c.clientWidth;
+    c.scrollBy({ left: dir === "left" ? -scrollAmount : scrollAmount, behavior: "smooth" });
   };
 
   const filterCategories = categories.filter((c) => c !== "Sistemi & App Su Misura");
@@ -167,34 +166,34 @@ export default function ProjectsCarousel() {
         </div>
       </div>
 
-      {/* Carousel full-width — edge to edge */}
-      <div className="relative w-full group/carousel">
-        {/* Freccia Sinistra — laterale a metà altezza */}
+      {/* Carousel container */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 group/carousel">
+        {/* Freccia Sinistra */}
         <button
           type="button"
           onClick={() => scroll("left")}
           aria-label="Progetto precedente"
-          className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-30 p-3.5 rounded-full bg-white/95 dark:bg-slate-800/95 backdrop-blur-md border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 shadow-2xl hover:bg-indigo-600 hover:text-white hover:border-indigo-600 dark:hover:bg-indigo-600 dark:hover:text-white transition-all duration-200 active:scale-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 cursor-pointer"
+          className="absolute -left-2 sm:left-1 lg:-left-5 top-1/2 -translate-y-1/2 z-30 p-3 sm:p-3.5 rounded-full bg-white/95 dark:bg-slate-800/95 backdrop-blur-md border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 shadow-2xl hover:bg-indigo-600 hover:text-white hover:border-indigo-600 dark:hover:bg-indigo-600 dark:hover:text-white transition-all duration-200 active:scale-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 cursor-pointer"
         >
           <ChevronLeftIcon className="w-5 h-5" />
         </button>
 
-        {/* Freccia Destra — laterale a metà altezza */}
+        {/* Freccia Destra */}
         <button
           type="button"
           onClick={() => scroll("right")}
           aria-label="Progetto successivo"
-          className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-30 p-3.5 rounded-full bg-white/95 dark:bg-slate-800/95 backdrop-blur-md border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 shadow-2xl hover:bg-indigo-600 hover:text-white hover:border-indigo-600 dark:hover:bg-indigo-600 dark:hover:text-white transition-all duration-200 active:scale-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 cursor-pointer"
+          className="absolute -right-2 sm:right-1 lg:-right-5 top-1/2 -translate-y-1/2 z-30 p-3 sm:p-3.5 rounded-full bg-white/95 dark:bg-slate-800/95 backdrop-blur-md border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 shadow-2xl hover:bg-indigo-600 hover:text-white hover:border-indigo-600 dark:hover:bg-indigo-600 dark:hover:text-white transition-all duration-200 active:scale-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 cursor-pointer"
         >
           <ChevronRightIcon className="w-5 h-5" />
         </button>
 
-        {/* Scroll container — full width */}
+        {/* Scroll container */}
         <div
           ref={scrollRef}
           tabIndex={0}
           aria-label="Elenco progetti"
-          className="flex gap-6 overflow-x-auto overflow-y-visible py-8 px-6 sm:px-12 md:px-16 snap-x snap-mandatory scroll-smooth cursor-grab active:cursor-grabbing focus:outline-none w-full"
+          className="flex gap-6 overflow-x-auto overflow-y-visible py-6 snap-x snap-mandatory scroll-smooth cursor-grab active:cursor-grabbing focus:outline-none w-full"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {filteredProjects.map((project, i) => (
