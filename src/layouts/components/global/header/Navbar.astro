@@ -28,10 +28,11 @@ const {
   {/* Navigation Button For Small Devices */}
   {
     navigationButton.enable && (
-      <li class="max-lg:pt-2 lg:hidden" role="menuitem">
+      <li class="max-lg:pt-3 lg:hidden" role="menuitem">
         <Button
           hoverEffect="creative-fill"
           {...navigationButton}
+          class="!w-full !py-3 !px-5 !text-xs !font-bold !tracking-wide !rounded-full !bg-gradient-to-r !from-indigo-600 !to-indigo-500 hover:!from-indigo-500 hover:!to-indigo-600 !text-white !shadow-md !text-center"
           label={t("navigation.buttonLabel")}
         />
       </li>

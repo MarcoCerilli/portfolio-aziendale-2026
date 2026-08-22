@@ -4,11 +4,10 @@ import Icons from "@/helpers/Icons.astro";
 
 <button
   type="button"
-  class="back-to-top-button border-border-light text-dark hover:border-primary hover:bg-primary pointer-events-none fixed right-5 bottom-45 z-100 flex size-12 items-center justify-center rounded-md border bg-white opacity-0 shadow-lg transition duration-300 hover:text-white [&.scroll-down]:pointer-events-auto [&.scroll-down]:right-5 [&.scroll-down]:opacity-100"
+  class="back-to-top-button border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-100 hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600 pointer-events-none fixed right-5 bottom-28 z-50 flex size-11 items-center justify-center rounded-2xl border bg-white/90 dark:bg-slate-800/90 backdrop-blur-md opacity-0 shadow-xl transition-all duration-300 hover:text-white dark:hover:text-white hover:scale-110 active:scale-95 [&.scroll-down]:pointer-events-auto [&.scroll-down]:opacity-100 cursor-pointer"
   data-back-to-top
-  data-cursor-label="Back To Top"
-  data-cursor-type="button"
-  aria-label="Back to top">
+  data-cursor-ignore
+  aria-label="Torna in alto">
   <Icons icon="ArrowUp" class="size-5" />
 </button>
 
