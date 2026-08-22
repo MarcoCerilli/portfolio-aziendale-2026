@@ -16,7 +16,7 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className="group relative w-full md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-start bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 flex flex-col hover:border-indigo-500/50 hover:-translate-y-1 hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-300 select-none"
+      className="group relative w-full md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-start bg-white dark:bg-slate-800/95 rounded-3xl border border-slate-200/80 dark:border-slate-700/80 flex flex-col hover:border-indigo-500/50 dark:hover:border-indigo-400 hover:-translate-y-1 hover:shadow-2xl hover:shadow-indigo-500/10 dark:shadow-2xl dark:shadow-black/40 transition-all duration-300 select-none"
       style={{ boxShadow: "0 8px 32px 0 rgba(80,80,160,0.08), 0 1.5px 6px 0 rgba(0,0,0,0.06)" }}
     >
       {/* PREVIEW */}
@@ -60,7 +60,7 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
         {product.features && product.features.length > 0 && (
           <ul className="space-y-1.5 grow">
             {product.features.map((f, i) => (
-              <li key={i} className="flex items-start gap-2 text-xs text-slate-500 dark:text-slate-400">
+              <li key={i} className="flex items-start gap-2 text-xs text-slate-500 dark:text-slate-300">
                 <FiCheck className="mt-0.5 h-3 w-3 shrink-0 text-indigo-500" />
                 {f}
               </li>
@@ -68,7 +68,7 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
           </ul>
         )}
 
-        <div className="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800 flex justify-end">
+        <div className="mt-4 pt-4 border-t border-slate-100 dark:border-slate-700/70 flex justify-end">
           <motion.a
             href={product.url}
             target="_blank"

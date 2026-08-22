@@ -14,12 +14,12 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
     <article
       aria-label={project.title}
-      className="relative w-full md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-start bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 flex flex-col hover:border-indigo-500/60 dark:hover:border-indigo-500/60 hover:shadow-2xl hover:shadow-indigo-500/15 hover:-translate-y-1 transition-all duration-300 group select-none"
+      className="relative w-full md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-start bg-white dark:bg-slate-800/95 rounded-3xl border border-slate-200/80 dark:border-slate-700/80 flex flex-col hover:border-indigo-500/60 dark:hover:border-indigo-400 hover:shadow-2xl hover:shadow-indigo-500/15 dark:shadow-2xl dark:shadow-black/40 hover:-translate-y-1 transition-all duration-300 group select-none"
       style={{ boxShadow: "0 8px 32px 0 rgba(80,80,160,0.08), 0 1.5px 6px 0 rgba(0,0,0,0.06)" }}
     >
       {/* PREVIEW */}
-      <div className="relative w-full p-3 rounded-t-3xl bg-slate-50 dark:bg-slate-950/60 border-b border-slate-100 dark:border-slate-800">
-        <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden bg-slate-950 flex items-center justify-center p-1.5 border border-slate-200/40 dark:border-slate-800">
+      <div className="relative w-full p-3 rounded-t-3xl bg-slate-50 dark:bg-slate-800/60 border-b border-slate-100 dark:border-slate-700/70">
+        <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden bg-slate-950 flex items-center justify-center p-1.5 border border-slate-200/40 dark:border-slate-700/80">
           <img
             src={project.image}
             alt={`Anteprima del progetto ${project.title}`}
@@ -74,18 +74,18 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
       {/* BODY */}
       <div className="p-5 flex flex-col grow">
-        <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-[10px] font-extrabold uppercase tracking-wider bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200/80 dark:border-indigo-800/50 mb-3 self-start">
+        <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-[10px] font-extrabold uppercase tracking-wider bg-indigo-50 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 border border-indigo-200/80 dark:border-indigo-800/60 mb-3 self-start">
           {project.category}
         </span>
         <h3 className="text-lg font-black text-slate-900 dark:text-white tracking-tight leading-snug mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
           {project.title}
         </h3>
-        <p className="text-slate-500 dark:text-slate-400 text-xs leading-relaxed line-clamp-3 grow">
+        <p className="text-slate-500 dark:text-slate-300 text-xs leading-relaxed line-clamp-3 grow">
           {project.description}
         </p>
 
         {/* Footer */}
-        <div className="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800/80 flex flex-wrap items-center justify-between gap-2">
+        <div className="pt-4 mt-4 border-t border-slate-100 dark:border-slate-700/70 flex flex-wrap items-center justify-between gap-2">
           <div className="flex flex-wrap gap-1.5">
             {project.tags.slice(0, 4).map((tag) => (
               <span key={tag} className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${getTagStyle(tag)}`}>
@@ -98,7 +98,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 text-xs font-bold hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 dark:hover:text-white transition-colors shrink-0"
+              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-slate-100 text-xs font-bold hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 dark:hover:text-white transition-colors shrink-0"
               aria-label={`Visita ${project.title}`}
             >
               Vedi
