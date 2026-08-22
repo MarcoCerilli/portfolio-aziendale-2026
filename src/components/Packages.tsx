@@ -152,85 +152,91 @@ type BookingPlan = {
   features: BookingFeature[];
   idealFor: string;
   techStack: string[];
+  demoUrl?: string;
+  demoLabel?: string;
 };
 
 const bookingPlans: BookingPlan[] = [
   {
-    id: "booking-starter",
-    name: "Smart Booking Suite",
-    tagline: "Per B&B e Case Vacanza",
+    id: "booking-restaurant",
+    name: "Ristorante & Table Booking",
+    tagline: "Prenotazioni tavoli & Menù Digitale",
+    price: "Su preventivo",
+    monthlyExtra: "Hosting incluso 1° anno",
+    gradientClass: "from-orange-500 to-amber-500",
+    icon: "🍽️",
+    demoUrl: "https://demo-aura-osteria.vercel.app",
+    demoLabel: "Vedi Demo Aura Osteria",
+    features: [
+      "Prenotazione tavoli 24/7 con fasce e turni",
+      "Menù digitale allergeni & abbinamento vini",
+      "Conferma automatica istantanea WhatsApp & Email",
+      "Gestione capienza sala e lista d'attesa",
+      "Zero commissioni e zero costi a coperto",
+      "QR Code tavolo ad alta risoluzione",
+    ],
+    idealFor: "Ristoranti, bistrot, pizzerie ed enoteche con prenotazione tavoli",
+    techStack: ["Next.js", "Resend Email", "WhatsApp Webhook", "QR Engine"],
+  },
+  {
+    id: "booking-rental",
+    name: "Smart Rental & Case Vacanza",
+    tagline: "Per B&B, Appartamenti e Ville",
     price: "Su preventivo",
     monthlyExtra: "Hosting incluso 1° anno",
     gradientClass: "from-indigo-600 to-purple-600",
     popular: true,
     icon: "🏡",
     features: [
-      "Booking Engine Proprietario",
-      "Sincronizzazione iCal (Zero Overbooking)",
-      "Pannello Gestione Prenotazioni",
-      "Assistente IA per gli ospiti",
-      "Pagamenti diretti (Stripe)",
-      "Zero commissioni Booking.com",
+      "Booking Engine proprietario integrato",
+      "Sincronizzazione iCal (Airbnb, Booking.com, VRBO)",
+      "Zero overbooking con calendario unificato",
+      "Incasso diretto della caparra con Stripe",
+      "Calcolo automatico pulizie e tassa di soggiorno",
+      "Zero commissioni del 15-20% trattenute dalle OTA",
     ],
-    idealFor: "B&B, case vacanza e agriturismi che vogliono prenotazioni dirette",
-    techStack: ["Next.js", "Stripe", "iCal Sync", "AI Gemini"],
+    idealFor: "Proprietari di case vacanza, affitti brevi e B&B che vogliono prenotazioni dirette",
+    techStack: ["Next.js", "iCal Sync", "Stripe Checkout", "Neon/Supabase"],
   },
   {
-    id: "booking-hotel",
-    name: "Hotel Engine Pro",
-    tagline: "Per strutture ricettive medie",
+    id: "booking-resort",
+    name: "Boutique Resort & Multi-Room",
+    tagline: "Per hotel e strutture ricettive 4-10 camere",
     price: "Su preventivo",
     monthlyExtra: "~20–40€/mese manutenzione",
     gradientClass: "from-cyan-500 to-teal-600",
     icon: "🏨",
+    demoUrl: "https://demo-villa-seraphina-hotel.vercel.app",
+    demoLabel: "Vedi Demo Villa Seraphina",
     features: [
-      "Multi-room Booking Engine",
-      "Channel Manager integrato",
-      "Tariffe dinamiche e promo",
-      "Dashboard analytics prenotazioni",
-      "Email/SMS automatici agli ospiti",
-      "Gestione extra e pacchetti",
+      "Selezione tipologia suite/camere con galleria HD",
+      "Preventivatore dinamico date, notti e ospiti",
+      "Vendita extra (SPA, esperienze, degustazioni)",
+      "Pannello proprietario per bloccare date e tariffe",
+      "Email transazionali e voucher di benvenuto",
+      "Integrazione pagamenti sicuri Stripe",
     ],
-    idealFor: "Hotel, resort e strutture con più camere o tipologie",
-    techStack: ["Next.js", "PostgreSQL", "Stripe", "SendGrid"],
+    idealFor: "Boutique hotel, resort e agriturismi con camere e SPA",
+    techStack: ["Next.js", "PostgreSQL", "Stripe Elements", "Resend"],
   },
   {
-    id: "booking-restaurant",
-    name: "Ristorante & Table Booking",
-    tagline: "Prenotazioni tavoli online",
+    id: "booking-enterprise",
+    name: "Enterprise & Connessione PMS",
+    tagline: "Integrazione con gestionali esistenti",
     price: "Su preventivo",
-    monthlyExtra: "Hosting incluso 1° anno",
-    gradientClass: "from-orange-500 to-amber-500",
-    icon: "🍽️",
-    features: [
-      "Prenotazione tavoli online 24/7",
-      "Mappa sala interattiva",
-      "Gestione turni e coperti",
-      "Conferma automatica via email",
-      "Lista d'attesa digitale",
-      "Menu digitale QR Code",
-    ],
-    idealFor: "Ristoranti, pizzerie e locali con prenotazione tavoli",
-    techStack: ["Next.js", "PostgreSQL", "Resend", "QR Engine"],
-  },
-  {
-    id: "booking-custom",
-    name: "Booking Custom",
-    tagline: "Soluzione su misura",
-    price: "Su preventivo",
-    monthlyExtra: "Variabile",
+    monthlyExtra: "Variabile su progetto",
     gradientClass: "from-rose-500 to-pink-600",
     icon: "⚙️",
     features: [
-      "Logiche di prenotazione custom",
-      "Integrazione PMS/gestionale",
-      "Multi-struttura e multi-lingua",
-      "API per OTA (Booking, Airbnb)",
-      "Reportistica avanzata",
-      "SLA e supporto dedicato",
+      "Frontend ultra-veloce (100/100 Core Web Vitals)",
+      "Integrazione con PMS esistente (Octorate, Zak, ecc.)",
+      "Supporto multilingua completo (IT, EN, DE, FR)",
+      "Ottimizzazione tasso di conversione disintermediata",
+      "Tracciamento conversioni e Pixel GA4 / Meta",
+      "Assistenza prioritaria e SLA garantito",
     ],
-    idealFor: "Gruppi alberghieri, tour operator e strutture enterprise",
-    techStack: ["Next.js", "Node.js", "PostgreSQL", "Custom API"],
+    idealFor: "Hotel con gestionale attivo, catene e strutture ricettive enterprise",
+    techStack: ["Next.js", "PMS APIs / Embed", "i18n", "PostgreSQL"],
   },
 ];
 
@@ -465,6 +471,21 @@ function BookingCard({ plan, index }: { plan: BookingPlan; index: number }) {
           </div>
         </div>
 
+        {/* Demo Link if available */}
+        {plan.demoUrl && (
+          <a
+            href={plan.demoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-1.5 w-full py-2.5 mt-4 rounded-xl text-[10px] font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 bg-indigo-50/80 dark:bg-indigo-950/60 border border-indigo-200/80 dark:border-indigo-800/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 transition-colors"
+          >
+            <span>{plan.demoLabel || "Vedi Demo Live"}</span>
+            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+            </svg>
+          </a>
+        )}
+
         {/* CTA */}
         <motion.button
           onClick={(e) => {
@@ -473,7 +494,7 @@ function BookingCard({ plan, index }: { plan: BookingPlan; index: number }) {
           }}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.97 }}
-          className={`relative overflow-hidden group w-full py-3.5 mt-5 rounded-2xl font-black uppercase tracking-widest text-[10px] text-white text-center bg-gradient-to-r ${plan.gradientClass} shadow-md`}
+          className={`relative overflow-hidden group w-full py-3.5 ${plan.demoUrl ? "mt-2" : "mt-5"} rounded-2xl font-black uppercase tracking-widest text-[10px] text-white text-center bg-gradient-to-r ${plan.gradientClass} shadow-md`}
         >
           <div className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-700 skew-x-12" />
           <span className="relative z-10">Richiedi Informazioni</span>
@@ -662,10 +683,10 @@ const Packages = () => {
                     <div className="text-2xl shrink-0">📅</div>
                     <div>
                       <p className="text-slate-900 dark:text-white font-black text-sm uppercase tracking-tight">
-                        Addio commissioni Booking.com e Airbnb
+                        Disintermediazione &amp; Zero Commissioni
                       </p>
                       <p className="text-slate-500 dark:text-slate-400 text-xs mt-0.5 leading-relaxed">
-                        Sistema di prenotazione proprietario integrato nel tuo sito. <strong className="text-slate-700 dark:text-slate-300">Zero commissioni</strong> alle OTA, pagamenti diretti, controllo totale.
+                        Sistemi di prenotazione proprietari per ristoranti, B&amp;B e boutique hotel. <strong className="text-slate-700 dark:text-slate-300">Risparmia fino al 20% di commissioni</strong> rispetto alle OTA (Booking.com, Airbnb, TheFork), con sincronizzazione iCal e incassi diretti su Stripe.
                       </p>
                     </div>
                   </div>
