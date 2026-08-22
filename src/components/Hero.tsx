@@ -132,54 +132,53 @@ const Hero = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none" />
 
-                {/* Banner di anteprima in basso a destra dello schermo */}
-                <div className="absolute bottom-3 right-3 left-3 flex items-center justify-between p-2.5 rounded-xl bg-slate-900/90 backdrop-blur-md border border-white/10 text-white shadow-lg">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-                    <span className="text-xs font-bold">Ermanno Tech • Negozio Online</span>
-                  </div>
-                  <span className="text-[11px] font-medium text-slate-300">100% Mobile Ready <span aria-hidden="true">📱</span></span>
+                {/* Mini bar di stato interna */}
+                <div className="absolute bottom-2.5 right-2.5 flex items-center gap-2 px-2.5 py-1 rounded-lg bg-slate-950/80 backdrop-blur-sm border border-white/10 text-white shadow-md pointer-events-none">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="text-[10px] font-bold text-slate-200">100% Mobile Ready</span>
                 </div>
               </div>
             </div>
 
-            {/* Badge Fluttuante 1 (In alto a destra): Notifica Nuovo Ordine / Richiesta */}
+            {/* Badge Fluttuante 1 (In alto a destra): Notifica Ordine compatto */}
             <motion.div
-              animate={{ y: [0, -6, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-4 -right-2 sm:-right-4 z-20 flex items-center gap-3 p-3 sm:p-3.5 rounded-2xl bg-white/95 dark:bg-slate-800/95 backdrop-blur-md border border-emerald-200 dark:border-emerald-800/60 shadow-xl shadow-emerald-500/10"
+              animate={{ y: [0, -4, 0] }}
+              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute -top-3 -right-1.5 sm:-right-3 z-20 flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-emerald-500/30 shadow-lg shadow-emerald-500/10 text-xs select-none"
             >
-              <div className="w-9 h-9 rounded-xl bg-emerald-500 flex items-center justify-center text-white text-lg shadow-md shadow-emerald-500/30 shrink-0" aria-hidden="true">
-                🛍️
-              </div>
-              <div>
-                <p className="text-[10px] font-extrabold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Nuovo Ordine Ricevuto</p>
-                <p className="text-xs sm:text-sm font-black text-slate-900 dark:text-white">+€ 39,90 <span className="text-[10px] font-normal text-slate-400">• Adesso</span></p>
-              </div>
+              <span className="flex h-2 w-2 relative shrink-0">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+              </span>
+              <span className="text-[10px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
+                Nuovo Ordine
+              </span>
+              <span className="text-slate-300 dark:text-slate-600 font-normal">•</span>
+              <span className="text-[11px] font-black text-slate-900 dark:text-white">
+                +€39,90
+              </span>
             </motion.div>
 
-            {/* Badge Fluttuante 2 (In basso a sinistra): Avatar Professionista + Contatto Diretto */}
+            {/* Badge Fluttuante 2 (In basso a sinistra): Avatar Professionista + Disponibilità */}
             <motion.div
-              animate={{ y: [0, 6, 0] }}
-              transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute -bottom-5 -left-2 sm:-left-4 z-20 flex items-center gap-3 p-2.5 sm:p-3 rounded-2xl bg-white/95 dark:bg-slate-800/95 backdrop-blur-md border border-slate-200 dark:border-slate-700 shadow-xl shadow-indigo-500/10"
+              animate={{ y: [0, 4, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+              className="absolute -bottom-3 -left-1.5 sm:-left-3 z-20 flex items-center gap-2 pl-1.5 pr-3 py-1 rounded-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-slate-200/80 dark:border-slate-700/80 shadow-lg shadow-indigo-500/10 select-none"
             >
-              <div className="relative">
+              <div className="relative shrink-0">
                 <img
                   src="/profile.jpg"
-                  alt="Marco Cerilli Sviluppatore"
-                  width="44"
-                  height="44"
-                  className="w-10 h-10 sm:w-11 sm:h-11 rounded-full object-cover border-2 border-indigo-500 shadow-sm"
+                  alt="Marco Cerilli"
+                  width="26"
+                  height="26"
+                  className="w-6 h-6 rounded-full object-cover border border-indigo-500/50"
                 />
-                <span className="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-white dark:border-slate-800" title="Online" />
+                <span className="absolute -bottom-0.5 -right-0.5 w-2 h-2 rounded-full bg-emerald-500 border border-white dark:border-slate-900" />
               </div>
-              <div className="text-left">
-                <div className="flex items-center gap-1.5">
-                  <p className="text-xs sm:text-sm font-black text-slate-900 dark:text-white">Marco Cerilli</p>
-                  <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold">● Online</span>
-                </div>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Ti seguo passo dopo passo</p>
+              <div className="flex items-center gap-1.5 text-[11px]">
+                <span className="font-bold text-slate-900 dark:text-white">Marco Cerilli</span>
+                <span className="text-slate-300 dark:text-slate-600">•</span>
+                <span className="text-emerald-600 dark:text-emerald-400 font-semibold text-[10px]">Disponibile</span>
               </div>
             </motion.div>
           </div>
