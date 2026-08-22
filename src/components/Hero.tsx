@@ -144,7 +144,7 @@ const Hero = () => {
             <motion.div
               animate={{ y: [0, -4, 0] }}
               transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-3 -right-1.5 sm:-right-3 z-20 flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-emerald-500/30 shadow-lg shadow-emerald-500/10 text-xs select-none"
+              className="absolute -top-6 sm:-top-7 -right-1 sm:-right-2 z-20 flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-emerald-500/30 shadow-lg shadow-emerald-500/10 text-xs select-none"
             >
               <span className="flex h-2 w-2 relative shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />

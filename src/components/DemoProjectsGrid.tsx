@@ -16,7 +16,7 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className="group relative w-full md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-start bg-white dark:bg-slate-800/95 rounded-3xl border border-slate-200/80 dark:border-slate-700/80 flex flex-col hover:border-indigo-500/50 dark:hover:border-indigo-400 hover:-translate-y-1 hover:shadow-2xl hover:shadow-indigo-500/10 dark:shadow-2xl dark:shadow-black/40 transition-all duration-300 select-none"
+      className="group relative w-full md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-start bg-slate-900 dark:bg-white rounded-3xl border border-slate-800 dark:border-slate-200/90 flex flex-col hover:border-indigo-500/50 dark:hover:border-indigo-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-indigo-500/10 dark:shadow-2xl dark:shadow-black/20 transition-all duration-300 select-none"
       style={{ boxShadow: "0 8px 32px 0 rgba(80,80,160,0.08), 0 1.5px 6px 0 rgba(0,0,0,0.06)" }}
     >
       {/* PREVIEW */}
@@ -24,7 +24,7 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
         href={product.url}
         target="_blank"
         rel="noopener noreferrer"
-        className="relative w-full aspect-[16/10] bg-slate-950 rounded-t-3xl overflow-hidden block group/preview"
+        className="relative w-full aspect-[16/10] bg-slate-950 rounded-t-3xl overflow-hidden block group/preview border-b border-slate-800 dark:border-slate-200"
       >
         <img
           src={product.image || "/projects/coming-soon.svg"}
@@ -49,10 +49,10 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
       {/* BODY */}
       <div className="p-5 flex flex-col grow">
         <div className="mb-3">
-          <h3 className="text-base font-black text-slate-900 dark:text-white tracking-tight leading-tight mb-0.5">
+          <h3 className="text-base font-black text-white dark:text-slate-900 tracking-tight leading-tight mb-0.5">
             {product.name}
           </h3>
-          <span className="text-indigo-600 dark:text-indigo-400 text-[10px] font-bold uppercase tracking-[0.1em]">
+          <span className="text-indigo-400 dark:text-indigo-600 text-[10px] font-bold uppercase tracking-[0.1em]">
             {product.category}
           </span>
         </div>
@@ -60,15 +60,15 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
         {product.features && product.features.length > 0 && (
           <ul className="space-y-1.5 grow">
             {product.features.map((f, i) => (
-              <li key={i} className="flex items-start gap-2 text-xs text-slate-500 dark:text-slate-300">
-                <FiCheck className="mt-0.5 h-3 w-3 shrink-0 text-indigo-500" />
+              <li key={i} className="flex items-start gap-2 text-xs text-slate-300 dark:text-slate-600">
+                <FiCheck className="mt-0.5 h-3 w-3 shrink-0 text-indigo-400 dark:text-indigo-600" />
                 {f}
               </li>
             ))}
           </ul>
         )}
 
-        <div className="mt-4 pt-4 border-t border-slate-100 dark:border-slate-700/70 flex justify-end">
+        <div className="mt-4 pt-4 border-t border-slate-800 dark:border-slate-200 flex justify-end">
           <motion.a
             href={product.url}
             target="_blank"
@@ -76,7 +76,7 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
             aria-label={`Apri ${product.name}`}
             whileHover={{ scale: 1.12, rotate: 6 }}
             whileTap={{ scale: 0.9 }}
-            className="p-2 bg-slate-900 dark:bg-slate-700 text-white rounded-lg shadow-md hover:bg-indigo-600 transition-colors"
+            className="p-2 bg-slate-800 dark:bg-slate-900 text-white rounded-lg shadow-md hover:bg-indigo-600 transition-colors"
           >
             <ArrowTopRightOnSquareIcon className="w-4 h-4" />
           </motion.a>
