@@ -38,7 +38,7 @@ export const getTagStyle = (tag: string): string => {
     return "tag-cyan";
   if (t.includes("next.js") || t.includes("typescript") || t.includes("mysql") || t.includes("booking"))
     return "tag-blue";
-  if (t.includes("ai") || t.includes("google") || t.includes("groq") || t.includes("spa") || t.includes("menù"))
+  if (t.includes("ai") || t.includes("google") || t.includes("groq") || t.includes("spa") || t.includes("menù") || t.includes("framer") || t.includes("motion"))
     return "tag-purple";
   if (t.includes("stripe") || t.includes("fintech") || t.includes("b2b") || t.includes("filtri") || t.includes("funnel"))
     return "tag-indigo";
@@ -317,7 +317,7 @@ export const projectsList: Project[] = [
     description: "Applicazione interattiva per la prenotazione e gestione di esperienze esclusive. UI moderna e flussi ottimizzati per massimizzare le conversioni.",
     tags: ["React", "Tailwind CSS", "Booking"],
     link: "#",
-    image: "/templates/experience.png",
+    image: "/projects/experience.jpg",
     category: "Sistemi & App Su Misura",
     price: "Su preventivo",
     color: "from-slate-700/10",
