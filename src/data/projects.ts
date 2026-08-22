@@ -32,22 +32,88 @@ export const categories: ("Tutti" | ProjectCategory)[] = [
 // (Tailwind v4 purges dynamically-built utility strings; semantic classes are always included)
 export const getTagStyle = (tag: string): string => {
   const t = tag.toLowerCase();
-  if (t.includes("astro") || t.includes("firebase") || t.includes("saas"))
+  if (t.includes("astro") || t.includes("firebase") || t.includes("saas") || t.includes("roi") || t.includes("margine"))
     return "tag-orange";
-  if (t.includes("react") || t.includes("wordpress") || t.includes("seo"))
+  if (t.includes("react") || t.includes("wordpress") || t.includes("seo") || t.includes("hospitality"))
     return "tag-cyan";
-  if (t.includes("next.js") || t.includes("typescript") || t.includes("mysql"))
+  if (t.includes("next.js") || t.includes("typescript") || t.includes("mysql") || t.includes("booking"))
     return "tag-blue";
-  if (t.includes("ai") || t.includes("google") || t.includes("groq"))
+  if (t.includes("ai") || t.includes("google") || t.includes("groq") || t.includes("spa") || t.includes("menù"))
     return "tag-purple";
-  if (t.includes("stripe") || t.includes("fintech") || t.includes("b2b"))
+  if (t.includes("stripe") || t.includes("fintech") || t.includes("b2b") || t.includes("filtri") || t.includes("funnel"))
     return "tag-indigo";
-  if (t.includes("laravel") || t.includes("php"))
+  if (t.includes("laravel") || t.includes("php") || t.includes("carrello"))
     return "tag-red";
   return "tag-slate";
 };
 
 export const projectsList: Project[] = [
+  {
+    title: "Dimora Luxury Real Estate",
+    description: "Portale luxury real estate con filtri multi-parametro, mappa interattiva geolocalizzata, calcolatore rata mutuo e modulo stima immobile per acquisizione mandati.",
+    tags: ["React", "Tailwind CSS", "Filtri & Mappa", "Calcolatore Mutuo", "Stima Immobile"],
+    link: "https://demo-tornesi-immobiliare.vercel.app",
+    image: "/projects/demo-tornesi.jpg",
+    category: "Sito Vetrina Pro",
+    price: "Su preventivo",
+    color: "from-indigo-600/10",
+    status: "demo",
+  },
+  {
+    title: "Aura Osteria Contemporanea",
+    description: "Sito web esperienziale per fine dining e cucina d'autore: menù digitale interattivo con allergeni, percorsi degustazione con wine pairing e prenotazione tavoli online.",
+    tags: ["React", "Tailwind CSS", "Booking Tavoli", "Menù Digitale", "Wine Pairing"],
+    link: "https://demo-aura-osteria.vercel.app",
+    image: "/projects/demo-aura.jpg",
+    category: "Booking Engine",
+    price: "Su preventivo",
+    color: "from-amber-600/10",
+    status: "demo",
+  },
+  {
+    title: "Villa Seraphina Resort & SPA",
+    description: "Piattaforma hospitality di lusso con booking engine interattivo, calcolo date check-in/out, selezione suite panoramiche ed esperienze benessere SPA.",
+    tags: ["React", "Tailwind CSS", "Booking Engine", "Hospitality", "SPA & Wellness"],
+    link: "https://demo-villa-seraphina-hotel.vercel.app",
+    image: "/projects/demo-villa-seraphina.jpg",
+    category: "Booking Engine",
+    price: "Su preventivo",
+    color: "from-cyan-600/10",
+    status: "demo",
+  },
+  {
+    title: "Montecarlo Specialty Coffee",
+    description: "Mini e-commerce D2C veloce per torrefazione artigianale con carrello slide-over interattivo, barra progresso spedizione gratuita, selezione macinatura e codici sconto.",
+    tags: ["React", "Tailwind CSS", "E-commerce D2C", "Carrello Slide-over", "Fast Checkout"],
+    link: "https://demo-montecarlo-coffee.vercel.app",
+    image: "/projects/demo-montecarlo-coffee.jpg",
+    category: "E-commerce Pro",
+    price: "Su preventivo",
+    color: "from-amber-700/10",
+    status: "demo",
+  },
+  {
+    title: "ScaleFlow Studio",
+    description: "Landing page ad alta conversione per agenzie e B2B con calcolatore ROI dinamico in tempo reale, funnel di qualificazione lead a 3 step e piani tariffari trasparenti.",
+    tags: ["React", "Tailwind CSS", "Calcolatore ROI", "Lead Funnel 3-Step", "High Conversion"],
+    link: "https://demo-scaleflow-landing.vercel.app",
+    image: "/projects/demo-scaleflow.jpg",
+    category: "Landing Page Custom",
+    price: "Su preventivo",
+    color: "from-purple-600/10",
+    status: "demo",
+  },
+  {
+    title: "QuickQuote Pro",
+    description: "Web app modulare per software house e agenzie digitali: calcolo ore sviluppo, tariffe orarie, moltiplicatore complessità e visualizzazione marginalità netta.",
+    tags: ["React", "Tailwind CSS", "SaaS Estimator", "Margine & Costi", "Dashboard Reattiva"],
+    link: "https://demo-quickquote-app.vercel.app",
+    image: "/projects/demo-quickquote.jpg",
+    category: "Sistemi & App Su Misura",
+    price: "Su preventivo",
+    color: "from-blue-600/10",
+    status: "demo",
+  },
   {
     title: "Lazio Vela",
     description: "Piattaforma su misura con area riservata sicura per circolo velico. Progettata per prestazioni estreme e un'esperienza utente fluida e professionale.",

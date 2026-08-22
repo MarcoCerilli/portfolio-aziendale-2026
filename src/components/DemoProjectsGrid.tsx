@@ -33,6 +33,9 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
           height="263"
           loading="lazy"
           decoding="async"
+          onError={(e) => {
+            (e.target as HTMLImageElement).src = "/projects/coming-soon.svg";
+          }}
           className="absolute inset-0 w-full h-full object-contain object-center p-2 transition-transform duration-700 group-hover/preview:scale-105"
         />
         <div className="absolute inset-0 bg-slate-950/60 backdrop-blur-[2px] flex flex-col items-center justify-center opacity-0 group-hover/preview:opacity-100 transition-opacity duration-300">
