@@ -24,19 +24,20 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
         href={product.url}
         target="_blank"
         rel="noopener noreferrer"
+        aria-label={`Esplora la demo di ${product.name}`}
         className="relative w-full aspect-[16/10] bg-slate-950 rounded-t-3xl overflow-hidden block group/preview border-b border-slate-800 dark:border-slate-200"
       >
         <img
           src={product.image || "/projects/coming-soon.svg"}
           alt={`Screenshot di ${product.name}`}
-          width="420"
-          height="263"
+          width="600"
+          height="375"
           loading="lazy"
           decoding="async"
           onError={(e) => {
             (e.target as HTMLImageElement).src = "/projects/coming-soon.svg";
           }}
-          className="absolute inset-0 w-full h-full object-contain object-center p-2 transition-transform duration-700 group-hover/preview:scale-105"
+          className="w-full h-full object-cover object-top transition-transform duration-700 group-hover/preview:scale-105"
         />
         <div className="absolute inset-0 bg-slate-950/60 backdrop-blur-[2px] flex flex-col items-center justify-center opacity-0 group-hover/preview:opacity-100 transition-opacity duration-300">
           <div className="w-14 h-14 rounded-full bg-indigo-600 flex items-center justify-center mb-2 shadow-xl translate-y-4 group-hover/preview:translate-y-0 transition-transform duration-300">

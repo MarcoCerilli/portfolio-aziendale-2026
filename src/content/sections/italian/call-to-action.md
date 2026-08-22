@@ -9,7 +9,7 @@ button:
   # Refer to the `sharedButton` schema in `src/sections.schema.ts` for all available configuration options (e.g., enable, label, url, hoverEffect, variant, icon, tag, rel, class, target, etc.)
   enable: true
   label: "Inizia un Progetto"
-  url: "/#contatti"
+  url: "https://wa.me/393804291043?text=Ciao%20Marco,%20vorrei%20informazioni%20per%20iniziare%20un%20nuovo%20progetto%20web!"
   hoverEffect: "magnetic-text-flip" # Optional: text-flip | creative-fill | magnetic | magnetic-text-flip
   variant: "fill" # Optional: fill | fill-white | outline | text | circle
 

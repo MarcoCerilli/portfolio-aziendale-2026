@@ -18,57 +18,55 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       style={{ boxShadow: "0 8px 32px 0 rgba(80,80,160,0.08), 0 1.5px 6px 0 rgba(0,0,0,0.06)" }}
     >
       {/* PREVIEW */}
-      <div className="relative w-full p-3 rounded-t-3xl bg-slate-950/70 dark:bg-slate-50 border-b border-slate-800 dark:border-slate-200">
-        <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden bg-slate-950 flex items-center justify-center p-1.5 border border-slate-800 dark:border-slate-200/80">
-          <img
-            src={project.image}
-            alt={`Anteprima del progetto ${project.title}`}
-            width="420"
-            height="263"
-            loading={index < 3 ? "eager" : "lazy"}
-            decoding="async"
-            draggable={false}
-            className="w-full h-full object-contain object-center transition-transform duration-700 group-hover:scale-105"
-            onError={(e) => {
-              (e.target as HTMLImageElement).src = "/projects/coming-soon.svg";
-            }}
-          />
+      <div className="relative w-full aspect-[16/10] rounded-t-3xl overflow-hidden bg-slate-950 border-b border-slate-800 dark:border-slate-200">
+        <img
+          src={project.image}
+          alt={`Anteprima del progetto ${project.title}`}
+          width="600"
+          height="375"
+          loading={index < 3 ? "eager" : "lazy"}
+          decoding="async"
+          draggable={false}
+          className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+          onError={(e) => {
+            (e.target as HTMLImageElement).src = "/projects/coming-soon.svg";
+          }}
+        />
 
-          {/* Hover Overlay */}
-          <div className="absolute inset-0 bg-slate-950/70 backdrop-blur-[2px] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            {hasLiveLink ? (
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Apri ${project.title}`}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-indigo-600/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-white translate-y-2 group-hover:translate-y-0 transition-all duration-300"
-              >
-                <EyeIcon className="w-4 h-4" aria-hidden="true" />
-                Apri Progetto
-              </a>
-            ) : (
-              <span className="inline-flex items-center px-4 py-2 rounded-xl bg-slate-800/90 text-slate-300 font-bold text-xs uppercase tracking-wider border border-slate-700">
-                Progetto Riservato
-              </span>
-            )}
-          </div>
+        {/* Hover Overlay */}
+        <div className="absolute inset-0 bg-slate-950/70 backdrop-blur-[2px] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          {hasLiveLink ? (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Apri ${project.title}`}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-indigo-600/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-white translate-y-2 group-hover:translate-y-0 transition-all duration-300"
+            >
+              <EyeIcon className="w-4 h-4" aria-hidden="true" />
+              Apri Progetto
+            </a>
+          ) : (
+            <span className="inline-flex items-center px-4 py-2 rounded-xl bg-slate-800/90 text-slate-300 font-bold text-xs uppercase tracking-wider border border-slate-700">
+              Progetto Riservato
+            </span>
+          )}
+        </div>
 
-          {/* Status Badge */}
-          <div className="absolute top-2.5 right-2.5 z-10 pointer-events-none">
-            {project.status === "online" && (
-              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/90 text-white text-[10px] font-extrabold uppercase tracking-widest">
-                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" aria-hidden="true" />
-                Live
-              </span>
-            )}
-            {project.status === "demo" && (
-              <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-indigo-500/90 text-white text-[10px] font-extrabold uppercase tracking-widest">Demo</span>
-            )}
-            {project.status === "soon" && (
-              <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-slate-700/90 text-white text-[10px] font-extrabold uppercase tracking-widest">In Arrivo</span>
-            )}
-          </div>
+        {/* Status Badge */}
+        <div className="absolute top-3 right-3 z-10 pointer-events-none">
+          {project.status === "online" && (
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/95 text-white text-[10px] font-extrabold uppercase tracking-widest shadow-md">
+              <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" aria-hidden="true" />
+              Live
+            </span>
+          )}
+          {project.status === "demo" && (
+            <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-indigo-600/95 text-white text-[10px] font-extrabold uppercase tracking-widest shadow-md">Demo</span>
+          )}
+          {project.status === "soon" && (
+            <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-slate-800/95 text-white text-[10px] font-extrabold uppercase tracking-widest shadow-md">In Arrivo</span>
+          )}
         </div>
       </div>
 

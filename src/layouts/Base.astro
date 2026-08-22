@@ -13,6 +13,7 @@ import type { HeaderLayout } from "@/types";
 import CallToAction from "./components/sections/CallToAction.astro";
 import PageLoader from "@/lib/PageLoader.astro";
 import CookieBanner from "../components/CookieBanner";
+import FloatingContact from "../components/FloatingContact";
 
 type HeaderPosition = "fixed" | "static" | "sticky";
 
@@ -80,6 +81,7 @@ className = fitToScreen
     <GlobalScripts />
     <CursorFollower />
     <BackToTop />
+    <FloatingContact client:idle />
 
     <CookieBanner client:idle />
   </body>

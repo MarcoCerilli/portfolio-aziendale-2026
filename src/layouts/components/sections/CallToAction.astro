@@ -97,8 +97,22 @@ if (!hasContentSource || !enable || !hasVisibleContent) {
               )}
 
               {buttonProps?.enable && (
-                <div class="mt-5">
+                <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
                   <Button {...buttonProps} />
+                  <a
+                    href="mailto:cerillimarco15@gmail.com?subject=Richiesta%20Informazioni%20Progetto"
+                    class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-all duration-200 border border-white/15"
+                  >
+                    <svg class="w-4 h-4 text-slate-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    Scrivimi via Email
+                  </a>
+                  <a
+                    href="tel:+393804291043"
+                    class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-all duration-200 border border-white/15"
+                  >
+                    <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.12.45 2.33.69 3.58.69a1 1 0 011 1v3.5a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.24 2.46.69 3.58a1 1 0 01-.21 1.11l-2.36 2.1z"/></svg>
+                    +39 380 429 1043
+                  </a>
                 </div>
               )}
             </div>
