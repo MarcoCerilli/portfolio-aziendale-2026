@@ -8,6 +8,25 @@ import {
 
 import { projectsList, categories, type Project } from "@/data/projects";
 
+const getCategoryBadgeClass = (cat: string) => {
+  if (cat.includes("E-Commerce") || cat.includes("Shop")) {
+    return "bg-emerald-950/80 text-emerald-300 border-emerald-800/80";
+  }
+  if (cat.includes("SaaS") || cat.includes("App") || cat.includes("Software")) {
+    return "bg-cyan-950/80 text-cyan-300 border-cyan-800/80";
+  }
+  if (cat.includes("Booking") || cat.includes("Ristoranti") || cat.includes("Food") || cat.includes("B&B")) {
+    return "bg-amber-950/80 text-amber-300 border-amber-800/80";
+  }
+  if (cat.includes("Immobiliare") || cat.includes("Luxury") || cat.includes("Hotel")) {
+    return "bg-purple-950/80 text-purple-300 border-purple-800/80";
+  }
+  if (cat.includes("Landing") || cat.includes("Vetrina") || cat.includes("Corporate")) {
+    return "bg-sky-950/80 text-sky-300 border-sky-800/80";
+  }
+  return "bg-zinc-900 text-zinc-300 border-zinc-800";
+};
+
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const hasLiveLink = project.link && project.link !== "#";
 
@@ -55,7 +74,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Apri ${project.title}`}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-black font-bold text-xs uppercase tracking-wider shadow-xl hover:bg-zinc-200 translate-y-2 group-hover:translate-y-0 transition-all duration-300"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-black font-bold text-xs uppercase tracking-wider shadow-xl hover:bg-zinc-200 translate-y-2 group-hover:translate-y-0 transition-all duration-300 cursor-pointer"
             >
               <EyeIcon className="w-4 h-4 text-black" aria-hidden="true" />
               Apri Progetto
@@ -70,7 +89,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
       {/* BODY */}
       <div className="p-6 flex flex-col grow">
-        <span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-zinc-900 text-zinc-300 border border-zinc-800 mb-3 self-start">
+        <span className={`inline-flex items-center px-2.5 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider border mb-3 self-start ${getCategoryBadgeClass(project.category)}`}>
           {project.category}
         </span>
         <h3 className="text-lg font-bold text-white tracking-tight leading-snug mb-2 group-hover:text-zinc-300 transition-colors">
@@ -84,7 +103,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         <div className="pt-4 mt-5 border-t border-zinc-800/80 flex flex-wrap items-center justify-between gap-2">
           <div className="flex flex-wrap gap-1.5">
             {project.tags.slice(0, 3).map((tag) => (
-              <span key={tag} className="px-2 py-0.5 rounded text-[10px] font-medium uppercase tracking-wider bg-zinc-900/90 text-zinc-400 border border-zinc-800/80">
+              <span key={tag} className="px-2 py-0.5 rounded text-[10px] font-medium uppercase tracking-wider bg-zinc-900 text-zinc-400 border border-zinc-800/80">
                 {tag}
               </span>
             ))}
@@ -94,7 +113,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-xl bg-white text-black text-xs font-black hover:bg-zinc-200 transition-all shrink-0"
+              className="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-xl bg-white text-black text-xs font-black hover:bg-zinc-200 transition-all shrink-0 cursor-pointer"
               aria-label={`Visita ${project.title}`}
             >
               Vedi

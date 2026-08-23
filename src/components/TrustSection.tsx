@@ -63,8 +63,8 @@ const TrustSection = () => {
 
             {/* Central Badge */}
             <div className="flex flex-col items-center justify-center group cursor-default">
-              <div className="relative w-14 h-14 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center shadow-xl text-white mb-3">
-                <ShieldCheckIcon className="w-7 h-7" />
+              <div className="relative w-14 h-14 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center shadow-xl mb-3">
+                <ShieldCheckIcon className="w-7 h-7 text-emerald-400" />
               </div>
               <p className="text-white font-bold text-xs uppercase tracking-[0.15em] text-center leading-tight">
                 Qualità &<br/>Garanzia 100%
