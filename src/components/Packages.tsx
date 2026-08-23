@@ -432,7 +432,7 @@ const Packages = () => {
   const [activeTab, setActiveTab] = useState<"all" | "web" | "ecommerce" | "booking">("all");
 
   return (
-    <section className="relative w-full bg-black py-4">
+    <section className="relative w-full bg-black py-4 text-white">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -441,16 +441,16 @@ const Packages = () => {
           viewport={{ once: true }}
           className="text-center space-y-4 mb-10"
         >
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-bold uppercase tracking-widest text-zinc-300">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-bold uppercase tracking-widest text-zinc-300 shadow-xs">
             Tariffe &amp; Soluzioni
           </span>
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight">
             Scegli il{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-200 to-zinc-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-200 to-zinc-400">
               Pacchetto
             </span>
           </h2>
-          <p className="text-zinc-400 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+          <p className="text-zinc-400 text-sm md:text-base max-w-xl mx-auto leading-relaxed font-normal">
             Soluzioni chiare e trasparenti. Nessun costo nascosto, solo risultati concreti.
           </p>
 
@@ -497,7 +497,7 @@ const Packages = () => {
             {(activeTab === "all" || activeTab === "web") && (
               <div className="space-y-8">
                 {activeTab === "all" && (
-                  <h3 className="text-2xl font-bold text-center text-white uppercase tracking-tight">
+                  <h3 className="text-2xl font-black text-center text-white uppercase tracking-tight">
                     Siti Web
                   </h3>
                 )}
@@ -522,7 +522,7 @@ const Packages = () => {
                         </div>
                       )}
                       <div className="mb-4">
-                        <h3 className="text-lg font-bold text-white mb-0.5 uppercase tracking-tight">
+                        <h3 className="text-lg font-black text-white mb-0.5 uppercase tracking-tight">
                           {pkg.name}
                         </h3>
                         <p className="text-zinc-400 text-xs font-normal">{pkg.description}</p>
@@ -556,12 +556,12 @@ const Packages = () => {
             {(activeTab === "all" || activeTab === "ecommerce") && (
               <div className="space-y-8">
                 {activeTab === "all" && (
-                  <h3 className="text-2xl font-bold text-center text-white uppercase tracking-tight">
+                  <h3 className="text-2xl font-black text-center text-white uppercase tracking-tight">
                     E-Commerce
                   </h3>
                 )}
                 {/* Info banner */}
-                <div className="p-4 md:p-5 rounded-2xl bg-zinc-950 border border-zinc-800">
+                <div className="p-4 md:p-5 rounded-2xl bg-zinc-950 border border-zinc-800 shadow-sm">
                   <div className="flex flex-col sm:flex-row sm:items-center gap-3">
                     <div className="text-2xl shrink-0">💡</div>
                     <div>
@@ -569,7 +569,7 @@ const Packages = () => {
                         Quale piattaforma fa per te?
                       </p>
                       <p className="text-zinc-400 text-xs mt-0.5 leading-relaxed font-normal">
-                        Il prezzo indicato è il <strong className="text-zinc-200 font-bold">costo di setup una-tantum</strong>.
+                        Il prezzo indicato è il <strong className="text-white font-bold">costo di setup una-tantum</strong>.
                         Considera sempre i costi ricorrenti mensili della piattaforma scelta.
                       </p>
                     </div>
@@ -588,12 +588,12 @@ const Packages = () => {
             {(activeTab === "all" || activeTab === "booking") && (
               <div className="space-y-8">
                 {activeTab === "all" && (
-                  <h3 className="text-2xl font-bold text-center text-white uppercase tracking-tight">
+                  <h3 className="text-2xl font-black text-center text-white uppercase tracking-tight">
                     Booking Engine
                   </h3>
                 )}
                 {/* Info banner */}
-                <div className="p-4 md:p-5 rounded-2xl bg-zinc-950 border border-zinc-800">
+                <div className="p-4 md:p-5 rounded-2xl bg-zinc-950 border border-zinc-800 shadow-sm">
                   <div className="flex flex-col sm:flex-row sm:items-center gap-3">
                     <div className="text-2xl shrink-0">📅</div>
                     <div>
@@ -601,7 +601,7 @@ const Packages = () => {
                         Disintermediazione &amp; Zero Commissioni
                       </p>
                       <p className="text-zinc-400 text-xs mt-0.5 leading-relaxed font-normal">
-                        Sistemi di prenotazione proprietari per ristoranti, B&amp;B e boutique hotel. <strong className="text-zinc-200 font-bold">Risparmia fino al 20% di commissioni</strong> rispetto alle OTA (Booking.com, Airbnb, TheFork), con sincronizzazione iCal e incassi diretti su Stripe.
+                        Sistemi di prenotazione proprietari per ristoranti, B&amp;B e boutique hotel. <strong className="text-white font-bold">Risparmia fino al 20% di commissioni</strong> rispetto alle OTA (Booking.com, Airbnb, TheFork), con sincronizzazione iCal e incassi diretti su Stripe.
                       </p>
                     </div>
                   </div>

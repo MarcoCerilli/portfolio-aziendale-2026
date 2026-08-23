@@ -62,11 +62,11 @@ const footerSocials = social.main
       {/* Contacts & Socials */}
       <div class="flex flex-col sm:flex-row items-center gap-4 md:gap-6">
         {/* Contact links */}
-        <div class="flex flex-wrap items-center justify-center gap-3 text-xs md:text-sm text-slate-300">
+        <div class="flex flex-wrap items-center justify-center gap-3 text-xs md:text-sm text-zinc-300">
           {phone && (
             <a
               href={`tel:${phone.replace(/\s+/g, "")}`}
-              class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 hover:border-indigo-500/50 hover:text-indigo-400 transition-colors shadow-sm"
+              class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 hover:text-white transition-colors shadow-sm"
             >
               <svg
                 width="14"
@@ -74,7 +74,7 @@ const footerSocials = social.main
                 viewBox="0 0 20 20"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                class="text-indigo-400"
+                class="text-zinc-400"
               >
                 <path
                   d="M16.625 17.5C14.8889 17.5 13.1701 17.125 11.4688 16.375C9.76736 15.625 8.22222 14.5556 6.83333 13.1667C5.44444 11.7778 4.375 10.2361 3.625 8.54167C2.875 6.84722 2.5 5.125 2.5 3.375V2.5H7.41667L8.1875 6.6875L5.8125 9.08333C6.11806 9.625 6.45833 10.1389 6.83333 10.625C7.20833 11.1111 7.61111 11.5625 8.04167 11.9792C8.44444 12.3819 8.88542 12.7674 9.36458 13.1354C9.84375 13.5035 10.3611 13.8472 10.9167 14.1667L13.3333 11.75L17.5 12.6042V17.5H16.625Z"
@@ -88,7 +88,7 @@ const footerSocials = social.main
           {email && (
             <a
               href={`mailto:${email}`}
-              class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 hover:border-indigo-500/50 hover:text-indigo-400 transition-colors shadow-sm"
+              class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 hover:text-white transition-colors shadow-sm"
             >
               <svg
                 width="14"
@@ -96,7 +96,7 @@ const footerSocials = social.main
                 viewBox="0 0 20 20"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                class="text-indigo-400"
+                class="text-zinc-400"
               >
                 <path
                   d="M1.66675 16.6667V3.33333H18.3334V16.6667H1.66675ZM10.0001 10.8333L16.6667 6.66666V4.99999L10.0001 9.16666L3.33341 4.99999V6.66666L10.0001 10.8333Z"
@@ -120,16 +120,16 @@ const footerSocials = social.main
     </div>
 
     {/* Bottom Bar */}
-    <div class="footer-bottom border-t border-slate-800/80 py-3.5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-400">
+    <div class="footer-bottom border-t border-zinc-900 py-3.5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-zinc-400">
       {
         config.settings.copyright?.enable && (
           <p
-            class="footer-copyright text-xs text-slate-400"
+            class="footer-copyright text-xs text-zinc-400"
             set:html={markdownify(copyrightText)}
           />
         )
       }
-      <div class="flex items-center gap-4 text-xs text-slate-400">
+      <div class="flex items-center gap-4 text-xs text-zinc-400">
         <a href="/privacy-policy/" class="hover:text-white transition-colors">Privacy Policy</a>
         <span>•</span>
         <a href="/terms-conditions/" class="hover:text-white transition-colors">Termini e Condizioni</a>

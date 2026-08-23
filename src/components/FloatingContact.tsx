@@ -148,16 +148,16 @@ const FloatingContact = () => {
             )}
 
             {chatMode === "ai" && (
-              <div className="bg-indigo-600 px-4 py-3 text-white flex justify-between items-center shadow-md z-10">
+              <div className="bg-slate-900 px-4 py-3 text-white flex justify-between items-center shadow-md z-10">
                 <div className="flex items-center gap-2">
                   <button onClick={() => setChatMode("menu")} className="p-1 hover:bg-white/20 rounded-md -ml-2">
                     <ArrowLeftIcon className="w-4 h-4" />
                   </button>
-                  <SparklesIcon className="w-5 h-5 text-indigo-300" />
+                  <SparklesIcon className="w-5 h-5 text-emerald-400" />
                   <div className="leading-tight">
                     <p className="font-bold tracking-tight text-[13px]">Assistente IA</p>
                     <p className="text-[10px] opacity-90 flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 bg-indigo-300 rounded-full animate-pulse"></span> AI Gemini 
+                      <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></span> AI Gemini 
                     </p>
                   </div>
                 </div>
@@ -168,14 +168,14 @@ const FloatingContact = () => {
             )}
 
             {chatMode === "menu" ? (
-              <div className="p-6 flex flex-col justify-center h-full space-y-4 bg-slate-50 dark:bg-slate-900/50">
+              <div className="p-6 flex flex-col justify-center h-full space-y-4 bg-slate-50">
                 <button onClick={() => setChatMode("whatsapp")}
                    className={`${shimmerEffect} flex items-center justify-center gap-3 bg-[#25D366] text-white py-4 rounded-xl font-black text-[13px] uppercase tracking-widest hover:scale-[1.02] transition-transform shadow-lg shadow-green-500/20`}>
                   <SiWhatsapp className="w-5 h-5" /> Invia WhatsApp
                 </button>
 
                 <button onClick={() => setChatMode("ai")}
-                  className={`${shimmerEffect} flex items-center justify-center gap-3 bg-indigo-600 text-white py-4 rounded-xl font-black text-[13px] uppercase tracking-widest hover:scale-[1.02] transition-transform shadow-lg shadow-indigo-500/20`}>
+                  className={`${shimmerEffect} flex items-center justify-center gap-3 bg-slate-900 text-white py-4 rounded-xl font-black text-[13px] uppercase tracking-widest hover:scale-[1.02] transition-transform shadow-lg shadow-slate-900/20`}>
                   <SparklesIcon className="w-5 h-5" /> Chat con IA
                 </button>
               </div>
@@ -183,7 +183,7 @@ const FloatingContact = () => {
               <>
                 <div 
                   ref={scrollRef} 
-                  className={`flex-grow p-3 overflow-y-auto space-y-2.5 relative ${chatMode === "ai" ? "bg-slate-50 dark:bg-slate-900" : ""}`}
+                  className={`flex-grow p-3 overflow-y-auto space-y-2.5 relative ${chatMode === "ai" ? "bg-slate-50" : ""}`}
                   style={chatMode === "whatsapp" ? { backgroundColor: "#efeae2", backgroundImage: "url('https://i.pinimg.com/736x/8c/98/99/8c98994518b575bfd8c949e91d20548b.jpg')", backgroundSize: "cover", backgroundPosition: "center", backgroundBlendMode: "overlay" } : {}}
                 >
                   {(chatMode === "whatsapp" ? waMessages : aiMessages).map((m, i) => (
@@ -191,22 +191,22 @@ const FloatingContact = () => {
                       <div className={`max-w-[85%] px-3 py-2 rounded-xl text-[13px] leading-snug shadow-sm ${
                         chatMode === "whatsapp" 
                           ? m.sender === "user" ? "bg-[#d9fdd3] text-[#111b21] rounded-tr-none" : "bg-white text-[#111b21] rounded-tl-none"
-                          : m.sender === "user" ? "bg-indigo-600 text-white rounded-tr-none" : "bg-white dark:bg-slate-800 text-slate-900 dark:text-white rounded-tl-none border border-slate-100 dark:border-slate-700"
+                          : m.sender === "user" ? "bg-slate-900 text-white rounded-tr-none" : "bg-white text-slate-900 rounded-tl-none border border-slate-200"
                       }`}>
                         {m.text}
                       </div>
                     </div>
                   ))}
-                  {loading && <div className="text-[10px] text-indigo-400 font-bold animate-pulse">L&apos;IA sta scrivendo...</div>}
+                  {loading && <div className="text-[10px] text-slate-500 font-bold animate-pulse">L&apos;IA sta scrivendo...</div>}
                 </div>
                 
-                <form onSubmit={handleSendMessage} className={`p-2 flex gap-2 items-center ${chatMode === "whatsapp" ? "bg-[#f0f2f5] dark:bg-[#202c33]" : "bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800"}`}>
+                <form onSubmit={handleSendMessage} className={`p-2 flex gap-2 items-center ${chatMode === "whatsapp" ? "bg-[#f0f2f5]" : "bg-white border-t border-slate-200"}`}>
                   <input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Scrivi un messaggio..."
                     className={`flex-grow rounded-full px-4 py-2.5 text-[14px] focus:outline-none placeholder:text-gray-500 shadow-sm ${
-                      chatMode === "whatsapp" ? "bg-white dark:bg-[#2a3942] text-slate-900 dark:text-white" : "bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-white"
+                      chatMode === "whatsapp" ? "bg-white text-slate-900" : "bg-slate-100 text-slate-900"
                     }`} />
                   <button type="submit" disabled={loading} className={`p-2.5 rounded-full text-white disabled:opacity-50 shadow-sm transition-colors flex-shrink-0 ${
-                    chatMode === "whatsapp" ? "bg-[#00a884] hover:bg-[#008f6f]" : "bg-indigo-600 hover:bg-indigo-700"
+                    chatMode === "whatsapp" ? "bg-[#00a884] hover:bg-[#008f6f]" : "bg-slate-900 hover:bg-black"
                   }`}>
                     <PaperAirplaneIcon className="w-5 h-5 -rotate-45 ml-1" />
                   </button>
@@ -222,10 +222,10 @@ const FloatingContact = () => {
         whileHover={{ scale: 1.05 }}
         onClick={() => { setIsOpen(!isOpen); if (isOpen) setChatMode("menu"); }}
         aria-label={isOpen ? "Chiudi finestra" : "Apri chat e contatti"}
-        className="relative bg-indigo-600 p-4 rounded-full shadow-2xl text-white flex items-center justify-center border border-white/20"
+        className="relative bg-slate-900 p-4 rounded-full shadow-2xl text-white flex items-center justify-center border border-white/20"
       >
         {!isOpen && (
-          <span className="absolute inset-0 rounded-full bg-indigo-500 animate-ping opacity-30 pointer-events-none" />
+          <span className="absolute inset-0 rounded-full bg-slate-700 animate-ping opacity-30 pointer-events-none" />
         )}
         {isOpen ? <XMarkIcon className="w-6 h-6" /> : <ChatBubbleLeftRightIcon className="w-6 h-6" />}
       </motion.button>

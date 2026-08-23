@@ -5,6 +5,7 @@ import {
   SiNextdotjs,
   SiTypescript,
   SiTailwindcss,
+  SiPhp,
   SiNeon,
   SiSupabase,
   SiWordpress,
@@ -20,19 +21,20 @@ import {
 const technologies = [
   { name: "Astro", icon: SiAstro, color: "text-orange-500", bgGlow: "group-hover:shadow-orange-500/20" },
   { name: "React", icon: SiReact, color: "text-[#61DAFB]", bgGlow: "group-hover:shadow-cyan-500/20" },
-  { name: "Next.js", icon: SiNextdotjs, color: "text-slate-900 dark:text-white", bgGlow: "group-hover:shadow-slate-500/20" },
-  { name: "TypeScript", icon: SiTypescript, color: "text-blue-600 dark:text-blue-400", bgGlow: "group-hover:shadow-blue-500/20" },
+  { name: "Next.js", icon: SiNextdotjs, color: "text-slate-900", bgGlow: "group-hover:shadow-slate-500/20" },
+  { name: "TypeScript", icon: SiTypescript, color: "text-blue-600", bgGlow: "group-hover:shadow-blue-500/20" },
   { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-cyan-500", bgGlow: "group-hover:shadow-cyan-500/20" },
+  { name: "PHP", icon: SiPhp, color: "text-[#777BB4]", bgGlow: "group-hover:shadow-indigo-500/20" },
   { name: "Neon DB", icon: SiNeon, color: "text-[#00E599]", bgGlow: "group-hover:shadow-emerald-500/20" },
-  { name: "Vercel", icon: SiVercel, color: "text-slate-900 dark:text-white", bgGlow: "group-hover:shadow-slate-500/20" },
+  { name: "Vercel", icon: SiVercel, color: "text-slate-900", bgGlow: "group-hover:shadow-slate-500/20" },
   { name: "Supabase", icon: SiSupabase, color: "text-emerald-500", bgGlow: "group-hover:shadow-emerald-500/20" },
-  { name: "Shopify", icon: SiShopify, color: "text-emerald-600 dark:text-emerald-400", bgGlow: "group-hover:shadow-emerald-500/20" },
-  { name: "WordPress", icon: SiWordpress, color: "text-sky-600 dark:text-sky-400", bgGlow: "group-hover:shadow-sky-500/20" },
+  { name: "Shopify", icon: SiShopify, color: "text-emerald-600", bgGlow: "group-hover:shadow-emerald-500/20" },
+  { name: "WordPress", icon: SiWordpress, color: "text-sky-600", bgGlow: "group-hover:shadow-sky-500/20" },
   { name: "Docker", icon: SiDocker, color: "text-blue-500", bgGlow: "group-hover:shadow-blue-500/20" },
-  { name: "GitHub", icon: SiGithub, color: "text-slate-900 dark:text-white", bgGlow: "group-hover:shadow-slate-500/20" },
-  { name: "PostgreSQL", icon: SiPostgresql, color: "text-indigo-600 dark:text-indigo-400", bgGlow: "group-hover:shadow-indigo-500/20" },
-  { name: "MySQL", icon: SiMysql, color: "text-blue-600 dark:text-blue-400", bgGlow: "group-hover:shadow-blue-500/20" },
-  { name: "Framer Motion", icon: SiFramer, color: "text-purple-600 dark:text-purple-400", bgGlow: "group-hover:shadow-purple-500/20" },
+  { name: "GitHub", icon: SiGithub, color: "text-slate-900", bgGlow: "group-hover:shadow-slate-500/20" },
+  { name: "PostgreSQL", icon: SiPostgresql, color: "text-indigo-600", bgGlow: "group-hover:shadow-indigo-500/20" },
+  { name: "MySQL", icon: SiMysql, color: "text-blue-600", bgGlow: "group-hover:shadow-blue-500/20" },
+  { name: "Framer Motion", icon: SiFramer, color: "text-purple-600", bgGlow: "group-hover:shadow-purple-500/20" },
 ];
 
 const containerVariants: Variants = {
@@ -59,16 +61,16 @@ const TechStack = () => {
         {/* Titolo Sezione */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-3">
           <div>
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-bold uppercase tracking-widest text-zinc-300 mb-3">
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-bold uppercase tracking-widest text-zinc-300 mb-3 shadow-xs">
               <span className="h-2 w-2 rounded-full bg-white animate-pulse" aria-hidden="true" />
               Stack Tecnologico
             </span>
             <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
-              Strumenti &amp; Architetture <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-200 to-zinc-500">Core</span>
+              Strumenti &amp; Architetture <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-200 to-zinc-400">Core</span>
             </h2>
           </div>
           <p className="text-xs sm:text-sm text-zinc-400 font-normal">
-            Architetture moderne, serverless e database ad alte performance
+            Architetture moderne, serverless, PHP e database ad alte performance
           </p>
         </div>
 

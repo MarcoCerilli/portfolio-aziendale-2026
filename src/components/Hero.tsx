@@ -93,7 +93,7 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        {/* LATO DESTRO: Showcase Mockup Pulito (Senza pallini Mac) */}
+        {/* LATO DESTRO: Showcase Mockup Pulito */}
         <motion.div variants={itemVariants} className="flex-1 w-full max-w-xl lg:max-w-none relative mt-6 lg:mt-0">
           <div className="relative w-full">
             {/* Mockup Frame in Vetro Scuro */}

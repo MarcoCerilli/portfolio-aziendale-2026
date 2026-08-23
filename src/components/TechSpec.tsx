@@ -28,7 +28,7 @@ export default function TechSpec({ label, title, description }: TechSpecProps) {
           </div>
         </div>
         
-        <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-3">
+        <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight mb-3">
           {title}
         </h3>
         
@@ -36,7 +36,7 @@ export default function TechSpec({ label, title, description }: TechSpecProps) {
           {description}
         </p>
 
-        {/* Progress Bar in silver */}
+        {/* Progress Bar */}
         <div className="mt-8 w-full h-[2px] bg-zinc-900 relative overflow-hidden rounded-full">
           <motion.div 
             initial={{ x: "-100%" }}

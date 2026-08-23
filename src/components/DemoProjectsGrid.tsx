@@ -16,15 +16,15 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className="group relative w-full md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-start bg-zinc-950/80 rounded-3xl border border-zinc-800/80 hover:border-zinc-700 flex flex-col hover:-translate-y-1 transition-all duration-300 select-none shadow-2xl shadow-black/80 overflow-hidden"
+      className="group relative w-full md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-start bg-white text-slate-900 rounded-3xl border border-slate-200 hover:border-slate-400 flex flex-col hover:-translate-y-1 transition-all duration-300 select-none shadow-2xl shadow-black/80 overflow-hidden"
     >
-      {/* PREVIEW SCREENSHOT (Pulito, a tutta larghezza, senza 3 pallini) */}
+      {/* PREVIEW SCREENSHOT */}
       <a
         href={product.url}
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`Esplora la demo di ${product.name}`}
-        className="relative w-full aspect-[16/10] bg-black overflow-hidden block group/preview border-b border-zinc-800/80"
+        className="relative w-full aspect-[16/10] bg-slate-100 overflow-hidden block group/preview border-b border-slate-200"
       >
         <img
           src={product.image || "/projects/coming-soon.svg"}
@@ -41,26 +41,26 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
 
         {/* Demo badge in alto a destra */}
         <div className="absolute top-3 right-3 z-10 pointer-events-none">
-          <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md border border-zinc-800 text-zinc-300 text-[10px] font-bold uppercase tracking-widest shadow-xl">
+          <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-slate-900/90 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-widest shadow-xl">
             Demo Live
           </span>
         </div>
 
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px] flex flex-col items-center justify-center opacity-0 group-hover/preview:opacity-100 transition-opacity duration-300">
+        <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-[2px] flex flex-col items-center justify-center opacity-0 group-hover/preview:opacity-100 transition-opacity duration-300">
           <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center mb-1.5 shadow-xl translate-y-4 group-hover/preview:translate-y-0 transition-transform duration-300">
-            <FiPlay className="w-4 h-4 text-black ml-0.5" />
+            <FiPlay className="w-4 h-4 text-slate-900 ml-0.5" />
           </div>
           <span className="text-white font-bold text-[11px] uppercase tracking-widest translate-y-4 group-hover/preview:translate-y-0 transition-transform duration-300 delay-75">Esplora Live</span>
         </div>
       </a>
 
-      {/* BODY */}
-      <div className="p-6 flex flex-col grow">
+      {/* BODY (Inverted Clean Light) */}
+      <div className="p-6 flex flex-col grow bg-white text-slate-900">
         <div className="mb-3">
-          <span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-zinc-900 text-zinc-300 border border-zinc-800 mb-2">
+          <span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-slate-100 text-slate-700 border border-slate-200 mb-2">
             {product.category}
           </span>
-          <h3 className="text-base font-bold text-white tracking-tight leading-tight">
+          <h3 className="text-base font-black text-slate-900 tracking-tight leading-tight">
             {product.name}
           </h3>
         </div>
@@ -68,15 +68,15 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
         {product.features && product.features.length > 0 && (
           <ul className="space-y-1.5 grow">
             {product.features.slice(0, 3).map((f, i) => (
-              <li key={i} className="flex items-start gap-2 text-xs text-zinc-400 font-normal">
-                <FiCheck className="mt-0.5 h-3 w-3 shrink-0 text-white" />
+              <li key={i} className="flex items-start gap-2 text-xs text-slate-600 font-normal">
+                <FiCheck className="mt-0.5 h-3.5 w-3.5 shrink-0 text-slate-900" />
                 {f}
               </li>
             ))}
           </ul>
         )}
 
-        <div className="mt-5 pt-4 border-t border-zinc-800/80 flex justify-end">
+        <div className="mt-5 pt-4 border-t border-slate-100 flex justify-end">
           <motion.a
             href={product.url}
             target="_blank"
@@ -84,10 +84,10 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
             aria-label={`Apri ${product.name}`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-1.5 px-4 py-2 bg-white text-black font-black text-xs rounded-xl shadow-md hover:bg-zinc-200 transition-all"
+            className="inline-flex items-center gap-1.5 px-4 py-2 bg-slate-900 text-white font-bold text-xs rounded-xl shadow-md hover:bg-black transition-all"
           >
             Esplora
-            <ArrowTopRightOnSquareIcon className="w-3.5 h-3.5 text-black" />
+            <ArrowTopRightOnSquareIcon className="w-3.5 h-3.5 text-white" />
           </motion.a>
         </div>
       </div>

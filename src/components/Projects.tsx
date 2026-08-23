@@ -16,7 +16,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       aria-label={project.title}
       className="relative w-full md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-start bg-zinc-950/80 rounded-3xl border border-zinc-800/80 hover:border-zinc-700 flex flex-col hover:-translate-y-1 transition-all duration-300 group select-none shadow-2xl shadow-black/80 overflow-hidden"
     >
-      {/* PREVIEW SCREENSHOT (Pulito, a tutta larghezza, senza 3 pallini) */}
+      {/* PREVIEW SCREENSHOT */}
       <div className="relative w-full aspect-[16/10] overflow-hidden bg-black border-b border-zinc-800/80">
         <img
           src={project.image}
@@ -132,13 +132,13 @@ export default function ProjectsCarousel() {
           Portfolio Lavori
         </span>
         <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight">
-          I Miei <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-200 to-zinc-500">Progetti</span>
+          I Miei <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-200 to-zinc-400">Progetti</span>
         </h2>
-        <p className="text-zinc-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+        <p className="text-zinc-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed font-normal">
           Esplora le soluzioni realizzate: siti vetrina, e-commerce, web app e piattaforme ad alte prestazioni.
         </p>
 
-        {/* Filtri — una riga compatta */}
+        {/* Filtri */}
         <div className="pt-4">
           <div
             className="inline-flex items-center gap-1.5 p-1.5 bg-zinc-900/90 backdrop-blur-md rounded-2xl border border-zinc-800 shadow-sm overflow-x-auto max-w-full"

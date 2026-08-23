@@ -25,30 +25,30 @@ const homepageContent = await getEntryCTM(
 
 <Base {...homepageContent?.data} headerLayout="two" headerPosition="fixed" ctaSpacingTop={false}>
   <div class="min-h-screen bg-black text-white selection:bg-white selection:text-black">
+    {/* 1. HERO */}
     <Hero client:load />
 
+    {/* 2. TECH STACK */}
     <TechStack client:visible />
 
+    {/* 3. ARCHITETTURE & INGEGNERIA */}
     <section class="py-16 md:py-24 bg-black border-t border-zinc-900 relative overflow-hidden">
       <div class="max-w-7xl mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <TechSpec
             client:visible
-            color="indigo"
             label="Ingegneria Web"
             title="Astro & Next.js"
             description="Architetture moderne a caricamento istantaneo. Riduciamo a zero i tempi di attesa e massimizziamo il punteggio SEO."
           />
           <TechSpec
             client:visible
-            color="cyan"
             label="Infrastruttura Cloud"
             title="Vercel Edge & Neon"
             description="Distribuzione globale serverless su rete Edge. Massima sicurezza, protezione DDoS e scalabilità illimitata."
           />
           <TechSpec
             client:visible
-            color="rose"
             label="Autonomia Clienti"
             title="Pannello CMS Intuitivo"
             description="Gestisci testi, prodotti e prenotazioni in totale autonomia, senza dover pagare un tecnico per ogni minima modifica."
@@ -57,19 +57,23 @@ const homepageContent = await getEntryCTM(
       </div>
     </section>
 
+    {/* 4. RISULTATI & TRUST */}
     <section class="py-12 md:py-16 bg-black border-t border-zinc-900">
       <TrustSection client:visible />
     </section>
 
-    <section id="progetti" class="py-16 md:py-24 bg-black border-t border-zinc-900 w-full overflow-hidden">
+    {/* 5. PORTFOLIO PROGETTI */}
+    <section id="progetti" class="py-16 md:py-24 bg-black text-white border-t border-zinc-900 w-full overflow-hidden">
       <Projects client:visible />
     </section>
 
-    <section id="demo" class="py-12 md:py-20 bg-black border-t border-zinc-900 overflow-visible">
+    {/* 6. DEMO LIVE TEMPLATE */}
+    <section id="demo" class="py-16 md:py-24 bg-black text-white border-t border-zinc-900 overflow-visible">
       <DemoProjectsSection />
     </section>
 
-    <section id="pacchetti" class="py-16 md:py-24 bg-black border-t border-zinc-900">
+    {/* 7. PACCHETTI E TARIFFE */}
+    <section id="pacchetti" class="py-16 md:py-24 bg-black text-white border-t border-zinc-900">
       <div class="max-w-7xl mx-auto px-6">
         <Packages client:visible />
       </div>
