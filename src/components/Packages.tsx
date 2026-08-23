@@ -477,7 +477,7 @@ function BookingCard({ plan, index }: { plan: BookingPlan; index: number }) {
             href={plan.demoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-1.5 w-full py-2.5 mt-4 rounded-xl text-[10px] font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 bg-indigo-50/80 dark:bg-indigo-950/60 border border-indigo-200/80 dark:border-indigo-800/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 transition-colors"
+            className="inline-flex items-center justify-center gap-1.5 w-full py-2.5 mt-4 rounded-xl text-[10px] font-black uppercase tracking-wider text-indigo-700 dark:text-indigo-900 bg-indigo-50 dark:bg-white border border-indigo-200 dark:border-slate-300 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 dark:hover:text-white dark:hover:border-indigo-600 transition-all shadow-sm"
           >
             <span>{plan.demoLabel || "Vedi Demo Live"}</span>
             <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -535,8 +535,8 @@ const Packages = () => {
           </p>
 
           {/* Tab Switcher Pills */}
-          <div className="w-full flex justify-center pt-3 px-2">
-            <div className="flex flex-wrap items-center justify-center gap-2 p-1.5 bg-slate-100 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200 dark:border-slate-800 shadow-inner">
+          <div className="inline-flex p-1.5 bg-slate-200/90 dark:bg-slate-800/90 backdrop-blur-md rounded-2xl border border-slate-300 dark:border-slate-700 shadow-sm overflow-x-auto max-w-full">
+            <div className="flex items-center gap-1.5">
               {[
                 { id: "all", label: "🌟 Tutti i Servizi" },
                 { id: "web", label: "🌐 Siti Web" },
@@ -551,8 +551,8 @@ const Packages = () => {
                     onClick={() => setActiveTab(tab.id as "all" | "web" | "ecommerce" | "booking")}
                     className={`px-4 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 select-none ${
                       isSelected
-                        ? "bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-md shadow-slate-200/50 dark:shadow-black/40 ring-1 ring-black/5 dark:ring-white/10"
-                        : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-slate-800/50"
+                        ? "bg-white dark:bg-white text-indigo-700 dark:text-indigo-900 shadow-md ring-1 ring-black/5 dark:ring-white/20 font-black"
+                        : "text-slate-700 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white hover:bg-white/60 dark:hover:bg-slate-700/80"
                     }`}
                   >
                     {tab.label}

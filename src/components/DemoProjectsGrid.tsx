@@ -77,7 +77,7 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
             aria-label={`Apri ${product.name}`}
             whileHover={{ scale: 1.12, rotate: 6 }}
             whileTap={{ scale: 0.9 }}
-            className="p-2 bg-slate-800 dark:bg-slate-900 text-white rounded-lg shadow-md hover:bg-indigo-600 transition-colors"
+            className="p-2.5 bg-slate-800 text-white dark:bg-white dark:text-slate-900 dark:border dark:border-slate-300 rounded-lg shadow-md hover:bg-indigo-600 dark:hover:bg-indigo-600 dark:hover:text-white dark:hover:border-indigo-600 transition-all"
           >
             <ArrowTopRightOnSquareIcon className="w-4 h-4" />
           </motion.a>
@@ -125,7 +125,7 @@ export default function DemoProjectsGrid({ products }: DemoProjectsGridProps) {
         {/* Filtri */}
         <div className="pt-3">
           <div
-            className="inline-flex items-center gap-1.5 p-1.5 bg-slate-100/90 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-x-auto max-w-full"
+            className="inline-flex items-center gap-1.5 p-1.5 bg-slate-200/90 dark:bg-slate-800/90 backdrop-blur-md rounded-2xl border border-slate-300 dark:border-slate-700 shadow-sm overflow-x-auto max-w-full"
             style={{ scrollbarWidth: "none" }}
           >
             {filterCategories.map((cat) => (
@@ -135,8 +135,8 @@ export default function DemoProjectsGrid({ products }: DemoProjectsGridProps) {
                 onClick={() => setFilter(cat)}
                 className={`px-3.5 py-2 rounded-xl text-xs font-bold uppercase tracking-wide whitespace-nowrap transition-all duration-200 cursor-pointer shrink-0 ${
                   filter === cat
-                    ? "bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-sm ring-1 ring-black/5 dark:ring-white/10"
-                    : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                    ? "bg-white dark:bg-white text-indigo-700 dark:text-indigo-900 shadow-md ring-1 ring-black/5 dark:ring-white/20 font-black"
+                    : "text-slate-700 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white hover:bg-white/60 dark:hover:bg-slate-700/80"
                 }`}
               >
                 {cat}
@@ -153,7 +153,7 @@ export default function DemoProjectsGrid({ products }: DemoProjectsGridProps) {
           type="button"
           onClick={() => scroll("left")}
           aria-label="Demo precedente"
-          className="absolute -left-2 sm:left-1 lg:-left-5 top-1/2 -translate-y-1/2 z-30 p-3 sm:p-3.5 rounded-full bg-white/95 dark:bg-slate-800/95 backdrop-blur-md border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 shadow-2xl hover:bg-indigo-600 hover:text-white hover:border-indigo-600 dark:hover:bg-indigo-600 dark:hover:text-white transition-all duration-200 active:scale-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 cursor-pointer"
+          className="absolute -left-2 sm:left-1 lg:-left-5 top-1/2 -translate-y-1/2 z-30 p-3 sm:p-3.5 rounded-full bg-white dark:bg-white text-slate-900 dark:text-slate-900 border border-slate-200 dark:border-slate-300 shadow-2xl hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 dark:hover:text-white transition-all duration-200 active:scale-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 cursor-pointer"
         >
           <ChevronLeftIcon className="w-5 h-5" />
         </button>
@@ -163,7 +163,7 @@ export default function DemoProjectsGrid({ products }: DemoProjectsGridProps) {
           type="button"
           onClick={() => scroll("right")}
           aria-label="Demo successiva"
-          className="absolute -right-2 sm:right-1 lg:-right-5 top-1/2 -translate-y-1/2 z-30 p-3 sm:p-3.5 rounded-full bg-white/95 dark:bg-slate-800/95 backdrop-blur-md border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 shadow-2xl hover:bg-indigo-600 hover:text-white hover:border-indigo-600 dark:hover:bg-indigo-600 dark:hover:text-white transition-all duration-200 active:scale-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 cursor-pointer"
+          className="absolute -right-2 sm:right-1 lg:-right-5 top-1/2 -translate-y-1/2 z-30 p-3 sm:p-3.5 rounded-full bg-white dark:bg-white text-slate-900 dark:text-slate-900 border border-slate-200 dark:border-slate-300 shadow-2xl hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 dark:hover:text-white transition-all duration-200 active:scale-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 cursor-pointer"
         >
           <ChevronRightIcon className="w-5 h-5" />
         </button>
