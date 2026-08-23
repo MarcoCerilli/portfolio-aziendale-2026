@@ -6,7 +6,7 @@ import social from "@/config/social.json";
 import { useTranslations } from "@/lib/utils/i18nUtils.ts";
 import Logo from "@/components/global/Logo.astro";
 
-const { footerSpaceTop = false, hasFooterDarkBackground = false } = Astro.props;
+const { footerSpaceTop = false } = Astro.props;
 
 import config from ".astro/config.generated.json";
 const t = await useTranslations(Astro.currentLocale as string);
@@ -41,7 +41,7 @@ const footerSocials = social.main
 <footer
   class:list={[
     "py-0!",
-    hasFooterDarkBackground ? "footer-dark bg-slate-950 text-slate-300" : "bg-theme-light text-slate-700",
+    "bg-black text-zinc-400 border-t border-zinc-900",
     footerSpaceTop && "mt-12 lg:mt-16",
   ]}>
   <div class="container">

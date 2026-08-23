@@ -6,7 +6,6 @@ import Offcanvas from "../../widgets/Offcanvas.astro";
 import LanguageSwitcher from "@/layouts/components/global/header/LanguageSwitcher.astro";
 import NavbarToggler from "@/layouts/components/global/header/NavbarToggler.astro";
 import Navbar from "./Navbar.astro";
-import ThemeToggle from "./ThemeToggle.astro";
 
 import { useTranslations } from "@/lib/utils/i18nUtils.ts";
 import config from ".astro/config.generated.json";
@@ -127,9 +126,6 @@ const accentAppearance = currentLayout.hasDarkAppearance ? "light" : "dark";
             )
           }
 
-          {/* Dark / Light Mode Switch */}
-          <ThemeToggle />
-
           {
             hasDesktopActions && (
               <div class="hidden gap-3.5 lg:flex lg:items-center">
@@ -142,7 +138,7 @@ const accentAppearance = currentLayout.hasDarkAppearance ? "light" : "dark";
                     variant="fill"
                     hoverEffect="creative-fill"
                     {...navigationButton}
-                    class="!py-2.5 !px-5 !text-xs !font-black !tracking-wide !rounded-xl !bg-indigo-600 hover:!bg-indigo-500 !text-white !shadow-md hover:!shadow-lg hover:!shadow-indigo-600/30 !transition-all !duration-300 hover:!scale-105 active:!scale-95"
+                    class="!py-2.5 !px-5 !text-xs !font-black !tracking-wide !rounded-xl !bg-white hover:!bg-zinc-200 !text-black !shadow-lg hover:!shadow-white/10 !transition-all !duration-300 hover:!scale-105 active:!scale-95"
                     label={t("navigation.buttonLabel")}
                   />
                 )}

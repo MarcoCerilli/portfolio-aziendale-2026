@@ -46,7 +46,6 @@ let {
   headerLayout = "two",
   headerPosition = "sticky",
   hideOffcanvas = false,
-  hasBodyDarkBackground = false,
   fitToScreen = true,
 } = Astro.props;
 
@@ -60,9 +59,9 @@ className = fitToScreen
 ---
 
 <!doctype html>
-<html lang={Astro.currentLocale || "en"}>
+<html lang={Astro.currentLocale || "it"} class="dark bg-black text-white">
   <Head {...props} structuredData={structuredData} />
-  <body class:list={[hasBodyDarkBackground && "bg-body-dark", "overflow-x-hidden"]}>
+  <body class="bg-black text-white overflow-x-hidden antialiased selection:bg-white selection:text-black">
     {!Astro.props.homepage && <PageLoader />}
     <Header
       {...props}

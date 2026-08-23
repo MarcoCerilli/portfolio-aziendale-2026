@@ -244,15 +244,15 @@ function EcommerceCard({ plan, index }: { plan: EcommerceTier; index: number }) 
       transition={{ delay: index * 0.06 }}
       className={`relative flex flex-col rounded-3xl border overflow-hidden transition-all duration-300 ${
         plan.popular
-          ? "border-green-300 dark:border-green-500/40 shadow-xl shadow-green-100/60 dark:shadow-green-900/20"
-          : "border-slate-200 dark:border-slate-800 shadow-lg shadow-slate-100/80 dark:shadow-black/20"
+          ? "border-zinc-700 bg-zinc-950/90 shadow-2xl shadow-black/80"
+          : "border-zinc-800/80 bg-zinc-950/80 shadow-xl shadow-black/60"
       }`}
     >
-      {/* Gradient header */}
-      <div className={`bg-gradient-to-br ${plan.gradientClass} p-5 relative overflow-hidden`}>
+      {/* Header */}
+      <div className="bg-zinc-900/90 p-5 relative overflow-hidden border-b border-zinc-800/80">
         {plan.popular && (
-          <div className="absolute top-3.5 right-3.5 px-2.5 py-0.5 bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
-            <span className="text-[9px] font-black text-white uppercase tracking-widest">Più Scelto</span>
+          <div className="absolute top-3.5 right-3.5 px-2.5 py-0.5 bg-white text-black rounded-full shadow-md">
+            <span className="text-[9px] font-black uppercase tracking-widest">Più Scelto</span>
           </div>
         )}
         <div className="relative z-10">
@@ -260,31 +260,31 @@ function EcommerceCard({ plan, index }: { plan: EcommerceTier; index: number }) 
           <h3 className="text-lg font-black text-white uppercase tracking-tight leading-tight">
             {plan.name}
           </h3>
-          <p className="text-white/80 text-xs font-medium mt-0.5">{plan.tagline}</p>
+          <p className="text-zinc-400 text-xs font-normal mt-0.5">{plan.tagline}</p>
         </div>
       </div>
 
       {/* Body */}
-      <div className="bg-white dark:bg-slate-900 p-5 flex flex-col flex-grow">
+      <div className="p-5 flex flex-col flex-grow bg-zinc-950/80">
         {/* Ideal for */}
-        <div className="mb-3.5 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
-          <span className="text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-wider block mb-0.5">
+        <div className="mb-3.5 p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80">
+          <span className="text-[9px] font-bold text-zinc-500 uppercase tracking-wider block mb-0.5">
             Ideale per
           </span>
-          <p className="text-slate-700 dark:text-slate-200 text-xs font-bold leading-snug">
+          <p className="text-zinc-300 text-xs font-medium leading-snug">
             {plan.idealFor}
           </p>
         </div>
 
         {/* Pros */}
         <div className="mb-3.5">
-          <span className="text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-wider block mb-1.5">
-            ✅ Punti di forza
+          <span className="text-[9px] font-bold text-zinc-500 uppercase tracking-wider block mb-1.5">
+            Punti di forza
           </span>
           <ul className="space-y-1">
             {plan.pros.slice(0, 3).map((pro) => (
-              <li key={pro} className="flex items-start gap-1.5 text-slate-700 dark:text-slate-300 text-xs font-medium">
-                <span className="w-1.5 h-1.5 rounded-full bg-green-500 mt-1.5 shrink-0" />
+              <li key={pro} className="flex items-start gap-1.5 text-zinc-300 text-xs font-normal">
+                <span className="w-1.5 h-1.5 rounded-full bg-white mt-1.5 shrink-0" />
                 {pro}
               </li>
             ))}
@@ -292,12 +292,12 @@ function EcommerceCard({ plan, index }: { plan: EcommerceTier; index: number }) 
         </div>
 
         {/* Tech stack */}
-        <div className="mt-auto pt-3 border-t border-slate-100 dark:border-slate-800">
+        <div className="mt-auto pt-3 border-t border-zinc-800/80">
           <div className="flex flex-wrap gap-1">
             {plan.techStack.map((tech) => (
               <span
                 key={tech}
-                className="px-2 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
+                className="px-2 py-0.5 rounded-md text-[9px] font-medium uppercase tracking-wider bg-zinc-900 text-zinc-400 border border-zinc-800/80"
               >
                 {tech}
               </span>
@@ -313,7 +313,7 @@ function EcommerceCard({ plan, index }: { plan: EcommerceTier; index: number }) 
           }}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.97 }}
-          className="relative overflow-hidden group w-full py-3 mt-4 rounded-xl font-black uppercase tracking-widest text-[10px] text-white text-center bg-indigo-600 hover:bg-indigo-500 shadow-md shadow-indigo-600/20 transition-all cursor-pointer"
+          className="relative overflow-hidden group w-full py-3 mt-4 rounded-xl font-black uppercase tracking-widest text-[10px] text-black text-center bg-white hover:bg-zinc-200 shadow-xl shadow-white/10 transition-all cursor-pointer"
         >
           <span className="relative z-10">Richiedi Informazioni</span>
         </motion.button>
@@ -333,15 +333,15 @@ function BookingCard({ plan, index }: { plan: BookingPlan; index: number }) {
       transition={{ delay: index * 0.06 }}
       className={`relative flex flex-col rounded-3xl border overflow-hidden transition-all duration-300 ${
         plan.popular
-          ? "border-indigo-300 dark:border-indigo-500/40 shadow-xl shadow-indigo-100/60 dark:shadow-indigo-900/20"
-          : "border-slate-200 dark:border-slate-800 shadow-lg shadow-slate-100/80 dark:shadow-black/20"
+          ? "border-zinc-700 bg-zinc-950/90 shadow-2xl shadow-black/80"
+          : "border-zinc-800/80 bg-zinc-950/80 shadow-xl shadow-black/60"
       }`}
     >
-      {/* Gradient header */}
-      <div className={`bg-gradient-to-br ${plan.gradientClass} p-5 relative overflow-hidden`}>
+      {/* Header */}
+      <div className="bg-zinc-900/90 p-5 relative overflow-hidden border-b border-zinc-800/80">
         {plan.popular && (
-          <div className="absolute top-3.5 right-3.5 px-2.5 py-0.5 bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
-            <span className="text-[9px] font-black text-white uppercase tracking-widest">Più Scelto</span>
+          <div className="absolute top-3.5 right-3.5 px-2.5 py-0.5 bg-white text-black rounded-full shadow-md">
+            <span className="text-[9px] font-black uppercase tracking-widest">Più Scelto</span>
           </div>
         )}
         <div className="relative z-10">
@@ -349,31 +349,31 @@ function BookingCard({ plan, index }: { plan: BookingPlan; index: number }) {
           <h3 className="text-lg font-black text-white uppercase tracking-tight leading-tight">
             {plan.name}
           </h3>
-          <p className="text-white/80 text-xs font-medium mt-0.5">{plan.tagline}</p>
+          <p className="text-zinc-400 text-xs font-normal mt-0.5">{plan.tagline}</p>
         </div>
       </div>
 
       {/* Body */}
-      <div className="bg-white dark:bg-slate-900 p-5 flex flex-col flex-grow">
+      <div className="p-5 flex flex-col flex-grow bg-zinc-950/80">
         {/* Ideal for */}
-        <div className="mb-3.5 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
-          <span className="text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-wider block mb-0.5">
+        <div className="mb-3.5 p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80">
+          <span className="text-[9px] font-bold text-zinc-500 uppercase tracking-wider block mb-0.5">
             Ideale per
           </span>
-          <p className="text-slate-700 dark:text-slate-200 text-xs font-bold leading-snug">
+          <p className="text-zinc-300 text-xs font-medium leading-snug">
             {plan.idealFor}
           </p>
         </div>
 
         {/* Features */}
         <div className="mb-3.5">
-          <span className="text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-wider block mb-1.5">
-            ✅ Incluso
+          <span className="text-[9px] font-bold text-zinc-500 uppercase tracking-wider block mb-1.5">
+            Incluso
           </span>
           <ul className="space-y-1">
             {plan.features.slice(0, 3).map((feat) => (
-              <li key={feat} className="flex items-start gap-1.5 text-slate-700 dark:text-slate-300 text-xs font-medium">
-                <span className="w-1.5 h-1.5 rounded-full bg-green-500 mt-1.5 shrink-0" />
+              <li key={feat} className="flex items-start gap-1.5 text-zinc-300 text-xs font-normal">
+                <span className="w-1.5 h-1.5 rounded-full bg-white mt-1.5 shrink-0" />
                 {feat}
               </li>
             ))}
@@ -381,12 +381,12 @@ function BookingCard({ plan, index }: { plan: BookingPlan; index: number }) {
         </div>
 
         {/* Tech stack */}
-        <div className="mt-auto pt-3 border-t border-slate-100 dark:border-slate-800">
+        <div className="mt-auto pt-3 border-t border-zinc-800/80">
           <div className="flex flex-wrap gap-1">
             {plan.techStack.map((tech) => (
               <span
                 key={tech}
-                className="px-2 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
+                className="px-2 py-0.5 rounded-md text-[9px] font-medium uppercase tracking-wider bg-zinc-900 text-zinc-400 border border-zinc-800/80"
               >
                 {tech}
               </span>
@@ -400,7 +400,7 @@ function BookingCard({ plan, index }: { plan: BookingPlan; index: number }) {
             href={plan.demoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-1.5 w-full py-2 mt-3 rounded-xl text-[10px] font-black uppercase tracking-wider text-indigo-700 dark:text-indigo-900 bg-indigo-50 dark:bg-white border border-indigo-200 dark:border-slate-300 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 dark:hover:text-white dark:hover:border-indigo-600 transition-all shadow-sm"
+            className="inline-flex items-center justify-center gap-1.5 w-full py-2.5 mt-3 rounded-xl text-[10px] font-bold uppercase tracking-wider text-white bg-zinc-900 border border-zinc-800 hover:bg-zinc-800 transition-all shadow-sm"
           >
             <span>{plan.demoLabel || "Vedi Demo Live"}</span>
             <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -417,7 +417,7 @@ function BookingCard({ plan, index }: { plan: BookingPlan; index: number }) {
           }}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.97 }}
-          className={`relative overflow-hidden group w-full py-3 ${plan.demoUrl ? "mt-2" : "mt-4"} rounded-xl font-black uppercase tracking-widest text-[10px] text-white text-center bg-indigo-600 hover:bg-indigo-500 shadow-md shadow-indigo-600/20 transition-all cursor-pointer`}
+          className={`relative overflow-hidden group w-full py-3 ${plan.demoUrl ? "mt-2" : "mt-4"} rounded-xl font-black uppercase tracking-widest text-[10px] text-black text-center bg-white hover:bg-zinc-200 shadow-xl shadow-white/10 transition-all cursor-pointer`}
         >
           <span className="relative z-10">Richiedi Informazioni</span>
         </motion.button>
@@ -432,32 +432,30 @@ const Packages = () => {
   const [activeTab, setActiveTab] = useState<"all" | "web" | "ecommerce" | "booking">("all");
 
   return (
-    <section id="pacchetti" className="py-20">
-      <div className="max-w-7xl mx-auto px-6">
-
+    <section className="relative w-full bg-black py-4">
+      <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12 space-y-4"
+          className="text-center space-y-4 mb-10"
         >
-          <span className="text-[11px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.5em]">
-            Piani &amp; Prezzi
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-bold uppercase tracking-widest text-zinc-300">
+            Tariffe &amp; Soluzioni
           </span>
-          <h2 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-tight">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight">
             Scegli il{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-500 dark:from-indigo-400 dark:to-purple-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-200 to-zinc-500">
               Pacchetto
             </span>
           </h2>
-          <p className="text-slate-500 dark:text-slate-400 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+          <p className="text-zinc-400 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
             Soluzioni chiare e trasparenti. Nessun costo nascosto, solo risultati concreti.
           </p>
 
           {/* Tab Switcher Pills */}
-          <div className="inline-flex p-1.5 bg-slate-200/90 dark:bg-slate-800/90 backdrop-blur-md rounded-2xl border border-slate-300 dark:border-slate-700 shadow-sm overflow-x-auto max-w-full">
+          <div className="inline-flex p-1.5 bg-zinc-900/90 backdrop-blur-md rounded-2xl border border-zinc-800 shadow-sm overflow-x-auto max-w-full">
             <div className="flex items-center gap-1.5">
               {[
                 { id: "all", label: "🌟 Tutti i Servizi" },
@@ -471,10 +469,10 @@ const Packages = () => {
                     key={tab.id}
                     type="button"
                     onClick={() => setActiveTab(tab.id as "all" | "web" | "ecommerce" | "booking")}
-                    className={`px-4 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 select-none ${
+                    className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer focus:outline-none select-none ${
                       isSelected
-                        ? "bg-white dark:bg-white text-indigo-700 dark:text-indigo-900 shadow-md ring-1 ring-black/5 dark:ring-white/20 font-black"
-                        : "text-slate-700 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white hover:bg-white/60 dark:hover:bg-slate-700/80"
+                        ? "bg-white text-black shadow-md font-black"
+                        : "text-zinc-400 hover:text-white hover:bg-zinc-800/60"
                     }`}
                   >
                     {tab.label}
@@ -499,7 +497,7 @@ const Packages = () => {
             {(activeTab === "all" || activeTab === "web") && (
               <div className="space-y-8">
                 {activeTab === "all" && (
-                  <h3 className="text-2xl font-black text-center text-slate-900 dark:text-white uppercase tracking-tighter">
+                  <h3 className="text-2xl font-bold text-center text-white uppercase tracking-tight">
                     Siti Web
                   </h3>
                 )}
@@ -507,36 +505,32 @@ const Packages = () => {
                   {packageList.map((pkg, index) => (
                     <motion.div
                       key={index}
-                      initial={{ opacity: 0, y: 30 }}
+                      initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1 }}
-                      whileHover={{ scale: 1.02, y: -4 }}
+                      whileHover={{ y: -4 }}
                       className={`relative flex flex-col p-6 rounded-3xl border transition-all duration-300 ${
                         pkg.popular
-                          ? "border-indigo-300 dark:border-indigo-500/50 bg-indigo-50/50 dark:bg-indigo-500/5 shadow-xl shadow-indigo-100 dark:shadow-indigo-900/20"
-                          : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-lg shadow-slate-100/80 dark:shadow-black/20 hover:border-slate-300 dark:hover:border-slate-700"
+                          ? "border-zinc-700 bg-zinc-950/90 shadow-2xl shadow-black/80"
+                          : "border-zinc-800/80 bg-zinc-950/80 shadow-xl shadow-black/60 hover:border-zinc-700"
                       }`}
                     >
                       {pkg.popular && (
-                        <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3.5 py-1 bg-indigo-600 rounded-full shadow-lg shadow-indigo-500/30 z-20">
-                          <span className="text-[10px] font-black text-white uppercase tracking-widest">Più Richiesto</span>
+                        <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3.5 py-1 bg-white text-black rounded-full shadow-lg z-20">
+                          <span className="text-[10px] font-black uppercase tracking-widest">Più Richiesto</span>
                         </div>
                       )}
                       <div className="mb-4">
-                        <h3 className="text-lg font-black text-slate-900 dark:text-white mb-0.5 uppercase tracking-tight">
+                        <h3 className="text-lg font-bold text-white mb-0.5 uppercase tracking-tight">
                           {pkg.name}
                         </h3>
-                        <p className="text-slate-500 dark:text-slate-400 text-xs">{pkg.description}</p>
+                        <p className="text-zinc-400 text-xs font-normal">{pkg.description}</p>
                       </div>
                       <ul className="space-y-2 mb-6 flex-grow">
                         {pkg.features.map((feat) => (
-                          <li key={feat} className="flex items-center gap-2.5 text-slate-700 dark:text-slate-300 text-xs font-medium">
-                            <span className={`w-3.5 h-3.5 shrink-0 rounded-full bg-gradient-to-br ${pkg.color} flex items-center justify-center`}>
-                              <svg className="w-2 h-2 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                              </svg>
-                            </span>
+                          <li key={feat} className="flex items-center gap-2.5 text-zinc-300 text-xs font-normal">
+                            <span className="w-1.5 h-1.5 shrink-0 rounded-full bg-white" />
                             {feat}
                           </li>
                         ))}
@@ -548,7 +542,7 @@ const Packages = () => {
                         }}
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.97 }}
-                        className="relative overflow-hidden group w-full py-3 rounded-xl font-black uppercase tracking-widest text-[10px] text-white text-center bg-indigo-600 hover:bg-indigo-500 shadow-md shadow-indigo-600/20 transition-all cursor-pointer"
+                        className="relative overflow-hidden group w-full py-3 rounded-xl font-black uppercase tracking-widest text-[10px] text-black text-center bg-white hover:bg-zinc-200 shadow-xl shadow-white/10 transition-all cursor-pointer"
                       >
                         <span className="relative z-10">Parliamo del Progetto</span>
                       </motion.button>
@@ -562,20 +556,20 @@ const Packages = () => {
             {(activeTab === "all" || activeTab === "ecommerce") && (
               <div className="space-y-8">
                 {activeTab === "all" && (
-                  <h3 className="text-2xl font-black text-center text-slate-900 dark:text-white uppercase tracking-tighter">
+                  <h3 className="text-2xl font-bold text-center text-white uppercase tracking-tight">
                     E-Commerce
                   </h3>
                 )}
                 {/* Info banner */}
-                <div className="p-4 md:p-5 rounded-2xl bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-950/30 dark:to-purple-950/30 border border-indigo-100 dark:border-indigo-900/40">
+                <div className="p-4 md:p-5 rounded-2xl bg-zinc-950 border border-zinc-800">
                   <div className="flex flex-col sm:flex-row sm:items-center gap-3">
                     <div className="text-2xl shrink-0">💡</div>
                     <div>
-                      <p className="text-slate-900 dark:text-white font-black text-sm uppercase tracking-tight">
+                      <p className="text-white font-bold text-sm uppercase tracking-tight">
                         Quale piattaforma fa per te?
                       </p>
-                      <p className="text-slate-500 dark:text-slate-400 text-xs mt-0.5 leading-relaxed">
-                        Il prezzo indicato è il <strong className="text-slate-700 dark:text-slate-300">costo di setup una-tantum</strong>.
+                      <p className="text-zinc-400 text-xs mt-0.5 leading-relaxed font-normal">
+                        Il prezzo indicato è il <strong className="text-zinc-200 font-bold">costo di setup una-tantum</strong>.
                         Considera sempre i costi ricorrenti mensili della piattaforma scelta.
                       </p>
                     </div>
@@ -594,20 +588,20 @@ const Packages = () => {
             {(activeTab === "all" || activeTab === "booking") && (
               <div className="space-y-8">
                 {activeTab === "all" && (
-                  <h3 className="text-2xl font-black text-center text-slate-900 dark:text-white uppercase tracking-tighter">
+                  <h3 className="text-2xl font-bold text-center text-white uppercase tracking-tight">
                     Booking Engine
                   </h3>
                 )}
                 {/* Info banner */}
-                <div className="p-4 md:p-5 rounded-2xl bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-950/30 dark:to-purple-950/30 border border-indigo-100 dark:border-indigo-900/40">
+                <div className="p-4 md:p-5 rounded-2xl bg-zinc-950 border border-zinc-800">
                   <div className="flex flex-col sm:flex-row sm:items-center gap-3">
                     <div className="text-2xl shrink-0">📅</div>
                     <div>
-                      <p className="text-slate-900 dark:text-white font-black text-sm uppercase tracking-tight">
+                      <p className="text-white font-bold text-sm uppercase tracking-tight">
                         Disintermediazione &amp; Zero Commissioni
                       </p>
-                      <p className="text-slate-500 dark:text-slate-400 text-xs mt-0.5 leading-relaxed">
-                        Sistemi di prenotazione proprietari per ristoranti, B&amp;B e boutique hotel. <strong className="text-slate-700 dark:text-slate-300">Risparmia fino al 20% di commissioni</strong> rispetto alle OTA (Booking.com, Airbnb, TheFork), con sincronizzazione iCal e incassi diretti su Stripe.
+                      <p className="text-zinc-400 text-xs mt-0.5 leading-relaxed font-normal">
+                        Sistemi di prenotazione proprietari per ristoranti, B&amp;B e boutique hotel. <strong className="text-zinc-200 font-bold">Risparmia fino al 20% di commissioni</strong> rispetto alle OTA (Booking.com, Airbnb, TheFork), con sincronizzazione iCal e incassi diretti su Stripe.
                       </p>
                     </div>
                   </div>

@@ -54,25 +54,25 @@ const itemVariants: Variants = {
 
 const TechStack = () => {
   return (
-    <div id="tecnologie" aria-label="Stack Tecnologico e Strumenti" className="py-12 md:py-16 bg-slate-50/50 dark:bg-slate-900/20 border-y border-slate-100 dark:border-slate-800 relative transition-colors duration-300">
+    <div id="tecnologie" aria-label="Stack Tecnologico e Strumenti" className="py-16 md:py-20 bg-black border-t border-zinc-900 relative">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Titolo Sezione Accessibile */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-3">
+        {/* Titolo Sezione */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-3">
           <div>
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/80 border border-indigo-200 dark:border-indigo-800 text-xs font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300 mb-2">
-              <span className="h-2 w-2 rounded-full bg-indigo-500 animate-pulse" aria-hidden="true" />
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-bold uppercase tracking-widest text-zinc-300 mb-3">
+              <span className="h-2 w-2 rounded-full bg-white animate-pulse" aria-hidden="true" />
               Stack Tecnologico
             </span>
-            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
-              Strumenti & Tecnologie <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-indigo-400">Core</span>
+            <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
+              Strumenti &amp; Architetture <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-200 to-zinc-500">Core</span>
             </h2>
           </div>
-          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium">
+          <p className="text-xs sm:text-sm text-zinc-400 font-normal">
             Architetture moderne, serverless e database ad alte performance
           </p>
         </div>
 
-        {/* Griglia Card Tecnologie con Icona + Nome Ben Visibili */}
+        {/* Griglia Card Tecnologie */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -84,15 +84,15 @@ const TechStack = () => {
             <motion.div
               key={tech.name}
               variants={itemVariants}
-              whileHover={{ y: -4, scale: 1.02 }}
+              whileHover={{ y: -4 }}
               tabIndex={0}
-              className={`group flex items-center gap-3.5 p-3.5 md:p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/90 backdrop-blur-sm shadow-sm hover:shadow-lg ${tech.bgGlow} hover:border-indigo-400/60 dark:hover:border-indigo-500/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 transition-all duration-300 cursor-default`}
+              className="group flex items-center gap-3.5 p-3.5 md:p-4 rounded-2xl border border-zinc-800/80 bg-zinc-950/80 hover:border-zinc-700 shadow-xl shadow-black/60 focus:outline-none transition-all duration-300 cursor-default"
             >
-              <div className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800/90 text-slate-700 dark:text-slate-200 group-hover:scale-110 transition-transform duration-300 shrink-0" aria-hidden="true">
-                <tech.icon className={`w-6 h-6 ${tech.color}`} />
+              <div className="p-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-white group-hover:scale-105 transition-transform duration-300 shrink-0" aria-hidden="true">
+                <tech.icon className={`w-5 h-5 ${tech.color}`} />
               </div>
               <div className="min-w-0">
-                <span className="text-sm font-bold text-slate-900 dark:text-slate-100 tracking-tight block truncate">
+                <span className="text-sm font-bold text-white tracking-tight block truncate">
                   {tech.name}
                 </span>
               </div>
@@ -100,9 +100,6 @@ const TechStack = () => {
           ))}
         </motion.div>
       </div>
-
-      {/* Divisore sfumato sottile per separare dalla Hero senza stacchi netti */}
-      <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-slate-100 dark:via-slate-800 to-transparent" aria-hidden="true" />
     </div>
   );
 };
