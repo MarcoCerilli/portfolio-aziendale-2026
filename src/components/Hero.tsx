@@ -93,75 +93,97 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        {/* LATO DESTRO: Showcase Mockup Pulito */}
-        <motion.div variants={itemVariants} className="flex-1 w-full max-w-xl lg:max-w-none relative mt-6 lg:mt-0">
+        {/* LATO DESTRO: Card Commerciale & ROI di Vendita */}
+        <motion.div variants={itemVariants} className="flex-1 w-full max-w-lg lg:max-w-xl relative mt-8 lg:mt-0">
           <div className="relative w-full">
-            {/* Mockup Frame in Vetro Scuro */}
-            <div className="relative rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-950/80 shadow-2xl shadow-black/90 z-10 group">
-              <div className="relative aspect-[16/10] w-full bg-zinc-950 overflow-hidden">
-                <img
-                  src="/projects/ermannotech.png"
-                  alt="Anteprima E-Commerce Ermanno Tech"
-                  width="700"
-                  height="437"
-                  loading="eager"
-                  decoding="async"
-                  fetchPriority="high"
-                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = "/templates/landingpage.png";
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+            {/* Halo / Glow commerciale sottile */}
+            <div className="absolute -inset-1.5 bg-gradient-to-r from-emerald-500/15 via-cyan-500/15 to-purple-500/15 rounded-[32px] blur-xl opacity-80 pointer-events-none" />
 
-                {/* Status Pill in basso a destra */}
-                <div className="absolute bottom-3 right-3 flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/80 backdrop-blur-md border border-zinc-800 text-white shadow-xl pointer-events-none">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="text-[10px] font-bold text-zinc-200">Live Production</span>
+            {/* Main Commercial Glass Card */}
+            <div className="relative rounded-3xl border border-zinc-800 bg-zinc-950/95 p-6 sm:p-8 shadow-2xl shadow-black z-10">
+              
+              {/* Header Card Commerciale */}
+              <div className="flex items-center justify-between gap-3 mb-6 pb-5 border-b border-zinc-800/80">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-950/80 border border-emerald-800/80 text-emerald-300 text-xs font-bold uppercase tracking-wider">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  Sistemi di Vendita &amp; ROI
+                </div>
+                <span className="text-[11px] font-bold text-zinc-400">Zero Commissioni Esterne</span>
+              </div>
+
+              {/* Titolo e Focus Commerciale */}
+              <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight leading-snug mb-3">
+                Non Solo un Sito Vetrina: Uno Strumento per <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Generare Fatturato</span>
+              </h3>
+              <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-6 font-normal">
+                Ogni secondo di caricamento in meno aumenta le vendite del 7%. Realizziamo infrastrutture proprietarie senza costi ricorrenti di agenzia.
+              </p>
+
+              {/* 3 Metric Box Commerciali ad Alto Impatto */}
+              <div className="grid grid-cols-3 gap-3 mb-6">
+                <div className="p-3.5 rounded-2xl bg-zinc-900/90 border border-zinc-800/80 text-center">
+                  <div className="text-lg sm:text-xl font-black text-emerald-400">+300%</div>
+                  <div className="text-[10px] text-zinc-400 font-bold uppercase tracking-wider mt-0.5">Conversione</div>
+                </div>
+                <div className="p-3.5 rounded-2xl bg-zinc-900/90 border border-zinc-800/80 text-center">
+                  <div className="text-lg sm:text-xl font-black text-white">&lt; 0.8s</div>
+                  <div className="text-[10px] text-zinc-400 font-bold uppercase tracking-wider mt-0.5">Zero Attesa</div>
+                </div>
+                <div className="p-3.5 rounded-2xl bg-zinc-900/90 border border-zinc-800/80 text-center">
+                  <div className="text-lg sm:text-xl font-black text-cyan-400">100%</div>
+                  <div className="text-[10px] text-zinc-400 font-bold uppercase tracking-wider mt-0.5">Tuo Controllo</div>
                 </div>
               </div>
+
+              {/* Simulatore Notifiche di Vendita in Tempo Reale */}
+              <div className="space-y-2.5 mb-6">
+                <div className="flex items-center justify-between p-3 rounded-xl bg-zinc-900/60 border border-zinc-800/60 text-xs">
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-7 h-7 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-black text-xs">
+                      €
+                    </span>
+                    <div>
+                      <div className="font-bold text-white text-[11px]">Nuovo Ordine E-Commerce</div>
+                      <div className="text-[10px] text-zinc-500">Pagamento Diretto Stripe • 0% Fee</div>
+                    </div>
+                  </div>
+                  <span className="font-black text-emerald-400 text-xs">+€149,00</span>
+                </div>
+
+                <div className="flex items-center justify-between p-3 rounded-xl bg-zinc-900/60 border border-zinc-800/60 text-xs">
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-7 h-7 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-black text-xs">
+                      📅
+                    </span>
+                    <div>
+                      <div className="font-bold text-white text-[11px]">Prenotazione Ricevuta</div>
+                      <div className="text-[10px] text-zinc-500">Booking Diretto Senza Portali</div>
+                    </div>
+                  </div>
+                  <span className="font-bold text-zinc-300 text-[11px]">Confermata</span>
+                </div>
+              </div>
+
+              {/* Pulsante di Azione Commerciale */}
+              <a
+                href="#pacchetti"
+                className="w-full py-3.5 px-4 rounded-xl bg-white hover:bg-zinc-200 text-black font-black text-xs uppercase tracking-widest flex items-center justify-center gap-2 shadow-xl transition-all cursor-pointer"
+              >
+                Scopri le Soluzioni &amp; Tariffe
+                <span className="text-sm">&rarr;</span>
+              </a>
             </div>
 
-            {/* Badge Fluttuante 1 (In alto a destra): Notifica Ordine compatto */}
+            {/* Badge Fluttuante Garanzia */}
             <motion.div
               animate={{ y: [0, -4, 0] }}
               transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-5 sm:-top-6 -right-1 sm:-right-2 z-20 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900/90 backdrop-blur-xl border border-zinc-800 shadow-2xl text-xs select-none"
+              className="absolute -top-3 sm:-top-4 -right-2 sm:-right-3 z-20 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900 backdrop-blur-xl border border-zinc-700 shadow-2xl text-xs select-none"
             >
-              <span className="flex h-2 w-2 relative shrink-0">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-              </span>
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <span className="text-[10px] font-black text-white uppercase tracking-wider">
-                Nuovo Ordine
+                Garanzia 100% Soddisfatti
               </span>
-              <span className="text-zinc-600 font-normal">•</span>
-              <span className="text-[11px] font-black text-white">
-                +€39,90
-              </span>
-            </motion.div>
-
-            {/* Badge Fluttuante 2 (In basso a sinistra): Avatar Professionista + Disponibilità */}
-            <motion.div
-              animate={{ y: [0, 4, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-              className="absolute -bottom-4 -left-1.5 sm:-left-3 z-20 flex items-center gap-2.5 pl-1.5 pr-3.5 py-1.5 rounded-full bg-zinc-900/90 backdrop-blur-xl border border-zinc-800 shadow-2xl select-none"
-            >
-              <div className="relative shrink-0">
-                <img
-                  src="/profile.jpg"
-                  alt="Marco Cerilli"
-                  width="26"
-                  height="26"
-                  className="w-7 h-7 rounded-full object-cover border border-zinc-700"
-                />
-                <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-zinc-900" />
-              </div>
-              <div className="flex items-center gap-1.5 text-xs">
-                <span className="font-bold text-white">Marco Cerilli</span>
-                <span className="text-zinc-600">•</span>
-                <span className="text-zinc-400 font-medium text-[11px]">Disponibile</span>
-              </div>
             </motion.div>
           </div>
         </motion.div>

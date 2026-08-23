@@ -126,7 +126,7 @@ export const projectsList: Project[] = [
     status: "online",
   },
   {
-    title: "Avvocato Anna Fusco (Official)",
+    title: "Studio Legale Fusco",
     description: "Sito istituzionale che trasmette massima autorevolezza e fiducia. Ottimizzato per posizionare lo studio legale su Google e attirare nuovi clienti qualificati.",
     tags: ["Next.js", "Tailwind", "Framer Motion", "Typescript"],
     link: "https://avvocatoannafusco.it",

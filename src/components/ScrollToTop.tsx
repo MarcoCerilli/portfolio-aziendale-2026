@@ -36,10 +36,10 @@ const ScrollToTop = () => {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={scrollToTop}
-          className="fixed bottom-4 left-4 md:bottom-6 md:left-6 z-[9999] p-3 rounded-full bg-indigo-600 text-white shadow-xl shadow-indigo-600/30 border border-white/20 flex items-center justify-center focus:outline-none"
+          className="fixed bottom-4 left-4 md:bottom-6 md:left-6 z-[9999] p-3 rounded-full bg-zinc-900 text-white hover:bg-white hover:text-black border border-zinc-700 shadow-2xl transition-colors duration-200 flex items-center justify-center focus:outline-none cursor-pointer"
           aria-label="Torna in cima"
         >
-          <ChevronUpIcon className="w-6 h-6" />
+          <ChevronUpIcon className="w-5 h-5" />
         </motion.button>
       )}
     </AnimatePresence>

@@ -68,7 +68,13 @@ if (!hasContentSource || !enable || !hasVisibleContent) {
   <div class:list={["relative overflow-hidden"]}>
     {
       isDarkAppearance ? (
-        <div class="cta-section-background bg-black border-t border-zinc-900 relative overflow-hidden py-12 text-center md:py-16">
+        <div class="bg-black border-t border-zinc-900 relative overflow-hidden py-16 text-center md:py-20">
+          {/* Cyber Quad/Grid pattern (A quadri moderni) */}
+          <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
+
+          {/* Glowing central ambient halo */}
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gradient-to-r from-emerald-500/20 via-cyan-500/20 to-purple-500/20 rounded-full blur-[120px] pointer-events-none" />
+
           <div
             class="relative z-10 container text-center"
             data-scroll-reveal="blur-up">
@@ -89,7 +95,13 @@ if (!hasContentSource || !enable || !hasVisibleContent) {
 
               {buttonProps?.enable && (
                 <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
-                  <Button {...buttonProps} class="!px-8 !py-4 !bg-white !text-black hover:!bg-zinc-200 !rounded-xl !font-black !text-xs !uppercase !tracking-widest !shadow-xl !shadow-white/10" />
+                  <a
+                    href={buttonProps?.url || "/contact/"}
+                    class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white hover:bg-zinc-200 text-black font-black text-xs uppercase tracking-widest shadow-2xl shadow-white/20 transition-all duration-200 cursor-pointer"
+                  >
+                    <span class="text-black font-black">{buttonProps?.label || "Inizia un Progetto"}</span>
+                    <svg class="w-4 h-4 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                  </a>
                   <a
                     href="mailto:cerillimarco15@gmail.com?subject=Richiesta%20Informazioni%20Progetto"
                     class="inline-flex items-center gap-2 px-6 py-4 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-white text-xs font-bold uppercase tracking-wider transition-all duration-200 border border-zinc-800 shadow-lg"

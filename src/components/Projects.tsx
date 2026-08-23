@@ -10,36 +10,36 @@ import { projectsList, categories, type Project } from "@/data/projects";
 
 const getCategoryBadgeClass = (cat: string) => {
   if (cat.includes("E-Commerce") || cat.includes("Shop")) {
-    return "bg-emerald-950/80 text-emerald-300 border-emerald-800/80";
+    return "bg-emerald-100 text-emerald-800 border-emerald-300";
   }
   if (cat.includes("SaaS") || cat.includes("App") || cat.includes("Software")) {
-    return "bg-cyan-950/80 text-cyan-300 border-cyan-800/80";
+    return "bg-cyan-100 text-cyan-800 border-cyan-300";
   }
   if (cat.includes("Booking") || cat.includes("Ristoranti") || cat.includes("Food") || cat.includes("B&B")) {
-    return "bg-amber-950/80 text-amber-300 border-amber-800/80";
+    return "bg-amber-100 text-amber-800 border-amber-300";
   }
   if (cat.includes("Immobiliare") || cat.includes("Luxury") || cat.includes("Hotel")) {
-    return "bg-purple-950/80 text-purple-300 border-purple-800/80";
+    return "bg-purple-100 text-purple-800 border-purple-300";
   }
   if (cat.includes("Landing") || cat.includes("Vetrina") || cat.includes("Corporate")) {
-    return "bg-sky-950/80 text-sky-300 border-sky-800/80";
+    return "bg-sky-100 text-sky-800 border-sky-300";
   }
-  return "bg-zinc-900 text-zinc-300 border-zinc-800";
+  return "bg-zinc-100 text-zinc-800 border-zinc-300";
 };
 
 const getTechBadgeClass = (tech: string) => {
   const t = tech.toLowerCase();
-  if (t.includes("astro")) return "bg-orange-950/50 text-orange-400 border-orange-800/60";
-  if (t.includes("react")) return "bg-cyan-950/50 text-cyan-400 border-cyan-800/60";
-  if (t.includes("next")) return "bg-zinc-800 text-zinc-200 border-zinc-700";
-  if (t.includes("tailwind") || t.includes("css")) return "bg-teal-950/50 text-teal-400 border-teal-800/60";
-  if (t.includes("type") || t.includes("ts") || t.includes("docker")) return "bg-blue-950/50 text-blue-400 border-blue-800/60";
-  if (t.includes("php")) return "bg-indigo-950/50 text-indigo-300 border-indigo-800/60";
-  if (t.includes("stripe") || t.includes("framer")) return "bg-purple-950/50 text-purple-400 border-purple-800/60";
-  if (t.includes("supabase") || t.includes("neon") || t.includes("postgres") || t.includes("node")) return "bg-emerald-950/50 text-emerald-400 border-emerald-800/60";
-  if (t.includes("shopify")) return "bg-lime-950/50 text-lime-400 border-lime-800/60";
-  if (t.includes("word") || t.includes("wp")) return "bg-sky-950/50 text-sky-400 border-sky-800/60";
-  return "bg-zinc-900 text-zinc-300 border-zinc-800";
+  if (t.includes("astro")) return "bg-orange-100 text-orange-800 border-orange-300";
+  if (t.includes("react")) return "bg-cyan-100 text-cyan-800 border-cyan-300";
+  if (t.includes("next")) return "bg-zinc-100 text-zinc-800 border-zinc-300";
+  if (t.includes("tailwind") || t.includes("css")) return "bg-teal-100 text-teal-800 border-teal-300";
+  if (t.includes("type") || t.includes("ts") || t.includes("docker")) return "bg-blue-100 text-blue-800 border-blue-300";
+  if (t.includes("php")) return "bg-indigo-100 text-indigo-800 border-indigo-300";
+  if (t.includes("stripe") || t.includes("framer")) return "bg-purple-100 text-purple-800 border-purple-300";
+  if (t.includes("supabase") || t.includes("neon") || t.includes("postgres") || t.includes("node")) return "bg-emerald-100 text-emerald-800 border-emerald-300";
+  if (t.includes("shopify")) return "bg-lime-100 text-lime-800 border-lime-300";
+  if (t.includes("word") || t.includes("wp")) return "bg-sky-100 text-sky-800 border-sky-300";
+  return "bg-zinc-100 text-zinc-700 border-zinc-300";
 };
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
@@ -48,10 +48,10 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
     <article
       aria-label={project.title}
-      className="relative w-full md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-start bg-zinc-950/80 rounded-3xl border border-zinc-800/80 hover:border-zinc-700 flex flex-col hover:-translate-y-1 transition-all duration-300 group select-none shadow-2xl shadow-black/80 overflow-hidden"
+      className="relative w-full md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-start bg-white text-zinc-900 rounded-3xl border border-zinc-200 hover:border-zinc-400 flex flex-col hover:-translate-y-1 transition-all duration-300 group select-none shadow-2xl shadow-black/50 overflow-hidden"
     >
       {/* PREVIEW SCREENSHOT */}
-      <div className="relative w-full aspect-[16/10] overflow-hidden bg-black border-b border-zinc-800/80">
+      <div className="relative w-full aspect-[16/10] overflow-hidden bg-zinc-100 border-b border-zinc-200">
         <img
           src={project.image}
           alt={`Anteprima del progetto ${project.title}`}
@@ -69,33 +69,33 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         {/* Status Badge in overlay */}
         <div className="absolute top-3 right-3 z-10 pointer-events-none">
           {project.status === "online" && (
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md border border-zinc-800 text-white text-[10px] font-bold uppercase tracking-widest shadow-xl">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-zinc-900/90 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-widest shadow-md">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true" />
               Live
             </span>
           )}
           {project.status === "demo" && (
-            <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md border border-zinc-800 text-zinc-300 text-[10px] font-bold uppercase tracking-widest shadow-xl">
+            <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-zinc-900/90 backdrop-blur-md text-zinc-200 text-[10px] font-bold uppercase tracking-widest shadow-md">
               Demo
             </span>
           )}
         </div>
 
         {/* Hover Overlay */}
-        <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="absolute inset-0 bg-zinc-900/60 backdrop-blur-[2px] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           {hasLiveLink ? (
             <a
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Apri ${project.title}`}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-black font-bold text-xs uppercase tracking-wider shadow-xl hover:bg-zinc-200 translate-y-2 group-hover:translate-y-0 transition-all duration-300 cursor-pointer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-zinc-900 font-bold text-xs uppercase tracking-wider shadow-xl hover:bg-zinc-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 cursor-pointer"
             >
-              <EyeIcon className="w-4 h-4 text-black" aria-hidden="true" />
+              <EyeIcon className="w-4 h-4 text-zinc-900" aria-hidden="true" />
               Apri Progetto
             </a>
           ) : (
-            <span className="inline-flex items-center px-4 py-2 rounded-xl bg-zinc-900 text-zinc-400 font-bold text-xs uppercase tracking-wider border border-zinc-800">
+            <span className="inline-flex items-center px-4 py-2 rounded-xl bg-zinc-800 text-zinc-300 font-bold text-xs uppercase tracking-wider border border-zinc-700">
               Progetto Riservato
             </span>
           )}
@@ -103,19 +103,19 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       </div>
 
       {/* BODY */}
-      <div className="p-6 flex flex-col grow">
+      <div className="p-6 flex flex-col grow bg-white text-zinc-900">
         <span className={`inline-flex items-center px-2.5 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider border mb-3 self-start ${getCategoryBadgeClass(project.category)}`}>
           {project.category}
         </span>
-        <h3 className="text-lg font-bold text-white tracking-tight leading-snug mb-2 group-hover:text-zinc-300 transition-colors">
+        <h3 className="text-lg font-bold text-zinc-900 tracking-tight leading-snug mb-2 group-hover:text-black transition-colors">
           {project.title}
         </h3>
-        <p className="text-zinc-400 text-xs leading-relaxed line-clamp-2 grow font-normal">
+        <p className="text-zinc-600 text-xs leading-relaxed line-clamp-2 grow font-normal">
           {project.description}
         </p>
 
         {/* Footer */}
-        <div className="pt-4 mt-5 border-t border-zinc-800/80 flex flex-wrap items-center justify-between gap-2">
+        <div className="pt-4 mt-5 border-t border-zinc-100 flex flex-wrap items-center justify-between gap-2">
           <div className="flex flex-wrap gap-1.5">
             {project.tags.slice(0, 3).map((tag) => (
               <span key={tag} className={`px-2 py-0.5 rounded-md text-[10px] font-medium uppercase tracking-wider border ${getTechBadgeClass(tag)}`}>
@@ -128,11 +128,11 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-xl bg-white text-black text-xs font-black hover:bg-zinc-200 transition-all shrink-0 cursor-pointer"
+              className="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-xl bg-zinc-900 text-white text-xs font-bold hover:bg-black transition-all shrink-0 cursor-pointer shadow-sm"
               aria-label={`Visita ${project.title}`}
             >
               Vedi
-              <ArrowTopRightOnSquareIcon className="w-3.5 h-3.5 text-black" aria-hidden="true" />
+              <ArrowTopRightOnSquareIcon className="w-3.5 h-3.5 text-white" aria-hidden="true" />
             </a>
           )}
         </div>
@@ -172,10 +172,10 @@ export default function ProjectsCarousel() {
           Esplora le soluzioni realizzate: siti vetrina, e-commerce, web app e piattaforme ad alte prestazioni.
         </p>
 
-        {/* Filtri */}
+        {/* Filtri Chiari ad alto contrasto */}
         <div className="pt-4">
           <div
-            className="inline-flex items-center gap-1.5 p-1.5 bg-zinc-900/90 backdrop-blur-md rounded-2xl border border-zinc-800 shadow-sm overflow-x-auto max-w-full"
+            className="inline-flex items-center gap-1.5 p-1.5 bg-white/95 backdrop-blur-md rounded-2xl border border-zinc-200 shadow-xl overflow-x-auto max-w-full"
             style={{ scrollbarWidth: "none" }}
           >
             {filterCategories.map((cat) => (
@@ -185,8 +185,8 @@ export default function ProjectsCarousel() {
                 onClick={() => setFilter(cat)}
                 className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wide whitespace-nowrap transition-all duration-200 cursor-pointer shrink-0 ${
                   filter === cat
-                    ? "bg-white text-black shadow-md font-black"
-                    : "text-zinc-400 hover:text-white hover:bg-zinc-800/60"
+                    ? "bg-zinc-900 text-white shadow-md font-black"
+                    : "text-zinc-700 font-bold hover:text-zinc-950 hover:bg-zinc-100"
                 }`}
               >
                 {cat}
@@ -198,22 +198,22 @@ export default function ProjectsCarousel() {
 
       {/* Carousel container */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 group/carousel">
-        {/* Freccia Sinistra */}
+        {/* Freccia Sinistra Chiara */}
         <button
           type="button"
           onClick={() => scroll("left")}
           aria-label="Progetto precedente"
-          className="absolute -left-2 sm:left-1 lg:-left-5 top-1/2 -translate-y-1/2 z-30 p-3.5 rounded-full bg-zinc-900/90 text-white border border-zinc-800 shadow-2xl hover:bg-white hover:text-black transition-all duration-200 active:scale-90 focus:outline-none cursor-pointer"
+          className="absolute -left-2 sm:left-1 lg:-left-5 top-1/2 -translate-y-1/2 z-30 p-3.5 rounded-full bg-white text-zinc-900 border border-zinc-200 shadow-2xl hover:bg-zinc-900 hover:text-white transition-all duration-200 active:scale-90 focus:outline-none cursor-pointer"
         >
           <ChevronLeftIcon className="w-5 h-5" />
         </button>
 
-        {/* Freccia Destra */}
+        {/* Freccia Destra Chiara */}
         <button
           type="button"
           onClick={() => scroll("right")}
           aria-label="Progetto successivo"
-          className="absolute -right-2 sm:right-1 lg:-right-5 top-1/2 -translate-y-1/2 z-30 p-3.5 rounded-full bg-zinc-900/90 text-white border border-zinc-800 shadow-2xl hover:bg-white hover:text-black transition-all duration-200 active:scale-90 focus:outline-none cursor-pointer"
+          className="absolute -right-2 sm:right-1 lg:-right-5 top-1/2 -translate-y-1/2 z-30 p-3.5 rounded-full bg-white text-zinc-900 border border-zinc-200 shadow-2xl hover:bg-zinc-900 hover:text-white transition-all duration-200 active:scale-90 focus:outline-none cursor-pointer"
         >
           <ChevronRightIcon className="w-5 h-5" />
         </button>

@@ -10,7 +10,7 @@ interface BaseProps {
   class?: string;
   list: SocialLink[];
   size?: "sm" | "md" | "lg";
-  buttonSize?: "md" | "lg";
+  buttonSize?: "sm" | "md" | "lg";
   activeLabel?: string;
   linkType?: "share" | "follow";
   [key: string]: any;
@@ -79,9 +79,9 @@ if (disabled) {
             target="_blank"
             rel="noopener noreferrer nofollow"
             class:list={[
-              "group text-dark hover:bg-primary bg-border-light relative flex items-center justify-center rounded-lg transition duration-300 hover:text-white",
-              buttonSize === "md" ? "size-11 rounded-md" : "size-12",
-              activeLabel === social.label && "bg-primary text-white",
+              "group bg-zinc-900 text-zinc-300 border border-zinc-800 hover:bg-white hover:text-black hover:border-zinc-300 relative flex items-center justify-center transition-all duration-300 shadow-sm",
+              buttonSize === "sm" ? "size-9 rounded-lg" : buttonSize === "md" ? "size-10 rounded-xl" : "size-11 rounded-xl",
+              activeLabel === social.label && "bg-white text-black",
             ]}>
             <span class="sr-only">{social.label}</span>
             {social.icon && (

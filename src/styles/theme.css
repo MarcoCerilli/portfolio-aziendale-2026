@@ -5,9 +5,9 @@
   --leading-inherit: inherit;
 
   /* Brand colors */
-  --color-primary: #2B4DFF;
-  --color-primary-soft: #EEF1FF;
-  --color-accent: #e3ff04;
+  --color-primary: #FFFFFF;
+  --color-primary-soft: #27272A;
+  --color-accent: #10B981;
 
   /* Decorative gradient colors */
   --color-gradient-blush: #E176CA;
@@ -15,8 +15,8 @@
 
   /* Surface colors */
   --color-body: #fff;
-  --color-body-dark: #070800;
-  --color-theme-dark: #040D43;
+  --color-body-dark: #000000;
+  --color-theme-dark: #000000;
   --color-theme-light: #F5F6F7;
 
   /* Content colors */
