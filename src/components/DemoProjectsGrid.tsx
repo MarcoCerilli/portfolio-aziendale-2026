@@ -50,7 +50,7 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className="group relative w-full sm:w-[380px] md:w-[440px] lg:w-[480px] shrink-0 snap-start bg-white text-zinc-900 rounded-3xl border border-zinc-200 hover:border-zinc-400 flex flex-col hover:-translate-y-1 transition-all duration-300 select-none shadow-xl shadow-zinc-200/80 overflow-hidden"
+      className="group relative w-full md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-start bg-white text-zinc-900 rounded-3xl border border-zinc-200 hover:border-zinc-400 flex flex-col hover:-translate-y-1 transition-all duration-300 select-none shadow-xl shadow-zinc-200/80 overflow-hidden"
     >
       {/* PREVIEW SCREENSHOT */}
       <a
@@ -144,8 +144,9 @@ export default function DemoProjectsGrid({ products }: DemoProjectsGridProps) {
   const scroll = (dir: "left" | "right") => {
     const c = scrollRef.current;
     if (!c) return;
-    const scrollAmount = c.clientWidth;
-    c.scrollBy({ left: dir === "left" ? -scrollAmount : scrollAmount, behavior: "smooth" });
+    const firstCard = c.firstElementChild as HTMLElement | null;
+    const cardWidth = firstCard ? firstCard.offsetWidth + 24 : c.clientWidth;
+    c.scrollBy({ left: dir === "left" ? -cardWidth : cardWidth, behavior: "smooth" });
   };
 
   if (products.length === 0) return null;
