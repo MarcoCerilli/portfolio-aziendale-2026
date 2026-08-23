@@ -126,7 +126,7 @@ export default function BentoShowcase() {
             </p>
 
             {/* Mockup Preview Interattiva */}
-            <div className="relative aspect-[16/9] sm:aspect-[21/9] w-full rounded-2xl overflow-hidden bg-black border border-zinc-800">
+            <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full rounded-2xl overflow-hidden bg-black border border-zinc-800">
               <img
                 src="/projects/ermannotech.png"
                 alt="Ermanno Tech E-Commerce Preview"
@@ -180,9 +180,31 @@ export default function BentoShowcase() {
               <h3 className="text-xl font-black text-white tracking-tight mb-3">
                 Consulenza &amp; Sviluppo Diretto
               </h3>
-              <p className="text-zinc-400 text-xs leading-relaxed font-normal mb-6">
+              <p className="text-zinc-400 text-xs leading-relaxed font-normal mb-4">
                 Nessun account manager o intermediario. Parli direttamente con chi scrive il codice e progetta l'architettura del tuo sito.
               </p>
+
+              {/* Punti di Forza & Valore B2B */}
+              <div className="space-y-2.5 my-4 pt-3 border-t border-zinc-800/60">
+                <div className="flex items-center gap-2.5 text-xs text-zinc-300">
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-400 font-bold text-[10px]">
+                    ✓
+                  </span>
+                  <span>100% Codice proprietario senza canoni</span>
+                </div>
+                <div className="flex items-center gap-2.5 text-xs text-zinc-300">
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-400 font-bold text-[10px]">
+                    ✓
+                  </span>
+                  <span>Pagamenti Stripe, carte e form collegati</span>
+                </div>
+                <div className="flex items-center gap-2.5 text-xs text-zinc-300">
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-400 font-bold text-[10px]">
+                    ✓
+                  </span>
+                  <span>Velocità estrema &lt; 0.8s &amp; SEO Google</span>
+                </div>
+              </div>
             </div>
 
             <div className="space-y-3 pt-4 border-t border-zinc-800/80">
