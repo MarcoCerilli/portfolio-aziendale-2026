@@ -5,10 +5,10 @@ import { generatePaths } from "@/lib/utils/i18nUtils.ts";
 
 // Nuovi componenti React dal portfolio Next.js originale
 import Hero from "@/react/Hero";
+import BentoShowcase from "@/react/BentoShowcase";
 import TechStack from "@/react/TechStack";
 import Packages from "@/react/Packages";
 import Projects from "@/react/Projects";
-import TechSpec from "@/react/TechSpec";
 import TrustSection from "@/react/TrustSection";
 import DemoProjectsSection from "@/components/sections/DemoProjectsSection.astro";
 
@@ -28,46 +28,23 @@ const homepageContent = await getEntryCTM(
     {/* 1. HERO */}
     <Hero client:load />
 
-    {/* 2. TECH STACK */}
+    {/* 2. BENTO SHOWCASE (Design Moderno a Blocchi Modulari) */}
+    <BentoShowcase client:visible />
+
+    {/* 3. STACK TECNOLOGICO COMPLETO & PHP */}
     <TechStack client:visible />
 
-    {/* 3. ARCHITETTURE & INGEGNERIA */}
-    <section class="py-16 md:py-24 bg-black border-t border-zinc-900 relative overflow-hidden">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <TechSpec
-            client:visible
-            label="Ingegneria Web"
-            title="Astro & Next.js"
-            description="Architetture moderne a caricamento istantaneo. Riduciamo a zero i tempi di attesa e massimizziamo il punteggio SEO."
-          />
-          <TechSpec
-            client:visible
-            label="Infrastruttura Cloud"
-            title="Vercel Edge & Neon"
-            description="Distribuzione globale serverless su rete Edge. Massima sicurezza, protezione DDoS e scalabilità illimitata."
-          />
-          <TechSpec
-            client:visible
-            label="Autonomia Clienti"
-            title="Pannello CMS Intuitivo"
-            description="Gestisci testi, prodotti e prenotazioni in totale autonomia, senza dover pagare un tecnico per ogni minima modifica."
-          />
-        </div>
-      </div>
-    </section>
-
-    {/* 4. RISULTATI & TRUST */}
+    {/* 4. RISULTATI & FIDUCIA */}
     <section class="py-12 md:py-16 bg-black border-t border-zinc-900">
       <TrustSection client:visible />
     </section>
 
-    {/* 5. PORTFOLIO PROGETTI */}
+    {/* 5. TUTTI I PROGETTI (CAROUSEL CON FILTRI) */}
     <section id="progetti" class="py-16 md:py-24 bg-black text-white border-t border-zinc-900 w-full overflow-hidden">
       <Projects client:visible />
     </section>
 
-    {/* 6. DEMO LIVE TEMPLATE (Light Studio Section) */}
+    {/* 6. DEMO LIVE TEMPLATE (SEZIONE LIGHT STUDIO A CONTRASTO) */}
     <section id="demo" class="py-16 md:py-24 bg-zinc-100 text-zinc-900 border-y border-zinc-300 overflow-visible">
       <DemoProjectsSection />
     </section>
