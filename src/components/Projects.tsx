@@ -27,6 +27,21 @@ const getCategoryBadgeClass = (cat: string) => {
   return "bg-zinc-900 text-zinc-300 border-zinc-800";
 };
 
+const getTechBadgeClass = (tech: string) => {
+  const t = tech.toLowerCase();
+  if (t.includes("astro")) return "bg-orange-950/50 text-orange-400 border-orange-800/60";
+  if (t.includes("react")) return "bg-cyan-950/50 text-cyan-400 border-cyan-800/60";
+  if (t.includes("next")) return "bg-zinc-800 text-zinc-200 border-zinc-700";
+  if (t.includes("tailwind") || t.includes("css")) return "bg-teal-950/50 text-teal-400 border-teal-800/60";
+  if (t.includes("type") || t.includes("ts") || t.includes("docker")) return "bg-blue-950/50 text-blue-400 border-blue-800/60";
+  if (t.includes("php")) return "bg-indigo-950/50 text-indigo-300 border-indigo-800/60";
+  if (t.includes("stripe") || t.includes("framer")) return "bg-purple-950/50 text-purple-400 border-purple-800/60";
+  if (t.includes("supabase") || t.includes("neon") || t.includes("postgres") || t.includes("node")) return "bg-emerald-950/50 text-emerald-400 border-emerald-800/60";
+  if (t.includes("shopify")) return "bg-lime-950/50 text-lime-400 border-lime-800/60";
+  if (t.includes("word") || t.includes("wp")) return "bg-sky-950/50 text-sky-400 border-sky-800/60";
+  return "bg-zinc-900 text-zinc-300 border-zinc-800";
+};
+
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const hasLiveLink = project.link && project.link !== "#";
 
@@ -103,7 +118,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         <div className="pt-4 mt-5 border-t border-zinc-800/80 flex flex-wrap items-center justify-between gap-2">
           <div className="flex flex-wrap gap-1.5">
             {project.tags.slice(0, 3).map((tag) => (
-              <span key={tag} className="px-2 py-0.5 rounded text-[10px] font-medium uppercase tracking-wider bg-zinc-900 text-zinc-400 border border-zinc-800/80">
+              <span key={tag} className={`px-2 py-0.5 rounded-md text-[10px] font-medium uppercase tracking-wider border ${getTechBadgeClass(tag)}`}>
                 {tag}
               </span>
             ))}

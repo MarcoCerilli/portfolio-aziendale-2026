@@ -234,6 +234,21 @@ const bookingPlans: BookingPlan[] = [
   },
 ];
 
+const getTechBadgeClass = (tech: string) => {
+  const t = tech.toLowerCase();
+  if (t.includes("astro")) return "bg-orange-950/50 text-orange-400 border-orange-800/60";
+  if (t.includes("react")) return "bg-cyan-950/50 text-cyan-400 border-cyan-800/60";
+  if (t.includes("next")) return "bg-zinc-800 text-zinc-200 border-zinc-700";
+  if (t.includes("tailwind") || t.includes("css")) return "bg-teal-950/50 text-teal-400 border-teal-800/60";
+  if (t.includes("type") || t.includes("ts") || t.includes("docker")) return "bg-blue-950/50 text-blue-400 border-blue-800/60";
+  if (t.includes("php")) return "bg-indigo-950/50 text-indigo-300 border-indigo-800/60";
+  if (t.includes("stripe") || t.includes("framer")) return "bg-purple-950/50 text-purple-400 border-purple-800/60";
+  if (t.includes("supabase") || t.includes("neon") || t.includes("postgres") || t.includes("node") || t.includes("db")) return "bg-emerald-950/50 text-emerald-400 border-emerald-800/60";
+  if (t.includes("shopify")) return "bg-lime-950/50 text-lime-400 border-lime-800/60";
+  if (t.includes("word") || t.includes("wp") || t.includes("woo")) return "bg-sky-950/50 text-sky-400 border-sky-800/60";
+  return "bg-zinc-900 text-zinc-300 border-zinc-800";
+};
+
 // Componente riusabile per le card e-commerce
 function EcommerceCard({ plan, index }: { plan: EcommerceTier; index: number }) {
   return (
@@ -297,7 +312,7 @@ function EcommerceCard({ plan, index }: { plan: EcommerceTier; index: number }) 
             {plan.techStack.map((tech) => (
               <span
                 key={tech}
-                className="px-2 py-0.5 rounded-md text-[9px] font-medium uppercase tracking-wider bg-zinc-900 text-zinc-400 border border-zinc-800/80"
+                className={`px-2 py-0.5 rounded-md text-[9px] font-medium uppercase tracking-wider border ${getTechBadgeClass(tech)}`}
               >
                 {tech}
               </span>
@@ -386,7 +401,7 @@ function BookingCard({ plan, index }: { plan: BookingPlan; index: number }) {
             {plan.techStack.map((tech) => (
               <span
                 key={tech}
-                className="px-2 py-0.5 rounded-md text-[9px] font-medium uppercase tracking-wider bg-zinc-900 text-zinc-400 border border-zinc-800/80"
+                className={`px-2 py-0.5 rounded-md text-[9px] font-medium uppercase tracking-wider border ${getTechBadgeClass(tech)}`}
               >
                 {tech}
               </span>
