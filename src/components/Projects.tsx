@@ -48,7 +48,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
     <article
       aria-label={project.title}
-      className="relative w-full md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-start bg-white text-zinc-900 rounded-3xl border border-zinc-200 hover:border-zinc-400 flex flex-col hover:-translate-y-1 transition-all duration-300 group select-none shadow-2xl shadow-black/50 overflow-hidden"
+      className="relative w-full sm:w-[380px] md:w-[440px] lg:w-[480px] shrink-0 snap-start bg-white text-zinc-900 rounded-3xl border border-zinc-200 hover:border-zinc-400 flex flex-col hover:-translate-y-1 transition-all duration-300 group select-none shadow-2xl shadow-black/50 overflow-hidden"
     >
       {/* PREVIEW SCREENSHOT */}
       <div className="relative w-full aspect-[16/10] overflow-hidden bg-zinc-100 border-b border-zinc-200">

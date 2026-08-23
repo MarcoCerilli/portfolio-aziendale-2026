@@ -50,7 +50,7 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className="group relative w-full md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-start bg-white text-zinc-900 rounded-3xl border border-zinc-200 hover:border-zinc-400 flex flex-col hover:-translate-y-1 transition-all duration-300 select-none shadow-xl shadow-zinc-200/80 overflow-hidden"
+      className="group relative w-full sm:w-[380px] md:w-[440px] lg:w-[480px] shrink-0 snap-start bg-white text-zinc-900 rounded-3xl border border-zinc-200 hover:border-zinc-400 flex flex-col hover:-translate-y-1 transition-all duration-300 select-none shadow-xl shadow-zinc-200/80 overflow-hidden"
     >
       {/* PREVIEW SCREENSHOT */}
       <a
@@ -73,9 +73,10 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
           className="w-full h-full object-cover object-top transition-transform duration-700 group-hover/preview:scale-105"
         />
 
-        {/* Demo badge in alto a destra */}
-        <div className="absolute top-3 right-3 z-10 pointer-events-none">
-          <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-zinc-900/90 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-widest shadow-md">
+        {/* Demo badge in basso a sinistra */}
+        <div className="absolute bottom-3 left-3 z-10 pointer-events-none">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-zinc-900/90 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-widest shadow-md">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
             Demo Live
           </span>
         </div>
