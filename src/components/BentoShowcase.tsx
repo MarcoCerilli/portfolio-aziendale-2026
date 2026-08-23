@@ -107,7 +107,7 @@ export default function BentoShowcase() {
                   Progetto in Evidenza • Live Production
                 </span>
                 <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-                  Ermanno Tech — E-Commerce Hardware &amp; Rig B2B
+                  Ermanno Tech — Piattaforma E-Commerce ad Alte Prestazioni
                 </h3>
               </div>
               <a
@@ -122,7 +122,7 @@ export default function BentoShowcase() {
             </div>
 
             <p className="text-zinc-400 text-sm leading-relaxed mb-6 font-normal">
-              Piattaforma e-commerce completa ad alte prestazioni con catalogo prodotti hardware, carrello reattivo, sincronizzazione stock e pagamenti Stripe integrati. Caricamento sotto gli 0.8 secondi.
+              Negozio online completo sviluppato su misura per massimizzare le vendite: caricamento istantaneo (&lt; 0.8s), catalogo reattivo, sincronizzazione stock e pagamenti Stripe integrati.
             </p>
 
             {/* Mockup Preview Interattiva */}
