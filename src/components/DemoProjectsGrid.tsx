@@ -19,13 +19,28 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
       className="group relative w-full md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-start bg-slate-900 dark:bg-white rounded-3xl border border-slate-800 dark:border-slate-200/90 flex flex-col hover:border-indigo-500/50 dark:hover:border-indigo-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-indigo-500/10 dark:shadow-2xl dark:shadow-black/20 transition-all duration-300 select-none"
       style={{ boxShadow: "0 8px 32px 0 rgba(80,80,160,0.08), 0 1.5px 6px 0 rgba(0,0,0,0.06)" }}
     >
+      {/* BROWSER BAR HEADER */}
+      <div className="flex items-center justify-between px-4 py-2.5 bg-slate-950/80 dark:bg-slate-100 rounded-t-3xl border-b border-slate-800 dark:border-slate-200">
+        <div className="flex items-center gap-1.5">
+          <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
+          <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+          <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+        </div>
+        <span className="text-[10px] font-mono font-bold text-slate-400 dark:text-slate-500 truncate max-w-[160px] bg-slate-900/80 dark:bg-white px-2 py-0.5 rounded-md border border-slate-800 dark:border-slate-200">
+          {product.url.replace("https://", "").replace("www.", "").split("/")[0]}
+        </span>
+        <span className="px-2 py-0.5 rounded-full bg-indigo-500/15 text-indigo-400 dark:text-indigo-700 text-[9px] font-extrabold uppercase">
+          Demo
+        </span>
+      </div>
+
       {/* PREVIEW */}
       <a
         href={product.url}
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`Esplora la demo di ${product.name}`}
-        className="relative w-full aspect-[16/10] bg-slate-950 rounded-t-3xl overflow-hidden block group/preview border-b border-slate-800 dark:border-slate-200"
+        className="relative w-full aspect-[16/10] bg-slate-950 overflow-hidden block group/preview border-b border-slate-800 dark:border-slate-200"
       >
         <img
           src={product.image || "/projects/coming-soon.svg"}
@@ -40,10 +55,10 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
           className="w-full h-full object-cover object-top transition-transform duration-700 group-hover/preview:scale-105"
         />
         <div className="absolute inset-0 bg-slate-950/60 backdrop-blur-[2px] flex flex-col items-center justify-center opacity-0 group-hover/preview:opacity-100 transition-opacity duration-300">
-          <div className="w-14 h-14 rounded-full bg-indigo-600 flex items-center justify-center mb-2 shadow-xl translate-y-4 group-hover/preview:translate-y-0 transition-transform duration-300">
-            <FiPlay className="w-5 h-5 text-white ml-0.5" />
+          <div className="w-12 h-12 rounded-full bg-indigo-600 flex items-center justify-center mb-1.5 shadow-xl translate-y-4 group-hover/preview:translate-y-0 transition-transform duration-300">
+            <FiPlay className="w-4 h-4 text-white ml-0.5" />
           </div>
-          <span className="text-white font-bold text-xs uppercase tracking-widest translate-y-4 group-hover/preview:translate-y-0 transition-transform duration-300 delay-75">Esplora Live</span>
+          <span className="text-white font-bold text-[11px] uppercase tracking-widest translate-y-4 group-hover/preview:translate-y-0 transition-transform duration-300 delay-75">Esplora Live</span>
         </div>
       </a>
 

@@ -17,8 +17,38 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       className="relative w-full md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-start bg-slate-900 dark:bg-white rounded-3xl border border-slate-800 dark:border-slate-200/90 flex flex-col hover:border-indigo-500/60 dark:hover:border-indigo-500 hover:shadow-2xl hover:shadow-indigo-500/15 dark:shadow-2xl dark:shadow-black/20 hover:-translate-y-1 transition-all duration-300 group select-none"
       style={{ boxShadow: "0 8px 32px 0 rgba(80,80,160,0.08), 0 1.5px 6px 0 rgba(0,0,0,0.06)" }}
     >
-      {/* PREVIEW */}
-      <div className="relative w-full aspect-[16/10] rounded-t-3xl overflow-hidden bg-slate-950 border-b border-slate-800 dark:border-slate-200">
+      {/* BROWSER BAR HEADER */}
+      <div className="flex items-center justify-between px-4 py-2.5 bg-slate-950/80 dark:bg-slate-100 rounded-t-3xl border-b border-slate-800 dark:border-slate-200">
+        <div className="flex items-center gap-1.5">
+          <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
+          <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+          <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+        </div>
+        <span className="text-[10px] font-mono font-bold text-slate-400 dark:text-slate-500 truncate max-w-[160px] bg-slate-900/80 dark:bg-white px-2 py-0.5 rounded-md border border-slate-800 dark:border-slate-200">
+          {hasLiveLink ? project.link.replace("https://", "").replace("www.", "").split("/")[0] : `${project.title.toLowerCase().replace(/[^a-z0-9]/g, "")}.it`}
+        </span>
+        <div>
+          {project.status === "online" && (
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 dark:text-emerald-700 text-[9px] font-extrabold uppercase">
+              <span className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse" />
+              Live
+            </span>
+          )}
+          {project.status === "demo" && (
+            <span className="px-2 py-0.5 rounded-full bg-indigo-500/15 text-indigo-400 dark:text-indigo-700 text-[9px] font-extrabold uppercase">
+              Demo
+            </span>
+          )}
+          {project.status === "soon" && (
+            <span className="px-2 py-0.5 rounded-full bg-slate-500/15 text-slate-400 dark:text-slate-600 text-[9px] font-extrabold uppercase">
+              Soon
+            </span>
+          )}
+        </div>
+      </div>
+
+      {/* PREVIEW SCREENSHOT */}
+      <div className="relative w-full aspect-[16/10] overflow-hidden bg-slate-950 border-b border-slate-800 dark:border-slate-200">
         <img
           src={project.image}
           alt={`Anteprima del progetto ${project.title}`}
@@ -50,22 +80,6 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             <span className="inline-flex items-center px-4 py-2 rounded-xl bg-slate-800/90 text-slate-300 font-bold text-xs uppercase tracking-wider border border-slate-700">
               Progetto Riservato
             </span>
-          )}
-        </div>
-
-        {/* Status Badge */}
-        <div className="absolute top-3 right-3 z-10 pointer-events-none">
-          {project.status === "online" && (
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/95 text-white text-[10px] font-extrabold uppercase tracking-widest shadow-md">
-              <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" aria-hidden="true" />
-              Live
-            </span>
-          )}
-          {project.status === "demo" && (
-            <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-indigo-600/95 text-white text-[10px] font-extrabold uppercase tracking-widest shadow-md">Demo</span>
-          )}
-          {project.status === "soon" && (
-            <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-slate-800/95 text-white text-[10px] font-extrabold uppercase tracking-widest shadow-md">In Arrivo</span>
           )}
         </div>
       </div>

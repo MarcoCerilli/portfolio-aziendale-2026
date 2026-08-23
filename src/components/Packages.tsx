@@ -3,19 +3,19 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const packageList = [
   {
-    name: "Starter Landing",
+    name: "Sito Vetrina Corporate",
     price: "Su preventivo",
-    description: "Presenza online veloce, moderna e d'impatto.",
-    features: ["Next.js 15 Speed", "Mobile-First", "WhatsApp Direct", "Hosting Incluso"],
-    color: "from-emerald-400 to-teal-500",
+    description: "Presenza online autorevole, ultra-veloce e responsive.",
+    features: ["Next.js / Astro Speed", "100/100 Core Web Vitals", "WhatsApp & Contatto Diretto", "Hosting Cloud Incluso"],
+    color: "from-slate-900 to-indigo-950",
     popular: false,
   },
   {
-    name: "Business Suite",
+    name: "Piattaforma Business Pro",
     price: "Su preventivo",
-    description: "Sito aziendale completo con tecnologia AI Gemini.",
-    features: ["5 Pagine Custom", "AI Gemini Integrata", "SEO Gold", "Premium Dark UI"],
-    color: "from-indigo-500 to-purple-500",
+    description: "Sito aziendale multi-pagina con CMS e motore di conversione.",
+    features: ["Architettura Custom", "CMS Autonomo & Intuitivo", "SEO Tecnico Avanzato", "Design Titanium Studio"],
+    color: "from-indigo-900 to-slate-900",
     popular: true,
   },
 ];
@@ -44,7 +44,7 @@ const ecommercePlans: EcommerceTier[] = [
     tagline: "WordPress + WooCommerce",
     price: "Su preventivo",
     monthlyExtra: "~15–50€/mese hosting",
-    gradientClass: "from-violet-500 to-purple-600",
+    gradientClass: "from-slate-900 to-slate-950",
     icon: "🔧",
     pros: [
       "100% personalizzabile",
@@ -66,7 +66,7 @@ const ecommercePlans: EcommerceTier[] = [
     tagline: "La piattaforma SaaS #1 al mondo",
     price: "Su preventivo",
     monthlyExtra: "29–299€/mese + 0–2% fee",
-    gradientClass: "from-green-500 to-emerald-600",
+    gradientClass: "from-slate-900 via-slate-900 to-indigo-950",
     popular: true,
     icon: "🛍️",
     pros: [
@@ -89,7 +89,7 @@ const ecommercePlans: EcommerceTier[] = [
     tagline: "Backend Shopify + Frontend Next.js",
     price: "Su preventivo",
     monthlyExtra: "29–299€/mese Shopify + hosting",
-    gradientClass: "from-indigo-500 to-blue-600",
+    gradientClass: "from-slate-900 to-slate-950",
     icon: "⚡",
     pros: [
       "Performance estrema (Core Web Vitals 100)",
@@ -107,11 +107,11 @@ const ecommercePlans: EcommerceTier[] = [
   },
   {
     id: "custom",
-    name: "Full Custom",
+    name: "Full Custom Enterprise",
     tagline: "Infrastruttura Next.js · TypeScript · Vercel",
     price: "Su preventivo",
     monthlyExtra: "Infrastruttura su misura",
-    gradientClass: "from-slate-800 to-slate-950",
+    gradientClass: "from-slate-900 to-black",
     isCustom: true,
     icon: "🚀",
     pros: [
@@ -127,12 +127,6 @@ const ecommercePlans: EcommerceTier[] = [
     ],
     idealFor: "Aziende con processi complessi o volumi enterprise",
     techStack: ["Next.js 15", "TypeScript", "Tailwind CSS", "Vercel", "PostgreSQL", "Stripe API"],
-    coreStack: [
-      { label: "Next.js", color: "bg-white/15 border-white/20" },
-      { label: "TypeScript", color: "bg-blue-500/30 border-blue-400/40" },
-      { label: "Tailwind", color: "bg-cyan-500/30 border-cyan-400/40" },
-      { label: "Vercel", color: "bg-white/15 border-white/20" },
-    ],
   },
 ];
 
@@ -163,7 +157,7 @@ const bookingPlans: BookingPlan[] = [
     tagline: "Prenotazioni tavoli & Menù Digitale",
     price: "Su preventivo",
     monthlyExtra: "Hosting incluso 1° anno",
-    gradientClass: "from-orange-500 to-amber-500",
+    gradientClass: "from-slate-900 to-slate-950",
     icon: "🍽️",
     demoUrl: "https://demo-aura-osteria.vercel.app",
     demoLabel: "Vedi Demo Aura Osteria",
@@ -184,7 +178,7 @@ const bookingPlans: BookingPlan[] = [
     tagline: "Per B&B, Appartamenti e Ville",
     price: "Su preventivo",
     monthlyExtra: "Hosting incluso 1° anno",
-    gradientClass: "from-indigo-600 to-purple-600",
+    gradientClass: "from-slate-900 via-slate-900 to-indigo-950",
     popular: true,
     icon: "🏡",
     features: [
@@ -204,7 +198,7 @@ const bookingPlans: BookingPlan[] = [
     tagline: "Per hotel e strutture ricettive 4-10 camere",
     price: "Su preventivo",
     monthlyExtra: "~20–40€/mese manutenzione",
-    gradientClass: "from-cyan-500 to-teal-600",
+    gradientClass: "from-slate-900 to-slate-950",
     icon: "🏨",
     demoUrl: "https://demo-villa-seraphina-hotel.vercel.app",
     demoLabel: "Vedi Demo Villa Seraphina",
@@ -225,7 +219,7 @@ const bookingPlans: BookingPlan[] = [
     tagline: "Integrazione con gestionali esistenti",
     price: "Su preventivo",
     monthlyExtra: "Variabile su progetto",
-    gradientClass: "from-rose-500 to-pink-600",
+    gradientClass: "from-slate-900 to-black",
     icon: "⚙️",
     features: [
       "Frontend ultra-veloce (100/100 Core Web Vitals)",
@@ -242,14 +236,12 @@ const bookingPlans: BookingPlan[] = [
 
 // Componente riusabile per le card e-commerce
 function EcommerceCard({ plan, index }: { plan: EcommerceTier; index: number }) {
-  const [expanded, setExpanded] = useState(false);
-
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay: index * 0.08 }}
+      transition={{ delay: index * 0.06 }}
       className={`relative flex flex-col rounded-3xl border overflow-hidden transition-all duration-300 ${
         plan.popular
           ? "border-green-300 dark:border-green-500/40 shadow-xl shadow-green-100/60 dark:shadow-green-900/20"
@@ -257,49 +249,26 @@ function EcommerceCard({ plan, index }: { plan: EcommerceTier; index: number }) 
       }`}
     >
       {/* Gradient header */}
-      <div className={`bg-gradient-to-br ${plan.gradientClass} p-6 pb-8 relative overflow-hidden`}>
+      <div className={`bg-gradient-to-br ${plan.gradientClass} p-5 relative overflow-hidden`}>
         {plan.popular && (
-          <div className="absolute top-4 right-4 px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
-            <span className="text-[10px] font-black text-white uppercase tracking-widest">Più Scelto</span>
+          <div className="absolute top-3.5 right-3.5 px-2.5 py-0.5 bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
+            <span className="text-[9px] font-black text-white uppercase tracking-widest">Più Scelto</span>
           </div>
         )}
-        {/* Decorative elements — extra per custom */}
-        <div className="absolute -right-8 -top-8 w-32 h-32 rounded-full bg-white/10 pointer-events-none" />
-        <div className="absolute -right-4 bottom-0 w-20 h-20 rounded-full bg-white/5 pointer-events-none" />
-        {plan.isCustom && (
-          <>
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-indigo-500/10 blur-2xl pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-          </>
-        )}
         <div className="relative z-10">
-          <span className="text-3xl mb-3 block">{plan.icon}</span>
-          <h3 className="text-xl font-black text-white uppercase tracking-tight leading-tight mb-0.5">
+          <span className="text-2xl mb-1.5 block">{plan.icon}</span>
+          <h3 className="text-lg font-black text-white uppercase tracking-tight leading-tight">
             {plan.name}
           </h3>
-          <p className="text-white/70 text-xs font-medium mb-4">{plan.tagline}</p>
-          {/* Core stack badges — solo per full custom */}
-          {plan.isCustom && plan.coreStack && (
-            <div className="mt-4 flex flex-wrap gap-1.5">
-              {plan.coreStack.map((s) => (
-                <span
-                  key={s.label}
-                  className={`px-2.5 py-1 rounded-lg text-[10px] font-black text-white uppercase tracking-wider border backdrop-blur-sm ${s.color}`}
-                >
-                  {s.label}
-                </span>
-              ))}
-            </div>
-          )}
-
+          <p className="text-white/80 text-xs font-medium mt-0.5">{plan.tagline}</p>
         </div>
       </div>
 
       {/* Body */}
       <div className="bg-white dark:bg-slate-900 p-5 flex flex-col flex-grow">
         {/* Ideal for */}
-        <div className="mb-4 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
-          <span className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-wider block mb-0.5">
+        <div className="mb-3.5 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
+          <span className="text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-wider block mb-0.5">
             Ideale per
           </span>
           <p className="text-slate-700 dark:text-slate-200 text-xs font-bold leading-snug">
@@ -308,13 +277,13 @@ function EcommerceCard({ plan, index }: { plan: EcommerceTier; index: number }) 
         </div>
 
         {/* Pros */}
-        <div className="mb-4">
-          <span className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-wider block mb-2">
+        <div className="mb-3.5">
+          <span className="text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-wider block mb-1.5">
             ✅ Punti di forza
           </span>
-          <ul className="space-y-1.5">
-            {plan.pros.map((pro) => (
-              <li key={pro} className="flex items-start gap-2 text-slate-700 dark:text-slate-300 text-xs font-medium">
+          <ul className="space-y-1">
+            {plan.pros.slice(0, 3).map((pro) => (
+              <li key={pro} className="flex items-start gap-1.5 text-slate-700 dark:text-slate-300 text-xs font-medium">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-500 mt-1.5 shrink-0" />
                 {pro}
               </li>
@@ -322,53 +291,13 @@ function EcommerceCard({ plan, index }: { plan: EcommerceTier; index: number }) 
           </ul>
         </div>
 
-        {/* Cons - expandable */}
-        <button
-          onClick={() => setExpanded(!expanded)}
-          className="flex items-center justify-between w-full text-left mb-2"
-          aria-expanded={expanded}
-        >
-          <span className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-wider">
-            ⚠️ Limitazioni
-          </span>
-          <svg
-            className={`w-4 h-4 text-slate-400 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}
-            fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
-
-        <AnimatePresence initial={false}>
-          {expanded && (
-            <motion.ul
-              key="cons"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.25, ease: "easeInOut" }}
-              className="overflow-hidden space-y-1.5 mb-4"
-            >
-              {plan.cons.map((con) => (
-                <li key={con} className="flex items-start gap-2 text-slate-600 dark:text-slate-400 text-xs font-medium">
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400 mt-1.5 shrink-0" />
-                  {con}
-                </li>
-              ))}
-            </motion.ul>
-          )}
-        </AnimatePresence>
-
         {/* Tech stack */}
-        <div className="mt-auto pt-4 border-t border-slate-100 dark:border-slate-800">
-          <span className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-wider block mb-2">
-            Stack
-          </span>
-          <div className="flex flex-wrap gap-1.5">
+        <div className="mt-auto pt-3 border-t border-slate-100 dark:border-slate-800">
+          <div className="flex flex-wrap gap-1">
             {plan.techStack.map((tech) => (
               <span
                 key={tech}
-                className="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
+                className="px-2 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
               >
                 {tech}
               </span>
@@ -384,9 +313,8 @@ function EcommerceCard({ plan, index }: { plan: EcommerceTier; index: number }) 
           }}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.97 }}
-          className={`relative overflow-hidden group w-full py-3.5 mt-5 rounded-2xl font-black uppercase tracking-widest text-[10px] text-white text-center bg-gradient-to-r ${plan.gradientClass} shadow-md`}
+          className="relative overflow-hidden group w-full py-3 mt-4 rounded-xl font-black uppercase tracking-widest text-[10px] text-white text-center bg-indigo-600 hover:bg-indigo-500 shadow-md shadow-indigo-600/20 transition-all cursor-pointer"
         >
-          <div className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-700 skew-x-12" />
           <span className="relative z-10">Richiedi Informazioni</span>
         </motion.button>
       </div>
@@ -399,10 +327,10 @@ function EcommerceCard({ plan, index }: { plan: EcommerceTier; index: number }) 
 function BookingCard({ plan, index }: { plan: BookingPlan; index: number }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay: index * 0.08 }}
+      transition={{ delay: index * 0.06 }}
       className={`relative flex flex-col rounded-3xl border overflow-hidden transition-all duration-300 ${
         plan.popular
           ? "border-indigo-300 dark:border-indigo-500/40 shadow-xl shadow-indigo-100/60 dark:shadow-indigo-900/20"
@@ -410,28 +338,26 @@ function BookingCard({ plan, index }: { plan: BookingPlan; index: number }) {
       }`}
     >
       {/* Gradient header */}
-      <div className={`bg-gradient-to-br ${plan.gradientClass} p-6 pb-8 relative overflow-hidden`}>
+      <div className={`bg-gradient-to-br ${plan.gradientClass} p-5 relative overflow-hidden`}>
         {plan.popular && (
-          <div className="absolute top-4 right-4 px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
-            <span className="text-[10px] font-black text-white uppercase tracking-widest">Più Scelto</span>
+          <div className="absolute top-3.5 right-3.5 px-2.5 py-0.5 bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
+            <span className="text-[9px] font-black text-white uppercase tracking-widest">Più Scelto</span>
           </div>
         )}
-        <div className="absolute -right-8 -top-8 w-32 h-32 rounded-full bg-white/10 pointer-events-none" />
-        <div className="absolute -right-4 bottom-0 w-20 h-20 rounded-full bg-white/5 pointer-events-none" />
         <div className="relative z-10">
-          <span className="text-3xl mb-3 block">{plan.icon}</span>
-          <h3 className="text-xl font-black text-white uppercase tracking-tight leading-tight mb-0.5">
+          <span className="text-2xl mb-1.5 block">{plan.icon}</span>
+          <h3 className="text-lg font-black text-white uppercase tracking-tight leading-tight">
             {plan.name}
           </h3>
-          <p className="text-white/70 text-xs font-medium mb-4">{plan.tagline}</p>
+          <p className="text-white/80 text-xs font-medium mt-0.5">{plan.tagline}</p>
         </div>
       </div>
 
       {/* Body */}
       <div className="bg-white dark:bg-slate-900 p-5 flex flex-col flex-grow">
         {/* Ideal for */}
-        <div className="mb-4 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
-          <span className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-wider block mb-0.5">
+        <div className="mb-3.5 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
+          <span className="text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-wider block mb-0.5">
             Ideale per
           </span>
           <p className="text-slate-700 dark:text-slate-200 text-xs font-bold leading-snug">
@@ -440,13 +366,13 @@ function BookingCard({ plan, index }: { plan: BookingPlan; index: number }) {
         </div>
 
         {/* Features */}
-        <div className="mb-4">
-          <span className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-wider block mb-2">
+        <div className="mb-3.5">
+          <span className="text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-wider block mb-1.5">
             ✅ Incluso
           </span>
-          <ul className="space-y-1.5">
-            {plan.features.map((feat) => (
-              <li key={feat} className="flex items-start gap-2 text-slate-700 dark:text-slate-300 text-xs font-medium">
+          <ul className="space-y-1">
+            {plan.features.slice(0, 3).map((feat) => (
+              <li key={feat} className="flex items-start gap-1.5 text-slate-700 dark:text-slate-300 text-xs font-medium">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-500 mt-1.5 shrink-0" />
                 {feat}
               </li>
@@ -455,15 +381,12 @@ function BookingCard({ plan, index }: { plan: BookingPlan; index: number }) {
         </div>
 
         {/* Tech stack */}
-        <div className="mt-auto pt-4 border-t border-slate-100 dark:border-slate-800">
-          <span className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-wider block mb-2">
-            Stack
-          </span>
-          <div className="flex flex-wrap gap-1.5">
+        <div className="mt-auto pt-3 border-t border-slate-100 dark:border-slate-800">
+          <div className="flex flex-wrap gap-1">
             {plan.techStack.map((tech) => (
               <span
                 key={tech}
-                className="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
+                className="px-2 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
               >
                 {tech}
               </span>
@@ -477,7 +400,7 @@ function BookingCard({ plan, index }: { plan: BookingPlan; index: number }) {
             href={plan.demoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-1.5 w-full py-2.5 mt-4 rounded-xl text-[10px] font-black uppercase tracking-wider text-indigo-700 dark:text-indigo-900 bg-indigo-50 dark:bg-white border border-indigo-200 dark:border-slate-300 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 dark:hover:text-white dark:hover:border-indigo-600 transition-all shadow-sm"
+            className="inline-flex items-center justify-center gap-1.5 w-full py-2 mt-3 rounded-xl text-[10px] font-black uppercase tracking-wider text-indigo-700 dark:text-indigo-900 bg-indigo-50 dark:bg-white border border-indigo-200 dark:border-slate-300 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 dark:hover:text-white dark:hover:border-indigo-600 transition-all shadow-sm"
           >
             <span>{plan.demoLabel || "Vedi Demo Live"}</span>
             <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -494,9 +417,8 @@ function BookingCard({ plan, index }: { plan: BookingPlan; index: number }) {
           }}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.97 }}
-          className={`relative overflow-hidden group w-full py-3.5 ${plan.demoUrl ? "mt-2" : "mt-5"} rounded-2xl font-black uppercase tracking-widest text-[10px] text-white text-center bg-gradient-to-r ${plan.gradientClass} shadow-md`}
+          className={`relative overflow-hidden group w-full py-3 ${plan.demoUrl ? "mt-2" : "mt-4"} rounded-xl font-black uppercase tracking-widest text-[10px] text-white text-center bg-indigo-600 hover:bg-indigo-500 shadow-md shadow-indigo-600/20 transition-all cursor-pointer`}
         >
-          <div className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-700 skew-x-12" />
           <span className="relative z-10">Richiedi Informazioni</span>
         </motion.button>
       </div>
@@ -590,28 +512,28 @@ const Packages = () => {
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1 }}
                       whileHover={{ scale: 1.02, y: -4 }}
-                      className={`relative flex flex-col p-8 rounded-3xl border transition-all duration-300 ${
+                      className={`relative flex flex-col p-6 rounded-3xl border transition-all duration-300 ${
                         pkg.popular
                           ? "border-indigo-300 dark:border-indigo-500/50 bg-indigo-50/50 dark:bg-indigo-500/5 shadow-xl shadow-indigo-100 dark:shadow-indigo-900/20"
                           : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-lg shadow-slate-100/80 dark:shadow-black/20 hover:border-slate-300 dark:hover:border-slate-700"
                       }`}
                     >
                       {pkg.popular && (
-                        <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-5 py-1.5 bg-indigo-600 rounded-full shadow-lg shadow-indigo-500/30 z-20">
-                          <span className="text-[11px] font-black text-white uppercase tracking-widest">Più Richiesto</span>
+                        <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3.5 py-1 bg-indigo-600 rounded-full shadow-lg shadow-indigo-500/30 z-20">
+                          <span className="text-[10px] font-black text-white uppercase tracking-widest">Più Richiesto</span>
                         </div>
                       )}
-                      <div className="mb-8">
-                        <h3 className="text-xl font-black text-slate-900 dark:text-white mb-1 uppercase tracking-tight">
+                      <div className="mb-4">
+                        <h3 className="text-lg font-black text-slate-900 dark:text-white mb-0.5 uppercase tracking-tight">
                           {pkg.name}
                         </h3>
-                        <p className="text-slate-500 dark:text-slate-400 text-sm mb-5">{pkg.description}</p>
+                        <p className="text-slate-500 dark:text-slate-400 text-xs">{pkg.description}</p>
                       </div>
-                      <ul className="space-y-3.5 mb-8 flex-grow">
+                      <ul className="space-y-2 mb-6 flex-grow">
                         {pkg.features.map((feat) => (
-                          <li key={feat} className="flex items-center gap-3 text-slate-700 dark:text-slate-300 text-sm font-medium">
-                            <span className={`w-4 h-4 shrink-0 rounded-full bg-gradient-to-br ${pkg.color} flex items-center justify-center`}>
-                              <svg className="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                          <li key={feat} className="flex items-center gap-2.5 text-slate-700 dark:text-slate-300 text-xs font-medium">
+                            <span className={`w-3.5 h-3.5 shrink-0 rounded-full bg-gradient-to-br ${pkg.color} flex items-center justify-center`}>
+                              <svg className="w-2 h-2 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                               </svg>
                             </span>
@@ -624,11 +546,10 @@ const Packages = () => {
                           e.preventDefault();
                           window.dispatchEvent(new Event("open-chat"));
                         }}
-                        whileHover={{ scale: 1.03 }}
+                        whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.97 }}
-                        className={`relative overflow-hidden group w-full py-4 rounded-2xl font-black uppercase tracking-widest text-[11px] text-white text-center transition-all bg-gradient-to-r ${pkg.color} shadow-md`}
+                        className="relative overflow-hidden group w-full py-3 rounded-xl font-black uppercase tracking-widest text-[10px] text-white text-center bg-indigo-600 hover:bg-indigo-500 shadow-md shadow-indigo-600/20 transition-all cursor-pointer"
                       >
-                        <div className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-700 skew-x-12" />
                         <span className="relative z-10">Parliamo del Progetto</span>
                       </motion.button>
                     </motion.div>

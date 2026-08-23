@@ -34,60 +34,63 @@ const Hero = () => {
         animate="visible"
         className="relative z-30 max-w-7xl mx-auto px-6 w-full flex flex-col lg:flex-row items-center gap-12 lg:gap-20"
       >
-        {/* LATO SINISTRO: Testo */}
+        {/* LATO SINISTRO: Testo & Posizionamento B2B */}
         <div className="flex-1 text-center lg:text-left flex flex-col items-center lg:items-start">
           <motion.div
             variants={itemVariants}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-950/80 border border-indigo-200 dark:border-indigo-800 text-xs font-bold uppercase tracking-wider text-indigo-700 dark:text-indigo-300 mb-6 shadow-sm"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200 mb-6 shadow-sm"
           >
-            <span className="flex h-2 w-2 rounded-full bg-indigo-600 dark:bg-indigo-400 animate-pulse" />
-            Siti Web & Negozi Online per la Tua Attività
+            <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+            Consulenza Tecnica & Sviluppo Web Senior
           </motion.div>
 
-          <motion.h1 variants={itemVariants} className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-[1.15] mb-6">
-            Il Tuo Sito o Negozio Online, <br className="hidden sm:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-indigo-400 dark:from-indigo-400 dark:to-indigo-300">
-              Semplice e Senza Stress.
+          <motion.h1 variants={itemVariants} className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-[1.12] mb-6">
+            Sviluppo Web su Misura & <br className="hidden sm:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-indigo-500 to-indigo-400 dark:from-white dark:via-slate-200 dark:to-slate-400">
+              Architetture Digitali ad Alte Prestazioni.
             </span>
           </motion.h1>
 
           <motion.p
             variants={itemVariants}
-            className="text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-300 leading-relaxed mb-8 max-w-2xl"
+            className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-8 max-w-2xl"
           >
-            Non ti servono paroloni tecnici: che tu sia un <strong className="text-slate-900 dark:text-white font-bold">artigiano, commerciante o professionista</strong>, realizzo il tuo sito o e-commerce chiavi in mano. Facile da usare, pronto a <strong className="text-indigo-600 dark:text-indigo-400 font-bold">farti trovare nuovi clienti</strong> e senza complicazioni.
+            Realizzo siti aziendali, e-commerce e piattaforme web con codice moderno (Astro, Next.js, React). Velocità istantanea, zero intermediari e massima conversione per la tua attività.
           </motion.p>
 
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-6">
-            <a
-              href="#progetti"
-              className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold text-sm uppercase tracking-widest rounded-xl shadow-lg shadow-slate-900/20 hover:scale-105 transition-all"
-            >
-              Guarda i Lavori
-              <ArrowRightIcon className="w-4 h-4" />
-            </a>
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-8">
             <button
               onClick={(e) => {
                 e.preventDefault();
                 window.dispatchEvent(new Event("open-chat"));
               }}
-              className="w-full sm:w-auto flex items-center justify-center px-8 py-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white font-bold text-sm uppercase tracking-widest rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 hover:scale-105 transition-all cursor-pointer"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-black text-xs uppercase tracking-widest rounded-xl shadow-xl shadow-indigo-600/30 hover:scale-[1.02] transition-all cursor-pointer"
             >
-              Parla Con Me
+              Richiedi Consulenza
+              <ArrowRightIcon className="w-4 h-4" />
             </button>
+            <a
+              href="#progetti"
+              className="w-full sm:w-auto flex items-center justify-center px-8 py-4 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white font-bold text-xs uppercase tracking-widest rounded-xl hover:bg-slate-200 dark:hover:bg-slate-800 hover:scale-[1.02] transition-all"
+            >
+              Esplora i Lavori
+            </a>
           </motion.div>
 
-          {/* Micro-punti di rassicurazione */}
-          <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs font-semibold text-slate-500 dark:text-slate-400">
-            <span className="inline-flex items-center gap-1.5">
-              <span className="text-emerald-500 font-bold">✓</span> Nessuna competenza richiesta
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <span className="text-emerald-500 font-bold">✓</span> Supporto diretto con me
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <span className="text-emerald-500 font-bold">✓</span> Prezzi chiari e senza sorprese
-            </span>
+          {/* Metriche di Performance e Garanzie Aziendali */}
+          <motion.div variants={itemVariants} className="grid grid-cols-3 gap-3 sm:gap-6 pt-4 border-t border-slate-200 dark:border-slate-800/80 w-full max-w-lg">
+            <div className="text-center lg:text-left">
+              <div className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">&lt; 0.8s</div>
+              <div className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium">Caricamento Istantaneo</div>
+            </div>
+            <div className="text-center lg:text-left">
+              <div className="text-xl sm:text-2xl font-black text-emerald-600 dark:text-emerald-400">100/100</div>
+              <div className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium">Core Web Vitals</div>
+            </div>
+            <div className="text-center lg:text-left">
+              <div className="text-xl sm:text-2xl font-black text-indigo-600 dark:text-indigo-400">1:1</div>
+              <div className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium">Supporto Diretto</div>
+            </div>
           </motion.div>
         </div>
 
