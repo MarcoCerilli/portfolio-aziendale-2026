@@ -166,17 +166,15 @@ export default function DemoProjectsGrid({ products }: DemoProjectsGridProps) {
           Naviga in tempo reale i nostri template live, divisi per categoria.
         </p>
 
-        {/* Filtri */}
-        <div className="w-full max-w-full overflow-x-auto pb-2 pt-3 flex justify-start sm:justify-center scrollbar-none">
-          <div
-            className="inline-flex items-center gap-1.5 p-1.5 bg-zinc-200/80 backdrop-blur-md rounded-2xl border border-zinc-300 shadow-sm shrink-0"
-          >
+        {/* Filtri — Tutti Visibili Senza Scroll */}
+        <div className="w-full pt-3 flex justify-center">
+          <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 p-1.5 bg-zinc-200/80 backdrop-blur-md rounded-2xl border border-zinc-300 shadow-sm max-w-full">
             {filterCategories.map((cat) => (
               <button
                 key={cat}
                 type="button"
                 onClick={() => setFilter(cat)}
-                className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wide whitespace-nowrap transition-all duration-200 cursor-pointer shrink-0 ${
+                className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl text-[11px] sm:text-xs font-bold uppercase tracking-wide transition-all duration-200 cursor-pointer ${
                   filter === cat
                     ? "bg-zinc-900 text-white shadow-md font-black"
                     : "text-zinc-700 hover:text-zinc-900 hover:bg-white font-bold"

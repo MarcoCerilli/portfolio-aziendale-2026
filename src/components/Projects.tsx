@@ -173,17 +173,15 @@ export default function ProjectsCarousel() {
           Esplora le soluzioni realizzate: siti vetrina, e-commerce, web app e piattaforme ad alte prestazioni.
         </p>
 
-        {/* Filtri Chiari ad alto contrasto */}
-        <div className="w-full max-w-full overflow-x-auto pb-2 pt-3 flex justify-start sm:justify-center scrollbar-none">
-          <div
-            className="inline-flex items-center gap-1.5 p-1.5 bg-white/95 backdrop-blur-md rounded-2xl border border-zinc-200 shadow-xl shrink-0"
-          >
+        {/* Filtri Chiari ad alto contrasto — Tutti Visibili Senza Scroll */}
+        <div className="w-full pt-3 flex justify-center">
+          <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 p-1.5 bg-white/95 backdrop-blur-md rounded-2xl border border-zinc-200 shadow-xl max-w-full">
             {filterCategories.map((cat) => (
               <button
                 key={cat}
                 type="button"
                 onClick={() => setFilter(cat)}
-                className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wide whitespace-nowrap transition-all duration-200 cursor-pointer shrink-0 ${
+                className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl text-[11px] sm:text-xs font-bold uppercase tracking-wide transition-all duration-200 cursor-pointer ${
                   filter === cat
                     ? "bg-zinc-900 text-white shadow-md font-black"
                     : "text-zinc-700 font-bold hover:text-zinc-950 hover:bg-zinc-100"
