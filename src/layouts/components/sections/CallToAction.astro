@@ -95,13 +95,14 @@ if (!hasContentSource || !enable || !hasVisibleContent) {
 
               {buttonProps?.enable && (
                 <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
-                  <a
-                    href={buttonProps?.url || "/contact/"}
+                  <button
+                    type="button"
+                    onclick="window.dispatchEvent(new Event('open-chat'))"
                     class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white hover:bg-zinc-200 text-black font-black text-xs uppercase tracking-widest shadow-2xl shadow-white/20 transition-all duration-200 cursor-pointer"
                   >
                     <span class="text-black font-black">{buttonProps?.label || "Inizia un Progetto"}</span>
                     <svg class="w-4 h-4 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-                  </a>
+                  </button>
                   <a
                     href="mailto:cerillimarco15@gmail.com?subject=Richiesta%20Informazioni%20Progetto"
                     class="inline-flex items-center gap-2 px-6 py-4 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-white text-xs font-bold uppercase tracking-wider transition-all duration-200 border border-zinc-800 shadow-lg"

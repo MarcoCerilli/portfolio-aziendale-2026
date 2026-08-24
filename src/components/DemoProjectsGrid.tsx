@@ -50,7 +50,7 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className="group relative w-full md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-start bg-white text-zinc-900 rounded-3xl border border-zinc-200 hover:border-zinc-400 flex flex-col hover:-translate-y-1 transition-all duration-300 select-none shadow-xl shadow-zinc-200/80 overflow-hidden"
+      className="group relative w-[calc(100vw-56px)] sm:w-[380px] md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-start bg-white text-zinc-900 rounded-3xl border border-zinc-200 hover:border-zinc-400 flex flex-col hover:-translate-y-1 transition-all duration-300 select-none shadow-xl shadow-zinc-200/80 overflow-hidden"
     >
       {/* PREVIEW SCREENSHOT */}
       <a
@@ -167,20 +167,19 @@ export default function DemoProjectsGrid({ products }: DemoProjectsGridProps) {
         </p>
 
         {/* Filtri */}
-        <div className="pt-4">
+        <div className="w-full max-w-full overflow-x-auto pb-2 pt-3 flex justify-start sm:justify-center scrollbar-none">
           <div
-            className="inline-flex items-center gap-1.5 p-1.5 bg-zinc-200/80 backdrop-blur-md rounded-2xl border border-zinc-300 shadow-sm overflow-x-auto max-w-full"
-            style={{ scrollbarWidth: "none" }}
+            className="inline-flex items-center gap-1.5 p-1.5 bg-zinc-200/80 backdrop-blur-md rounded-2xl border border-zinc-300 shadow-sm shrink-0"
           >
             {filterCategories.map((cat) => (
               <button
                 key={cat}
                 type="button"
                 onClick={() => setFilter(cat)}
-                className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wide whitespace-nowrap transition-all duration-200 cursor-pointer shrink-0 ${
+                className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wide whitespace-nowrap transition-all duration-200 cursor-pointer shrink-0 ${
                   filter === cat
                     ? "bg-zinc-900 text-white shadow-md font-black"
-                    : "text-zinc-700 hover:text-zinc-900 hover:bg-white"
+                    : "text-zinc-700 hover:text-zinc-900 hover:bg-white font-bold"
                 }`}
               >
                 {cat}
@@ -197,7 +196,7 @@ export default function DemoProjectsGrid({ products }: DemoProjectsGridProps) {
           type="button"
           onClick={() => scroll("left")}
           aria-label="Demo precedente"
-          className="absolute -left-2 sm:left-1 lg:-left-5 top-1/2 -translate-y-1/2 z-30 p-3.5 rounded-full bg-white text-zinc-900 border border-zinc-300 shadow-xl hover:bg-zinc-900 hover:text-white transition-all duration-200 active:scale-90 focus:outline-none cursor-pointer"
+          className="hidden sm:flex absolute -left-2 sm:left-1 lg:-left-5 top-1/2 -translate-y-1/2 z-30 p-3.5 rounded-full bg-white text-zinc-900 border border-zinc-300 shadow-xl hover:bg-zinc-900 hover:text-white transition-all duration-200 active:scale-90 focus:outline-none cursor-pointer items-center justify-center"
         >
           <ChevronLeftIcon className="w-5 h-5" />
         </button>
@@ -207,7 +206,7 @@ export default function DemoProjectsGrid({ products }: DemoProjectsGridProps) {
           type="button"
           onClick={() => scroll("right")}
           aria-label="Demo successiva"
-          className="absolute -right-2 sm:right-1 lg:-right-5 top-1/2 -translate-y-1/2 z-30 p-3.5 rounded-full bg-white text-zinc-900 border border-zinc-300 shadow-xl hover:bg-zinc-900 hover:text-white transition-all duration-200 active:scale-90 focus:outline-none cursor-pointer"
+          className="hidden sm:flex absolute -right-2 sm:right-1 lg:-right-5 top-1/2 -translate-y-1/2 z-30 p-3.5 rounded-full bg-white text-zinc-900 border border-zinc-300 shadow-xl hover:bg-zinc-900 hover:text-white transition-all duration-200 active:scale-90 focus:outline-none cursor-pointer items-center justify-center"
         >
           <ChevronRightIcon className="w-5 h-5" />
         </button>
@@ -217,8 +216,7 @@ export default function DemoProjectsGrid({ products }: DemoProjectsGridProps) {
           ref={scrollRef}
           tabIndex={0}
           aria-label="Elenco demo live"
-          className="flex gap-6 overflow-x-auto overflow-y-visible py-4 snap-x snap-mandatory scroll-smooth cursor-grab active:cursor-grabbing focus:outline-none w-full"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          className="flex gap-4 sm:gap-6 overflow-x-auto overflow-y-visible py-4 snap-x snap-mandatory scroll-smooth cursor-grab active:cursor-grabbing focus:outline-none w-full scrollbar-none"
         >
           {filtered.map((product, i) => (
             <DemoProjectCard key={`${product.id}-${i}`} product={product} />
