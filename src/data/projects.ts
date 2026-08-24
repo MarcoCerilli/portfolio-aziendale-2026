@@ -52,7 +52,7 @@ export const projectsList: Project[] = [
     title: "Dimora Luxury Real Estate",
     description: "Portale per agenzie immobiliari con ricerca annunci avanzata, mappa interattiva, calcolatore rata mutuo e modulo valutazione immobile.",
     tags: ["Ricerca Immobili Avanzata", "Mappa Interattiva", "Calcolo Rata Mutuo", "Valutazione Immobile"],
-    link: "https://demo-dimora-immobiliare.vercel.app",
+    link: "https://demo-tornesi-immobiliare.vercel.app",
     image: "/projects/demo-dimora-immobiliare.jpg",
     category: "Sito Vetrina Pro",
     price: "Su preventivo",

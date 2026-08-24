@@ -38,7 +38,7 @@ const featuredDemos = [
   {
     title: "Dimora Luxury Real Estate",
     cat: "Luxury Real Estate",
-    url: "https://demo-dimora-immobiliare.vercel.app",
+    url: "https://demo-tornesi-immobiliare.vercel.app",
     color: "bg-purple-950/70 border-purple-800/80 text-purple-300",
     img: "/projects/demo-dimora-immobiliare.jpg",
   },
