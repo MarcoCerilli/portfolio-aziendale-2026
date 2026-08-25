@@ -72,7 +72,7 @@ const Header = () => {
             <ThemeToggle />
             <a
               href="/#contatti"
-              className="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest px-6 py-2.5 rounded-full shadow-md shadow-indigo-200 dark:shadow-indigo-900/20 transition-all"
+              className="bg-white hover:bg-zinc-200 text-black text-xs font-black uppercase tracking-widest px-6 py-2.5 rounded-xl shadow-md transition-all cursor-pointer"
             >
               Richiedi Consulenza
             </a>
@@ -125,7 +125,7 @@ const Header = () => {
                 <a
                   href="/#contatti"
                   onClick={() => setIsOpen(false)}
-                  className="bg-indigo-600 text-white px-8 py-3.5 rounded-full font-black uppercase tracking-widest text-[10px] shadow-lg shadow-indigo-200 dark:shadow-indigo-900/20"
+                  className="bg-white hover:bg-zinc-200 text-black px-8 py-3.5 rounded-xl font-black uppercase tracking-widest text-[10px] shadow-lg transition-all cursor-pointer"
                 >
                   Richiedi Consulenza
                 </a>

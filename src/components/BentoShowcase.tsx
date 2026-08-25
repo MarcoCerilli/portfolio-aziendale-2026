@@ -36,7 +36,7 @@ const techPills = [
 
 const featuredDemos = [
   {
-    title: "Dimora Luxury Real Estate",
+    title: "Dimora Prestige Real Estate",
     cat: "Luxury Real Estate",
     url: "https://demo-tornesi-immobiliare.vercel.app",
     color: "bg-purple-950/70 border-purple-800/80 text-purple-300",
@@ -190,13 +190,13 @@ export default function BentoShowcase() {
                   <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-400 font-bold text-[10px]">
                     ✓
                   </span>
-                  <span>100% Codice proprietario senza canoni</span>
+                  <span>Approccio sartoriale (max 2-3 clienti al mese)</span>
                 </div>
                 <div className="flex items-center gap-2.5 text-xs text-zinc-300">
                   <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-400 font-bold text-[10px]">
                     ✓
                   </span>
-                  <span>Pagamenti Stripe, carte e form collegati</span>
+                  <span>100% Codice proprietario senza canoni</span>
                 </div>
                 <div className="flex items-center gap-2.5 text-xs text-zinc-300">
                   <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-400 font-bold text-[10px]">
@@ -209,12 +209,16 @@ export default function BentoShowcase() {
 
             <div className="space-y-3 pt-4 border-t border-zinc-800/80">
               <div className="flex items-center justify-between text-xs">
+                <span className="text-zinc-500 font-medium">Metodo di Sviluppo</span>
+                <span className="text-emerald-400 font-bold">1:1 Diretto &amp; Dedicato</span>
+              </div>
+              <div className="flex items-center justify-between text-xs">
                 <span className="text-zinc-500 font-medium">Tempi Medi di Consegna</span>
                 <span className="text-white font-bold">5 - 14 giorni</span>
               </div>
               <div className="flex items-center justify-between text-xs">
                 <span className="text-zinc-500 font-medium">Garanzia Risultato</span>
-                <span className="text-emerald-400 font-bold">100% Soddisfatti</span>
+                <span className="text-white font-bold">100% Soddisfatti</span>
               </div>
 
               <button

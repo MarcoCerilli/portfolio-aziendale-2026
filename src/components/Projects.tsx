@@ -51,7 +51,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       className="relative w-[calc(100vw-56px)] sm:w-[380px] md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-start bg-white text-zinc-900 rounded-3xl border border-zinc-200 hover:border-zinc-400 flex flex-col hover:-translate-y-1 transition-all duration-300 group select-none shadow-2xl shadow-black/50 overflow-hidden"
     >
       {/* PREVIEW SCREENSHOT */}
-      <div className="relative w-full aspect-[16/10] overflow-hidden bg-zinc-100 border-b border-zinc-200">
+      <div className="relative w-full aspect-[16/10] overflow-hidden bg-zinc-950 border-b border-zinc-200 flex items-center justify-center">
         <img
           src={project.image}
           alt={`Anteprima del progetto ${project.title}`}
@@ -60,7 +60,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           loading={index < 3 ? "eager" : "lazy"}
           decoding="async"
           draggable={false}
-          className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+          className="w-full h-full object-contain object-center transition-transform duration-700 group-hover:scale-105"
           onError={(e) => {
             (e.target as HTMLImageElement).src = "/projects/coming-soon.svg";
           }}
@@ -164,13 +164,13 @@ export default function ProjectsCarousel() {
       {/* Header */}
       <div className="max-w-7xl mx-auto flex flex-col items-center text-center mb-10 space-y-3 px-6">
         <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-bold uppercase tracking-widest text-zinc-300">
-          Portfolio Lavori
+          Case Studies &amp; Lavori Selezionati
         </span>
         <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight">
-          I Miei <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-200 to-zinc-400">Progetti</span>
+          Architetture &amp; <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-200 to-zinc-400">Progetti Selezionati</span>
         </h2>
         <p className="text-zinc-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed font-normal">
-          Esplora le soluzioni realizzate: siti vetrina, e-commerce, web app e piattaforme ad alte prestazioni.
+          Una selezione di soluzioni reali realizzate su misura. Nessun template copia-incolla: ogni architettura riceve codice dedicato, prestazioni estreme e massima cura dei dettagli.
         </p>
 
         {/* Filtri Chiari ad alto contrasto — Tutti Visibili Senza Scroll */}
@@ -235,10 +235,11 @@ export default function ProjectsCarousel() {
         </div>
       )}
 
-      {/* Contatore centrato sotto */}
-      <div className="flex justify-center mt-4">
-        <span className="text-xs font-bold text-zinc-600 uppercase tracking-widest">
-          {filteredProjects.length} {filteredProjects.length === 1 ? "Progetto" : "Progetti"}
+      {/* Nota qualitativa sartoriale sotto */}
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-2 mt-6 px-4 text-center">
+        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-zinc-950 border border-zinc-800 text-zinc-400 font-semibold tracking-wide text-xs">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+          Tutti i progetti includono codice proprietario 100% senza canoni mensili obbligatori
         </span>
       </div>
     </div>

@@ -49,7 +49,7 @@ export const getTagStyle = (tag: string): string => {
 
 export const projectsList: Project[] = [
   {
-    title: "Dimora Luxury Real Estate",
+    title: "Dimora Prestige Real Estate",
     description: "Portale per agenzie immobiliari con ricerca annunci avanzata, mappa interattiva, calcolatore rata mutuo e modulo valutazione immobile.",
     tags: ["Ricerca Immobili Avanzata", "Mappa Interattiva", "Calcolo Rata Mutuo", "Valutazione Immobile"],
     link: "https://demo-tornesi-immobiliare.vercel.app",
@@ -225,17 +225,6 @@ export const projectsList: Project[] = [
     status: "online",
   },
   {
-    title: "Gym Management SaaS",
-    description: "Software gestionale cloud per centri sportivi. Automazione della segreteria e gestione abbonamenti (SaaS).",
-    tags: ["Laravel", "Docker", "SaaS"],
-    link: "#",
-    image: "/projects/gym.jpg",
-    category: "Sistemi & App Su Misura",
-    price: "Su preventivo",
-    color: "from-purple-500/10",
-    status: "demo",
-  },
-  {
     title: "Zecchi MultiServizi",
     description: "Landing page ad alta conversione progettata per generare contatti (lead generation). Design pulito e struttura persuasiva che trasforma i clic in richieste.",
     tags: ["Next.js", "Firebase", "TypeScript", "Shadcn UI"],
@@ -321,7 +310,7 @@ export const projectsList: Project[] = [
     category: "Sistemi & App Su Misura",
     price: "Su preventivo",
     color: "from-slate-700/10",
-    status: "demo",
+    status: "online",
   },
   {
     title: "Fattura Elettronica App",
@@ -332,6 +321,6 @@ export const projectsList: Project[] = [
     category: "Sistemi & App Su Misura",
     price: "Su preventivo",
     color: "from-slate-700/10",
-    status: "demo",
+    status: "online",
   },
 ];

@@ -50,10 +50,10 @@ const TrustSection = () => {
             {/* Stat 1 */}
             <div className="flex flex-col items-center text-center group cursor-default">
               <div className="text-5xl md:text-6xl font-black tracking-tight text-white mb-2 transition-transform duration-300">
-                <Counter value={15} suffix="+" />
+                &lt; 0.8s
               </div>
               <p className="text-zinc-400 font-bold uppercase tracking-[0.2em] text-[10px]">
-                Progetti Conclusi
+                Velocità &amp; Core Web Vitals
               </p>
             </div>
 
@@ -67,7 +67,7 @@ const TrustSection = () => {
                 <ShieldCheckIcon className="w-7 h-7 text-emerald-400" />
               </div>
               <p className="text-white font-bold text-xs uppercase tracking-[0.15em] text-center leading-tight">
-                Qualità &<br/>Garanzia 100%
+                Sviluppo Sartoriale &amp;<br/>Garanzia 100%
               </p>
             </div>
 
@@ -81,7 +81,7 @@ const TrustSection = () => {
                 <Counter value={100} suffix="%" />
               </div>
               <p className="text-zinc-400 font-bold uppercase tracking-[0.2em] text-[10px]">
-                Clienti Soddisfatti
+                Codice Proprietario &amp; Zero Canoni
               </p>
             </div>
 

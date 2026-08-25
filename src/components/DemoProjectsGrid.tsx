@@ -58,7 +58,7 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`Esplora la demo di ${product.name}`}
-        className="relative w-full aspect-[16/10] bg-zinc-100 overflow-hidden block group/preview border-b border-zinc-200"
+        className="relative w-full aspect-[16/10] bg-zinc-950 overflow-hidden block group/preview border-b border-zinc-200 flex items-center justify-center"
       >
         <img
           src={product.image || "/projects/coming-soon.svg"}
@@ -70,7 +70,7 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
           onError={(e) => {
             (e.target as HTMLImageElement).src = "/projects/coming-soon.svg";
           }}
-          className="w-full h-full object-cover object-top transition-transform duration-700 group-hover/preview:scale-105"
+          className="w-full h-full object-contain object-center transition-transform duration-700 group-hover/preview:scale-105"
         />
 
         {/* Demo badge in basso a sinistra */}
@@ -156,14 +156,14 @@ export default function DemoProjectsGrid({ products }: DemoProjectsGridProps) {
       {/* Header */}
       <div className="max-w-7xl mx-auto flex flex-col items-center text-center mb-10 space-y-3 px-6">
         <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-zinc-300 text-xs font-bold uppercase tracking-widest text-zinc-800 shadow-sm">
-          <span className="h-2 w-2 rounded-full bg-zinc-900 animate-pulse" />
-          Template Live
+          <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+          Infrastrutture &amp; Sistemi Pronti
         </span>
         <h2 className="text-3xl md:text-5xl font-black text-zinc-900 tracking-tight leading-tight">
-          Esplora i <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-950 via-zinc-800 to-zinc-600">Progetti Demo</span>
+          Showcase Architetturale &amp; <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-950 via-zinc-800 to-zinc-600">Demo Live</span>
         </h2>
         <p className="text-zinc-600 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
-          Naviga in tempo reale i nostri template live, divisi per categoria.
+          Esplora i motori completi già collaudati per ristorazione, hospitality, real estate e SaaS: pronti per essere personalizzati sul tuo brand senza ripartire da zero.
         </p>
 
         {/* Filtri — Tutti Visibili Senza Scroll */}
@@ -222,10 +222,11 @@ export default function DemoProjectsGrid({ products }: DemoProjectsGridProps) {
         </div>
       </div>
 
-      {/* Contatore */}
-      <div className="flex justify-center mt-4">
-        <span className="text-xs font-bold text-zinc-500 uppercase tracking-widest">
-          {filtered.length} {filtered.length === 1 ? "Demo" : "Demo"}
+      {/* Badge di autenticità e valore sotto */}
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-2 mt-6 px-4 text-center">
+        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-zinc-300 text-zinc-700 font-semibold tracking-wide text-xs shadow-xs">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+          Tutti i sistemi sono operativi in produzione e testabili in tempo reale
         </span>
       </div>
     </div>
