@@ -304,13 +304,13 @@ export const projectsList: Project[] = [
   {
     title: "Experience App",
     description: "Applicazione interattiva per la prenotazione e gestione di esperienze esclusive. UI moderna e flussi ottimizzati per massimizzare le conversioni.",
-    tags: ["React", "Tailwind CSS", "Booking"],
-    link: "#",
+    tags: ["React", "Tailwind CSS", "Booking Engine", "Vercel"],
+    link: "https://experience-app-pi.vercel.app/",
     image: "/projects/experience.jpg",
     category: "Sistemi & App Su Misura",
     price: "Su preventivo",
     color: "from-slate-700/10",
-    status: "online",
+    status: "demo",
   },
   {
     title: "Fattura Elettronica App",
