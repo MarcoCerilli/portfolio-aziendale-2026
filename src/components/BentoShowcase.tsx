@@ -110,12 +110,10 @@ export default function BentoShowcase() {
             {/* Mockup Preview Interattiva */}
             <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full rounded-2xl overflow-hidden bg-black border border-zinc-800">
               <img
-                src="/projects/ermannotech.png"
-                alt="Ermanno Tech E-Commerce Preview"
+                src="/projects/optimized/ermannotech.webp"
+                alt="E-commerce Ermanno Tech Preview"
                 className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = "/templates/landingpage.png";
-                }}
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
               <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 flex flex-wrap items-center gap-2">
@@ -144,9 +142,9 @@ export default function BentoShowcase() {
               <div className="flex items-center gap-3.5 mb-6">
                 <div className="relative shrink-0">
                   <img
-                    src="/profile.jpg"
-                    alt="Marco Cerilli"
-                    className="w-12 h-12 rounded-2xl object-cover border border-zinc-700"
+                    src="/images/logo-icon.png"
+                    alt="Marco Cerilli - M Solutions Web"
+                    className="w-12 h-12 rounded-2xl object-cover border border-zinc-700 bg-zinc-950"
                   />
                   <span className="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-zinc-950" />
                 </div>
