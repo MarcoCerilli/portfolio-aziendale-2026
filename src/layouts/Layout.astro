@@ -23,7 +23,8 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/images/logo-icon.png" />
+    <link rel="apple-touch-icon" href="/images/logo-icon.png" />
     <meta name="theme-color" content="#09090b" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -38,9 +39,14 @@ const {
     {/* Header Desktop */}
     <header class="hidden md:block fixed top-0 left-0 right-0 z-50 bg-[#09090b]/80 backdrop-blur-xl border-b border-zinc-800/60">
       <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        <a href="/" class="flex items-center gap-2 text-lg font-black tracking-tight text-white hover:opacity-90 transition-opacity">
-          <span class="w-8 h-8 rounded-xl bg-white text-black flex items-center justify-center font-black text-sm">MC</span>
-          <span>Marco Cerilli</span>
+        <a href="/" class="flex items-center gap-2 hover:opacity-90 transition-opacity" aria-label="M Solutions Web - Marco Cerilli">
+          <img
+            src="/images/logo.png"
+            alt="M Solutions Web"
+            class="h-9 w-auto object-contain"
+            width="168"
+            height="36"
+          />
         </a>
 
         <nav class="flex items-center gap-8 text-sm font-semibold text-zinc-400">
@@ -69,8 +75,13 @@ const {
     <footer class="border-t border-zinc-900 bg-[#070709] py-12 text-zinc-400 text-sm">
       <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
         <div class="flex items-center gap-3">
-          <span class="w-7 h-7 rounded-lg bg-zinc-800 text-white flex items-center justify-center font-bold text-xs">MC</span>
-          <span class="font-bold text-white">Marco Cerilli</span>
+          <img
+            src="/images/logo.png"
+            alt="M Solutions Web"
+            class="h-7 w-auto object-contain"
+            width="126"
+            height="27"
+          />
           <span class="text-zinc-600">•</span>
           <span class="text-xs text-zinc-500">Sviluppo Web Sartoriale & Consulenza</span>
         </div>

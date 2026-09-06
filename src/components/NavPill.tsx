@@ -82,8 +82,14 @@ export default function NavPill() {
           className="group flex items-center gap-2 shrink-0 focus:outline-none"
           aria-label="Torna all'inizio"
         >
-          <div className="relative flex h-8 w-8 items-center justify-center rounded-full bg-zinc-950 text-white font-black text-xs shadow-md group-hover:scale-105 transition-transform">
-            M
+          <div className="relative flex h-8 w-8 items-center justify-center rounded-xl bg-zinc-950 overflow-hidden shadow-md group-hover:scale-105 transition-transform">
+            <img
+              src="/images/logo-icon.png"
+              alt="M Solutions Web"
+              className="h-full w-full object-cover"
+              width="32"
+              height="32"
+            />
             <span className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full bg-emerald-500 ring-2 ring-white" />
           </div>
           <motion.div
