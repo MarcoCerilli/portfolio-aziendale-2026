@@ -13,6 +13,7 @@ export interface Project {
   tags: string[];
   link: string;
   image: string;
+  imageFit?: "cover" | "contain";
   category: ProjectCategory;
   price: string;
   color: string;

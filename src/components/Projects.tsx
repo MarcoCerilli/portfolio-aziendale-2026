@@ -60,7 +60,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           loading={index < 3 ? "eager" : "lazy"}
           decoding="async"
           draggable={false}
-          className="w-full h-full object-contain object-center transition-transform duration-700 group-hover:scale-105"
+          className={`w-full h-full ${project.imageFit === "contain" ? "object-contain object-center" : "object-cover object-top"} transition-transform duration-700 group-hover:scale-105`}
           onError={(e) => {
             (e.target as HTMLImageElement).src = "/projects/coming-soon.svg";
           }}

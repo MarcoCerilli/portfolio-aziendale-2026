@@ -70,7 +70,7 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
           onError={(e) => {
             (e.target as HTMLImageElement).src = "/projects/coming-soon.svg";
           }}
-          className="w-full h-full object-contain object-center transition-transform duration-700 group-hover/preview:scale-105"
+          className="w-full h-full object-cover object-top transition-transform duration-700 group-hover/preview:scale-105"
         />
 
         {/* Demo badge in basso a sinistra */}
