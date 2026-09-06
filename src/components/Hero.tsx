@@ -1,40 +1,40 @@
 import { motion, type Variants } from "framer-motion";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
+
 const Hero = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-      },
-    },
-  };
-
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
-    },
-  };
-
   return (
-    <section className="relative flex min-h-[92dvh] sm:min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-black pt-36 pb-20 sm:pt-40 md:pt-44 md:pb-28 lg:pt-36">
+    <section className="relative flex min-h-[92dvh] sm:min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-[#09090b] pt-36 pb-20 sm:pt-40 md:pt-44 md:pb-28 lg:pt-36">
       {/* 1. FULL ABSTRACT TECH BACKGROUND (Senza foto personali) */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden select-none">
         <img
           src="/images/hero-bg.jpg"
           alt=""
-          className="h-full w-full object-cover object-center opacity-75 scale-105 transition-opacity duration-700"
+          className="h-full w-full object-cover object-center opacity-70 scale-105 transition-opacity duration-700"
           loading="eager"
         />
         {/* Sfumature morbide per far risaltare lo sfondo garantendo la massima leggibilità */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-black/60" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-transparent to-black/70" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,#000000_90%)]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/30 to-[#09090b]/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#09090b]/80 via-transparent to-[#09090b]/80" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,#09090b_90%)]" />
       </div>
 
       <motion.div
@@ -77,6 +77,8 @@ const Hero = () => {
             className="mb-10 flex w-full flex-col items-center gap-4 sm:w-auto sm:flex-row"
           >
             <button
+              type="button"
+              aria-label="Richiedi Consulenza"
               onClick={(e) => {
                 e.preventDefault();
                 window.dispatchEvent(new Event("open-chat"));

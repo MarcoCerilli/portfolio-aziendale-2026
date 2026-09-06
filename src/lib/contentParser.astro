@@ -69,7 +69,7 @@ export const getEntryCTM = async <C extends CollectionKey>(
     ? `${contentDir}/${subCollectionName}`
     : contentDir;
 
-  const entries = await getCollection(collectionName, ({ id }) => {
+  const entries = await getCollection(collectionName, ({ id }: { id: string }) => {
     // Remove extension like .md or .mdx
     const extensionExcluded = id.replace(/\.mdx?$/, "");
 

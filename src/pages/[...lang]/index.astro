@@ -25,7 +25,7 @@ const homepageContent = await getEntryCTM(
 ---
 
 <Base {...homepageContent?.data} headerLayout="two" headerPosition="fixed" ctaSpacingTop={false}>
-  <div class="min-h-screen bg-black text-white selection:bg-white selection:text-black">
+  <div class="min-h-screen bg-[#09090b] text-white selection:bg-white selection:text-black">
     {/* 1. HERO */}
     <Hero client:load />
 
@@ -36,12 +36,12 @@ const homepageContent = await getEntryCTM(
     <TechStack client:visible />
 
     {/* 4. RISULTATI & FIDUCIA */}
-    <section class="py-12 md:py-16 bg-black border-t border-zinc-900">
+    <section class="py-12 md:py-16 bg-[#0a0a0c] border-t border-zinc-900/80">
       <TrustSection client:visible />
     </section>
 
     {/* 5. TUTTI I PROGETTI (CAROUSEL CON FILTRI) */}
-    <section id="progetti" class="py-16 md:py-24 bg-black text-white border-t border-zinc-900 w-full overflow-hidden">
+    <section id="progetti" class="py-16 md:py-24 bg-[#09090b] text-white border-t border-zinc-900/80 w-full overflow-hidden">
       <Projects client:visible />
     </section>
 
@@ -51,7 +51,7 @@ const homepageContent = await getEntryCTM(
     </section>
 
     {/* 7. PACCHETTI E TARIFFE */}
-    <section id="pacchetti" class="py-16 md:py-24 bg-black text-white border-t border-zinc-900">
+    <section id="pacchetti" class="py-16 md:py-24 bg-[#09090b] text-white border-t border-zinc-900/80">
       <div class="max-w-7xl mx-auto px-6">
         <Packages client:visible />
       </div>

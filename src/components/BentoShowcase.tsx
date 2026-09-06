@@ -19,6 +19,7 @@ import {
   SiPostgresql,
   SiDocker,
   SiShopify,
+  SiMysql,
 } from "react-icons/si";
 
 const techPills = [
@@ -33,6 +34,7 @@ const techPills = [
   { name: "Postgres", icon: SiPostgresql, color: "text-[#4169E1]", border: "border-blue-500/30", bg: "bg-blue-500/10" },
   { name: "Docker", icon: SiDocker, color: "text-[#2496ED]", border: "border-blue-500/30", bg: "bg-blue-500/10" },
   { name: "Shopify", icon: SiShopify, color: "text-[#96BF48]", border: "border-lime-500/30", bg: "bg-lime-500/10" },
+  { name: "MySQL", icon: SiMysql, color: "text-[#4479A1]", border: "border-blue-500/30", bg: "bg-blue-500/10" },
 ];
 
 const featuredDemos = projectsList
@@ -47,10 +49,10 @@ const featuredDemos = projectsList
 
 export default function BentoShowcase() {
   return (
-    <section className="w-full py-16 md:py-24 bg-black text-white relative overflow-hidden">
-      {/* Sfondo con sfumature Aurora Glass sottili */}
-      <div className="absolute top-10 left-1/4 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-10 right-1/4 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[120px] pointer-events-none" />
+    <section className="w-full py-16 md:py-24 bg-[#0a0a0c] text-white relative overflow-hidden border-t border-zinc-900/80">
+      {/* Sfumature ambientali morbide e sobrie */}
+      <div className="absolute top-10 left-1/4 w-[500px] h-[500px] bg-zinc-800/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-10 right-1/4 w-[500px] h-[500px] bg-zinc-700/10 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Titolo Sezione */}

@@ -15,6 +15,7 @@ import {
   SiGithub,
   SiPostgresql,
   SiRedis,
+  SiMysql,
 } from "react-icons/si";
 
 interface Technology {
@@ -42,6 +43,7 @@ const technologies: Technology[] = [
   { name: "GitHub", icon: SiGithub, color: "text-white", badgeBorder: "border-zinc-700", badgeBg: "bg-zinc-900", badgeText: "text-zinc-200" },
   { name: "Docker", icon: SiDocker, color: "text-[#2496ED]", badgeBorder: "border-blue-500/30", badgeBg: "bg-blue-500/10", badgeText: "text-blue-300" },
   { name: "Redis", icon: SiRedis, color: "text-[#DC382D]", badgeBorder: "border-red-500/30", badgeBg: "bg-red-500/10", badgeText: "text-red-300" },
+  { name: "MySQL", icon: SiMysql, color: "text-[#4479A1]", badgeBorder: "border-blue-500/30", badgeBg: "bg-blue-500/10", badgeText: "text-blue-300" },
 ];
 
 const containerVariants: Variants = {
@@ -63,7 +65,7 @@ const itemVariants: Variants = {
 
 const TechStack = () => {
   return (
-    <div id="tecnologie" aria-label="Stack Tecnologico e Strumenti" className="py-16 md:py-20 bg-black border-t border-zinc-900 relative">
+    <div id="tecnologie" aria-label="Stack Tecnologico e Strumenti" className="py-16 md:py-20 bg-[#0a0a0c] border-t border-zinc-900/80 relative">
       <div className="max-w-7xl mx-auto px-6">
         {/* Titolo Sezione */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-3">
@@ -94,10 +96,9 @@ const TechStack = () => {
               key={tech.name}
               variants={itemVariants}
               whileHover={{ y: -4 }}
-              tabIndex={0}
-              className={`group flex items-center gap-3.5 p-3.5 md:p-4 rounded-2xl border ${tech.badgeBorder} ${tech.badgeBg} hover:scale-[1.02] shadow-xl shadow-black/40 focus:outline-none transition-all duration-300 cursor-default`}
+              className={`group flex items-center gap-3.5 p-3.5 md:p-4 rounded-2xl border ${tech.badgeBorder} ${tech.badgeBg} hover:scale-[1.02] shadow-lg shadow-black/40 transition-all duration-300 cursor-default`}
             >
-              <div className="p-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-white group-hover:scale-110 transition-transform duration-300 shrink-0" aria-hidden="true">
+              <div className="p-2.5 rounded-xl bg-zinc-900/90 border border-zinc-800 text-white group-hover:scale-110 transition-transform duration-300 shrink-0" aria-hidden="true">
                 <tech.icon className={`w-5 h-5 ${tech.color}`} />
               </div>
               <div className="min-w-0">
