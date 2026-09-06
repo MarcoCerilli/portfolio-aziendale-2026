@@ -1,0 +1,92 @@
+---
+import "@/styles/globals.css";
+import NavPill from "@/components/NavPill";
+import FooterPill from "@/components/FooterPill";
+import FloatingContact from "@/components/FloatingContact";
+import CookieBanner from "@/components/CookieBanner";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Marco Cerilli | Sviluppo Web su Misura & Soluzioni Digitali",
+  description = "Consulenza tecnica e sviluppo web senior. Siti aziendali, e-commerce e piattaforme ad alte prestazioni con Astro, Next.js e React.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="it" class="dark scroll-smooth bg-[#09090b] text-white">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#09090b" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+  </head>
+  <body class="bg-[#09090b] text-white min-h-screen overflow-x-hidden antialiased selection:bg-white selection:text-black">
+    {/* NavPill Mobile Only */}
+    <div class="md:hidden">
+      <NavPill client:load />
+    </div>
+
+    {/* Header Desktop */}
+    <header class="hidden md:block fixed top-0 left-0 right-0 z-50 bg-[#09090b]/80 backdrop-blur-xl border-b border-zinc-800/60">
+      <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-2 text-lg font-black tracking-tight text-white hover:opacity-90 transition-opacity">
+          <span class="w-8 h-8 rounded-xl bg-white text-black flex items-center justify-center font-black text-sm">MC</span>
+          <span>Marco Cerilli</span>
+        </a>
+
+        <nav class="flex items-center gap-8 text-sm font-semibold text-zinc-400">
+          <a href="#tecnologie" class="hover:text-white transition-colors">Tecnologie</a>
+          <a href="#risultati" class="hover:text-white transition-colors">Risultati</a>
+          <a href="#progetti" class="hover:text-white transition-colors">Progetti</a>
+          <a href="#demo" class="hover:text-white transition-colors">Demo Live</a>
+          <a href="#pacchetti" class="hover:text-white transition-colors">Piani</a>
+        </nav>
+
+        <button
+          type="button"
+          onclick="window.dispatchEvent(new Event('open-chat'))"
+          class="cursor-pointer px-5 py-2.5 rounded-xl bg-white text-black font-black text-xs uppercase tracking-wider hover:bg-zinc-200 transition-all shadow-md hover:scale-[1.02]"
+        >
+          Richiedi Consulenza
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    {/* Footer Pulito */}
+    <footer class="border-t border-zinc-900 bg-[#070709] py-12 text-zinc-400 text-sm">
+      <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <span class="w-7 h-7 rounded-lg bg-zinc-800 text-white flex items-center justify-center font-bold text-xs">MC</span>
+          <span class="font-bold text-white">Marco Cerilli</span>
+          <span class="text-zinc-600">•</span>
+          <span class="text-xs text-zinc-500">Sviluppo Web Sartoriale & Consulenza</span>
+        </div>
+        <p class="text-xs text-zinc-500 text-center md:text-right">
+          © {new Date().getFullYear()} Marco Cerilli. Tutti i diritti riservati. Codice proprietario, zero canoni.
+        </p>
+      </div>
+    </footer>
+
+    {/* FooterPill Mobile Only */}
+    <div class="md:hidden">
+      <FooterPill client:load />
+    </div>
+
+    {/* Floating Contact Widget & Cookie Banner */}
+    <FloatingContact client:idle />
+    <CookieBanner client:idle />
+  </body>
+</html>
