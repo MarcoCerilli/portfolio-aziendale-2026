@@ -10,7 +10,7 @@ contact:
     # Refer to the `sharedButton` schema in `src/sections.schema.ts` for all available configuration options
     enable: true
     label: "Get in Touch"
-    url: "/#contact"
+    url: "/#contatti"
     hoverEffect: "magnetic-text-flip"
     variant: "fill"
     rel: "" # Optional

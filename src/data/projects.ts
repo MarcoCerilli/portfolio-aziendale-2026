@@ -7,6 +7,7 @@ export type ProjectCategory =
   | "Sistemi & App Su Misura";
 
 export interface Project {
+  featured?: boolean;
   title: string;
   description: string;
   tags: string[];
@@ -47,12 +48,13 @@ export const getTagStyle = (tag: string): string => {
   return "tag-slate";
 };
 
-export const projectsList: Project[] = [
+const projectContent: Project[] = [
   {
     title: "Dimora Prestige Real Estate",
+    featured: true,
     description: "Portale per agenzie immobiliari con ricerca annunci avanzata, mappa interattiva, calcolatore rata mutuo e modulo valutazione immobile.",
     tags: ["Ricerca Immobili Avanzata", "Mappa Interattiva", "Calcolo Rata Mutuo", "Valutazione Immobile"],
-    link: "https://demo-tornesi-immobiliare.vercel.app",
+    link: "https://demo-dimora-immobiliare.vercel.app",
     image: "/projects/demo-dimora-immobiliare.jpg",
     category: "Sito Vetrina Pro",
     price: "Su preventivo",
@@ -61,6 +63,7 @@ export const projectsList: Project[] = [
   },
   {
     title: "Aura Osteria Contemporanea",
+    featured: true,
     description: "Sito per ristoranti e locali con menù digitale per smartphone, allergeni chiari e sistema di prenotazione tavoli diretta senza commissioni esterne.",
     tags: ["Prenotazione Tavoli Diretta", "Menù Digitale Smartphone", "Zero Commissioni TheFork", "Mappa & Orari"],
     link: "https://demo-aura-osteria.vercel.app",
@@ -72,6 +75,7 @@ export const projectsList: Project[] = [
   },
   {
     title: "Villa Seraphina Resort & SPA",
+    featured: true,
     description: "Piattaforma per hotel, B&B e resort con prenotazione diretta delle camere, selezione date check-in/out e zero commissioni ai portali.",
     tags: ["Prenotazioni Senza Portali", "Verifica Date & Camere", "Zero Commissioni Booking", "Pagamenti Sicuri"],
     link: "https://demo-villa-seraphina-hotel.vercel.app",
@@ -94,6 +98,7 @@ export const projectsList: Project[] = [
   },
   {
     title: "ScaleFlow — Pagina di Vendita B2B",
+    featured: true,
     description: "Landing page ad alta conversione per aziende e servizi: simulatore di guadagno per il cliente e modulo rapido per ricevere contatti commerciali qualificati.",
     tags: ["Alta Conversione", "Simulatore Guadagni", "Modulo Contatti Rapido", "Per Campagne Google Ads"],
     link: "https://demo-scaleflow-landing.vercel.app",
@@ -283,7 +288,7 @@ export const projectsList: Project[] = [
     title: "English Teacher Website",
     description: "Piattaforma web interattiva per corsi e lezioni private d'inglese. Include calendario per la prenotazione delle lezioni e area risorse per gli studenti.",
     tags: ["Next.js", "Tailwind CSS", "Booking", "i18n"],
-    link: "https://english-teacher-website.vercel.app",
+    link: "https://english-teacher-website-lemon.vercel.app",
     image: "/projects/english.png",
     category: "Sito Vetrina Pro",
     price: "Su preventivo",
@@ -316,11 +321,40 @@ export const projectsList: Project[] = [
     title: "Fattura Elettronica App",
     description: "Software cloud per l'emissione, gestione e archiviazione delle fatture elettroniche con dashboard analitica in tempo reale.",
     tags: ["Next.js", "PostgreSQL", "SDI API"],
-    link: "#",
+    link: "https://sdi-invoice-generator.vercel.app",
     image: "/templates/fattura.png",
     category: "Sistemi & App Su Misura",
     price: "Su preventivo",
     color: "from-slate-700/10",
-    status: "online",
+    status: "demo",
   },
 ];
+
+// Keep original sources above for the optimization script; render lightweight assets.
+export const projectsList: Project[] = projectContent.map((project) => ({
+  ...project,
+  image: `/projects/optimized/${project.image.split("/").pop()!.replace(/\.[^.]+$/, ".webp")}`,
+}));
+
+export interface DemoProductItem {
+  id: string;
+  name: string;
+  url: string;
+  category: string;
+  price: number | null;
+  image: string | null;
+  features: string[];
+}
+
+export const demoProducts: DemoProductItem[] = projectsList
+  .filter((p) => p.status === "demo")
+  .map((p) => ({
+    id: p.title.toLowerCase().replace(/\s+/g, "-"),
+    name: p.title,
+    url: p.link,
+    category: p.category,
+    price: null,
+    image: p.image,
+    features: p.tags,
+  }));
+

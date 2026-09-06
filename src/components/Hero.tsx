@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 
 const Hero = () => {
@@ -12,7 +12,7 @@ const Hero = () => {
     },
   };
 
-  const itemVariants: import("framer-motion").Variants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
@@ -22,9 +22,20 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative flex min-h-[85vh] w-full flex-col items-center justify-center overflow-hidden bg-black pt-36 pb-16 sm:pt-40 md:pt-44 md:pb-24 lg:pt-36">
-      {/* Sottilissimo riflesso argentato/vetro */}
-      <div className="pointer-events-none absolute top-1/4 left-1/2 h-[350px] w-[700px] -translate-x-1/2 rounded-full bg-white/[0.02] blur-3xl" />
+    <section className="relative flex min-h-[92dvh] sm:min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-black pt-36 pb-20 sm:pt-40 md:pt-44 md:pb-28 lg:pt-36">
+      {/* 1. FULL ABSTRACT TECH BACKGROUND (Senza foto personali) */}
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden select-none">
+        <img
+          src="/images/hero-bg.jpg"
+          alt=""
+          className="h-full w-full object-cover object-center opacity-75 scale-105 transition-opacity duration-700"
+          loading="eager"
+        />
+        {/* Sfumature morbide per far risaltare lo sfondo garantendo la massima leggibilità */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-transparent to-black/70" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,#000000_90%)]" />
+      </div>
 
       <motion.div
         variants={containerVariants}
@@ -36,17 +47,17 @@ const Hero = () => {
         <div className="flex flex-1 flex-col items-center text-center lg:items-start lg:text-left">
           <motion.div
             variants={itemVariants}
-            className="mb-6 inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900/90 px-3.5 py-1.5 text-xs font-bold tracking-wider text-zinc-300 uppercase shadow-sm"
+            className="mb-6 inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900/90 px-3.5 py-1.5 text-xs font-bold tracking-wider text-zinc-300 uppercase shadow-sm backdrop-blur-md"
           >
             <span className="flex h-2 w-2 animate-pulse rounded-full bg-white" />
-            Consulenza Tecnica & Sviluppo Web Senior
+            Consulenza Tecnica &amp; Sviluppo Web Senior
           </motion.div>
 
           <motion.h1
             variants={itemVariants}
             className="mb-6 text-4xl leading-[1.12] font-black tracking-tight text-white sm:text-5xl lg:text-6xl"
           >
-            Sviluppo Web su Misura & <br className="hidden sm:block" />
+            Sviluppo Web su Misura &amp; <br className="hidden sm:block" />
             <span className="bg-gradient-to-b from-white via-zinc-200 to-zinc-400 bg-clip-text text-transparent">
               Architetture Digitali ad Alte Prestazioni.
             </span>
@@ -125,7 +136,7 @@ const Hero = () => {
             <div className="pointer-events-none absolute -inset-1.5 rounded-[32px] bg-gradient-to-r from-emerald-500/10 via-cyan-500/10 to-indigo-500/10 opacity-70 blur-xl" />
 
             {/* Main Deliverables Card */}
-            <div className="relative z-10 rounded-3xl border border-zinc-800 bg-zinc-950 p-6 shadow-2xl shadow-black sm:p-8">
+            <div className="relative z-10 rounded-3xl border border-zinc-800 bg-zinc-950/90 p-6 shadow-2xl shadow-black backdrop-blur-xl sm:p-8">
               {/* Header Scheda */}
               <div className="mb-5 flex items-center justify-between gap-3 border-b border-zinc-800 pb-4">
                 <div className="inline-flex items-center gap-2 rounded-full border border-zinc-700 bg-zinc-900 px-3 py-1 text-xs font-bold tracking-wider text-zinc-200 uppercase">

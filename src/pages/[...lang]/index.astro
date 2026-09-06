@@ -4,13 +4,14 @@ import { getEntryCTM } from "@/lib/contentParser.astro";
 import { generatePaths } from "@/lib/utils/i18nUtils.ts";
 
 // Nuovi componenti React dal portfolio Next.js originale
-import Hero from "@/react/Hero";
-import BentoShowcase from "@/react/BentoShowcase";
-import TechStack from "@/react/TechStack";
-import Packages from "@/react/Packages";
-import Projects from "@/react/Projects";
-import TrustSection from "@/react/TrustSection";
-import DemoProjectsSection from "@/components/sections/DemoProjectsSection.astro";
+import Hero from "@/components/Hero";
+import BentoShowcase from "@/components/BentoShowcase";
+import TechStack from "@/components/TechStack";
+import Packages from "@/components/Packages";
+import Projects from "@/components/Projects";
+import TrustSection from "@/components/TrustSection";
+import DemoProjectsGrid from "@/components/DemoProjectsGrid";
+import { demoProducts } from "@/data/projects";
 
 export function getStaticPaths() {
   return generatePaths();
@@ -46,7 +47,7 @@ const homepageContent = await getEntryCTM(
 
     {/* 6. DEMO LIVE TEMPLATE (SEZIONE LIGHT STUDIO A CONTRASTO) */}
     <section id="demo" class="py-16 md:py-24 bg-zinc-100 text-zinc-900 border-y border-zinc-300 overflow-visible">
-      <DemoProjectsSection />
+      <DemoProjectsGrid client:visible products={demoProducts} />
     </section>
 
     {/* 7. PACCHETTI E TARIFFE */}

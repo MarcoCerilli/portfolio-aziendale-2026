@@ -345,3 +345,20 @@ export const sectionsSchema = {
   workingProcessSection: workingProcessSectionSchema,
   multipurposeSection: multipurposeSectionSchema,
 };
+
+export const floatingContactSchema = z.object({
+  title: z.string(),
+  openLabel: z.string(),
+  closeLabel: z.string(),
+  description: z.string(),
+  note: z.string(),
+  buttons: z.array(sharedButton),
+});
+
+export const cookieNoticeSchema = z.object({
+  title: z.string(),
+  description: z.string(),
+  dismissLabel: z.string(),
+  policyLabel: z.string(),
+  policyUrl: z.string(),
+});

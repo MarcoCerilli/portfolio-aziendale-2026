@@ -855,3 +855,7 @@
 .has-no-interaction {
   @apply pointer-events-none select-none;
 }
+
+.preferences-notice h2 {
+  color: var(--color-white);
+}

@@ -1,3 +1,4 @@
+import { projectsList } from "@/data/projects";
 import { motion } from "framer-motion";
 import {
   ArrowTopRightOnSquareIcon,
@@ -34,36 +35,15 @@ const techPills = [
   { name: "Shopify", icon: SiShopify, color: "text-[#96BF48]", border: "border-lime-500/30", bg: "bg-lime-500/10" },
 ];
 
-const featuredDemos = [
-  {
-    title: "Dimora Prestige Real Estate",
-    cat: "Luxury Real Estate",
-    url: "https://demo-tornesi-immobiliare.vercel.app",
-    color: "bg-purple-950/70 border-purple-800/80 text-purple-300",
-    img: "/projects/demo-dimora-immobiliare.jpg",
-  },
-  {
-    title: "Aura Osteria Moderna",
-    cat: "Booking Ristorante",
-    url: "https://demo-aura-osteria.vercel.app",
-    color: "bg-amber-950/70 border-amber-800/80 text-amber-300",
-    img: "/projects/demo-aura.jpg",
-  },
-  {
-    title: "Villa Seraphina Relais",
-    cat: "Boutique Hotel Booking",
-    url: "https://demo-villa-seraphina.vercel.app",
-    color: "bg-emerald-950/70 border-emerald-800/80 text-emerald-300",
-    img: "/projects/demo-villa.jpg",
-  },
-  {
-    title: "ScaleFlow Enterprise",
-    cat: "SaaS & AI Platform",
-    url: "https://demo-scaleflow-saas.vercel.app",
-    color: "bg-cyan-950/70 border-cyan-800/80 text-cyan-300",
-    img: "/projects/demo-scaleflow.jpg",
-  },
-];
+const featuredDemos = projectsList
+  .filter((project) => project.featured)
+  .map((project) => ({
+    title: project.title,
+    cat: project.category,
+    url: project.link,
+    color: "bg-zinc-900 border-zinc-700 text-zinc-200",
+    img: project.image,
+  }));
 
 export default function BentoShowcase() {
   return (

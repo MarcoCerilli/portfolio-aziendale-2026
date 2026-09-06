@@ -98,7 +98,7 @@ const FloatingContact = () => {
   };
 
   return (
-    <aside aria-label="Chat di supporto in-app" className="fixed bottom-5 right-5 md:bottom-6 md:right-6 z-[9999]">
+    <aside aria-label="Chat di supporto in-app" className="fixed bottom-[calc(env(safe-area-inset-bottom,0px)+4.75rem)] right-4 md:bottom-6 md:right-6 z-[9999]">
       <AnimatePresence>
         {isOpen && (
           <motion.div

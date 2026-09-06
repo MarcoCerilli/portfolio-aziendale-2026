@@ -24,7 +24,9 @@ let {
 
 // https://astro.build/config
 export default defineConfig({
-  site: config.site.baseUrl ? config.site.baseUrl : "http://examplesite.com",
+  site: process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : config.site.baseUrl || "http://examplesite.com",
   trailingSlash: config.site.trailingSlash ? "always" : "never",
   devToolbar: {
     enabled: true,
@@ -78,6 +80,28 @@ export default defineConfig({
     logLevel: "error",
     build: {
       minify: true,
+    },
+    resolve: {
+      dedupe: ["react", "react-dom"],
+    },
+    optimizeDeps: {
+      include: [
+        "react",
+        "react-dom",
+        "react/jsx-runtime",
+        "react/jsx-dev-runtime",
+        "framer-motion",
+        "@preline/overlay",
+        "@preline/overlay/non-auto",
+        "@preline/dropdown",
+        "@preline/dropdown/non-auto",
+        "@preline/select/non-auto",
+        "@preline/tabs/non-auto",
+        "@preline/accordion/non-auto",
+        "@preline/collapse/non-auto",
+        "@preline/tooltip/non-auto",
+        "lucide",
+      ],
     },
     plugins: [tailwindcss()],
   },

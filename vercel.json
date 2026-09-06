@@ -1,5 +1,6 @@
 {
   "framework": "astro",
+  "outputDirectory": "dist",
   "trailingSlash": true,
   "buildCommand": "sh vercel.sh",
   "redirects": [

@@ -4,9 +4,7 @@ This project is an Astro and Tailwind CSS theme. Follow the existing component, 
 
 ## Project Structure
 
-- Section components live in `src/layouts/components/sections/`.
-- Shared widgets live in `src/layouts/components/widgets/`.
-- Cards live in `src/layouts/components/cards/`.
+- All components live in `src/components/` (sections in `src/components/sections/`, widgets in `src/components/widgets/`, cards in `src/components/cards/`, etc.).
 - Content lives in `src/content/` and is grouped by collection and language.
 - Section content files live in `src/content/sections/{language}/`.
 - Section schemas and shared content option schemas live in `src/sections.schema.ts`.

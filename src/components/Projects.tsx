@@ -157,7 +157,7 @@ export default function ProjectsCarousel() {
     c.scrollBy({ left: dir === "left" ? -cardWidth : cardWidth, behavior: "smooth" });
   };
 
-  const filterCategories = categories.filter((c) => c !== "Sistemi & App Su Misura");
+  const filterCategories = categories.filter((category) => category === "Tutti" || projectsList.some((project) => project.status !== "demo" && project.category === category));
 
   return (
     <div aria-label="Portfolio Progetti" className="w-full py-2">
@@ -180,7 +180,8 @@ export default function ProjectsCarousel() {
               <button
                 key={cat}
                 type="button"
-                onClick={() => setFilter(cat)}
+                aria-pressed={filter === cat}
+                onClick={() => { setFilter(cat); scrollRef.current?.scrollTo({ left: 0 }); }}
                 className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl text-[11px] sm:text-xs font-bold uppercase tracking-wide transition-all duration-200 cursor-pointer ${
                   filter === cat
                     ? "bg-zinc-900 text-white shadow-md font-black"

@@ -1,6 +1,6 @@
 import config from ".astro/config.generated.json";
 import { defineCollection } from "astro:content";
-import { button, sectionsSchema } from "./sections.schema";
+import { button, sectionsSchema, cookieNoticeSchema } from "./sections.schema";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 
@@ -13,6 +13,7 @@ const contentLoader = (base: string) =>
 // Universal Page Schema
 export const page = z.object({
   title: z.string(),
+  cookieNotice: cookieNoticeSchema.optional(),
   author: z.string().optional(),
   categories: z.array(z.string()).optional(),
   tags: z.array(z.string()).optional(),

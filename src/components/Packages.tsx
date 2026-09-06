@@ -1,3 +1,4 @@
+import { projectsList } from "@/data/projects";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -159,7 +160,7 @@ const bookingPlans: BookingPlan[] = [
     monthlyExtra: "Hosting incluso 1° anno",
     gradientClass: "from-slate-900 to-slate-950",
     icon: "🍽️",
-    demoUrl: "https://demo-aura-osteria.vercel.app",
+    demoUrl: projectsList.find((project) => project.title === "Aura Osteria Contemporanea")?.link,
     demoLabel: "Vedi Demo Aura Osteria",
     features: [
       "Prenotazione tavoli 24/7 con fasce e turni",
@@ -200,7 +201,7 @@ const bookingPlans: BookingPlan[] = [
     monthlyExtra: "~20–40€/mese manutenzione",
     gradientClass: "from-slate-900 to-slate-950",
     icon: "🏨",
-    demoUrl: "https://demo-villa-seraphina-hotel.vercel.app",
+    demoUrl: projectsList.find((project) => project.title === "Villa Seraphina Resort & SPA")?.link,
     demoLabel: "Vedi Demo Villa Seraphina",
     features: [
       "Selezione tipologia suite/camere con galleria HD",

@@ -178,7 +178,7 @@ export const formSubmit = async ({
     controller.abort();
   }, timeout);
 
-  fetch(ajaxAction, {
+  return fetch(ajaxAction, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -202,7 +202,7 @@ export const formSubmit = async ({
     .catch(async (error) => {
       if (error.name === "AbortError") {
         setMessage(
-          "We couldn't reach the server. Trying alternative server.",
+          "Non è stato possibile raggiungere il servizio. Riprova o usa i contatti diretti.",
           false,
           false,
           form,
@@ -261,10 +261,11 @@ export const formspreeSubmit = async (
   data: Record<string, FormDataEntryValue>,
   timeout: number,
   form: HTMLFormElement,
+  action: string,
 ) => {
   try {
     await fetchWithTimeout(
-      "https://formspree.io/f/xwpkvjaa",
+      action,
       data,
       new AbortController(),
       timeout,

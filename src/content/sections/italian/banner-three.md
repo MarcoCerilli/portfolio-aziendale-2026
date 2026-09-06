@@ -8,7 +8,7 @@ gradientBackgroundImage: "/images/banner/home-three-gradient-bg.svg"
 buttons:
   - enable: true
     label: "Work With Us"
-    url: "/#contact"
+    url: "/#contatti"
     hoverEffect: "magnetic-text-flip"
     variant: "fill"
   - enable: true

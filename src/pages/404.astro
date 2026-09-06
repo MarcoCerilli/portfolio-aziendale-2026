@@ -6,7 +6,7 @@ import { useTranslations } from "@/lib/utils/i18nUtils.ts";
 const t = await useTranslations(Astro.currentLocale as string);
 ---
 
-<Base title={t("notFound.title")} disableTagline={true} fitToScreen={false}>
+<Base robots="noindex, follow" canonical="/404.html" title={t("notFound.title")} disableTagline={true} fitToScreen={false}>
   <section class="section-spacing-vertical">
     <div class="container">
       <div class="flex flex-col items-center gap-y-10">
