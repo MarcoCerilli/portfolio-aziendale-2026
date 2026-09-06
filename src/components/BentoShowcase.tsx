@@ -34,7 +34,7 @@ const techPills = [
   { name: "Postgres", icon: SiPostgresql, color: "text-[#4169E1]", border: "border-blue-500/30", bg: "bg-blue-500/10" },
   { name: "Docker", icon: SiDocker, color: "text-[#2496ED]", border: "border-blue-500/30", bg: "bg-blue-500/10" },
   { name: "Shopify", icon: SiShopify, color: "text-[#96BF48]", border: "border-lime-500/30", bg: "bg-lime-500/10" },
-  { name: "MySQL", icon: SiMysql, color: "text-[#4479A1]", border: "border-blue-500/30", bg: "bg-blue-500/10" },
+  { name: "MySQL", icon: SiMysql, color: "text-sky-400", border: "border-sky-500/40", bg: "bg-sky-500/15" },
 ];
 
 const featuredDemos = projectsList

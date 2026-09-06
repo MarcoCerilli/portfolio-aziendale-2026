@@ -43,7 +43,7 @@ const technologies: Technology[] = [
   { name: "GitHub", icon: SiGithub, color: "text-white", badgeBorder: "border-zinc-700", badgeBg: "bg-zinc-900", badgeText: "text-zinc-200" },
   { name: "Docker", icon: SiDocker, color: "text-[#2496ED]", badgeBorder: "border-blue-500/30", badgeBg: "bg-blue-500/10", badgeText: "text-blue-300" },
   { name: "Redis", icon: SiRedis, color: "text-[#DC382D]", badgeBorder: "border-red-500/30", badgeBg: "bg-red-500/10", badgeText: "text-red-300" },
-  { name: "MySQL", icon: SiMysql, color: "text-[#4479A1]", badgeBorder: "border-blue-500/30", badgeBg: "bg-blue-500/10", badgeText: "text-blue-300" },
+  { name: "MySQL", icon: SiMysql, color: "text-sky-400", badgeBorder: "border-sky-500/40", badgeBg: "bg-sky-500/15", badgeText: "text-sky-200" },
 ];
 
 const containerVariants: Variants = {
