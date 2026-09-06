@@ -50,7 +50,7 @@ const Hero = () => {
             className="mb-6 inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900/90 px-3.5 py-1.5 text-xs font-bold tracking-wider text-zinc-300 uppercase shadow-sm backdrop-blur-md"
           >
             <span className="flex h-2 w-2 animate-pulse rounded-full bg-white" />
-            Consulenza Tecnica &amp; Sviluppo Web Senior
+            Sviluppo Web &amp; Soluzioni Digitali su Misura
           </motion.div>
 
           <motion.h1

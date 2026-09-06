@@ -102,7 +102,7 @@ export default function NavPill() {
               M Solutions
             </span>
             <span className="text-[10px] text-zinc-500 font-medium leading-tight">
-              Senior Web Dev
+              Web Developer
             </span>
           </motion.div>
         </a>
