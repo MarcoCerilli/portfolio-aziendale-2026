@@ -82,7 +82,10 @@ export default defineConfig({
       minify: true,
     },
     resolve: {
-      dedupe: ["react", "react-dom"],
+      dedupe: ["react", "react-dom", "react/jsx-runtime", "react/jsx-dev-runtime"],
+    },
+    ssr: {
+      noExternal: ["react-icons"],
     },
     optimizeDeps: {
       include: [
@@ -91,6 +94,8 @@ export default defineConfig({
         "react/jsx-runtime",
         "react/jsx-dev-runtime",
         "framer-motion",
+        "react-icons/si",
+        "react-icons/fi",
         "@preline/overlay",
         "@preline/overlay/non-auto",
         "@preline/dropdown",
