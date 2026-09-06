@@ -58,7 +58,7 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`Esplora la demo di ${product.name}`}
-        className="relative w-full aspect-[16/10] bg-zinc-950 overflow-hidden block group/preview border-b border-zinc-200 flex items-center justify-center"
+        className="relative w-full aspect-[16/10] bg-zinc-950 overflow-hidden block group/preview border-b border-zinc-200"
       >
         <img
           src={product.image || "/projects/coming-soon.svg"}
@@ -70,7 +70,7 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
           onError={(e) => {
             (e.target as HTMLImageElement).src = "/projects/coming-soon.svg";
           }}
-          className="w-full h-full object-cover object-top transition-transform duration-700 group-hover/preview:scale-105"
+          className="w-full h-full object-cover object-top block transition-transform duration-700 group-hover/preview:scale-105"
         />
 
         {/* Demo badge in basso a sinistra */}

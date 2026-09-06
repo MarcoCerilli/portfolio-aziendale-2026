@@ -51,7 +51,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       className="relative w-[calc(100vw-56px)] sm:w-[380px] md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-start bg-white text-zinc-900 rounded-3xl border border-zinc-200 hover:border-zinc-400 flex flex-col hover:-translate-y-1 transition-all duration-300 group select-none shadow-2xl shadow-black/50 overflow-hidden"
     >
       {/* PREVIEW SCREENSHOT */}
-      <div className="relative w-full aspect-[16/10] overflow-hidden bg-zinc-950 border-b border-zinc-200 flex items-center justify-center">
+      <div className="relative w-full aspect-[16/10] overflow-hidden bg-zinc-950 border-b border-zinc-200">
         <img
           src={project.image}
           alt={`Anteprima del progetto ${project.title}`}
@@ -60,7 +60,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           loading={index < 3 ? "eager" : "lazy"}
           decoding="async"
           draggable={false}
-          className={`w-full h-full ${project.imageFit === "contain" ? "object-contain object-center" : "object-cover object-top"} transition-transform duration-700 group-hover:scale-105`}
+          className={`w-full h-full ${project.imageFit === "contain" ? "object-contain object-center" : "object-cover object-top"} block transition-transform duration-700 group-hover:scale-105`}
           onError={(e) => {
             (e.target as HTMLImageElement).src = "/projects/coming-soon.svg";
           }}
