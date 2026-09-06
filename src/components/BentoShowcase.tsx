@@ -19,8 +19,8 @@ import {
   SiPostgresql,
   SiDocker,
   SiShopify,
-  SiMysql,
 } from "react-icons/si";
+import { GrMysql } from "react-icons/gr";
 
 const techPills = [
   { name: "Astro", icon: SiAstro, color: "text-[#FF5D01]", border: "border-orange-500/30", bg: "bg-orange-500/10" },
@@ -34,7 +34,7 @@ const techPills = [
   { name: "Postgres", icon: SiPostgresql, color: "text-[#4169E1]", border: "border-blue-500/30", bg: "bg-blue-500/10" },
   { name: "Docker", icon: SiDocker, color: "text-[#2496ED]", border: "border-blue-500/30", bg: "bg-blue-500/10" },
   { name: "Shopify", icon: SiShopify, color: "text-[#96BF48]", border: "border-lime-500/30", bg: "bg-lime-500/10" },
-  { name: "MySQL", icon: SiMysql, color: "text-sky-400", border: "border-sky-500/40", bg: "bg-sky-500/15" },
+  { name: "MySQL", icon: GrMysql, color: "text-sky-300", border: "border-sky-500/40", bg: "bg-sky-500/15" },
 ];
 
 const featuredDemos = projectsList
