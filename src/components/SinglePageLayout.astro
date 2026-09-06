@@ -1,6 +1,5 @@
 ---
 import buildToc from "@/lib/utils/buildToc";
-import { shortcodes } from "@/lib/shortcodes";
 import TOC from "./widgets/TableOfContents.astro";
 import config from ".astro/config.generated.json";
 import OptimizedImage from "./utilities/OptimizedImage.astro";
@@ -78,7 +77,7 @@ const tocEnabled =
       {
         Content && (
           <div class="prose-styles content has-video-modal prose-headings:mb-6 prose-headings:mt-10">
-            <Content components={shortcodes} />
+            <Content />
           </div>
         )
       }
