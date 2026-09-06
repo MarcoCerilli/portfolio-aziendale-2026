@@ -1,42 +1,11 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "baseUrl": ".",
-    "target": "es2017",
-    "allowJs": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "isolatedModules": true,
-    "incremental": true,
-    "allowSyntheticDefaultImports": true,
-    "paths": {
-      "@/components/*": [
-        "./src/components/*"
-      ],
-      "@/react/*": [
-        "./src/components/*"
-      ],
-      "@/shortcodes/*": [
-        "./src/layouts/shortcodes/*"
-      ],
-      "@/helpers/*": [
-        "./src/layouts/helpers/*"
-      ],
-      "@/*": [
-        "./src/*"
-      ]
-    },
     "jsx": "react-jsx",
-    "jsxImportSource": "react"
-  },
-  "include": [
-    ".astro/types.d.ts",
-    "**/*"
-  ],
-  "exclude": [
-    "dist",
-    "public",
-    "scripts"
-  ]
+    "jsxImportSource": "react",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
 }
