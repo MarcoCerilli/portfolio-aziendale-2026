@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000">
+  <rect width="1600" height="1000" fill="#18181b"/>
+  <g fill="none" stroke="#a1a1aa" stroke-width="5">
+    <rect x="690" y="290" width="220" height="160" rx="20"/>
+    <path d="M740 290l20-35h80l20 35"/>
+    <circle cx="800" cy="370" r="48"/>
+  </g>
+  <g text-anchor="middle" font-family="system-ui, sans-serif">
+    <text x="800" y="560" fill="#fafafa" font-size="52">Studio Fotografico d’Autore</text>
+    <text x="800" y="635" fill="#a1a1aa" font-size="28">Anteprima fotografica in arrivo</text>
+  </g>
+</svg>

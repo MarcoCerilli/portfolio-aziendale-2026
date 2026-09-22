@@ -10,6 +10,17 @@ import Projects from "@/components/Projects";
 import DemoProjectsGrid from "@/components/DemoProjectsGrid";
 import Packages from "@/components/Packages";
 import { demoProducts } from "@/data/projects";
+import { frontmatter as demoContent } from "@/content/sections/italian/demo-projects.md";
+import { demoSection } from "@/sections.schema";
+
+const demoSettings = demoSection.parse(demoContent);
+const allDemoProducts = [
+  ...demoSettings.projects,
+  ...demoProducts.map((product) => ({
+    ...product,
+    features: demoSettings.features[product.name] ?? product.features,
+  })),
+];
 ---
 
 <Layout>
@@ -35,7 +46,7 @@ import { demoProducts } from "@/data/projects";
 
     {/* 6. DEMO LIVE TEMPLATE (SEZIONE LIGHT A CONTRASTO) */}
     <section id="demo" class="py-16 md:py-24 bg-zinc-100 text-zinc-900 border-y border-zinc-300 overflow-visible">
-      <DemoProjectsGrid client:visible products={demoProducts} />
+      <DemoProjectsGrid client:visible products={allDemoProducts} />
     </section>
 
     {/* 7. PACCHETTI E PIANI */}

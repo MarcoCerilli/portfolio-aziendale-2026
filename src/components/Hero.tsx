@@ -180,7 +180,7 @@ const Hero = () => {
                   </div>
                   <div>
                     <h4 className="text-xs font-bold leading-tight text-white sm:text-sm">
-                      Velocità Estrema (&lt; 0.8s) &amp; SEO Google
+                      Velocità (&lt; 0.8s) &amp; SEO Google
                     </h4>
                     <p className="mt-0.5 text-[11px] leading-relaxed text-zinc-400 sm:text-xs">
                       Caricamento istantaneo su mobile per non perdere clienti e posizionarti su Google.

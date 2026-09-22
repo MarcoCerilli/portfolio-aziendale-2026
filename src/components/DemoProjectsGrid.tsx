@@ -62,7 +62,7 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
       >
         <img
           src={product.image || "/projects/coming-soon.svg"}
-          alt={`Screenshot di ${product.name}`}
+          alt={`Anteprima di ${product.name}`}
           width="600"
           height="375"
           loading="lazy"
@@ -102,7 +102,7 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
 
         {product.features && product.features.length > 0 && (
           <div className="flex flex-wrap gap-1.5 mt-auto pt-4">
-            {product.features.slice(0, 3).map((f, i) => (
+            {product.features.map((f, i) => (
               <span key={i} className={`px-2 py-0.5 rounded-md text-[10px] font-medium uppercase tracking-wider border ${getTechBadgeClass(f)}`}>
                 {f}
               </span>

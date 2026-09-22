@@ -93,7 +93,7 @@ const ecommercePlans: EcommerceTier[] = [
     gradientClass: "from-slate-900 to-slate-950",
     icon: "⚡",
     pros: [
-      "Performance estrema (Core Web Vitals 100)",
+      "Performance (Core Web Vitals 100)",
       "UI totalmente custom",
       "Shopify come headless CMS",
       "Multi-channel (web, app, IoT)",

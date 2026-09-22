@@ -182,7 +182,7 @@ export default function BentoShowcase() {
                   <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-400 font-bold text-[10px]">
                     ✓
                   </span>
-                  <span>Velocità estrema &lt; 0.8s &amp; SEO Google</span>
+                  <span>Velocità &lt; 0.8s &amp; SEO Google</span>
                 </div>
               </div>
             </div>
