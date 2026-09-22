@@ -17,7 +17,7 @@ projects:
     url: https://fotografo-hqml.onrender.com
     category: Sito Vetrina Pro
     price: null
-    image: /projects/demo-fotografo.svg
+    image: /projects/optimized/demo-fotografo.webp
     features:
       - Galleria fotografica
       - Slideshow interattivo
