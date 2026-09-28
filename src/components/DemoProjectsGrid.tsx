@@ -7,6 +7,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { FiPlay } from "react-icons/fi";
 import type { DemoProduct } from "@/types/vercel";
+import { boolean } from "astro:schema";
 
 const getCategoryBadgeClass = (cat: string) => {
   if (cat.includes("E-Commerce") || cat.includes("Shop")) {
@@ -43,6 +44,8 @@ const getTechBadgeClass = (tech: string) => {
 };
 
 function DemoProjectCard({ product }: { product: DemoProduct }) {
+  //Verifica se esiste un URL e non e' vuoto
+  const hasLink = Boolean(product.url && product.url.trim().length > 0);
   return (
     <motion.div
       layout
@@ -53,6 +56,7 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
       className="group relative w-[calc(100vw-56px)] sm:w-[380px] md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-start bg-white text-zinc-900 rounded-3xl border border-zinc-200 hover:border-zinc-400 flex flex-col hover:-translate-y-1 transition-all duration-300 select-none shadow-xl shadow-zinc-200/80 overflow-hidden"
     >
       {/* PREVIEW SCREENSHOT */}
+      {hasLink ? (
       <a
         href={product.url}
         target="_blank"
@@ -88,7 +92,29 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
           <span className="text-white font-bold text-[11px] uppercase tracking-widest translate-y-4 group-hover/preview:translate-y-0 transition-transform duration-300 delay-75">Esplora Live</span>
         </div>
       </a>
+      ) : (
+        <div className="relative w-full aspect-[16/10] bg-zinc-950 overflow-hidden block border-b border-zinc-200 cursor-default">
+          <img
+            src={product.image || "/projects/coming-soon.svg"}
+            alt={`Anteprima di ${product.name}`}
+            width="600"
+            height="375"
+            loading="lazy"
+            decoding="async"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = "/projects/coming-soon.svg";
+            }}
+            className="w-full h-full object-cover object-top block"
+          />
 
+          <div className="absolute bottom-3 left-3 z-10 pointer-events-none">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-zinc-900/90 backdrop-blur-md text-zinc-300 text-[10px] font-bold uppercase tracking-widest shadow-md">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+              Concept Demo
+            </span>
+          </div>
+        </div>
+      )}
       {/* BODY */}
       <div className="p-6 flex flex-col grow bg-white text-zinc-900">
         <div className="mb-3">

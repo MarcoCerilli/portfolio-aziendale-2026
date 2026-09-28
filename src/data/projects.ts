@@ -11,7 +11,7 @@ export interface Project {
   title: string;
   description: string;
   tags: string[];
-  link: string;
+  link?: string;
   image: string;
   imageFit?: "cover" | "contain";
   category: ProjectCategory;
@@ -31,7 +31,6 @@ export const categories: ("Tutti" | ProjectCategory)[] = [
 ];
 
 // Tag badge classes — mapped to .tag-* classes safelisted in src/styles/safe.css
-// (Tailwind v4 purges dynamically-built utility strings; semantic classes are always included)
 export const getTagStyle = (tag: string): string => {
   const t = tag.toLowerCase();
   if (t.includes("astro") || t.includes("firebase") || t.includes("saas") || t.includes("roi") || t.includes("margine"))
@@ -55,7 +54,7 @@ const projectContent: Project[] = [
     featured: true,
     description: "Portale per agenzie immobiliari con ricerca annunci avanzata, mappa interattiva, calcolatore rata mutuo e modulo valutazione immobile.",
     tags: ["Ricerca Immobili Avanzata", "Mappa Interattiva", "Calcolo Rata Mutuo", "Valutazione Immobile"],
-    link: "https://demo-dimora-immobiliare.vercel.app",
+    link: "",
     image: "/projects/optimized/demo-dimora-immobiliare.webp",
     category: "Sito Vetrina Pro",
     price: "Su preventivo",
@@ -67,7 +66,7 @@ const projectContent: Project[] = [
     featured: true,
     description: "Sito per ristoranti e locali con menù digitale per smartphone, allergeni chiari e sistema di prenotazione tavoli diretta senza commissioni esterne.",
     tags: ["Prenotazione Tavoli Diretta", "Menù Digitale Smartphone", "Zero Commissioni TheFork", "Mappa & Orari"],
-    link: "https://demo-aura-osteria.vercel.app",
+    link: "",
     image: "/projects/optimized/demo-aura.webp",
     category: "Booking Engine",
     price: "Su preventivo",
@@ -79,7 +78,7 @@ const projectContent: Project[] = [
     featured: true,
     description: "Piattaforma per hotel, B&B e resort con prenotazione diretta delle camere, selezione date check-in/out e zero commissioni ai portali.",
     tags: ["Prenotazioni Senza Portali", "Verifica Date & Camere", "Zero Commissioni Booking", "Pagamenti Sicuri"],
-    link: "https://demo-villa-seraphina-hotel.vercel.app",
+    link: "",
     image: "/projects/optimized/demo-villa-seraphina.webp",
     category: "Booking Engine",
     price: "Su preventivo",
@@ -90,7 +89,7 @@ const projectContent: Project[] = [
     title: "Montecarlo Specialty Coffee",
     description: "Negozio online facile e veloce per vendere prodotti fisici: carrello immediato, soglia spedizione gratuita, coupon sconto e pagamenti con carta.",
     tags: ["Carrello Immediato", "Pagamenti con Carta & Stripe", "Codici Sconto & Promo", "Spedizioni Gratuite"],
-    link: "https://demo-montecarlo-coffee.vercel.app",
+    link: "",
     image: "/projects/optimized/demo-montecarlo-coffee.webp",
     category: "E-commerce Pro",
     price: "Su preventivo",
@@ -102,7 +101,7 @@ const projectContent: Project[] = [
     featured: true,
     description: "Landing page ad alta conversione per aziende e servizi: simulatore di guadagno per il cliente e modulo rapido per ricevere contatti commerciali qualificati.",
     tags: ["Alta Conversione", "Simulatore Guadagni", "Modulo Contatti Rapido", "Per Campagne Google Ads"],
-    link: "https://demo-scaleflow-landing.vercel.app",
+    link: "",
     image: "/projects/optimized/demo-scaleflow.webp",
     category: "Landing Page Custom",
     price: "Su preventivo",
@@ -113,7 +112,7 @@ const projectContent: Project[] = [
     title: "QuickQuote — Calcolatore Preventivi",
     description: "Configuratore interattivo per calcolare preventivi all'istante: il cliente sceglie le opzioni, visualizza il prezzo e scarica il PDF senza farti perdere tempo al telefono.",
     tags: ["Calcolo Automatico Costi", "Esportazione Preventivo PDF", "Zero Attese al Telefono", "Richieste Preventivo H24"],
-    link: "https://demo-quickquote-app.vercel.app",
+    link: "",
     image: "/projects/optimized/demo-quickquote.webp",
     category: "Sistemi & App Su Misura",
     price: "Su preventivo",
@@ -157,7 +156,7 @@ const projectContent: Project[] = [
     title: "Next.js Admin Dashboard",
     description: "Dashboard di gestione finanziaria completa: autenticazione, database PostgreSQL integrato e gestione dinamica delle fatture in tempo reale.",
     tags: ["Next.js", "PostgreSQL", "Auth.js", "Server Components"],
-    link: "https://nextjs-dashboard-zeta-sooty-93.vercel.app/",
+    link: "",
     image: "/projects/optimized/dashboard.webp",
     category: "Sistemi & App Su Misura",
     price: "Su preventivo",
@@ -190,7 +189,7 @@ const projectContent: Project[] = [
     title: "ModernStore E-commerce",
     description: "Piattaforma e-commerce full-stack con Stripe. Gestione totale dello stock e pagamenti sicuri.",
     tags: ["Next.js", "Stripe", "Prisma"],
-    link: "https://modern-store-nine.vercel.app/",
+    link: "",
     image: "/projects/optimized/ecommerce-clothing.webp",
     category: "E-commerce Pro",
     price: "Su preventivo",
@@ -212,7 +211,7 @@ const projectContent: Project[] = [
     title: "Real-time Shift Planner",
     description: "Sistema cloud per la gestione dei turni aziendali con sincronizzazione istantanea tra i dipendenti.",
     tags: ["React", "Firebase", "Real-time"],
-    link: "https://gestioneturni-b1b21.web.app/",
+    link: "",
     image: "/projects/optimized/turni.webp",
     category: "Sistemi & App Su Misura",
     price: "Su preventivo",
@@ -223,12 +222,12 @@ const projectContent: Project[] = [
     title: "Idraulico Iona Bros",
     description: "Web App Next.js ottimizzata per il pronto intervento. Integra l'AI per gestire le richieste dei clienti in tempo reale.",
     tags: ["Next.js", "AI Integration", "Local SEO"],
-    link: "https://iona-bros-idraulica.vercel.app/",
+    link: "",
     image: "/projects/optimized/idraulico.webp",
     category: "Sito Vetrina Pro",
     price: "Su preventivo",
     color: "from-blue-500/10",
-    status: "online",
+    status: "demo",
   },
   {
     title: "Zecchi MultiServizi",
@@ -289,7 +288,7 @@ const projectContent: Project[] = [
     title: "English Teacher Website",
     description: "Piattaforma web interattiva per corsi e lezioni private d'inglese. Include calendario per la prenotazione delle lezioni e area risorse per gli studenti.",
     tags: ["Next.js", "Tailwind CSS", "Booking", "i18n"],
-    link: "https://english-teacher-website-lemon.vercel.app",
+    link: "",
     image: "/projects/optimized/english.webp",
     category: "Sito Vetrina Pro",
     price: "Su preventivo",
@@ -300,7 +299,7 @@ const projectContent: Project[] = [
     title: "Onoranze Funebri AMA",
     description: "Portale istituzionale con reperibilità H24, catalogo servizi integrato e ottimizzazione SEO per ricerche locali con assistenza immediata.",
     tags: ["Next.js", "Tailwind CSS", "Local SEO", "H24"],
-    link: "https://onoranze-ama.vercel.app",
+    link: "",
     image: "/projects/optimized/onoranze.webp",
     category: "Sito Vetrina Pro",
     price: "Su preventivo",
@@ -311,7 +310,7 @@ const projectContent: Project[] = [
     title: "Experience App",
     description: "Applicazione interattiva per la prenotazione e gestione di esperienze esclusive. UI moderna e flussi ottimizzati per massimizzare le conversioni.",
     tags: ["React", "Tailwind CSS", "Booking Engine", "Vercel"],
-    link: "https://experience-app-pi.vercel.app/",
+    link: "",
     image: "/projects/optimized/experience.webp",
     category: "Sistemi & App Su Misura",
     price: "Su preventivo",
@@ -322,7 +321,7 @@ const projectContent: Project[] = [
     title: "Fattura Elettronica App",
     description: "Software cloud per l'emissione, gestione e archiviazione delle fatture elettroniche con dashboard analitica in tempo reale.",
     tags: ["Next.js", "PostgreSQL", "SDI API"],
-    link: "https://sdi-invoice-generator.vercel.app",
+    link: "",
     image: "/projects/optimized/fattura.webp",
     category: "Sistemi & App Su Misura",
     price: "Su preventivo",
@@ -340,7 +339,7 @@ export const projectsList: Project[] = projectContent.map((project) => ({
 export interface DemoProductItem {
   id: string;
   name: string;
-  url: string;
+  url?: string;
   category: string;
   price: number | null;
   image: string | null;
@@ -352,10 +351,9 @@ export const demoProducts: DemoProductItem[] = projectsList
   .map((p) => ({
     id: p.title.toLowerCase().replace(/\s+/g, "-"),
     name: p.title,
-    url: p.link,
+    url: p.link || undefined,
     category: p.category,
     price: null,
     image: p.image,
     features: p.tags,
   }));
-
