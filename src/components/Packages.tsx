@@ -471,8 +471,8 @@ const Packages = () => {
           </p>
 
           {/* Tab Switcher Pills */}
-          <div className="inline-flex p-1.5 bg-zinc-900/90 backdrop-blur-md rounded-2xl border border-zinc-800 shadow-sm overflow-x-auto max-w-full">
-            <div className="flex items-center gap-1.5">
+          <div className="w-full flex justify-center pb-4">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 p-1.5 bg-zinc-900/90 backdrop-blur-md rounded-2xl sm:rounded-full border border-zinc-800 shadow-sm w-full max-w-xs sm:max-w-none sm:w-fit">
               {[
                 { id: "all", label: "🌟 Tutti i Servizi" },
                 { id: "web", label: "🌐 Siti Web" },
@@ -485,7 +485,7 @@ const Packages = () => {
                     key={tab.id}
                     type="button"
                     onClick={() => setActiveTab(tab.id as "all" | "web" | "ecommerce" | "booking")}
-                    className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer focus:outline-none select-none ${
+                    className={`px-4 py-3 sm:py-2 rounded-xl sm:rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer focus:outline-none select-none text-center whitespace-nowrap ${
                       isSelected
                         ? "bg-white text-black shadow-md font-black"
                         : "text-zinc-400 hover:text-white hover:bg-zinc-800/60"

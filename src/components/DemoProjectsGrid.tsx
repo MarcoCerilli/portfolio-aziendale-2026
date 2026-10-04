@@ -74,7 +74,7 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
             onError={(e) => {
               (e.target as HTMLImageElement).src = "/projects/coming-soon.svg";
             }}
-            className="w-full h-full object-cover object-top block transition-transform duration-700 group-hover/preview:scale-105"
+            className="w-full h-full object-contain object-top block transition-transform duration-700 group-hover/preview:scale-105"
           />
 
           <div className="absolute bottom-3 left-3 z-10 pointer-events-none">
@@ -105,7 +105,7 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
             onError={(e) => {
               (e.target as HTMLImageElement).src = "/projects/coming-soon.svg";
             }}
-            className="w-full h-full object-cover object-top block"
+            className="w-full h-full object-contain object-top block"
           />
 
           <div className="absolute bottom-3 left-3 z-10 pointer-events-none">
