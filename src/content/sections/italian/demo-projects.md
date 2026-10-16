@@ -5,7 +5,6 @@ projects:
     name: SleepScape — Ambient Generator
     url: https://sleepscape.onrender.com
     category: Sistemi & App Su Misura
-    price: null
     image: /projects/optimized/demo-sleepscape.webp
     features:
       - Scenari sonori
@@ -16,7 +15,6 @@ projects:
     name: Studio Fotografico d’Autore
     url: https://fotografo-hqml.onrender.com
     category: Sito Vetrina Pro
-    price: null
     image: /projects/optimized/demo-fotografo.webp
     features:
       - Galleria fotografica
@@ -27,7 +25,6 @@ projects:
     name: M Solutions Web — Gestionale Demo
     url: https://m-solutions-web-gestionale-demo.onrender.com
     category: Sistemi & App Su Misura
-    price: null
     image: /projects/optimized/demo-gestionale.webp
     features:
       - CRM & Lead
@@ -40,10 +37,10 @@ features:
     - Accesso riservato
     - Gestione fatture
     - Dashboard finanziaria
-  "ModernStore E-commerce":
-    - Catalogo prodotti
-    - Gestione scorte
-    - Pagamenti Stripe
+  "Moda & Co.":
+    - Collezioni Donna e Uomo
+    - Catalogo capi
+    - Pannello gestione admin
   "Real-time Shift Planner":
     - Pianificazione turni
     - Sincronizzazione in tempo reale

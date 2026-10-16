@@ -53,7 +53,7 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className="group relative w-[calc(100vw-56px)] sm:w-[380px] md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-start bg-white text-zinc-900 rounded-3xl border border-zinc-200 hover:border-zinc-400 flex flex-col hover:-translate-y-1 transition-all duration-300 select-none shadow-xl shadow-zinc-200/80 overflow-hidden"
+      className="group relative w-[calc(100vw-56px)] sm:w-[380px] md:w-[calc((100%-24px)/2)] shrink-0 snap-start bg-white text-zinc-900 rounded-3xl border border-zinc-200 hover:border-zinc-400 flex flex-col hover:-translate-y-1 transition-all duration-300 select-none shadow-xl shadow-zinc-200/80 overflow-hidden"
     >
       {/* PREVIEW SCREENSHOT */}
       {hasLink ? (
@@ -153,7 +153,7 @@ function DemoProjectCard({ product }: { product: DemoProduct }) {
               <ArrowTopRightOnSquareIcon className="w-3.5 h-3.5 text-white" />
             </motion.a>
           ) : (
-            <span className="inline-flex items-center px-3 py-1.5 bg-zinc-100 text-zinc-500 font-semibold text-xs rounded-xl border border-zinc-200 cursor-default">
+            <span className="inline-flex items-center px-3 py-1.5 bg-zinc-100 text-zinc-600 font-semibold text-xs rounded-xl border border-zinc-200 cursor-default">
               Architettura Collaudata
             </span>
           )}
@@ -222,7 +222,7 @@ export default function DemoProjectsGrid({ products }: DemoProjectsGridProps) {
       </div>
 
       {/* Carousel wrapper */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 group/carousel">
+      <div className="relative max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 group/carousel">
         <button
           type="button"
           onClick={() => scroll("left")}

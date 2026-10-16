@@ -12,7 +12,7 @@ interface Message {
 
 const quickOptions = [
   { label: "🚀 Richiedi Preventivo Gratuito", text: "Vorrei richiedere un preventivo gratuito per un nuovo sito web." },
-  { label: "⚡ Tempi di Consegna & Prezzi", text: "Quali sono i tempi di consegna e i costi medi dei progetti?" },
+  { label: "⚡ Tempi di Consegna", text: "Quali sono i tempi di consegna dei progetti?" },
   { label: "🛒 E-Commerce & Pagamenti", text: "Vorrei creare un negozio e-commerce con pagamenti Stripe/carte." },
   { label: "📞 Lascia un recapito per contatto", text: "Vorrei essere ricontattato via WhatsApp o email." },
 ];
@@ -69,8 +69,8 @@ const FloatingContact = () => {
       let botReply = "Grazie per il messaggio! Per darti una stima immediata: che tipo di attività hai e quali funzionalità ti servono (sito vetrina, e-commerce o prenotazioni)?";
       
       const lower = userText.toLowerCase();
-      if (lower.includes("preventivo") || lower.includes("costo") || lower.includes("prezzi")) {
-        botReply = "I progetti partono da €490 (Landing / Vetrina Express) fino a soluzioni complete su misura. Tutti includono proprietà totale 100%, velocità sotto 0.8s e pannello di gestione autonomo. Scrivimi pure il tuo settore o lascia il tuo numero WhatsApp per ricevere la proposta dettagliata!";
+      if (lower.includes("preventivo") || lower.includes("costo") || lower.includes("prezzi") || lower.includes("prezzo")) {
+        botReply = "I listini li definiamo insieme, in base al tipo di attività e alle funzioni che ti servono. Scrivimi il settore e cosa deve fare il sito: ti preparo una proposta su misura, senza cifre standard.";
       } else if (lower.includes("tempi") || lower.includes("consegna")) {
         botReply = "I tempi standard di consegna certificata sono tra i 5 e i 14 giorni lavorativi. Lavoriamo con roadmap chiara e revisioni incluse.";
       } else if (lower.includes("e-commerce") || lower.includes("shop") || lower.includes("negozio")) {
@@ -231,7 +231,7 @@ const FloatingContact = () => {
         {isOpen ? (
           <XMarkIcon className="w-6 h-6 text-white" />
         ) : (
-          <SiWhatsapp className="w-6 h-6 text-white" />
+          <SiWhatsapp className="w-6 h-6 text-white" aria-hidden="true" />
         )}
       </motion.button>
     </aside>

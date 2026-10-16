@@ -34,6 +34,8 @@ export default function CookieBanner() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ type: "spring", stiffness: 260, damping: 20 }}
+          role="region"
+          aria-label="Informativa cookie"
           className="fixed bottom-[calc(env(safe-area-inset-bottom,0px)+1rem)] left-4 right-4 md:left-auto md:right-8 md:bottom-8 md:max-w-sm z-50 bg-zinc-900/95 backdrop-blur-md border border-zinc-800 p-6 rounded-3xl shadow-2xl"
         >
           <div className="flex items-start gap-4 mb-4">

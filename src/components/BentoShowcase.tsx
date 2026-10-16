@@ -49,25 +49,24 @@ const featuredDemos = projectsList
 
 export default function BentoShowcase() {
   return (
-    <section className="w-full py-16 md:py-24 bg-[#0a0a0c] text-white relative overflow-hidden border-t border-zinc-900/80">
-      {/* Sfumature ambientali morbide e sobrie */}
-      <div className="absolute top-10 left-1/4 w-[500px] h-[500px] bg-zinc-800/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-10 right-1/4 w-[500px] h-[500px] bg-zinc-700/10 rounded-full blur-[140px] pointer-events-none" />
+    <section className="w-full py-16 md:py-24 bg-zinc-100 text-zinc-900 relative overflow-hidden border-t border-zinc-300">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-72 bg-indigo-300/50 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-0 w-96 h-96 bg-violet-200/60 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Titolo Sezione */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-bold uppercase tracking-widest text-zinc-300 mb-4 shadow-sm">
-            <SparklesIcon className="w-4 h-4 text-emerald-400" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-zinc-300 text-xs font-bold uppercase tracking-widest text-zinc-700 mb-4 shadow-sm">
+            <SparklesIcon className="w-4 h-4 text-emerald-500" />
             Ingegneria &amp; Portfolio Interattivo
           </div>
-          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight mb-4">
+          <h2 className="text-3xl sm:text-5xl font-black text-zinc-950 tracking-tight leading-tight mb-4">
             Un'Architettura Completa per il Tuo{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-200 to-zinc-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-500">
               Business Digitale
             </span>
           </h2>
-          <p className="text-zinc-400 text-sm sm:text-base leading-relaxed">
+          <p className="text-zinc-600 text-sm sm:text-base leading-relaxed">
             Ogni blocco è progettato con standard di altissima qualità: codice moderno, velocità istantanea e massima conversione.
           </p>
         </div>
@@ -189,15 +188,15 @@ export default function BentoShowcase() {
 
             <div className="space-y-3 pt-4 border-t border-zinc-800/80">
               <div className="flex items-center justify-between text-xs">
-                <span className="text-zinc-500 font-medium">Metodo di Sviluppo</span>
+                <span className="text-zinc-400 font-medium">Metodo di Sviluppo</span>
                 <span className="text-emerald-400 font-bold">1:1 Diretto &amp; Dedicato</span>
               </div>
               <div className="flex items-center justify-between text-xs">
-                <span className="text-zinc-500 font-medium">Tempi Medi di Consegna</span>
+                <span className="text-zinc-400 font-medium">Tempi Medi di Consegna</span>
                 <span className="text-white font-bold">5 - 14 giorni</span>
               </div>
               <div className="flex items-center justify-between text-xs">
-                <span className="text-zinc-500 font-medium">Garanzia Risultato</span>
+                <span className="text-zinc-400 font-medium">Garanzia Risultato</span>
                 <span className="text-white font-bold">100% Soddisfatti</span>
               </div>
 
@@ -241,7 +240,7 @@ export default function BentoShowcase() {
                     key={tech.name}
                     className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border ${tech.border} ${tech.bg} text-xs font-bold transition-transform hover:scale-105 cursor-default`}
                   >
-                    <tech.icon className={`w-3.5 h-3.5 ${tech.color}`} />
+                    <tech.icon className={`w-3.5 h-3.5 ${tech.color}`} aria-hidden="true" />
                     <span className="text-zinc-200 text-[11px]">{tech.name}</span>
                   </span>
                 ))}
@@ -249,7 +248,7 @@ export default function BentoShowcase() {
             </div>
 
             <div className="pt-5 mt-6 border-t border-zinc-800/80 flex items-center justify-between">
-              <span className="text-[11px] text-zinc-500 font-medium">Stack Serverless &amp; Edge</span>
+              <span className="text-[11px] text-zinc-400 font-medium">Stack Serverless &amp; Edge</span>
               <span className="text-[11px] font-bold text-white">Vercel &amp; Cloudflare Ready</span>
             </div>
           </motion.div>

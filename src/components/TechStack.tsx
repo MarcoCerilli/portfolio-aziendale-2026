@@ -65,7 +65,7 @@ const itemVariants: Variants = {
 
 const TechStack = () => {
   return (
-    <div id="tecnologie" aria-label="Stack Tecnologico e Strumenti" className="py-16 md:py-20 bg-[#0a0a0c] border-t border-zinc-900/80 relative">
+    <div id="tecnologie" aria-label="Stack Tecnologico e Strumenti" className="py-16 md:py-20 bg-zinc-950 border-t border-zinc-800 relative">
       <div className="max-w-7xl mx-auto px-6">
         {/* Titolo Sezione */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-3">

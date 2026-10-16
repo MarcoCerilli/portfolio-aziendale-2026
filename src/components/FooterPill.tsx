@@ -4,14 +4,14 @@ import {
   HomeIcon,
   FolderIcon,
   ComputerDesktopIcon,
-  CurrencyEuroIcon,
+  Squares2X2Icon,
   ChatBubbleBottomCenterTextIcon,
 } from "@heroicons/react/24/outline";
 import {
   HomeIcon as HomeSolid,
   FolderIcon as FolderSolid,
   ComputerDesktopIcon as DesktopSolid,
-  CurrencyEuroIcon as EuroSolid,
+  Squares2X2Icon as SquaresSolid,
 } from "@heroicons/react/24/solid";
 
 interface FooterItem {
@@ -26,7 +26,7 @@ const items: FooterItem[] = [
   { id: "top", name: "Home", href: "#", icon: HomeIcon, activeIcon: HomeSolid },
   { id: "progetti", name: "Progetti", href: "#progetti", icon: FolderIcon, activeIcon: FolderSolid },
   { id: "demo", name: "Demo", href: "#demo", icon: ComputerDesktopIcon, activeIcon: DesktopSolid },
-  { id: "pacchetti", name: "Tariffe", href: "#pacchetti", icon: CurrencyEuroIcon, activeIcon: EuroSolid },
+  { id: "pacchetti", name: "Soluzioni", href: "#pacchetti", icon: Squares2X2Icon, activeIcon: SquaresSolid },
 ];
 
 export default function FooterPill() {

@@ -32,7 +32,6 @@ export interface DemoProduct {
   name: string;
   url: string;
   category: string;
-  price: number | null;
   image: string | null;
   features: string[];
 }

@@ -24,7 +24,7 @@ const allDemoProducts = [
 ---
 
 <Layout>
-  <div class="min-h-screen bg-[#09090b] text-white">
+  <div class="min-h-screen bg-zinc-950 text-white">
     {/* 1. HERO */}
     <Hero client:load />
 
@@ -35,12 +35,12 @@ const allDemoProducts = [
     <TechStack client:visible />
 
     {/* 4. RISULTATI & AFFIDABILITÀ */}
-    <section class="py-12 md:py-16 bg-[#0a0a0c] border-t border-zinc-900/80">
+    <section class="py-12 md:py-16 bg-zinc-100 border-t border-zinc-300">
       <TrustSection client:visible />
     </section>
 
     {/* 5. PORTFOLIO PROGETTI */}
-    <section id="progetti" class="py-16 md:py-24 bg-[#09090b] text-white border-t border-zinc-900/80 w-full overflow-hidden">
+    <section id="progetti" class="py-16 md:py-24 bg-zinc-950 text-white border-t border-zinc-800 w-full overflow-hidden">
       <Projects client:visible />
     </section>
 
@@ -50,8 +50,8 @@ const allDemoProducts = [
     </section>
 
     {/* 7. PACCHETTI E PIANI */}
-    <section id="pacchetti" class="py-16 md:py-24 bg-[#09090b] text-white border-t border-zinc-900/80">
-      <div class="max-w-7xl mx-auto px-6">
+    <section id="pacchetti" class="py-16 md:py-24 bg-zinc-900 text-white border-t border-zinc-800">
+      <div class="max-w-screen-2xl mx-auto px-6">
         <Packages client:visible />
       </div>
     </section>

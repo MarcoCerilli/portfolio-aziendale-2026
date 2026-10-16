@@ -22,7 +22,7 @@ const itemVariants: Variants = {
 
 const Hero = () => {
   return (
-    <section className="relative flex min-h-[92dvh] sm:min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-[#09090b] pt-36 pb-20 sm:pt-40 md:pt-44 md:pb-28 lg:pt-36">
+    <section className="relative flex min-h-[92dvh] sm:min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-zinc-950 pt-36 pb-20 sm:pt-40 md:pt-44 md:pb-28 lg:pt-36">
       {/* 1. FULL ABSTRACT TECH BACKGROUND (Senza foto personali) */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden select-none">
         <img
@@ -151,9 +151,9 @@ const Hero = () => {
               </div>
 
               {/* Titolo Principale */}
-              <h3 className="mb-2 text-xl leading-snug font-black tracking-tight text-white sm:text-2xl">
+              <h2 className="mb-2 text-xl leading-snug font-black tracking-tight text-white sm:text-2xl">
                 Cosa Include Ogni Progetto:
-              </h3>
+              </h2>
               <p className="mb-6 text-xs leading-relaxed font-normal text-zinc-400 sm:text-sm">
                 Soluzioni complete chiavi in mano, progettate per generare vendite e contatti qualificati.
               </p>
@@ -165,9 +165,9 @@ const Hero = () => {
                     ✓
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold leading-tight text-white sm:text-sm">
+                    <h3 className="text-xs font-bold leading-tight text-white sm:text-sm">
                       Proprietà Totale al 100% (Codice &amp; Dati)
-                    </h4>
+                    </h3>
                     <p className="mt-0.5 text-[11px] leading-relaxed text-zinc-400 sm:text-xs">
                       Nessun canone obbligatorio o vincolo. Il sito e i dati restano tuoi per sempre.
                     </p>
@@ -179,9 +179,9 @@ const Hero = () => {
                     ✓
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold leading-tight text-white sm:text-sm">
+                    <h3 className="text-xs font-bold leading-tight text-white sm:text-sm">
                       Velocità (&lt; 0.8s) &amp; SEO Google
-                    </h4>
+                    </h3>
                     <p className="mt-0.5 text-[11px] leading-relaxed text-zinc-400 sm:text-xs">
                       Caricamento istantaneo su mobile per non perdere clienti e posizionarti su Google.
                     </p>
@@ -193,9 +193,9 @@ const Hero = () => {
                     ✓
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold leading-tight text-white sm:text-sm">
+                    <h3 className="text-xs font-bold leading-tight text-white sm:text-sm">
                       Pannello di Gestione Semplice &amp; Autonomo
-                    </h4>
+                    </h3>
                     <p className="mt-0.5 text-[11px] leading-relaxed text-zinc-400 sm:text-xs">
                       Aggiorni prezzi, prodotti, foto e testi in autonomia dal tuo computer o smartphone.
                     </p>
@@ -207,9 +207,9 @@ const Hero = () => {
                     ✓
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold leading-tight text-white sm:text-sm">
+                    <h3 className="text-xs font-bold leading-tight text-white sm:text-sm">
                       Pagamenti Diretti &amp; Moduli di Contatto
-                    </h4>
+                    </h3>
                     <p className="mt-0.5 text-[11px] leading-relaxed text-zinc-400 sm:text-xs">
                       Stripe, carte di credito, WhatsApp e richieste preventivo collegate al tuo conto.
                     </p>

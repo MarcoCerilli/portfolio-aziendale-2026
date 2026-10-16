@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 const packageList = [
   {
     name: "Sito Vetrina Corporate",
-    price: "Su preventivo",
     description: "Presenza online autorevole, ultra-veloce e responsive.",
     features: ["Next.js / Astro Speed", "100/100 Core Web Vitals", "WhatsApp & Contatto Diretto", "Hosting Cloud Incluso"],
     color: "from-slate-900 to-indigo-950",
@@ -13,7 +12,6 @@ const packageList = [
   },
   {
     name: "Piattaforma Business Pro",
-    price: "Su preventivo",
     description: "Sito aziendale multi-pagina con CMS e motore di conversione.",
     features: ["Architettura Custom", "CMS Autonomo & Intuitivo", "SEO Tecnico Avanzato", "Design Titanium Studio"],
     color: "from-indigo-900 to-slate-900",
@@ -25,8 +23,6 @@ type EcommerceTier = {
   id: string;
   name: string;
   tagline: string;
-  price: string;
-  monthlyExtra: string;
   gradientClass: string;
   popular?: boolean;
   isCustom?: boolean;
@@ -43,8 +39,6 @@ const ecommercePlans: EcommerceTier[] = [
     id: "woocommerce",
     name: "WooCommerce",
     tagline: "WordPress + WooCommerce",
-    price: "Su preventivo",
-    monthlyExtra: "~15–50€/mese hosting",
     gradientClass: "from-slate-900 to-slate-950",
     icon: "🔧",
     pros: [
@@ -65,8 +59,6 @@ const ecommercePlans: EcommerceTier[] = [
     id: "shopify",
     name: "Shopify",
     tagline: "La piattaforma SaaS #1 al mondo",
-    price: "Su preventivo",
-    monthlyExtra: "29–299€/mese + 0–2% fee",
     gradientClass: "from-slate-900 via-slate-900 to-indigo-950",
     popular: true,
     icon: "🛍️",
@@ -88,8 +80,6 @@ const ecommercePlans: EcommerceTier[] = [
     id: "shopify-headless",
     name: "Shopify Headless",
     tagline: "Backend Shopify + Frontend Next.js",
-    price: "Su preventivo",
-    monthlyExtra: "29–299€/mese Shopify + hosting",
     gradientClass: "from-slate-900 to-slate-950",
     icon: "⚡",
     pros: [
@@ -110,8 +100,6 @@ const ecommercePlans: EcommerceTier[] = [
     id: "custom",
     name: "Full Custom Enterprise",
     tagline: "Infrastruttura Next.js · TypeScript · Vercel",
-    price: "Su preventivo",
-    monthlyExtra: "Infrastruttura su misura",
     gradientClass: "from-slate-900 to-black",
     isCustom: true,
     icon: "🚀",
@@ -139,8 +127,6 @@ type BookingPlan = {
   id: string;
   name: string;
   tagline: string;
-  price: string;
-  monthlyExtra: string;
   gradientClass: string;
   popular?: boolean;
   icon: string;
@@ -156,8 +142,6 @@ const bookingPlans: BookingPlan[] = [
     id: "booking-restaurant",
     name: "Ristorante & Table Booking",
     tagline: "Prenotazioni tavoli & Menù Digitale",
-    price: "Su preventivo",
-    monthlyExtra: "Hosting incluso 1° anno",
     gradientClass: "from-slate-900 to-slate-950",
     icon: "🍽️",
     demoUrl: projectsList.find((project) => project.title === "Aura Osteria Contemporanea")?.link,
@@ -177,8 +161,6 @@ const bookingPlans: BookingPlan[] = [
     id: "booking-rental",
     name: "Smart Rental & Case Vacanza",
     tagline: "Per B&B, Appartamenti e Ville",
-    price: "Su preventivo",
-    monthlyExtra: "Hosting incluso 1° anno",
     gradientClass: "from-slate-900 via-slate-900 to-indigo-950",
     popular: true,
     icon: "🏡",
@@ -197,8 +179,6 @@ const bookingPlans: BookingPlan[] = [
     id: "booking-resort",
     name: "Boutique Resort & Multi-Room",
     tagline: "Per hotel e strutture ricettive 4-10 camere",
-    price: "Su preventivo",
-    monthlyExtra: "~20–40€/mese manutenzione",
     gradientClass: "from-slate-900 to-slate-950",
     icon: "🏨",
     demoUrl: projectsList.find((project) => project.title === "Villa Seraphina Resort & SPA")?.link,
@@ -218,8 +198,6 @@ const bookingPlans: BookingPlan[] = [
     id: "booking-enterprise",
     name: "Enterprise & Connessione PMS",
     tagline: "Integrazione con gestionali esistenti",
-    price: "Su preventivo",
-    monthlyExtra: "Variabile su progetto",
     gradientClass: "from-slate-900 to-black",
     icon: "⚙️",
     features: [
@@ -265,7 +243,7 @@ function EcommerceCard({ plan, index }: { plan: EcommerceTier; index: number }) 
       }`}
     >
       {/* Header */}
-      <div className="bg-zinc-900/90 p-5 relative overflow-hidden border-b border-zinc-800/80">
+      <div className="bg-zinc-900/90 p-6 relative overflow-hidden border-b border-zinc-800/80">
         {plan.popular && (
           <div className="absolute top-3.5 right-3.5 px-2.5 py-0.5 bg-white text-black rounded-full shadow-md">
             <span className="text-[9px] font-black uppercase tracking-widest">Più Scelto</span>
@@ -281,10 +259,10 @@ function EcommerceCard({ plan, index }: { plan: EcommerceTier; index: number }) 
       </div>
 
       {/* Body */}
-      <div className="p-5 flex flex-col flex-grow bg-zinc-950/80">
+      <div className="p-6 flex flex-col flex-grow bg-zinc-950/80">
         {/* Ideal for */}
         <div className="mb-3.5 p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80">
-          <span className="text-[9px] font-bold text-zinc-500 uppercase tracking-wider block mb-0.5">
+          <span className="text-[9px] font-bold text-zinc-400 uppercase tracking-wider block mb-0.5">
             Ideale per
           </span>
           <p className="text-zinc-300 text-xs font-medium leading-snug">
@@ -294,7 +272,7 @@ function EcommerceCard({ plan, index }: { plan: EcommerceTier; index: number }) 
 
         {/* Pros */}
         <div className="mb-3.5">
-          <span className="text-[9px] font-bold text-zinc-500 uppercase tracking-wider block mb-1.5">
+          <span className="text-[9px] font-bold text-zinc-400 uppercase tracking-wider block mb-1.5">
             Punti di forza
           </span>
           <ul className="space-y-1">
@@ -354,7 +332,7 @@ function BookingCard({ plan, index }: { plan: BookingPlan; index: number }) {
       }`}
     >
       {/* Header */}
-      <div className="bg-zinc-900/90 p-5 relative overflow-hidden border-b border-zinc-800/80">
+      <div className="bg-zinc-900/90 p-6 relative overflow-hidden border-b border-zinc-800/80">
         {plan.popular && (
           <div className="absolute top-3.5 right-3.5 px-2.5 py-0.5 bg-white text-black rounded-full shadow-md">
             <span className="text-[9px] font-black uppercase tracking-widest">Più Scelto</span>
@@ -370,10 +348,10 @@ function BookingCard({ plan, index }: { plan: BookingPlan; index: number }) {
       </div>
 
       {/* Body */}
-      <div className="p-5 flex flex-col flex-grow bg-zinc-950/80">
+      <div className="p-6 flex flex-col flex-grow bg-zinc-950/80">
         {/* Ideal for */}
         <div className="mb-3.5 p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80">
-          <span className="text-[9px] font-bold text-zinc-500 uppercase tracking-wider block mb-0.5">
+          <span className="text-[9px] font-bold text-zinc-400 uppercase tracking-wider block mb-0.5">
             Ideale per
           </span>
           <p className="text-zinc-300 text-xs font-medium leading-snug">
@@ -383,7 +361,7 @@ function BookingCard({ plan, index }: { plan: BookingPlan; index: number }) {
 
         {/* Features */}
         <div className="mb-3.5">
-          <span className="text-[9px] font-bold text-zinc-500 uppercase tracking-wider block mb-1.5">
+          <span className="text-[9px] font-bold text-zinc-400 uppercase tracking-wider block mb-1.5">
             Incluso
           </span>
           <ul className="space-y-1">
@@ -448,8 +426,8 @@ const Packages = () => {
   const [activeTab, setActiveTab] = useState<"all" | "web" | "ecommerce" | "booking">("all");
 
   return (
-    <section className="relative w-full bg-black py-4 text-white">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative w-full py-4 text-white">
+      <div className="max-w-screen-2xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -458,16 +436,16 @@ const Packages = () => {
           className="text-center space-y-4 mb-10"
         >
           <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-bold uppercase tracking-widest text-zinc-300 shadow-xs">
-            Tariffe &amp; Soluzioni
+            Soluzioni
           </span>
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight">
-            Scegli il{" "}
+            Scegli la{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-200 to-zinc-400">
-              Pacchetto
+              Soluzione
             </span>
           </h2>
           <p className="text-zinc-400 text-sm md:text-base max-w-xl mx-auto leading-relaxed font-normal">
-            Soluzioni chiare e trasparenti. Nessun costo nascosto, solo risultati concreti.
+            Siti, e-commerce e prenotazioni su misura. La proposta economica la definiamo insieme, dopo una call.
           </p>
 
           {/* Tab Switcher Pills */}
@@ -517,7 +495,7 @@ const Packages = () => {
                     Siti Web
                   </h3>
                 )}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                   {packageList.map((pkg, index) => (
                     <motion.div
                       key={index}
@@ -585,14 +563,13 @@ const Packages = () => {
                         Quale piattaforma fa per te?
                       </p>
                       <p className="text-zinc-400 text-xs mt-0.5 leading-relaxed font-normal">
-                        Il prezzo indicato è il <strong className="text-white font-bold">costo di setup una-tantum</strong>.
-                        Considera sempre i costi ricorrenti mensili della piattaforma scelta.
+                        La piattaforma cambia tempi, autonomia e manutenzione. La scelta giusta dipende da cosa vendi e da quanto vuoi gestire in prima persona.
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
                   {ecommercePlans.map((plan, index) => (
                     <EcommerceCard key={plan.id} plan={plan} index={index} />
                   ))}
@@ -623,7 +600,7 @@ const Packages = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
                   {bookingPlans.map((plan, index) => (
                     <BookingCard key={plan.id} plan={plan} index={index} />
                   ))}

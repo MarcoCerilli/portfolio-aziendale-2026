@@ -4,7 +4,7 @@ import {
   SparklesIcon,
   FolderIcon,
   ComputerDesktopIcon,
-  CurrencyEuroIcon,
+  Squares2X2Icon,
   Bars3Icon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
@@ -18,7 +18,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   { name: "Progetti", href: "#progetti", icon: FolderIcon },
   { name: "Demo Live", href: "#demo", icon: ComputerDesktopIcon },
-  { name: "Tariffe", href: "#pacchetti", icon: CurrencyEuroIcon },
+  { name: "Soluzioni", href: "#pacchetti", icon: Squares2X2Icon },
 ];
 
 export default function NavPill() {

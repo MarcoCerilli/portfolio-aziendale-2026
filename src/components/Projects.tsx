@@ -48,7 +48,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
     <article
       aria-label={project.title}
-      className="relative w-[calc(100vw-56px)] sm:w-[380px] md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-start bg-white text-zinc-900 rounded-3xl border border-zinc-200 hover:border-zinc-400 flex flex-col hover:-translate-y-1 transition-all duration-300 group select-none shadow-2xl shadow-black/50 overflow-hidden"
+      className="relative w-[calc(100vw-56px)] sm:w-[380px] md:w-[calc((100%-24px)/2)] shrink-0 snap-start bg-white text-zinc-900 rounded-3xl border border-zinc-200 hover:border-zinc-400 flex flex-col hover:-translate-y-1 transition-all duration-300 group select-none shadow-2xl shadow-black/50 overflow-hidden"
     >
       {/* PREVIEW SCREENSHOT */}
       <div className="relative w-full aspect-[16/10] overflow-hidden bg-zinc-950 border-b border-zinc-200">
@@ -196,7 +196,7 @@ export default function ProjectsCarousel() {
       </div>
 
       {/* Carousel container */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 group/carousel">
+      <div className="relative max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 group/carousel">
         {/* Freccia Sinistra Chiara (nascosta su mobile per evitare overlay touch) */}
         <button
           type="button"

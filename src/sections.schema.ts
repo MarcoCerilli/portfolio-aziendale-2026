@@ -6,7 +6,6 @@ export const demoSection = z.object({
     name: z.string().min(1),
     url: z.url(),
     category: z.string().min(1),
-    price: z.number().nullable(),
     image: z.string().nullable(),
     features: z.array(z.string().min(1)).min(1),
   })),

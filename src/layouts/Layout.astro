@@ -37,30 +37,30 @@ const {
     </div>
 
     {/* Header Desktop */}
-    <header class="hidden md:block fixed top-0 left-0 right-0 z-50 bg-[#09090b]/80 backdrop-blur-xl border-b border-zinc-800/60">
+    <header class="hidden md:block fixed top-0 left-0 right-0 z-50 bg-zinc-100/95 backdrop-blur-xl border-b border-zinc-300">
       <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <a href="/" class="flex items-center gap-2 hover:opacity-90 transition-opacity" aria-label="M Solutions Web - Marco Cerilli">
           <img
             src="/images/logo.png"
             alt="M Solutions Web"
-            class="h-9 w-auto object-contain"
-            width="168"
-            height="36"
+            class="h-11 w-auto object-contain"
+            width="231"
+            height="44"
           />
         </a>
 
-        <nav class="flex items-center gap-8 text-sm font-semibold text-zinc-400">
-          <a href="#tecnologie" class="hover:text-white transition-colors">Tecnologie</a>
-          <a href="#risultati" class="hover:text-white transition-colors">Risultati</a>
-          <a href="#progetti" class="hover:text-white transition-colors">Progetti</a>
-          <a href="#demo" class="hover:text-white transition-colors">Demo Live</a>
-          <a href="#pacchetti" class="hover:text-white transition-colors">Piani</a>
+        <nav aria-label="Navigazione principale" class="flex items-center gap-8 text-sm font-semibold text-zinc-700">
+          <a href="#tecnologie" class="hover:text-zinc-950 transition-colors">Tecnologie</a>
+          <a href="#risultati" class="hover:text-zinc-950 transition-colors">Risultati</a>
+          <a href="#progetti" class="hover:text-zinc-950 transition-colors">Progetti</a>
+          <a href="#demo" class="hover:text-zinc-950 transition-colors">Demo Live</a>
+          <a href="#pacchetti" class="hover:text-zinc-950 transition-colors">Soluzioni</a>
         </nav>
 
         <button
           type="button"
           onclick="window.dispatchEvent(new Event('open-chat'))"
-          class="cursor-pointer px-5 py-2.5 rounded-xl bg-white text-black font-black text-xs uppercase tracking-wider hover:bg-zinc-200 transition-all shadow-md hover:scale-[1.02]"
+          class="cursor-pointer px-5 py-2.5 rounded-xl bg-indigo-600 text-white font-black text-xs uppercase tracking-wider hover:bg-indigo-500 transition-all shadow-md hover:scale-[1.02]"
         >
           Richiedi Consulenza
         </button>
@@ -72,21 +72,23 @@ const {
     </main>
 
     {/* Footer Pulito */}
-    <footer class="border-t border-zinc-900 bg-[#070709] py-12 text-zinc-400 text-sm">
+    <footer class="border-t border-zinc-300 bg-zinc-100 py-12 text-zinc-700 text-sm">
       <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
         <div class="flex items-center gap-3">
           <img
             src="/images/logo.png"
             alt="M Solutions Web"
-            class="h-7 w-auto object-contain"
-            width="126"
-            height="27"
+            class="h-9 w-auto object-contain"
+            width="189"
+            height="36"
           />
-          <span class="text-zinc-600">•</span>
-          <span class="text-xs text-zinc-500">Sviluppo Web Sartoriale & Consulenza</span>
+          <span class="text-zinc-400" aria-hidden="true">•</span>
+          <span class="text-xs text-zinc-700">Sviluppo Web Sartoriale & Consulenza</span>
         </div>
-        <p class="text-xs text-zinc-500 text-center md:text-right">
-          © {new Date().getFullYear()} Marco Cerilli. Tutti i diritti riservati. Codice proprietario, zero canoni.
+        <p class="text-xs text-zinc-700 text-center md:text-right">
+          © {new Date().getFullYear()} Marco Cerilli. Tutti i diritti riservati.
+          <span class="mx-1 text-zinc-400" aria-hidden="true">•</span>
+          P. IVA 03378710598
         </p>
       </div>
     </footer>
