@@ -186,7 +186,7 @@ const projectContent: Project[] = [
     title: "Moda & Co.",
     description: "Demo e-commerce Next.js per un atelier di moda: collezioni, catalogo e pannello di gestione. Vetrina pronta da personalizzare sul brand.",
     tags: ["Next.js", "E-commerce", "Catalogo", "Pannello Admin"],
-    link: "",
+    link: "https://e-commerce-abbigliamento.onrender.com/",
     image: "/projects/optimized/moda-co.webp",
     category: "E-commerce Pro",
     color: "from-blue-600/10",
